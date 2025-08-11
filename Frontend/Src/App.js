@@ -5,6 +5,7 @@ import StockInput from "./Components/StockInput";
 import PredictionResult from "./Components/PredictionResult";
 import StockChart from "./Components/StockChart";
 import LoadingSpinner from "./Components/LoadingSpinner";
+import CompanyEssentials from "./Components/CompanyEssentials";
 
 function App() {
   const [stockData, setStockData] = useState(null);
@@ -245,6 +246,11 @@ function App() {
                 selectedTimeframes={selectedTimeframes}
               />
             </div>
+          )}
+
+          {/* Company Essentials Panel */}
+          {currentTicker && !loading && (
+            <CompanyEssentials ticker={currentTicker} />
           )}
 
           {/* Stock Chart with Historical Data */}

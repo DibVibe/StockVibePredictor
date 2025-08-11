@@ -699,3 +699,17 @@ INFO 2025-08-11 16:31:58,527 views Timeframe 1d: Universal=False, Ticker-specifi
 INFO 2025-08-11 16:31:58,527 views Timeframe 1w: Universal=True, Ticker-specific=14
 INFO 2025-08-11 16:31:58,527 views Timeframe 1mo: Universal=False, Ticker-specific=10
 INFO 2025-08-11 16:31:58,527 views Timeframe 1y: Universal=False, Ticker-specific=0
+INFO 2025-08-11 22:36:27,418 views Found 0 model files in C:\Users\user\Desktop\pull\pull5\StockVibePredictor\Backend\Scripts\Models
+INFO 2025-08-11 22:36:27,418 views Model loading complete: 0 loaded, 0 failed
+INFO 2025-08-11 22:36:27,419 views Total models in cache: 0
+INFO 2025-08-11 22:36:27,419 views Timeframe 1d: Universal=False, Ticker-specific=0
+INFO 2025-08-11 22:36:27,420 views Timeframe 1w: Universal=False, Ticker-specific=0
+INFO 2025-08-11 22:36:27,421 views Timeframe 1mo: Universal=False, Ticker-specific=0
+INFO 2025-08-11 22:36:27,421 views Timeframe 1y: Universal=False, Ticker-specific=0
+INFO 2025-08-11 22:36:46,545 views Found 0 model files in C:\Users\user\Desktop\pull\pull5\StockVibePredictor\Backend\Scripts\Models
+INFO 2025-08-11 22:36:46,545 views Model loading complete: 0 loaded, 0 failed
+INFO 2025-08-11 22:36:46,545 views Total models in cache: 0
+INFO 2025-08-11 22:36:46,545 views Timeframe 1d: Universal=False, Ticker-specific=0
+INFO 2025-08-11 22:36:46,545 views Timeframe 1w: Universal=False, Ticker-specific=0
+INFO 2025-08-11 22:36:46,546 views Timeframe 1mo: Universal=False, Ticker-specific=0
+INFO 2025-08-11 22:36:46,546 views Timeframe 1y: Universal=False, Ticker-specific=0

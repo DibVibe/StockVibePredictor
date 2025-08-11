@@ -20,6 +20,7 @@ from .views import (
     list_models,
     delete_model,
 )
+from .company_essentials import company_essentials
 
 app_name = "StockPredict"
 
@@ -27,6 +28,7 @@ urlpatterns = [
     path("predict/multi/", predict_multi_timeframe, name="predict_multi_timeframe"),
     path("predict/batch/", batch_predictions, name="batch_predictions"),
     path("predict/", predict_stock_trend, name="predict_stock_trend"),
+    path("company-essentials/<str:ticker>/", company_essentials, name="company_essentials"),
     path("models/train/", train_model, name="train_model"),
     path(
         "models/train-universal/", train_universal_models, name="train_universal_models"
