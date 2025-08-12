@@ -12,6 +12,148 @@ const PredictionResult = ({
     return null;
   }
 
+  // Get currency symbol based on ticker
+  const getCurrencySymbol = (tickerSymbol) => {
+    if (tickerSymbol.includes(".NS") || tickerSymbol.includes(".BO"))
+      return "₹";
+    if (tickerSymbol.includes("-USD") || tickerSymbol.includes("USD"))
+      return "$";
+    if (tickerSymbol.includes(".L")) return "£";
+    if (tickerSymbol.includes(".EU")) return "€";
+    return "$";
+  };
+
+  const getCompanyName = (tickerSymbol) => {
+    const companyNames = {
+      // US Stocks
+      AAPL: "Apple Inc.",
+      GOOGL: "Alphabet Inc. (Google)",
+      GOOG: "Alphabet Inc. (Google)",
+      MSFT: "Microsoft Corporation",
+      AMZN: "Amazon.com Inc.",
+      META: "Meta Platforms Inc. (Facebook)",
+      TSLA: "Tesla Inc.",
+      NVDA: "NVIDIA Corporation",
+      JPM: "JPMorgan Chase & Co.",
+      V: "Visa Inc.",
+      JNJ: "Johnson & Johnson",
+      WMT: "Walmart Inc.",
+      PG: "Procter & Gamble Company",
+      UNH: "UnitedHealth Group Inc.",
+      NFLX: "Netflix Inc.",
+      DIS: "The Walt Disney Company",
+      PYPL: "PayPal Holdings Inc.",
+      INTC: "Intel Corporation",
+      AMD: "Advanced Micro Devices Inc.",
+      CRM: "Salesforce Inc.",
+      ORCL: "Oracle Corporation",
+      ADBE: "Adobe Inc.",
+      IBM: "International Business Machines Corporation",
+      CSCO: "Cisco Systems Inc.",
+      AVGO: "Broadcom Inc.",
+      BAC: "Bank of America Corporation",
+      WFC: "Wells Fargo & Company",
+      GS: "The Goldman Sachs Group Inc.",
+      MS: "Morgan Stanley",
+      C: "Citigroup Inc.",
+      MA: "Mastercard Incorporated",
+      AXP: "American Express Company",
+      PFE: "Pfizer Inc.",
+      KO: "The Coca-Cola Company",
+      PEP: "PepsiCo Inc.",
+      NKE: "NIKE Inc.",
+      SBUX: "Starbucks Corporation",
+      HD: "The Home Depot Inc.",
+      COST: "Costco Wholesale Corporation",
+      TGT: "Target Corporation",
+      LOW: "Lowe's Companies Inc.",
+      EBAY: "eBay Inc.",
+      BA: "The Boeing Company",
+      CAT: "Caterpillar Inc.",
+      DE: "Deere & Company",
+      GE: "General Electric Company",
+      MMM: "3M Company",
+      HON: "Honeywell International Inc.",
+      XOM: "Exxon Mobil Corporation",
+      CVX: "Chevron Corporation",
+      SPY: "SPDR S&P 500 ETF Trust",
+      QQQ: "Invesco QQQ Trust ETF",
+
+      // Indian Stocks
+      "RELIANCE.NS": "Reliance Industries Limited",
+      "TCS.NS": "Tata Consultancy Services Limited",
+      "HDFCBANK.NS": "HDFC Bank Limited",
+      "INFY.NS": "Infosys Limited",
+      "HINDUNILVR.NS": "Hindustan Unilever Limited",
+      "ITC.NS": "ITC Limited",
+      "SBIN.NS": "State Bank of India",
+      "BHARTIARTL.NS": "Bharti Airtel Limited",
+      "KOTAKBANK.NS": "Kotak Mahindra Bank Limited",
+      "LT.NS": "Larsen & Toubro Limited",
+      "HCLTECH.NS": "HCL Technologies Limited",
+      "WIPRO.NS": "Wipro Limited",
+      "MARUTI.NS": "Maruti Suzuki India Limited",
+      "BAJFINANCE.NS": "Bajaj Finance Limited",
+      "ASIANPAINT.NS": "Asian Paints Limited",
+      "NESTLEIND.NS": "Nestlé India Limited",
+      "ULTRACEMCO.NS": "UltraTech Cement Limited",
+      "TITAN.NS": "Titan Company Limited",
+      "AXISBANK.NS": "Axis Bank Limited",
+      "SUNPHARMA.NS": "Sun Pharmaceutical Industries Limited",
+      "^NSEI": "NIFTY 50 Index",
+      "^BSESN": "BSE SENSEX Index",
+
+      // Crypto and Others
+      "BTC-USD": "Bitcoin",
+      "ETH-USD": "Ethereum",
+      COIN: "Coinbase Global Inc.",
+      SQ: "Block Inc. (Square)",
+      HOOD: "Robinhood Markets Inc.",
+      PLTR: "Palantir Technologies Inc.",
+      GME: "GameStop Corp.",
+      AMC: "AMC Entertainment Holdings Inc.",
+      BB: "BlackBerry Limited",
+      NOK: "Nokia Corporation",
+      SPCE: "Virgin Galactic Holdings Inc.",
+      SOFI: "SoFi Technologies Inc.",
+      UPST: "Upstart Holdings Inc.",
+      AFRM: "Affirm Holdings Inc.",
+      DKNG: "DraftKings Inc.",
+      UBER: "Uber Technologies Inc.",
+      LYFT: "Lyft Inc.",
+      DASH: "DoorDash Inc.",
+      ABNB: "Airbnb Inc.",
+      SNOW: "Snowflake Inc.",
+      ZM: "Zoom Video Communications Inc.",
+      DOCU: "DocuSign Inc.",
+      TWLO: "Twilio Inc.",
+      OKTA: "Okta Inc.",
+
+      // Additional stocks I suggested
+      RIVN: "Rivian Automotive Inc.",
+      LCID: "Lucid Group Inc.",
+      NIO: "NIO Inc.",
+      XPEV: "XPeng Inc.",
+      LI: "Li Auto Inc.",
+      F: "Ford Motor Company",
+      GM: "General Motors Company",
+      BABA: "Alibaba Group Holding Limited",
+      JD: "JD.com Inc.",
+      PDD: "Pinduoduo Inc.",
+      TSM: "Taiwan Semiconductor Manufacturing Company",
+      ASML: "ASML Holding N.V.",
+      SAP: "SAP SE",
+      TM: "Toyota Motor Corporation",
+      SONY: "Sony Group Corporation",
+      "BNB-USD": "Binance Coin",
+      "ADA-USD": "Cardano",
+      "SOL-USD": "Solana",
+      "DOT-USD": "Polkadot",
+    };
+
+    return companyNames[tickerSymbol.toUpperCase()] || tickerSymbol;
+  };
+
   const getDirectionIcon = (direction) => {
     return direction === "UP" ? "📈" : "📉";
   };
@@ -36,19 +178,32 @@ const PredictionResult = ({
     return names[timeframe] || timeframe;
   };
 
-  // Sort predictions by timeframe order
+  // Filter predictions if selectedTimeframes provided
   const timeframeOrder = ["1d", "1w", "1mo", "1y"];
-  const sortedPredictions = Object.entries(predictions).sort(
+  const allPredictions = Object.entries(predictions);
+  const filteredPredictions =
+    selectedTimeframes && selectedTimeframes.length > 0
+      ? allPredictions.filter(([tf]) => selectedTimeframes.includes(tf))
+      : allPredictions;
+
+  const sortedPredictions = filteredPredictions.sort(
     ([a], [b]) => timeframeOrder.indexOf(a) - timeframeOrder.indexOf(b)
   );
+
+  const currencySymbol = getCurrencySymbol(ticker);
 
   return (
     <div className="prediction-result">
       <div className="prediction-header">
-        <h2>🎯 Predictions for {ticker}</h2>
+        <h2>🎯 Predictions for {getCompanyName(ticker)}</h2>
         <div className="prediction-summary">
-          {sortedPredictions.length} timeframe
-          {sortedPredictions.length !== 1 ? "s" : ""} analyzed
+          <span>
+            {sortedPredictions.length} timeframe
+            {sortedPredictions.length !== 1 ? "s" : ""} analyzed
+          </span>
+          {marketInfo?.sector && (
+            <span className="sector-badge"> • {marketInfo.sector}</span>
+          )}
         </div>
       </div>
 
@@ -95,7 +250,10 @@ const PredictionResult = ({
               <div className="price-info">
                 <div className="price-row">
                   <span className="label">Current Price:</span>
-                  <span className="value">${prediction.current_price}</span>
+                  <span className="value">
+                    {currencySymbol}
+                    {prediction.current_price}
+                  </span>
                 </div>
                 <div className="price-row">
                   <span className="label">Target Price:</span>
@@ -103,7 +261,8 @@ const PredictionResult = ({
                     className="value"
                     style={{ color: getDirectionColor(prediction.direction) }}
                   >
-                    ${prediction.price_target}
+                    {currencySymbol}
+                    {prediction.price_target}
                   </span>
                 </div>
                 <div className="price-row">

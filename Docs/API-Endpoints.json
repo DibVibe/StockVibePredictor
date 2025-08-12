@@ -1,0 +1,517 @@
+{
+  "info": {
+    "_postman_id": "stockvibe-api-v1",
+    "name": "🚀 StockVibePredictor API",
+    "description": "Complete API Collection for StockVibePredictor by Dibakar",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "🧪 System Health & Monitoring",
+      "item": [
+        {
+          "name": "System Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/system/health/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "system", "health", ""]
+            },
+            "description": "Check overall system health including cache, models, and data sources"
+          }
+        },
+        {
+          "name": "Redis Connection Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/redis-check/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "redis-check", ""]
+            },
+            "description": "Test Redis cache connectivity and functionality"
+          }
+        },
+        {
+          "name": "Debug Models Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/debug/models/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "debug", "models", ""]
+            },
+            "description": "Debug endpoint to check loaded models and their status"
+          }
+        },
+        {
+          "name": "Model Performance Metrics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/system/models/performance/?timeframe=1d",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "system", "models", "performance", ""],
+              "query": [
+                {
+                  "key": "timeframe",
+                  "value": "1d",
+                  "description": "Options: 1d, 1w, 1mo, 1y"
+                }
+              ]
+            },
+            "description": "Get detailed performance metrics for specific timeframe models"
+          }
+        }
+      ]
+    },
+    {
+      "name": "📈 Stock Predictions",
+      "item": [
+        {
+          "name": "Single Stock Prediction (Legacy)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"ticker\": \"AAPL\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/predict/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "predict", ""]
+            },
+            "description": "Legacy endpoint for single timeframe (1d) prediction"
+          }
+        },
+        {
+          "name": "Multi-Timeframe Prediction",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"ticker\": \"AAPL\",\n    \"timeframes\": [\"1d\", \"1w\", \"1mo\", \"1y\"],\n    \"include_analysis\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/predict/multi/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "predict", "multi", ""]
+            },
+            "description": "Advanced multi-timeframe prediction with comprehensive analysis"
+          }
+        },
+        {
+          "name": "Batch Predictions",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"tickers\": [\"AAPL\", \"GOOGL\", \"TSLA\", \"MSFT\", \"AMZN\"],\n    \"timeframe\": \"1d\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/predict/batch/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "predict", "batch", ""]
+            },
+            "description": "Batch predictions for multiple tickers (max 20)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "🤖 Model Management",
+      "item": [
+        {
+          "name": "List All Models",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/models/list/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "models", "list", ""]
+            },
+            "description": "List all available models with their metrics and types"
+          }
+        },
+        {
+          "name": "Train Model for Ticker",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"ticker\": \"NVDA\",\n    \"timeframe\": \"1d\",\n    \"model_type\": \"ensemble\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/models/train/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "models", "train", ""]
+            },
+            "description": "Train a new model for specific ticker and timeframe"
+          }
+        },
+        {
+          "name": "Train Universal Models",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"timeframes\": [\"1d\", \"1w\", \"1mo\", \"1y\"],\n    \"tickers\": [\"AAPL\", \"MSFT\", \"GOOGL\", \"AMZN\", \"META\", \"TSLA\", \"NVDA\", \"JPM\", \"V\", \"JNJ\"]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/models/train-universal/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "models", "train-universal", ""]
+            },
+            "description": "Train universal models for all timeframes using multiple tickers"
+          }
+        },
+        {
+          "name": "Delete Model",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "description": "Required for authenticated users"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"ticker\": \"AAPL\",\n    \"timeframe\": \"1d\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/models/delete/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "models", "delete", ""]
+            },
+            "description": "Delete a specific model (requires authentication)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "💼 Trading Simulation",
+      "item": [
+        {
+          "name": "Simulate Trade",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"ticker\": \"AAPL\",\n    \"action\": \"buy\",\n    \"quantity\": 10,\n    \"order_type\": \"market\",\n    \"limit_price\": null\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/trading/simulate/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trading", "simulate", ""]
+            },
+            "description": "Simulate a paper trade (buy/sell)"
+          }
+        },
+        {
+          "name": "Get Portfolio",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/trading/portfolio/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trading", "portfolio", ""]
+            },
+            "description": "Get user's simulated portfolio with current values"
+          }
+        },
+        {
+          "name": "Get Trade History",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/trading/history/?page=1&per_page=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trading", "history", ""],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "20"
+                }
+              ]
+            },
+            "description": "Get user's trade history with pagination"
+          }
+        },
+        {
+          "name": "Place Real Trade (Future)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"ticker\": \"AAPL\",\n    \"action\": \"buy\",\n    \"quantity\": 10,\n    \"broker\": \"alpaca\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/trading/real/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "trading", "real", ""]
+            },
+            "description": "Place real trade through broker API (not implemented yet)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "👁️ Watchlist Management",
+      "item": [
+        {
+          "name": "Create Watchlist",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Tech Giants\",\n    \"tickers\": [\"AAPL\", \"GOOGL\", \"MSFT\", \"AMZN\", \"META\", \"NVDA\"]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/watchlist/create/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "watchlist", "create", ""]
+            },
+            "description": "Create or update a watchlist"
+          }
+        },
+        {
+          "name": "Get Watchlist Predictions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/watchlist/predictions/?name=Tech Giants&timeframe=1d",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "watchlist", "predictions", ""],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "Tech Giants"
+                },
+                {
+                  "key": "timeframe",
+                  "value": "1d"
+                }
+              ]
+            },
+            "description": "Get predictions for all tickers in watchlist"
+          }
+        }
+      ]
+    },
+    {
+      "name": "📊 Market Data & Analytics",
+      "item": [
+        {
+          "name": "Market Overview",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/market/overview/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "market", "overview", ""]
+            },
+            "description": "Get overall market overview with major indices"
+          }
+        },
+        {
+          "name": "Analytics Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/market/analytics/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "market", "analytics", ""]
+            },
+            "description": "Get analytics dashboard with system metrics"
+          }
+        }
+      ]
+    },
+    {
+      "name": "🏢 Company Information",
+      "item": [
+        {
+          "name": "Company Essentials - AAPL",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/company/AAPL/essentials/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "company", "AAPL", "essentials", ""]
+            },
+            "description": "Get comprehensive company essentials for Apple"
+          }
+        },
+        {
+          "name": "Company Essentials - TSLA",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/company/TSLA/essentials/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "company", "TSLA", "essentials", ""]
+            },
+            "description": "Get comprehensive company essentials for Tesla"
+          }
+        },
+        {
+          "name": "Company Essentials - Indian Stock",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/company/RELIANCE.NS/essentials/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "company", "RELIANCE.NS", "essentials", ""]
+            },
+            "description": "Get company essentials for Reliance (Indian market)"
+          }
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Set base URL if not already set",
+          "if (!pm.variables.get('baseUrl')) {",
+          "    pm.variables.set('baseUrl', 'http://127.0.0.1:8000');",
+          "}",
+          "",
+          "// Log request details",
+          "console.log('Request:', pm.request.method, pm.request.url.toString());"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Common tests for all requests",
+          "pm.test('Response time is less than 5000ms', function () {",
+          "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+          "});",
+          "",
+          "// Log response details",
+          "console.log('Response Status:', pm.response.code);",
+          "console.log('Response Time:', pm.response.responseTime + 'ms');"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8000",
+      "type": "string"
+    },
+    {
+      "key": "authToken",
+      "value": "",
+      "type": "string",
+      "description": "Add your JWT token here for authenticated endpoints"
+    }
+  ]
+}

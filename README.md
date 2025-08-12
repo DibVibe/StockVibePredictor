@@ -747,6 +747,83 @@ After the installation of dependencies to keep requirements.txt updated for the 
 
 ---
 
+## 📦 How to Contribute in Project ??
+
+This guide explains how team members can upload their code or project files into the `Group` branch of the repository without affecting the `main` branch.
+
+### 🚀 Steps to Upload to `Group` Branch
+
+### 1️⃣ Clone the Repository
+
+#### If you haven’t already cloned the repo :
+
+```bash
+git clone https://github.com/ThisIsDibakar/StockVibePredictor.git
+cd StockVibePredictor
+```
+
+### 2️⃣ Fetch the Latest Branches
+
+```bash
+git fetch origin
+```
+
+### 3️⃣ Switch to the `Group` Branch
+
+```bash
+git checkout Group
+```
+
+#### NOTE: If the `Group` branch doesn’t exist locally yet, create it manually ...
+
+```bash
+git checkout -b Group origin/Group
+```
+
+### 4️⃣ Add Your Files or Make Changes
+
+#### Place your project files inside the repo folder and stage them :
+
+```bash
+git add .
+```
+
+### 5️⃣ Commit Your Changes
+
+```bash
+git commit -m "Add my project to Group branch"
+```
+
+### 6️⃣ Push to the `Group` Branch
+
+```bash
+git push origin Group
+```
+
+## 💡 Notes
+
+- This process **will not** affect the `main` branch.
+- Make sure you are **on the `Group` branch** before committing and pushing.
+- You can verify your current branch with:
+
+```bash
+git branch
+```
+
+#### The active branch will have a `*` next to it.
+
+## 🔄 Keeping `Group` Updated
+
+#### To sync your local `Group` branch with the remote `Group` branch:
+
+```bash
+git pull origin Group
+```
+
+#### ✅ Following these steps ensures that all team contributions to `Group` stay organized and separate from `main` until you decide to merge.
+
+---
+
 ## ML Usage :
 
 Access the Application: Navigate to http://localhost:3000 <br />
@@ -767,6 +844,8 @@ View Analysis: The application will display :
 | **POST** | **/api/predict/**        | Get stock prediction |
 | **GET**  | **/api/stock/{ticker}/** | Retrieve stock data  |
 | **GET**  | **/api/health/**         | Health check         |
+
+### [ For Complete Endpoints' Guide => Docs/API-Endpoints.json ]
 
 ---
 

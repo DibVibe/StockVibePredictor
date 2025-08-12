@@ -1125,3 +1125,519 @@ INFO 2025-08-12 11:33:59,569 views Using ticker-specific model for AAPL (1w)
 WARNING 2025-08-12 11:33:59,598 views Using random model for AAPL (1mo): BRK_B_1mo
 WARNING 2025-08-12 11:33:59,627 views Using fallback model for AAPL (1y): INFY_NS_1w
 INFO 2025-08-12 11:33:59,658 views Multi-timeframe prediction completed for AAPL
+INFO 2025-08-12 17:20:37,250 views Found 35 model files in /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models
+INFO 2025-08-12 17:20:37,255 views Loaded model for SNOW (1w)
+INFO 2025-08-12 17:20:37,260 views Loaded model for BRK_B (1mo)
+INFO 2025-08-12 17:20:37,264 views Loaded model for HOOD (1w)
+INFO 2025-08-12 17:20:37,268 views Loaded model for ARKK (1w)
+INFO 2025-08-12 17:20:37,274 views Loaded model for HINDUNILVR_NS (1mo)
+INFO 2025-08-12 17:20:37,278 views Loaded model for QQQ (1w)
+INFO 2025-08-12 17:20:37,287 views Loaded universal model for 1w
+INFO 2025-08-12 17:20:37,291 views Loaded model for UNH (1w)
+INFO 2025-08-12 17:20:37,296 views Loaded model for TCS_NS (1mo)
+INFO 2025-08-12 17:20:37,301 views Loaded model for SPY (1w)
+INFO 2025-08-12 17:20:37,306 views Loaded model for WMT (1mo)
+INFO 2025-08-12 17:20:37,309 views Loaded model for COIN (1w)
+INFO 2025-08-12 17:20:37,313 views Loaded model for SQ (1w)
+INFO 2025-08-12 17:20:37,317 views Loaded model for BRK_A (1mo)
+INFO 2025-08-12 17:20:37,323 views Loaded model for GOOG (1mo)
+INFO 2025-08-12 17:20:37,329 views Loaded model for AXP (1mo)
+INFO 2025-08-12 17:20:37,332 views Loaded model for PLTR (1w)
+INFO 2025-08-12 17:20:37,337 views Loaded model for V (1mo)
+INFO 2025-08-12 17:20:37,342 views Loaded model for TSLA (1mo)
+INFO 2025-08-12 17:20:37,347 views Loaded model for JPM (1mo)
+INFO 2025-08-12 17:20:37,352 views Loaded model for IWM (1w)
+INFO 2025-08-12 17:20:37,356 views Loaded model for RBLX (1w)
+INFO 2025-08-12 17:20:37,362 views Loaded model for INDEX_NSEI (1mo)
+INFO 2025-08-12 17:20:37,365 views Loaded model for ZM (1w)
+INFO 2025-08-12 17:20:37,369 views Loaded model for PG (1w)
+INFO 2025-08-12 17:20:37,374 views Loaded model for RELIANCE_NS (1mo)
+INFO 2025-08-12 17:20:37,379 views Loaded model for AMZN (1mo)
+INFO 2025-08-12 17:20:37,383 views Loaded model for GME (1w)
+INFO 2025-08-12 17:20:37,387 views Loaded model for AMC (1w)
+INFO 2025-08-12 17:20:37,390 views Loaded model for DOCU (1w)
+INFO 2025-08-12 17:20:37,394 views Loaded model for ROKU (1w)
+INFO 2025-08-12 17:20:37,399 views Loaded model for AAPL (1mo)
+INFO 2025-08-12 17:20:37,402 views Loaded model for DKNG (1w)
+INFO 2025-08-12 17:20:37,406 views Loaded model for VTI (1w)
+INFO 2025-08-12 17:20:37,411 views Loaded model for JNJ (1mo)
+INFO 2025-08-12 17:20:37,411 views Model loading complete: 35 loaded, 0 failed
+INFO 2025-08-12 17:20:37,412 views Total models in cache: 35
+INFO 2025-08-12 17:20:37,412 views Timeframe 1d: Universal=False, Ticker-specific=0
+INFO 2025-08-12 17:20:37,412 views Timeframe 1w: Universal=True, Ticker-specific=19
+INFO 2025-08-12 17:20:37,412 views Timeframe 1mo: Universal=False, Ticker-specific=15
+INFO 2025-08-12 17:20:37,412 views Timeframe 1y: Universal=False, Ticker-specific=0
+INFO 2025-08-12 17:20:48,121 views Found 35 model files in /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models
+INFO 2025-08-12 17:20:48,123 views Loaded model for SNOW (1w)
+INFO 2025-08-12 17:20:48,127 views Loaded model for BRK_B (1mo)
+INFO 2025-08-12 17:20:48,129 views Loaded model for HOOD (1w)
+INFO 2025-08-12 17:20:48,131 views Loaded model for ARKK (1w)
+INFO 2025-08-12 17:20:48,134 views Loaded model for HINDUNILVR_NS (1mo)
+INFO 2025-08-12 17:20:48,136 views Loaded model for QQQ (1w)
+INFO 2025-08-12 17:20:48,141 views Loaded universal model for 1w
+INFO 2025-08-12 17:20:48,143 views Loaded model for UNH (1w)
+INFO 2025-08-12 17:20:48,146 views Loaded model for TCS_NS (1mo)
+INFO 2025-08-12 17:20:48,148 views Loaded model for SPY (1w)
+INFO 2025-08-12 17:20:48,151 views Loaded model for WMT (1mo)
+INFO 2025-08-12 17:20:48,154 views Loaded model for COIN (1w)
+INFO 2025-08-12 17:20:48,156 views Loaded model for SQ (1w)
+INFO 2025-08-12 17:20:48,159 views Loaded model for BRK_A (1mo)
+INFO 2025-08-12 17:20:48,163 views Loaded model for GOOG (1mo)
+INFO 2025-08-12 17:20:48,166 views Loaded model for AXP (1mo)
+INFO 2025-08-12 17:20:48,168 views Loaded model for PLTR (1w)
+INFO 2025-08-12 17:20:48,172 views Loaded model for V (1mo)
+INFO 2025-08-12 17:20:48,175 views Loaded model for TSLA (1mo)
+INFO 2025-08-12 17:20:48,178 views Loaded model for JPM (1mo)
+INFO 2025-08-12 17:20:48,181 views Loaded model for IWM (1w)
+INFO 2025-08-12 17:20:48,183 views Loaded model for RBLX (1w)
+INFO 2025-08-12 17:20:48,186 views Loaded model for INDEX_NSEI (1mo)
+INFO 2025-08-12 17:20:48,188 views Loaded model for ZM (1w)
+INFO 2025-08-12 17:20:48,190 views Loaded model for PG (1w)
+INFO 2025-08-12 17:20:48,193 views Loaded model for RELIANCE_NS (1mo)
+INFO 2025-08-12 17:20:48,197 views Loaded model for AMZN (1mo)
+INFO 2025-08-12 17:20:48,199 views Loaded model for GME (1w)
+INFO 2025-08-12 17:20:48,201 views Loaded model for AMC (1w)
+INFO 2025-08-12 17:20:48,203 views Loaded model for DOCU (1w)
+INFO 2025-08-12 17:20:48,206 views Loaded model for ROKU (1w)
+INFO 2025-08-12 17:20:48,209 views Loaded model for AAPL (1mo)
+INFO 2025-08-12 17:20:48,211 views Loaded model for DKNG (1w)
+INFO 2025-08-12 17:20:48,213 views Loaded model for VTI (1w)
+INFO 2025-08-12 17:20:48,216 views Loaded model for JNJ (1mo)
+INFO 2025-08-12 17:20:48,216 views Model loading complete: 35 loaded, 0 failed
+INFO 2025-08-12 17:20:48,217 views Total models in cache: 35
+INFO 2025-08-12 17:20:48,217 views Timeframe 1d: Universal=False, Ticker-specific=0
+INFO 2025-08-12 17:20:48,217 views Timeframe 1w: Universal=True, Ticker-specific=19
+INFO 2025-08-12 17:20:48,217 views Timeframe 1mo: Universal=False, Ticker-specific=15
+INFO 2025-08-12 17:20:48,217 views Timeframe 1y: Universal=False, Ticker-specific=0
+INFO 2025-08-12 17:20:55,479 views Found 35 model files in /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models
+INFO 2025-08-12 17:20:55,482 views Loaded model for SNOW (1w)
+INFO 2025-08-12 17:20:55,485 views Loaded model for BRK_B (1mo)
+INFO 2025-08-12 17:20:55,487 views Loaded model for HOOD (1w)
+INFO 2025-08-12 17:20:55,490 views Loaded model for ARKK (1w)
+INFO 2025-08-12 17:20:55,493 views Loaded model for HINDUNILVR_NS (1mo)
+INFO 2025-08-12 17:20:55,495 views Loaded model for QQQ (1w)
+INFO 2025-08-12 17:20:55,499 views Loaded universal model for 1w
+INFO 2025-08-12 17:20:55,501 views Loaded model for UNH (1w)
+INFO 2025-08-12 17:20:55,505 views Loaded model for TCS_NS (1mo)
+INFO 2025-08-12 17:20:55,507 views Loaded model for SPY (1w)
+INFO 2025-08-12 17:20:55,510 views Loaded model for WMT (1mo)
+INFO 2025-08-12 17:20:55,512 views Loaded model for COIN (1w)
+INFO 2025-08-12 17:20:55,514 views Loaded model for SQ (1w)
+INFO 2025-08-12 17:20:55,518 views Loaded model for BRK_A (1mo)
+INFO 2025-08-12 17:20:55,521 views Loaded model for GOOG (1mo)
+INFO 2025-08-12 17:20:55,524 views Loaded model for AXP (1mo)
+INFO 2025-08-12 17:20:55,526 views Loaded model for PLTR (1w)
+INFO 2025-08-12 17:20:55,531 views Loaded model for V (1mo)
+INFO 2025-08-12 17:20:55,533 views Loaded model for TSLA (1mo)
+INFO 2025-08-12 17:20:55,536 views Loaded model for JPM (1mo)
+INFO 2025-08-12 17:20:55,539 views Loaded model for IWM (1w)
+INFO 2025-08-12 17:20:55,541 views Loaded model for RBLX (1w)
+INFO 2025-08-12 17:20:55,544 views Loaded model for INDEX_NSEI (1mo)
+INFO 2025-08-12 17:20:55,546 views Loaded model for ZM (1w)
+INFO 2025-08-12 17:20:55,548 views Loaded model for PG (1w)
+INFO 2025-08-12 17:20:55,551 views Loaded model for RELIANCE_NS (1mo)
+INFO 2025-08-12 17:20:55,555 views Loaded model for AMZN (1mo)
+INFO 2025-08-12 17:20:55,558 views Loaded model for GME (1w)
+INFO 2025-08-12 17:20:55,560 views Loaded model for AMC (1w)
+INFO 2025-08-12 17:20:55,562 views Loaded model for DOCU (1w)
+INFO 2025-08-12 17:20:55,564 views Loaded model for ROKU (1w)
+INFO 2025-08-12 17:20:55,568 views Loaded model for AAPL (1mo)
+INFO 2025-08-12 17:20:55,570 views Loaded model for DKNG (1w)
+INFO 2025-08-12 17:20:55,572 views Loaded model for VTI (1w)
+INFO 2025-08-12 17:20:55,575 views Loaded model for JNJ (1mo)
+INFO 2025-08-12 17:20:55,575 views Model loading complete: 35 loaded, 0 failed
+INFO 2025-08-12 17:20:55,575 views Total models in cache: 35
+INFO 2025-08-12 17:20:55,575 views Timeframe 1d: Universal=False, Ticker-specific=0
+INFO 2025-08-12 17:20:55,576 views Timeframe 1w: Universal=True, Ticker-specific=19
+INFO 2025-08-12 17:20:55,576 views Timeframe 1mo: Universal=False, Ticker-specific=15
+INFO 2025-08-12 17:20:55,576 views Timeframe 1y: Universal=False, Ticker-specific=0
+INFO 2025-08-12 17:20:58,378 views Found 35 model files in /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models
+INFO 2025-08-12 17:20:58,381 views Loaded model for SNOW (1w)
+INFO 2025-08-12 17:20:58,384 views Loaded model for BRK_B (1mo)
+INFO 2025-08-12 17:20:58,386 views Loaded model for HOOD (1w)
+INFO 2025-08-12 17:20:58,388 views Loaded model for ARKK (1w)
+INFO 2025-08-12 17:20:58,391 views Loaded model for HINDUNILVR_NS (1mo)
+INFO 2025-08-12 17:20:58,394 views Loaded model for QQQ (1w)
+INFO 2025-08-12 17:20:58,398 views Loaded universal model for 1w
+INFO 2025-08-12 17:20:58,400 views Loaded model for UNH (1w)
+INFO 2025-08-12 17:20:58,404 views Loaded model for TCS_NS (1mo)
+INFO 2025-08-12 17:20:58,406 views Loaded model for SPY (1w)
+INFO 2025-08-12 17:20:58,409 views Loaded model for WMT (1mo)
+INFO 2025-08-12 17:20:58,411 views Loaded model for COIN (1w)
+INFO 2025-08-12 17:20:58,413 views Loaded model for SQ (1w)
+INFO 2025-08-12 17:20:58,417 views Loaded model for BRK_A (1mo)
+INFO 2025-08-12 17:20:58,420 views Loaded model for GOOG (1mo)
+INFO 2025-08-12 17:20:58,423 views Loaded model for AXP (1mo)
+INFO 2025-08-12 17:20:58,425 views Loaded model for PLTR (1w)
+INFO 2025-08-12 17:20:58,430 views Loaded model for V (1mo)
+INFO 2025-08-12 17:20:58,433 views Loaded model for TSLA (1mo)
+INFO 2025-08-12 17:20:58,436 views Loaded model for JPM (1mo)
+INFO 2025-08-12 17:20:58,438 views Loaded model for IWM (1w)
+INFO 2025-08-12 17:20:58,440 views Loaded model for RBLX (1w)
+INFO 2025-08-12 17:20:58,443 views Loaded model for INDEX_NSEI (1mo)
+INFO 2025-08-12 17:20:58,446 views Loaded model for ZM (1w)
+INFO 2025-08-12 17:20:58,448 views Loaded model for PG (1w)
+INFO 2025-08-12 17:20:58,451 views Loaded model for RELIANCE_NS (1mo)
+INFO 2025-08-12 17:20:58,454 views Loaded model for AMZN (1mo)
+INFO 2025-08-12 17:20:58,457 views Loaded model for GME (1w)
+INFO 2025-08-12 17:20:58,459 views Loaded model for AMC (1w)
+INFO 2025-08-12 17:20:58,461 views Loaded model for DOCU (1w)
+INFO 2025-08-12 17:20:58,463 views Loaded model for ROKU (1w)
+INFO 2025-08-12 17:20:58,467 views Loaded model for AAPL (1mo)
+INFO 2025-08-12 17:20:58,469 views Loaded model for DKNG (1w)
+INFO 2025-08-12 17:20:58,471 views Loaded model for VTI (1w)
+INFO 2025-08-12 17:20:58,474 views Loaded model for JNJ (1mo)
+INFO 2025-08-12 17:20:58,474 views Model loading complete: 35 loaded, 0 failed
+INFO 2025-08-12 17:20:58,475 views Total models in cache: 35
+INFO 2025-08-12 17:20:58,475 views Timeframe 1d: Universal=False, Ticker-specific=0
+INFO 2025-08-12 17:20:58,475 views Timeframe 1w: Universal=True, Ticker-specific=19
+INFO 2025-08-12 17:20:58,475 views Timeframe 1mo: Universal=False, Ticker-specific=15
+INFO 2025-08-12 17:20:58,475 views Timeframe 1y: Universal=False, Ticker-specific=0
+INFO 2025-08-12 17:21:01,919 views Found 35 model files in /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models
+INFO 2025-08-12 17:21:01,922 views Loaded model for SNOW (1w)
+INFO 2025-08-12 17:21:01,925 views Loaded model for BRK_B (1mo)
+INFO 2025-08-12 17:21:01,927 views Loaded model for HOOD (1w)
+INFO 2025-08-12 17:21:01,930 views Loaded model for ARKK (1w)
+INFO 2025-08-12 17:21:01,933 views Loaded model for HINDUNILVR_NS (1mo)
+INFO 2025-08-12 17:21:01,936 views Loaded model for QQQ (1w)
+INFO 2025-08-12 17:21:01,941 views Loaded universal model for 1w
+INFO 2025-08-12 17:21:01,943 views Loaded model for UNH (1w)
+INFO 2025-08-12 17:21:01,946 views Loaded model for TCS_NS (1mo)
+INFO 2025-08-12 17:21:01,949 views Loaded model for SPY (1w)
+INFO 2025-08-12 17:21:01,952 views Loaded model for WMT (1mo)
+INFO 2025-08-12 17:21:01,954 views Loaded model for COIN (1w)
+INFO 2025-08-12 17:21:01,956 views Loaded model for SQ (1w)
+INFO 2025-08-12 17:21:01,960 views Loaded model for BRK_A (1mo)
+INFO 2025-08-12 17:21:01,963 views Loaded model for GOOG (1mo)
+INFO 2025-08-12 17:21:01,966 views Loaded model for AXP (1mo)
+INFO 2025-08-12 17:21:01,968 views Loaded model for PLTR (1w)
+INFO 2025-08-12 17:21:01,971 views Loaded model for V (1mo)
+INFO 2025-08-12 17:21:01,974 views Loaded model for TSLA (1mo)
+INFO 2025-08-12 17:21:01,977 views Loaded model for JPM (1mo)
+INFO 2025-08-12 17:21:01,981 views Loaded model for IWM (1w)
+INFO 2025-08-12 17:21:01,983 views Loaded model for RBLX (1w)
+INFO 2025-08-12 17:21:01,986 views Loaded model for INDEX_NSEI (1mo)
+INFO 2025-08-12 17:21:01,988 views Loaded model for ZM (1w)
+INFO 2025-08-12 17:21:01,991 views Loaded model for PG (1w)
+INFO 2025-08-12 17:21:01,994 views Loaded model for RELIANCE_NS (1mo)
+INFO 2025-08-12 17:21:01,997 views Loaded model for AMZN (1mo)
+INFO 2025-08-12 17:21:01,999 views Loaded model for GME (1w)
+INFO 2025-08-12 17:21:02,002 views Loaded model for AMC (1w)
+INFO 2025-08-12 17:21:02,004 views Loaded model for DOCU (1w)
+INFO 2025-08-12 17:21:02,006 views Loaded model for ROKU (1w)
+INFO 2025-08-12 17:21:02,009 views Loaded model for AAPL (1mo)
+INFO 2025-08-12 17:21:02,012 views Loaded model for DKNG (1w)
+INFO 2025-08-12 17:21:02,014 views Loaded model for VTI (1w)
+INFO 2025-08-12 17:21:02,017 views Loaded model for JNJ (1mo)
+INFO 2025-08-12 17:21:02,017 views Model loading complete: 35 loaded, 0 failed
+INFO 2025-08-12 17:21:02,017 views Total models in cache: 35
+INFO 2025-08-12 17:21:02,017 views Timeframe 1d: Universal=False, Ticker-specific=0
+INFO 2025-08-12 17:21:02,017 views Timeframe 1w: Universal=True, Ticker-specific=19
+INFO 2025-08-12 17:21:02,017 views Timeframe 1mo: Universal=False, Ticker-specific=15
+INFO 2025-08-12 17:21:02,017 views Timeframe 1y: Universal=False, Ticker-specific=0
+INFO 2025-08-12 17:21:31,869 views Redis connection test passed
+INFO 2025-08-12 17:22:02,207 views Fetching 1d data for AAPL
+INFO 2025-08-12 17:22:02,208 views Sync fetch for AAPL with timeframe 1d
+INFO 2025-08-12 17:22:02,498 views Successfully fetched 64 rows for AAPL
+INFO 2025-08-12 17:22:03,250 views Computed comprehensive features for 1d timeframe
+INFO 2025-08-12 17:22:03,250 views Fetching 1w data for AAPL
+INFO 2025-08-12 17:22:03,250 views Sync fetch for AAPL with timeframe 1w
+INFO 2025-08-12 17:22:03,430 views Successfully fetched 251 rows for AAPL
+INFO 2025-08-12 17:22:03,723 views Computed comprehensive features for 1w timeframe
+INFO 2025-08-12 17:22:03,724 views Fetching 1mo data for AAPL
+INFO 2025-08-12 17:22:03,724 views Sync fetch for AAPL with timeframe 1mo
+INFO 2025-08-12 17:22:03,923 views Successfully fetched 105 rows for AAPL
+INFO 2025-08-12 17:22:04,396 views Computed comprehensive features for 1mo timeframe
+INFO 2025-08-12 17:22:04,396 views Fetching 1y data for AAPL
+INFO 2025-08-12 17:22:04,396 views Sync fetch for AAPL with timeframe 1y
+INFO 2025-08-12 17:22:04,580 views Successfully fetched 120 rows for AAPL
+INFO 2025-08-12 17:22:05,022 views Computed comprehensive features for 1y timeframe
+WARNING 2025-08-12 17:22:05,022 views Using fallback model for AAPL (1d): SNOW_1w
+INFO 2025-08-12 17:22:05,071 views Using universal model for AAPL (1w)
+INFO 2025-08-12 17:22:05,097 views Using ticker-specific model for AAPL (1mo)
+WARNING 2025-08-12 17:22:05,125 views Using fallback model for AAPL (1y): SNOW_1w
+INFO 2025-08-12 17:22:05,151 views Multi-timeframe prediction completed for AAPL
+INFO 2025-08-12 17:22:14,235 views Fetching 1d data for AAPL
+INFO 2025-08-12 17:22:14,236 views Sync fetch for AAPL with timeframe 1d
+INFO 2025-08-12 17:22:14,504 views Successfully fetched 64 rows for AAPL
+INFO 2025-08-12 17:22:15,017 views Computed comprehensive features for 1d timeframe
+WARNING 2025-08-12 17:22:15,018 views Using fallback model for AAPL (1d): SNOW_1w
+INFO 2025-08-12 17:22:15,052 views Multi-timeframe prediction completed for AAPL
+INFO 2025-08-12 17:22:22,582 views Returning cached multi-timeframe prediction for AAPL
+INFO 2025-08-12 17:22:22,583 views Fetching 1d data for GOOGL
+INFO 2025-08-12 17:22:22,583 views Sync fetch for GOOGL with timeframe 1d
+INFO 2025-08-12 17:22:22,817 views Successfully fetched 64 rows for GOOGL
+INFO 2025-08-12 17:22:23,594 views Computed comprehensive features for 1d timeframe
+WARNING 2025-08-12 17:22:23,594 views Using fallback model for GOOGL (1d): SNOW_1w
+INFO 2025-08-12 17:22:23,627 views Multi-timeframe prediction completed for GOOGL
+INFO 2025-08-12 17:22:23,627 views Fetching 1d data for TSLA
+INFO 2025-08-12 17:22:23,627 views Sync fetch for TSLA with timeframe 1d
+INFO 2025-08-12 17:22:23,766 views Successfully fetched 64 rows for TSLA
+INFO 2025-08-12 17:22:24,447 views Computed comprehensive features for 1d timeframe
+WARNING 2025-08-12 17:22:24,448 views Using fallback model for TSLA (1d): SNOW_1w
+INFO 2025-08-12 17:22:24,492 views Multi-timeframe prediction completed for TSLA
+INFO 2025-08-12 17:22:24,492 views Fetching 1d data for MSFT
+INFO 2025-08-12 17:22:24,493 views Sync fetch for MSFT with timeframe 1d
+INFO 2025-08-12 17:22:24,743 views Successfully fetched 64 rows for MSFT
+INFO 2025-08-12 17:22:25,622 views Computed comprehensive features for 1d timeframe
+WARNING 2025-08-12 17:22:25,622 views Using fallback model for MSFT (1d): SNOW_1w
+INFO 2025-08-12 17:22:25,651 views Multi-timeframe prediction completed for MSFT
+INFO 2025-08-12 17:22:25,651 views Fetching 1d data for AMZN
+INFO 2025-08-12 17:22:25,651 views Sync fetch for AMZN with timeframe 1d
+INFO 2025-08-12 17:22:25,780 views Successfully fetched 64 rows for AMZN
+INFO 2025-08-12 17:22:26,453 views Computed comprehensive features for 1d timeframe
+WARNING 2025-08-12 17:22:26,454 views Using fallback model for AMZN (1d): SNOW_1w
+INFO 2025-08-12 17:22:26,500 views Multi-timeframe prediction completed for AMZN
+INFO 2025-08-12 17:24:26,526 CompanyEssentials Fetching company essentials for AAPL
+INFO 2025-08-12 17:24:27,732 CompanyEssentials Successfully fetched and cached data for AAPL
+INFO 2025-08-12 17:26:32,286 views Fetching 1d data for AAPL
+INFO 2025-08-12 17:26:32,287 views Sync fetch for AAPL with timeframe 1d
+INFO 2025-08-12 17:26:32,478 views Successfully fetched 64 rows for AAPL
+INFO 2025-08-12 17:26:33,405 views Computed comprehensive features for 1d timeframe
+INFO 2025-08-12 17:26:33,406 views Fetching 1w data for AAPL
+INFO 2025-08-12 17:26:33,406 views Sync fetch for AAPL with timeframe 1w
+INFO 2025-08-12 17:26:33,639 views Successfully fetched 251 rows for AAPL
+INFO 2025-08-12 17:26:33,918 views Computed comprehensive features for 1w timeframe
+INFO 2025-08-12 17:26:33,918 views Fetching 1mo data for AAPL
+INFO 2025-08-12 17:26:33,918 views Sync fetch for AAPL with timeframe 1mo
+INFO 2025-08-12 17:26:34,102 views Successfully fetched 105 rows for AAPL
+INFO 2025-08-12 17:26:34,445 views Computed comprehensive features for 1mo timeframe
+WARNING 2025-08-12 17:26:34,445 views Using fallback model for AAPL (1d): SNOW_1w
+INFO 2025-08-12 17:26:34,500 views Using universal model for AAPL (1w)
+INFO 2025-08-12 17:26:34,530 views Using ticker-specific model for AAPL (1mo)
+INFO 2025-08-12 17:26:34,560 views Multi-timeframe prediction completed for AAPL
+INFO 2025-08-12 17:26:46,092 views Fetching 1d data for AMZN
+INFO 2025-08-12 17:26:46,093 views Sync fetch for AMZN with timeframe 1d
+INFO 2025-08-12 17:26:46,319 views Successfully fetched 64 rows for AMZN
+INFO 2025-08-12 17:26:46,833 views Computed comprehensive features for 1d timeframe
+INFO 2025-08-12 17:26:46,833 views Fetching 1w data for AMZN
+INFO 2025-08-12 17:26:46,833 views Sync fetch for AMZN with timeframe 1w
+INFO 2025-08-12 17:26:47,060 views Successfully fetched 251 rows for AMZN
+INFO 2025-08-12 17:26:47,344 views Computed comprehensive features for 1w timeframe
+INFO 2025-08-12 17:26:47,345 views Fetching 1mo data for AMZN
+INFO 2025-08-12 17:26:47,345 views Sync fetch for AMZN with timeframe 1mo
+INFO 2025-08-12 17:26:47,561 views Successfully fetched 105 rows for AMZN
+INFO 2025-08-12 17:26:47,842 views Computed comprehensive features for 1mo timeframe
+WARNING 2025-08-12 17:26:47,842 views Using fallback model for AMZN (1d): SNOW_1w
+INFO 2025-08-12 17:26:47,875 views Using universal model for AMZN (1w)
+INFO 2025-08-12 17:26:47,904 views Using ticker-specific model for AMZN (1mo)
+INFO 2025-08-12 17:26:47,934 views Multi-timeframe prediction completed for AMZN
+INFO 2025-08-12 17:38:39,612 views Found 35 model files in /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models
+INFO 2025-08-12 17:38:39,618 views Loaded model for SNOW (1w)
+INFO 2025-08-12 17:38:39,623 views Loaded model for BRK_B (1mo)
+INFO 2025-08-12 17:38:39,627 views Loaded model for HOOD (1w)
+INFO 2025-08-12 17:38:39,632 views Loaded model for ARKK (1w)
+INFO 2025-08-12 17:38:39,637 views Loaded model for HINDUNILVR_NS (1mo)
+INFO 2025-08-12 17:38:39,642 views Loaded model for QQQ (1w)
+INFO 2025-08-12 17:38:39,650 views Loaded universal model for 1w
+INFO 2025-08-12 17:38:39,655 views Loaded model for UNH (1w)
+INFO 2025-08-12 17:38:39,661 views Loaded model for TCS_NS (1mo)
+INFO 2025-08-12 17:38:39,665 views Loaded model for SPY (1w)
+INFO 2025-08-12 17:38:39,670 views Loaded model for WMT (1mo)
+INFO 2025-08-12 17:38:39,673 views Loaded model for COIN (1w)
+INFO 2025-08-12 17:38:39,677 views Loaded model for SQ (1w)
+INFO 2025-08-12 17:38:39,682 views Loaded model for BRK_A (1mo)
+INFO 2025-08-12 17:38:39,687 views Loaded model for GOOG (1mo)
+INFO 2025-08-12 17:38:39,693 views Loaded model for AXP (1mo)
+INFO 2025-08-12 17:38:39,697 views Loaded model for PLTR (1w)
+INFO 2025-08-12 17:38:39,703 views Loaded model for V (1mo)
+INFO 2025-08-12 17:38:39,707 views Loaded model for TSLA (1mo)
+INFO 2025-08-12 17:38:39,712 views Loaded model for JPM (1mo)
+INFO 2025-08-12 17:38:39,716 views Loaded model for IWM (1w)
+INFO 2025-08-12 17:38:39,720 views Loaded model for RBLX (1w)
+INFO 2025-08-12 17:38:39,725 views Loaded model for INDEX_NSEI (1mo)
+INFO 2025-08-12 17:38:39,729 views Loaded model for ZM (1w)
+INFO 2025-08-12 17:38:39,733 views Loaded model for PG (1w)
+INFO 2025-08-12 17:38:39,738 views Loaded model for RELIANCE_NS (1mo)
+INFO 2025-08-12 17:38:39,744 views Loaded model for AMZN (1mo)
+INFO 2025-08-12 17:38:39,748 views Loaded model for GME (1w)
+INFO 2025-08-12 17:38:39,751 views Loaded model for AMC (1w)
+INFO 2025-08-12 17:38:39,755 views Loaded model for DOCU (1w)
+INFO 2025-08-12 17:38:39,758 views Loaded model for ROKU (1w)
+INFO 2025-08-12 17:38:39,764 views Loaded model for AAPL (1mo)
+INFO 2025-08-12 17:38:39,768 views Loaded model for DKNG (1w)
+INFO 2025-08-12 17:38:39,772 views Loaded model for VTI (1w)
+INFO 2025-08-12 17:38:39,777 views Loaded model for JNJ (1mo)
+INFO 2025-08-12 17:38:39,778 views Model loading complete: 35 loaded, 0 failed
+INFO 2025-08-12 17:38:39,778 views Total models in cache: 35
+INFO 2025-08-12 17:38:39,778 views Timeframe 1d: Universal=False, Ticker-specific=0
+INFO 2025-08-12 17:38:39,778 views Timeframe 1w: Universal=True, Ticker-specific=19
+INFO 2025-08-12 17:38:39,778 views Timeframe 1mo: Universal=False, Ticker-specific=15
+INFO 2025-08-12 17:38:39,778 views Timeframe 1y: Universal=False, Ticker-specific=0
+INFO 2025-08-12 17:38:43,346 views Found 35 model files in /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models
+INFO 2025-08-12 17:38:43,348 views Loaded model for SNOW (1w)
+INFO 2025-08-12 17:38:43,352 views Loaded model for BRK_B (1mo)
+INFO 2025-08-12 17:38:43,355 views Loaded model for HOOD (1w)
+INFO 2025-08-12 17:38:43,358 views Loaded model for ARKK (1w)
+INFO 2025-08-12 17:38:43,361 views Loaded model for HINDUNILVR_NS (1mo)
+INFO 2025-08-12 17:38:43,363 views Loaded model for QQQ (1w)
+INFO 2025-08-12 17:38:43,370 views Loaded universal model for 1w
+INFO 2025-08-12 17:38:43,373 views Loaded model for UNH (1w)
+INFO 2025-08-12 17:38:43,376 views Loaded model for TCS_NS (1mo)
+INFO 2025-08-12 17:38:43,378 views Loaded model for SPY (1w)
+INFO 2025-08-12 17:38:43,381 views Loaded model for WMT (1mo)
+INFO 2025-08-12 17:38:43,384 views Loaded model for COIN (1w)
+INFO 2025-08-12 17:38:43,387 views Loaded model for SQ (1w)
+INFO 2025-08-12 17:38:43,390 views Loaded model for BRK_A (1mo)
+INFO 2025-08-12 17:38:43,393 views Loaded model for GOOG (1mo)
+INFO 2025-08-12 17:38:43,396 views Loaded model for AXP (1mo)
+INFO 2025-08-12 17:38:43,398 views Loaded model for PLTR (1w)
+INFO 2025-08-12 17:38:43,403 views Loaded model for V (1mo)
+INFO 2025-08-12 17:38:43,406 views Loaded model for TSLA (1mo)
+INFO 2025-08-12 17:38:43,409 views Loaded model for JPM (1mo)
+INFO 2025-08-12 17:38:43,411 views Loaded model for IWM (1w)
+INFO 2025-08-12 17:38:43,413 views Loaded model for RBLX (1w)
+INFO 2025-08-12 17:38:43,417 views Loaded model for INDEX_NSEI (1mo)
+INFO 2025-08-12 17:38:43,420 views Loaded model for ZM (1w)
+INFO 2025-08-12 17:38:43,422 views Loaded model for PG (1w)
+INFO 2025-08-12 17:38:43,425 views Loaded model for RELIANCE_NS (1mo)
+INFO 2025-08-12 17:38:43,428 views Loaded model for AMZN (1mo)
+INFO 2025-08-12 17:38:43,431 views Loaded model for GME (1w)
+INFO 2025-08-12 17:38:43,433 views Loaded model for AMC (1w)
+INFO 2025-08-12 17:38:43,435 views Loaded model for DOCU (1w)
+INFO 2025-08-12 17:38:43,437 views Loaded model for ROKU (1w)
+INFO 2025-08-12 17:38:43,441 views Loaded model for AAPL (1mo)
+INFO 2025-08-12 17:38:43,443 views Loaded model for DKNG (1w)
+INFO 2025-08-12 17:38:43,445 views Loaded model for VTI (1w)
+INFO 2025-08-12 17:38:43,448 views Loaded model for JNJ (1mo)
+INFO 2025-08-12 17:38:43,449 views Model loading complete: 35 loaded, 0 failed
+INFO 2025-08-12 17:38:43,449 views Total models in cache: 35
+INFO 2025-08-12 17:38:43,449 views Timeframe 1d: Universal=False, Ticker-specific=0
+INFO 2025-08-12 17:38:43,449 views Timeframe 1w: Universal=True, Ticker-specific=19
+INFO 2025-08-12 17:38:43,449 views Timeframe 1mo: Universal=False, Ticker-specific=15
+INFO 2025-08-12 17:38:43,449 views Timeframe 1y: Universal=False, Ticker-specific=0
+INFO 2025-08-12 17:38:47,253 views Found 35 model files in /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models
+INFO 2025-08-12 17:38:47,255 views Loaded model for SNOW (1w)
+INFO 2025-08-12 17:38:47,258 views Loaded model for BRK_B (1mo)
+INFO 2025-08-12 17:38:47,261 views Loaded model for HOOD (1w)
+INFO 2025-08-12 17:38:47,263 views Loaded model for ARKK (1w)
+INFO 2025-08-12 17:38:47,267 views Loaded model for HINDUNILVR_NS (1mo)
+INFO 2025-08-12 17:38:47,269 views Loaded model for QQQ (1w)
+INFO 2025-08-12 17:38:47,275 views Loaded universal model for 1w
+INFO 2025-08-12 17:38:47,278 views Loaded model for UNH (1w)
+INFO 2025-08-12 17:38:47,281 views Loaded model for TCS_NS (1mo)
+INFO 2025-08-12 17:38:47,283 views Loaded model for SPY (1w)
+INFO 2025-08-12 17:38:47,286 views Loaded model for WMT (1mo)
+INFO 2025-08-12 17:38:47,289 views Loaded model for COIN (1w)
+INFO 2025-08-12 17:38:47,291 views Loaded model for SQ (1w)
+INFO 2025-08-12 17:38:47,294 views Loaded model for BRK_A (1mo)
+INFO 2025-08-12 17:38:47,297 views Loaded model for GOOG (1mo)
+INFO 2025-08-12 17:38:47,300 views Loaded model for AXP (1mo)
+INFO 2025-08-12 17:38:47,303 views Loaded model for PLTR (1w)
+INFO 2025-08-12 17:38:47,308 views Loaded model for V (1mo)
+INFO 2025-08-12 17:38:47,311 views Loaded model for TSLA (1mo)
+INFO 2025-08-12 17:38:47,314 views Loaded model for JPM (1mo)
+INFO 2025-08-12 17:38:47,316 views Loaded model for IWM (1w)
+INFO 2025-08-12 17:38:47,319 views Loaded model for RBLX (1w)
+INFO 2025-08-12 17:38:47,322 views Loaded model for INDEX_NSEI (1mo)
+INFO 2025-08-12 17:38:47,324 views Loaded model for ZM (1w)
+INFO 2025-08-12 17:38:47,326 views Loaded model for PG (1w)
+INFO 2025-08-12 17:38:47,331 views Loaded model for RELIANCE_NS (1mo)
+INFO 2025-08-12 17:38:47,335 views Loaded model for AMZN (1mo)
+INFO 2025-08-12 17:38:47,337 views Loaded model for GME (1w)
+INFO 2025-08-12 17:38:47,339 views Loaded model for AMC (1w)
+INFO 2025-08-12 17:38:47,342 views Loaded model for DOCU (1w)
+INFO 2025-08-12 17:38:47,344 views Loaded model for ROKU (1w)
+INFO 2025-08-12 17:38:47,347 views Loaded model for AAPL (1mo)
+INFO 2025-08-12 17:38:47,349 views Loaded model for DKNG (1w)
+INFO 2025-08-12 17:38:47,352 views Loaded model for VTI (1w)
+INFO 2025-08-12 17:38:47,355 views Loaded model for JNJ (1mo)
+INFO 2025-08-12 17:38:47,355 views Model loading complete: 35 loaded, 0 failed
+INFO 2025-08-12 17:38:47,355 views Total models in cache: 35
+INFO 2025-08-12 17:38:47,355 views Timeframe 1d: Universal=False, Ticker-specific=0
+INFO 2025-08-12 17:38:47,355 views Timeframe 1w: Universal=True, Ticker-specific=19
+INFO 2025-08-12 17:38:47,355 views Timeframe 1mo: Universal=False, Ticker-specific=15
+INFO 2025-08-12 17:38:47,355 views Timeframe 1y: Universal=False, Ticker-specific=0
+INFO 2025-08-12 17:38:50,569 views Found 35 model files in /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models
+INFO 2025-08-12 17:38:50,572 views Loaded model for SNOW (1w)
+INFO 2025-08-12 17:38:50,575 views Loaded model for BRK_B (1mo)
+INFO 2025-08-12 17:38:50,577 views Loaded model for HOOD (1w)
+INFO 2025-08-12 17:38:50,580 views Loaded model for ARKK (1w)
+INFO 2025-08-12 17:38:50,583 views Loaded model for HINDUNILVR_NS (1mo)
+INFO 2025-08-12 17:38:50,585 views Loaded model for QQQ (1w)
+INFO 2025-08-12 17:38:50,591 views Loaded universal model for 1w
+INFO 2025-08-12 17:38:50,594 views Loaded model for UNH (1w)
+INFO 2025-08-12 17:38:50,597 views Loaded model for TCS_NS (1mo)
+INFO 2025-08-12 17:38:50,599 views Loaded model for SPY (1w)
+INFO 2025-08-12 17:38:50,602 views Loaded model for WMT (1mo)
+INFO 2025-08-12 17:38:50,605 views Loaded model for COIN (1w)
+INFO 2025-08-12 17:38:50,607 views Loaded model for SQ (1w)
+INFO 2025-08-12 17:38:50,610 views Loaded model for BRK_A (1mo)
+INFO 2025-08-12 17:38:50,613 views Loaded model for GOOG (1mo)
+INFO 2025-08-12 17:38:50,616 views Loaded model for AXP (1mo)
+INFO 2025-08-12 17:38:50,618 views Loaded model for PLTR (1w)
+INFO 2025-08-12 17:38:50,622 views Loaded model for V (1mo)
+INFO 2025-08-12 17:38:50,624 views Loaded model for TSLA (1mo)
+INFO 2025-08-12 17:38:50,629 views Loaded model for JPM (1mo)
+INFO 2025-08-12 17:38:50,633 views Loaded model for IWM (1w)
+INFO 2025-08-12 17:38:50,635 views Loaded model for RBLX (1w)
+INFO 2025-08-12 17:38:50,638 views Loaded model for INDEX_NSEI (1mo)
+INFO 2025-08-12 17:38:50,641 views Loaded model for ZM (1w)
+INFO 2025-08-12 17:38:50,643 views Loaded model for PG (1w)
+INFO 2025-08-12 17:38:50,646 views Loaded model for RELIANCE_NS (1mo)
+INFO 2025-08-12 17:38:50,649 views Loaded model for AMZN (1mo)
+INFO 2025-08-12 17:38:50,652 views Loaded model for GME (1w)
+INFO 2025-08-12 17:38:50,654 views Loaded model for AMC (1w)
+INFO 2025-08-12 17:38:50,656 views Loaded model for DOCU (1w)
+INFO 2025-08-12 17:38:50,658 views Loaded model for ROKU (1w)
+INFO 2025-08-12 17:38:50,662 views Loaded model for AAPL (1mo)
+INFO 2025-08-12 17:38:50,664 views Loaded model for DKNG (1w)
+INFO 2025-08-12 17:38:50,666 views Loaded model for VTI (1w)
+INFO 2025-08-12 17:38:50,669 views Loaded model for JNJ (1mo)
+INFO 2025-08-12 17:38:50,669 views Model loading complete: 35 loaded, 0 failed
+INFO 2025-08-12 17:38:50,669 views Total models in cache: 35
+INFO 2025-08-12 17:38:50,669 views Timeframe 1d: Universal=False, Ticker-specific=0
+INFO 2025-08-12 17:38:50,669 views Timeframe 1w: Universal=True, Ticker-specific=19
+INFO 2025-08-12 17:38:50,670 views Timeframe 1mo: Universal=False, Ticker-specific=15
+INFO 2025-08-12 17:38:50,670 views Timeframe 1y: Universal=False, Ticker-specific=0
+INFO 2025-08-12 17:39:32,926 views Fetching 1d data for HDFCBANK.NS
+INFO 2025-08-12 17:39:32,926 views Sync fetch for HDFCBANK.NS with timeframe 1d
+INFO 2025-08-12 17:39:33,283 views Successfully fetched 67 rows for HDFCBANK.NS
+INFO 2025-08-12 17:39:34,099 views Computed comprehensive features for 1d timeframe
+INFO 2025-08-12 17:39:34,100 views Fetching 1w data for HDFCBANK.NS
+INFO 2025-08-12 17:39:34,100 views Sync fetch for HDFCBANK.NS with timeframe 1w
+INFO 2025-08-12 17:39:34,417 views Successfully fetched 251 rows for HDFCBANK.NS
+INFO 2025-08-12 17:39:34,830 views Computed comprehensive features for 1w timeframe
+INFO 2025-08-12 17:39:34,830 views Fetching 1mo data for HDFCBANK.NS
+INFO 2025-08-12 17:39:34,831 views Sync fetch for HDFCBANK.NS with timeframe 1mo
+INFO 2025-08-12 17:39:35,152 views Successfully fetched 105 rows for HDFCBANK.NS
+INFO 2025-08-12 17:39:35,738 views Computed comprehensive features for 1mo timeframe
+WARNING 2025-08-12 17:39:35,738 views Using fallback model for HDFCBANK_NS (1d): SNOW_1w
+INFO 2025-08-12 17:39:35,781 views Using universal model for HDFCBANK_NS (1w)
+WARNING 2025-08-12 17:39:35,811 views Using random model for HDFCBANK_NS (1mo): BRK_B_1mo
+INFO 2025-08-12 17:39:35,841 views Multi-timeframe prediction completed for HDFCBANK.NS
+INFO 2025-08-12 17:39:40,582 views Fetching 1d data for NFLX
+INFO 2025-08-12 17:39:40,583 views Sync fetch for NFLX with timeframe 1d
+INFO 2025-08-12 17:39:40,882 views Successfully fetched 64 rows for NFLX
+INFO 2025-08-12 17:39:41,688 views Computed comprehensive features for 1d timeframe
+INFO 2025-08-12 17:39:41,688 views Fetching 1w data for NFLX
+INFO 2025-08-12 17:39:41,688 views Sync fetch for NFLX with timeframe 1w
+INFO 2025-08-12 17:39:41,975 views Successfully fetched 251 rows for NFLX
+INFO 2025-08-12 17:39:42,456 views Computed comprehensive features for 1w timeframe
+INFO 2025-08-12 17:39:42,456 views Fetching 1mo data for NFLX
+INFO 2025-08-12 17:39:42,456 views Sync fetch for NFLX with timeframe 1mo
+INFO 2025-08-12 17:39:42,754 views Successfully fetched 105 rows for NFLX
+INFO 2025-08-12 17:39:43,235 views Computed comprehensive features for 1mo timeframe
+WARNING 2025-08-12 17:39:43,235 views Using fallback model for NFLX (1d): SNOW_1w
+INFO 2025-08-12 17:39:43,267 views Using universal model for NFLX (1w)
+WARNING 2025-08-12 17:39:43,298 views Using random model for NFLX (1mo): BRK_B_1mo
+INFO 2025-08-12 17:39:43,326 views Multi-timeframe prediction completed for NFLX
+INFO 2025-08-12 17:39:48,197 views Fetching 1d data for AAPL
+INFO 2025-08-12 17:39:48,198 views Sync fetch for AAPL with timeframe 1d
+INFO 2025-08-12 17:39:48,536 views Successfully fetched 64 rows for AAPL
+INFO 2025-08-12 17:39:49,452 views Computed comprehensive features for 1d timeframe
+INFO 2025-08-12 17:39:49,452 views Fetching 1w data for AAPL
+INFO 2025-08-12 17:39:49,452 views Sync fetch for AAPL with timeframe 1w
+INFO 2025-08-12 17:39:49,972 views Successfully fetched 251 rows for AAPL
+INFO 2025-08-12 17:39:50,527 views Computed comprehensive features for 1w timeframe
+INFO 2025-08-12 17:39:50,527 views Fetching 1mo data for AAPL
+INFO 2025-08-12 17:39:50,527 views Sync fetch for AAPL with timeframe 1mo
+INFO 2025-08-12 17:39:50,863 views Successfully fetched 105 rows for AAPL
+INFO 2025-08-12 17:39:51,269 views Computed comprehensive features for 1mo timeframe
+WARNING 2025-08-12 17:39:51,269 views Using fallback model for AAPL (1d): SNOW_1w
+INFO 2025-08-12 17:39:51,304 views Using universal model for AAPL (1w)
+INFO 2025-08-12 17:39:51,334 views Using ticker-specific model for AAPL (1mo)
+INFO 2025-08-12 17:39:51,364 views Multi-timeframe prediction completed for AAPL
+INFO 2025-08-12 17:39:57,649 CompanyEssentials Fetching company essentials for AAPL
+INFO 2025-08-12 17:39:58,782 CompanyEssentials Successfully fetched and cached data for AAPL
+INFO 2025-08-12 17:39:58,785 CompanyEssentials Returning cached data for AAPL
