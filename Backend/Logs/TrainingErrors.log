@@ -5666,3 +5666,1167 @@ INFO 2025-08-11 20:52:33,757 [__main__] Duration: 0h 1m 10s
 INFO 2025-08-11 20:52:33,757 [__main__] Models saved to: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models
 INFO 2025-08-11 20:52:33,759 [__main__] Training summary saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Performance/training_summary_20250811_205233.json
 INFO 2025-08-11 20:52:33,759 [__main__] Training system execution completed!
+INFO 2025-08-12 15:14:50,254 [__main__] Running full training pipeline...
+INFO 2025-08-12 15:14:50,254 [__main__] ================================================================================
+INFO 2025-08-12 15:14:50,254 [__main__] STARTING COMPREHENSIVE STOCK TRAINING PIPELINE
+INFO 2025-08-12 15:14:50,254 [__main__] ================================================================================
+INFO 2025-08-12 15:14:50,254 [__main__] Phase 1: Training Universal Models
+INFO 2025-08-12 15:14:50,254 [__main__] --------------------------------------------------
+INFO 2025-08-12 15:14:50,254 [__main__] Training universal 1d model...
+INFO 2025-08-12 15:14:50,254 [__main__] Adding AAPL to universal 1d model...
+INFO 2025-08-12 15:14:50,254 [__main__] Fetching 1d data for AAPL
+INFO 2025-08-12 15:14:51,175 [__main__] Prepared 14 rows of 1d data for AAPL
+INFO 2025-08-12 15:14:51,175 [__main__] Adding GOOGL to universal 1d model...
+INFO 2025-08-12 15:14:51,175 [__main__] Fetching 1d data for GOOGL
+INFO 2025-08-12 15:14:51,514 [__main__] Prepared 14 rows of 1d data for GOOGL
+INFO 2025-08-12 15:14:51,514 [__main__] Adding MSFT to universal 1d model...
+INFO 2025-08-12 15:14:51,514 [__main__] Fetching 1d data for MSFT
+INFO 2025-08-12 15:14:51,852 [__main__] Prepared 14 rows of 1d data for MSFT
+INFO 2025-08-12 15:14:51,852 [__main__] Adding TSLA to universal 1d model...
+INFO 2025-08-12 15:14:51,853 [__main__] Fetching 1d data for TSLA
+INFO 2025-08-12 15:14:52,178 [__main__] Prepared 14 rows of 1d data for TSLA
+INFO 2025-08-12 15:14:52,178 [__main__] Adding AMZN to universal 1d model...
+INFO 2025-08-12 15:14:52,178 [__main__] Fetching 1d data for AMZN
+INFO 2025-08-12 15:14:52,504 [__main__] Prepared 14 rows of 1d data for AMZN
+INFO 2025-08-12 15:14:52,504 [__main__] Adding META to universal 1d model...
+INFO 2025-08-12 15:14:52,504 [__main__] Fetching 1d data for META
+INFO 2025-08-12 15:14:52,803 [__main__] Prepared 14 rows of 1d data for META
+INFO 2025-08-12 15:14:52,803 [__main__] Adding JPM to universal 1d model...
+INFO 2025-08-12 15:14:52,803 [__main__] Fetching 1d data for JPM
+INFO 2025-08-12 15:14:53,204 [__main__] Prepared 14 rows of 1d data for JPM
+INFO 2025-08-12 15:14:53,204 [__main__] Adding V to universal 1d model...
+INFO 2025-08-12 15:14:53,204 [__main__] Fetching 1d data for V
+INFO 2025-08-12 15:14:53,571 [__main__] Prepared 14 rows of 1d data for V
+INFO 2025-08-12 15:14:53,571 [__main__] Adding JNJ to universal 1d model...
+INFO 2025-08-12 15:14:53,571 [__main__] Fetching 1d data for JNJ
+INFO 2025-08-12 15:14:53,977 [__main__] Prepared 14 rows of 1d data for JNJ
+INFO 2025-08-12 15:14:53,977 [__main__] Adding WMT to universal 1d model...
+INFO 2025-08-12 15:14:53,977 [__main__] Fetching 1d data for WMT
+INFO 2025-08-12 15:14:54,358 [__main__] Prepared 14 rows of 1d data for WMT
+INFO 2025-08-12 15:14:54,358 [__main__] Adding PG to universal 1d model...
+INFO 2025-08-12 15:14:54,358 [__main__] Fetching 1d data for PG
+INFO 2025-08-12 15:14:54,811 [__main__] Prepared 14 rows of 1d data for PG
+INFO 2025-08-12 15:14:54,812 [__main__] Adding SPY to universal 1d model...
+INFO 2025-08-12 15:14:54,812 [__main__] Fetching 1d data for SPY
+INFO 2025-08-12 15:14:55,166 [__main__] Prepared 14 rows of 1d data for SPY
+INFO 2025-08-12 15:14:55,166 [__main__] Adding QQQ to universal 1d model...
+INFO 2025-08-12 15:14:55,167 [__main__] Fetching 1d data for QQQ
+INFO 2025-08-12 15:14:55,519 [__main__] Prepared 14 rows of 1d data for QQQ
+INFO 2025-08-12 15:14:55,519 [__main__] Adding ^NSEI to universal 1d model...
+INFO 2025-08-12 15:14:55,519 [__main__] Fetching 1d data for ^NSEI
+INFO 2025-08-12 15:14:55,857 [__main__] Prepared 18 rows of 1d data for ^NSEI
+ERROR 2025-08-12 15:14:55,857 [__main__] Insufficient stocks for universal 1d model
+ERROR 2025-08-12 15:14:55,857 [__main__] ✗ Universal 1d model training failed
+INFO 2025-08-12 15:14:55,857 [__main__] Training universal 1w model...
+INFO 2025-08-12 15:14:55,857 [__main__] Adding AAPL to universal 1w model...
+INFO 2025-08-12 15:14:55,857 [__main__] Fetching 1w data for AAPL
+INFO 2025-08-12 15:14:56,260 [__main__] Prepared 199 rows of 1w data for AAPL
+INFO 2025-08-12 15:14:56,260 [__main__] Adding GOOGL to universal 1w model...
+INFO 2025-08-12 15:14:56,260 [__main__] Fetching 1w data for GOOGL
+INFO 2025-08-12 15:14:56,593 [__main__] Prepared 199 rows of 1w data for GOOGL
+INFO 2025-08-12 15:14:56,594 [__main__] Adding MSFT to universal 1w model...
+INFO 2025-08-12 15:14:56,594 [__main__] Fetching 1w data for MSFT
+INFO 2025-08-12 15:14:56,952 [__main__] Prepared 199 rows of 1w data for MSFT
+INFO 2025-08-12 15:14:56,952 [__main__] Adding TSLA to universal 1w model...
+INFO 2025-08-12 15:14:56,952 [__main__] Fetching 1w data for TSLA
+INFO 2025-08-12 15:14:57,282 [__main__] Prepared 199 rows of 1w data for TSLA
+INFO 2025-08-12 15:14:57,282 [__main__] Adding AMZN to universal 1w model...
+INFO 2025-08-12 15:14:57,283 [__main__] Fetching 1w data for AMZN
+INFO 2025-08-12 15:14:57,596 [__main__] Prepared 199 rows of 1w data for AMZN
+INFO 2025-08-12 15:14:57,596 [__main__] Adding META to universal 1w model...
+INFO 2025-08-12 15:14:57,596 [__main__] Fetching 1w data for META
+INFO 2025-08-12 15:14:57,913 [__main__] Prepared 199 rows of 1w data for META
+INFO 2025-08-12 15:14:57,913 [__main__] Adding JPM to universal 1w model...
+INFO 2025-08-12 15:14:57,913 [__main__] Fetching 1w data for JPM
+INFO 2025-08-12 15:14:58,310 [__main__] Prepared 199 rows of 1w data for JPM
+INFO 2025-08-12 15:14:58,311 [__main__] Adding V to universal 1w model...
+INFO 2025-08-12 15:14:58,311 [__main__] Fetching 1w data for V
+INFO 2025-08-12 15:14:58,703 [__main__] Prepared 199 rows of 1w data for V
+INFO 2025-08-12 15:14:58,703 [__main__] Adding JNJ to universal 1w model...
+INFO 2025-08-12 15:14:58,703 [__main__] Fetching 1w data for JNJ
+INFO 2025-08-12 15:14:59,116 [__main__] Prepared 199 rows of 1w data for JNJ
+INFO 2025-08-12 15:14:59,116 [__main__] Adding WMT to universal 1w model...
+INFO 2025-08-12 15:14:59,116 [__main__] Fetching 1w data for WMT
+INFO 2025-08-12 15:14:59,541 [__main__] Prepared 199 rows of 1w data for WMT
+INFO 2025-08-12 15:14:59,541 [__main__] Adding PG to universal 1w model...
+INFO 2025-08-12 15:14:59,541 [__main__] Fetching 1w data for PG
+INFO 2025-08-12 15:14:59,916 [__main__] Prepared 199 rows of 1w data for PG
+INFO 2025-08-12 15:14:59,916 [__main__] Adding SPY to universal 1w model...
+INFO 2025-08-12 15:14:59,916 [__main__] Fetching 1w data for SPY
+INFO 2025-08-12 15:15:00,261 [__main__] Prepared 199 rows of 1w data for SPY
+INFO 2025-08-12 15:15:00,261 [__main__] Adding QQQ to universal 1w model...
+INFO 2025-08-12 15:15:00,262 [__main__] Fetching 1w data for QQQ
+INFO 2025-08-12 15:15:00,644 [__main__] Prepared 199 rows of 1w data for QQQ
+INFO 2025-08-12 15:15:00,645 [__main__] Adding ^NSEI to universal 1w model...
+INFO 2025-08-12 15:15:00,645 [__main__] Fetching 1w data for ^NSEI
+INFO 2025-08-12 15:15:00,973 [__main__] Prepared 200 rows of 1w data for ^NSEI
+INFO 2025-08-12 15:15:00,977 [__main__] Universal 1w model data: 2787 samples from 14 stocks
+INFO 2025-08-12 15:15:14,377 [__main__] Universal 1w model accuracy: 61.65%
+INFO 2025-08-12 15:15:14,378 [__main__] Universal 1w model CV: 48.04%
+INFO 2025-08-12 15:15:14,384 [__main__] Universal 1w model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_1w.pkl
+INFO 2025-08-12 15:15:14,385 [__main__] ✓ Universal 1w model trained successfully
+INFO 2025-08-12 15:15:14,385 [__main__] Training universal 1mo model...
+INFO 2025-08-12 15:15:14,385 [__main__] Adding AAPL to universal 1mo model...
+INFO 2025-08-12 15:15:14,385 [__main__] Fetching 1mo data for AAPL
+INFO 2025-08-12 15:15:14,765 [__main__] Prepared 83 rows of 1mo data for AAPL
+INFO 2025-08-12 15:15:14,766 [__main__] Adding GOOGL to universal 1mo model...
+INFO 2025-08-12 15:15:14,766 [__main__] Fetching 1mo data for GOOGL
+INFO 2025-08-12 15:15:15,088 [__main__] Prepared 83 rows of 1mo data for GOOGL
+INFO 2025-08-12 15:15:15,088 [__main__] Adding MSFT to universal 1mo model...
+INFO 2025-08-12 15:15:15,088 [__main__] Fetching 1mo data for MSFT
+INFO 2025-08-12 15:15:15,416 [__main__] Prepared 83 rows of 1mo data for MSFT
+INFO 2025-08-12 15:15:15,416 [__main__] Adding TSLA to universal 1mo model...
+INFO 2025-08-12 15:15:15,416 [__main__] Fetching 1mo data for TSLA
+INFO 2025-08-12 15:15:15,731 [__main__] Prepared 83 rows of 1mo data for TSLA
+INFO 2025-08-12 15:15:15,731 [__main__] Adding AMZN to universal 1mo model...
+INFO 2025-08-12 15:15:15,731 [__main__] Fetching 1mo data for AMZN
+INFO 2025-08-12 15:15:16,069 [__main__] Prepared 83 rows of 1mo data for AMZN
+INFO 2025-08-12 15:15:16,070 [__main__] Adding META to universal 1mo model...
+INFO 2025-08-12 15:15:16,070 [__main__] Fetching 1mo data for META
+INFO 2025-08-12 15:15:16,397 [__main__] Prepared 83 rows of 1mo data for META
+INFO 2025-08-12 15:15:16,397 [__main__] Adding JPM to universal 1mo model...
+INFO 2025-08-12 15:15:16,397 [__main__] Fetching 1mo data for JPM
+INFO 2025-08-12 15:15:16,779 [__main__] Prepared 83 rows of 1mo data for JPM
+INFO 2025-08-12 15:15:16,779 [__main__] Adding V to universal 1mo model...
+INFO 2025-08-12 15:15:16,779 [__main__] Fetching 1mo data for V
+INFO 2025-08-12 15:15:17,137 [__main__] Prepared 83 rows of 1mo data for V
+INFO 2025-08-12 15:15:17,137 [__main__] Adding JNJ to universal 1mo model...
+INFO 2025-08-12 15:15:17,137 [__main__] Fetching 1mo data for JNJ
+INFO 2025-08-12 15:15:17,527 [__main__] Prepared 83 rows of 1mo data for JNJ
+INFO 2025-08-12 15:15:17,527 [__main__] Adding WMT to universal 1mo model...
+INFO 2025-08-12 15:15:17,528 [__main__] Fetching 1mo data for WMT
+INFO 2025-08-12 15:15:17,939 [__main__] Prepared 83 rows of 1mo data for WMT
+INFO 2025-08-12 15:15:17,939 [__main__] Adding PG to universal 1mo model...
+INFO 2025-08-12 15:15:17,940 [__main__] Fetching 1mo data for PG
+INFO 2025-08-12 15:15:18,339 [__main__] Prepared 83 rows of 1mo data for PG
+INFO 2025-08-12 15:15:18,339 [__main__] Adding SPY to universal 1mo model...
+INFO 2025-08-12 15:15:18,339 [__main__] Fetching 1mo data for SPY
+INFO 2025-08-12 15:15:18,719 [__main__] Prepared 83 rows of 1mo data for SPY
+INFO 2025-08-12 15:15:18,719 [__main__] Adding QQQ to universal 1mo model...
+INFO 2025-08-12 15:15:18,719 [__main__] Fetching 1mo data for QQQ
+INFO 2025-08-12 15:15:19,068 [__main__] Prepared 83 rows of 1mo data for QQQ
+INFO 2025-08-12 15:15:19,068 [__main__] Adding ^NSEI to universal 1mo model...
+INFO 2025-08-12 15:15:19,068 [__main__] Fetching 1mo data for ^NSEI
+INFO 2025-08-12 15:15:19,394 [__main__] Prepared 82 rows of 1mo data for ^NSEI
+ERROR 2025-08-12 15:15:19,394 [__main__] Insufficient stocks for universal 1mo model
+ERROR 2025-08-12 15:15:19,395 [__main__] ✗ Universal 1mo model training failed
+INFO 2025-08-12 15:15:19,395 [__main__] 
+Phase 2: Training Category-Specific Models
+INFO 2025-08-12 15:15:19,395 [__main__] --------------------------------------------------
+INFO 2025-08-12 15:15:19,395 [__main__] Training category: mega_cap_tech
+INFO 2025-08-12 15:15:19,395 [__main__] Training mega_cap_tech models for 8 stocks across ['1d', '1w', '1mo']
+INFO 2025-08-12 15:15:19,395 [__main__] Training 1d model for AAPL
+INFO 2025-08-12 15:15:19,395 [__main__] Training 1d model for GOOGL
+INFO 2025-08-12 15:15:19,396 [__main__] Fetching 1d data for AAPL
+INFO 2025-08-12 15:15:19,396 [__main__] Training 1d model for GOOG
+INFO 2025-08-12 15:15:19,396 [__main__] Fetching 1d data for GOOGL
+INFO 2025-08-12 15:15:19,396 [__main__] Training 1d model for MSFT
+INFO 2025-08-12 15:15:19,396 [__main__] Training 1d model for AMZN
+INFO 2025-08-12 15:15:19,397 [__main__] Training 1d model for META
+INFO 2025-08-12 15:15:19,397 [__main__] Fetching 1d data for GOOG
+INFO 2025-08-12 15:15:19,397 [__main__] Fetching 1d data for MSFT
+INFO 2025-08-12 15:15:19,397 [__main__] Fetching 1d data for AMZN
+INFO 2025-08-12 15:15:19,398 [__main__] Fetching 1d data for META
+INFO 2025-08-12 15:15:19,745 [__main__] Prepared 14 rows of 1d data for META
+INFO 2025-08-12 15:15:19,747 [__main__] Prepared 14 rows of 1d data for AMZN
+INFO 2025-08-12 15:15:19,757 [__main__] Prepared 14 rows of 1d data for MSFT
+WARNING 2025-08-12 15:15:19,762 [__main__] Insufficient 1d data for META: 14 rows
+INFO 2025-08-12 15:15:19,764 [__main__] Prepared 14 rows of 1d data for GOOG
+WARNING 2025-08-12 15:15:19,766 [__main__] Insufficient 1d data for AMZN: 14 rows
+WARNING 2025-08-12 15:15:19,766 [__main__] Insufficient 1d data for MSFT: 14 rows
+INFO 2025-08-12 15:15:19,766 [__main__] Training 1w model for META
+WARNING 2025-08-12 15:15:19,768 [__main__] Insufficient 1d data for GOOG: 14 rows
+INFO 2025-08-12 15:15:19,769 [__main__] Training 1w model for AMZN
+INFO 2025-08-12 15:15:19,770 [__main__] Training 1w model for MSFT
+INFO 2025-08-12 15:15:19,781 [__main__] Prepared 14 rows of 1d data for AAPL
+INFO 2025-08-12 15:15:19,782 [__main__] Fetching 1w data for META
+INFO 2025-08-12 15:15:19,785 [__main__] Training 1w model for GOOG
+INFO 2025-08-12 15:15:19,785 [__main__] Fetching 1w data for AMZN
+INFO 2025-08-12 15:15:19,792 [__main__] Fetching 1w data for MSFT
+WARNING 2025-08-12 15:15:19,793 [__main__] Insufficient 1d data for AAPL: 14 rows
+INFO 2025-08-12 15:15:19,793 [__main__] Fetching 1w data for GOOG
+INFO 2025-08-12 15:15:19,799 [__main__] Prepared 14 rows of 1d data for GOOGL
+INFO 2025-08-12 15:15:19,799 [__main__] Training 1w model for AAPL
+WARNING 2025-08-12 15:15:19,800 [__main__] Insufficient 1d data for GOOGL: 14 rows
+INFO 2025-08-12 15:15:19,800 [__main__] Fetching 1w data for AAPL
+INFO 2025-08-12 15:15:19,800 [__main__] Training 1w model for GOOGL
+INFO 2025-08-12 15:15:19,801 [__main__] Fetching 1w data for GOOGL
+INFO 2025-08-12 15:15:20,217 [__main__] Prepared 199 rows of 1w data for META
+INFO 2025-08-12 15:15:20,226 [__main__] Prepared 199 rows of 1w data for AMZN
+INFO 2025-08-12 15:15:20,227 [__main__] Prepared 199 rows of 1w data for GOOG
+INFO 2025-08-12 15:15:20,227 [__main__] Prepared 199 rows of 1w data for GOOGL
+INFO 2025-08-12 15:15:20,242 [__main__] Prepared 199 rows of 1w data for AAPL
+INFO 2025-08-12 15:15:20,243 [__main__] Prepared 199 rows of 1w data for MSFT
+INFO 2025-08-12 15:15:23,521 [__main__] 1w model training completed for AAPL
+INFO 2025-08-12 15:15:23,528 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:23,531 [__main__] Test accuracy: 70.00%
+INFO 2025-08-12 15:15:23,532 [__main__] CV mean accuracy: 57.75%
+INFO 2025-08-12 15:15:23,540 [__main__] 1w model training completed for AMZN
+INFO 2025-08-12 15:15:23,541 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:23,546 [__main__] Test accuracy: 70.00%
+INFO 2025-08-12 15:15:23,546 [__main__] CV mean accuracy: 57.75%
+INFO 2025-08-12 15:15:23,547 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AAPL_model_1w.pkl
+INFO 2025-08-12 15:15:23,554 [__main__] Training 1mo model for AAPL
+INFO 2025-08-12 15:15:23,555 [__main__] Fetching 1mo data for AAPL
+INFO 2025-08-12 15:15:23,557 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMZN_model_1w.pkl
+INFO 2025-08-12 15:15:23,559 [__main__] Training 1mo model for AMZN
+INFO 2025-08-12 15:15:23,560 [__main__] Fetching 1mo data for AMZN
+INFO 2025-08-12 15:15:23,563 [__main__] 1w model training completed for META
+INFO 2025-08-12 15:15:23,565 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:23,565 [__main__] Test accuracy: 70.00%
+INFO 2025-08-12 15:15:23,566 [__main__] CV mean accuracy: 57.75%
+INFO 2025-08-12 15:15:23,568 [__main__] 1w model training completed for GOOG
+INFO 2025-08-12 15:15:23,568 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:23,569 [__main__] Test accuracy: 70.00%
+INFO 2025-08-12 15:15:23,570 [__main__] CV mean accuracy: 57.75%
+INFO 2025-08-12 15:15:23,571 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/META_model_1w.pkl
+INFO 2025-08-12 15:15:23,574 [__main__] Training 1mo model for META
+INFO 2025-08-12 15:15:23,575 [__main__] Fetching 1mo data for META
+INFO 2025-08-12 15:15:23,578 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GOOG_model_1w.pkl
+INFO 2025-08-12 15:15:23,579 [__main__] 1w model training completed for MSFT
+INFO 2025-08-12 15:15:23,579 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:23,579 [__main__] Training 1mo model for GOOG
+INFO 2025-08-12 15:15:23,579 [__main__] Test accuracy: 70.00%
+INFO 2025-08-12 15:15:23,579 [__main__] Fetching 1mo data for GOOG
+INFO 2025-08-12 15:15:23,579 [__main__] CV mean accuracy: 57.75%
+INFO 2025-08-12 15:15:23,582 [__main__] 1w model training completed for GOOGL
+INFO 2025-08-12 15:15:23,582 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:23,582 [__main__] Test accuracy: 70.00%
+INFO 2025-08-12 15:15:23,583 [__main__] CV mean accuracy: 57.75%
+INFO 2025-08-12 15:15:23,583 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/MSFT_model_1w.pkl
+INFO 2025-08-12 15:15:23,584 [__main__] Training 1mo model for MSFT
+INFO 2025-08-12 15:15:23,584 [__main__] Fetching 1mo data for MSFT
+INFO 2025-08-12 15:15:23,586 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GOOGL_model_1w.pkl
+INFO 2025-08-12 15:15:23,586 [__main__] Training 1mo model for GOOGL
+INFO 2025-08-12 15:15:23,586 [__main__] Fetching 1mo data for GOOGL
+INFO 2025-08-12 15:15:23,940 [__main__] Prepared 83 rows of 1mo data for META
+INFO 2025-08-12 15:15:23,941 [__main__] Prepared 83 rows of 1mo data for GOOG
+WARNING 2025-08-12 15:15:23,941 [__main__] Insufficient 1mo data for META: 83 rows
+INFO 2025-08-12 15:15:23,941 [__main__] Prepared 83 rows of 1mo data for GOOGL
+INFO 2025-08-12 15:15:23,942 [__main__] Prepared 83 rows of 1mo data for AMZN
+WARNING 2025-08-12 15:15:23,942 [__main__] Insufficient 1mo data for GOOG: 83 rows
+INFO 2025-08-12 15:15:23,942 [__main__] Prepared 83 rows of 1mo data for AAPL
+INFO 2025-08-12 15:15:23,944 [__main__] Training 1d model for TSLA
+WARNING 2025-08-12 15:15:23,946 [__main__] Insufficient 1mo data for GOOGL: 83 rows
+WARNING 2025-08-12 15:15:23,946 [__main__] Insufficient 1mo data for AMZN: 83 rows
+INFO 2025-08-12 15:15:23,947 [__main__] Prepared 83 rows of 1mo data for MSFT
+INFO 2025-08-12 15:15:23,947 [__main__] Training 1d model for NVDA
+WARNING 2025-08-12 15:15:23,954 [__main__] Insufficient 1mo data for AAPL: 83 rows
+INFO 2025-08-12 15:15:23,955 [__main__] Fetching 1d data for TSLA
+WARNING 2025-08-12 15:15:23,959 [__main__] Insufficient 1mo data for MSFT: 83 rows
+INFO 2025-08-12 15:15:23,963 [__main__] Fetching 1d data for NVDA
+INFO 2025-08-12 15:15:23,963 [__main__] Completed training for AAPL
+INFO 2025-08-12 15:15:23,964 [__main__] Completed training for GOOGL
+INFO 2025-08-12 15:15:23,964 [__main__] Completed training for GOOG
+INFO 2025-08-12 15:15:23,964 [__main__] Completed training for MSFT
+INFO 2025-08-12 15:15:23,965 [__main__] Completed training for AMZN
+INFO 2025-08-12 15:15:23,965 [__main__] Completed training for META
+INFO 2025-08-12 15:15:24,306 [__main__] Prepared 14 rows of 1d data for NVDA
+WARNING 2025-08-12 15:15:24,306 [__main__] Insufficient 1d data for NVDA: 14 rows
+INFO 2025-08-12 15:15:24,307 [__main__] Prepared 14 rows of 1d data for TSLA
+INFO 2025-08-12 15:15:24,307 [__main__] Training 1w model for NVDA
+WARNING 2025-08-12 15:15:24,307 [__main__] Insufficient 1d data for TSLA: 14 rows
+INFO 2025-08-12 15:15:24,307 [__main__] Fetching 1w data for NVDA
+INFO 2025-08-12 15:15:24,307 [__main__] Training 1w model for TSLA
+INFO 2025-08-12 15:15:24,307 [__main__] Fetching 1w data for TSLA
+INFO 2025-08-12 15:15:24,654 [__main__] Prepared 199 rows of 1w data for NVDA
+INFO 2025-08-12 15:15:24,654 [__main__] Prepared 199 rows of 1w data for TSLA
+INFO 2025-08-12 15:15:25,849 [__main__] 1w model training completed for NVDA
+INFO 2025-08-12 15:15:25,849 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:25,849 [__main__] Test accuracy: 62.50%
+INFO 2025-08-12 15:15:25,850 [__main__] CV mean accuracy: 35.70%
+INFO 2025-08-12 15:15:25,853 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/NVDA_model_1w.pkl
+INFO 2025-08-12 15:15:25,853 [__main__] Training 1mo model for NVDA
+INFO 2025-08-12 15:15:25,854 [__main__] Fetching 1mo data for NVDA
+INFO 2025-08-12 15:15:25,895 [__main__] 1w model training completed for TSLA
+INFO 2025-08-12 15:15:25,895 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:25,895 [__main__] Test accuracy: 62.50%
+INFO 2025-08-12 15:15:25,895 [__main__] CV mean accuracy: 35.70%
+INFO 2025-08-12 15:15:25,898 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/TSLA_model_1w.pkl
+INFO 2025-08-12 15:15:25,898 [__main__] Training 1mo model for TSLA
+INFO 2025-08-12 15:15:25,898 [__main__] Fetching 1mo data for TSLA
+ERROR 2025-08-12 15:15:26,189 [__main__] Error preparing 1mo data for TSLA: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:26,190 [__main__] Error preparing 1mo data for NVDA: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:26,190 [__main__] Error training 1mo model for TSLA: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:26,190 [__main__] Error training 1mo model for NVDA: arg must be a list, tuple, 1-d array, or Series
+INFO 2025-08-12 15:15:26,191 [__main__] Completed training for TSLA
+INFO 2025-08-12 15:15:26,191 [__main__] Completed training for NVDA
+INFO 2025-08-12 15:15:26,192 [__main__] Category mega_cap_tech training completed:
+INFO 2025-08-12 15:15:26,192 [__main__]   Successful: 8
+INFO 2025-08-12 15:15:26,192 [__main__]   Failed: 16
+INFO 2025-08-12 15:15:26,192 [__main__]   Success rate: 33.3%
+INFO 2025-08-12 15:15:26,192 [__main__] Category mega_cap_tech: 8/24 successful
+INFO 2025-08-12 15:15:26,192 [__main__] Training category: mega_cap_other
+INFO 2025-08-12 15:15:26,192 [__main__] Training mega_cap_other models for 8 stocks across ['1d', '1w', '1mo']
+INFO 2025-08-12 15:15:26,192 [__main__] Training 1d model for BRK-A
+INFO 2025-08-12 15:15:26,192 [__main__] Training 1d model for BRK-B
+INFO 2025-08-12 15:15:26,192 [__main__] Fetching 1d data for BRK-A
+INFO 2025-08-12 15:15:26,192 [__main__] Training 1d model for JPM
+INFO 2025-08-12 15:15:26,192 [__main__] Fetching 1d data for BRK-B
+INFO 2025-08-12 15:15:26,193 [__main__] Training 1d model for JNJ
+INFO 2025-08-12 15:15:26,193 [__main__] Fetching 1d data for JPM
+INFO 2025-08-12 15:15:26,193 [__main__] Training 1d model for V
+INFO 2025-08-12 15:15:26,193 [__main__] Training 1d model for WMT
+INFO 2025-08-12 15:15:26,194 [__main__] Fetching 1d data for JNJ
+INFO 2025-08-12 15:15:26,194 [__main__] Fetching 1d data for V
+INFO 2025-08-12 15:15:26,195 [__main__] Fetching 1d data for WMT
+INFO 2025-08-12 15:15:26,547 [__main__] Prepared 14 rows of 1d data for WMT
+WARNING 2025-08-12 15:15:26,564 [__main__] Insufficient 1d data for WMT: 14 rows
+INFO 2025-08-12 15:15:26,565 [__main__] Prepared 14 rows of 1d data for JPM
+INFO 2025-08-12 15:15:26,566 [__main__] Prepared 14 rows of 1d data for BRK-A
+INFO 2025-08-12 15:15:26,567 [__main__] Training 1w model for WMT
+INFO 2025-08-12 15:15:26,568 [__main__] Prepared 14 rows of 1d data for JNJ
+INFO 2025-08-12 15:15:26,570 [__main__] Prepared 14 rows of 1d data for BRK-B
+WARNING 2025-08-12 15:15:26,570 [__main__] Insufficient 1d data for JPM: 14 rows
+WARNING 2025-08-12 15:15:26,571 [__main__] Insufficient 1d data for BRK-A: 14 rows
+INFO 2025-08-12 15:15:26,571 [__main__] Fetching 1w data for WMT
+INFO 2025-08-12 15:15:26,577 [__main__] Prepared 14 rows of 1d data for V
+WARNING 2025-08-12 15:15:26,577 [__main__] Insufficient 1d data for JNJ: 14 rows
+WARNING 2025-08-12 15:15:26,577 [__main__] Insufficient 1d data for BRK-B: 14 rows
+INFO 2025-08-12 15:15:26,578 [__main__] Training 1w model for JPM
+INFO 2025-08-12 15:15:26,581 [__main__] Training 1w model for BRK-A
+WARNING 2025-08-12 15:15:26,584 [__main__] Insufficient 1d data for V: 14 rows
+ERROR 2025-08-12 15:15:26,585 [__main__] Error preparing 1w data for WMT: arg must be a list, tuple, 1-d array, or Series
+INFO 2025-08-12 15:15:26,585 [__main__] Training 1w model for JNJ
+INFO 2025-08-12 15:15:26,585 [__main__] Training 1w model for BRK-B
+INFO 2025-08-12 15:15:26,585 [__main__] Fetching 1w data for JPM
+INFO 2025-08-12 15:15:26,585 [__main__] Fetching 1w data for BRK-A
+INFO 2025-08-12 15:15:26,585 [__main__] Training 1w model for V
+ERROR 2025-08-12 15:15:26,585 [__main__] Error training 1w model for WMT: arg must be a list, tuple, 1-d array, or Series
+INFO 2025-08-12 15:15:26,586 [__main__] Fetching 1w data for JNJ
+INFO 2025-08-12 15:15:26,586 [__main__] Fetching 1w data for BRK-B
+INFO 2025-08-12 15:15:26,590 [__main__] Fetching 1w data for V
+INFO 2025-08-12 15:15:26,590 [__main__] Training 1mo model for WMT
+INFO 2025-08-12 15:15:26,591 [__main__] Fetching 1mo data for WMT
+INFO 2025-08-12 15:15:26,637 [__main__] Prepared 12 rows of 1w data for BRK-A
+INFO 2025-08-12 15:15:26,664 [__main__] Prepared 40 rows of 1mo data for WMT
+INFO 2025-08-12 15:15:26,666 [__main__] Prepared 12 rows of 1w data for V
+INFO 2025-08-12 15:15:26,668 [__main__] Prepared 12 rows of 1w data for JNJ
+INFO 2025-08-12 15:15:26,670 [__main__] Prepared 12 rows of 1w data for JPM
+WARNING 2025-08-12 15:15:26,670 [__main__] Insufficient 1w data for BRK-A: 12 rows
+WARNING 2025-08-12 15:15:26,671 [__main__] Insufficient 1mo data for WMT: 40 rows
+WARNING 2025-08-12 15:15:26,671 [__main__] Insufficient 1w data for V: 12 rows
+INFO 2025-08-12 15:15:26,672 [__main__] Prepared 12 rows of 1w data for BRK-B
+WARNING 2025-08-12 15:15:26,672 [__main__] Insufficient 1w data for JNJ: 12 rows
+WARNING 2025-08-12 15:15:26,672 [__main__] Insufficient 1w data for JPM: 12 rows
+INFO 2025-08-12 15:15:26,672 [__main__] Training 1d model for PG
+INFO 2025-08-12 15:15:26,672 [__main__] Training 1mo model for BRK-A
+INFO 2025-08-12 15:15:26,672 [__main__] Training 1mo model for V
+WARNING 2025-08-12 15:15:26,672 [__main__] Insufficient 1w data for BRK-B: 12 rows
+INFO 2025-08-12 15:15:26,672 [__main__] Training 1mo model for JNJ
+INFO 2025-08-12 15:15:26,673 [__main__] Training 1mo model for JPM
+INFO 2025-08-12 15:15:26,673 [__main__] Fetching 1d data for PG
+INFO 2025-08-12 15:15:26,673 [__main__] Fetching 1mo data for BRK-A
+INFO 2025-08-12 15:15:26,673 [__main__] Fetching 1mo data for V
+INFO 2025-08-12 15:15:26,673 [__main__] Training 1mo model for BRK-B
+INFO 2025-08-12 15:15:26,673 [__main__] Fetching 1mo data for JNJ
+INFO 2025-08-12 15:15:26,677 [__main__] Fetching 1mo data for JPM
+INFO 2025-08-12 15:15:26,677 [__main__] Fetching 1mo data for BRK-B
+INFO 2025-08-12 15:15:26,980 [__main__] Prepared 227 rows of 1mo data for V
+INFO 2025-08-12 15:15:26,981 [__main__] Prepared 51 rows of 1d data for PG
+INFO 2025-08-12 15:15:26,986 [__main__] Prepared 227 rows of 1mo data for JNJ
+INFO 2025-08-12 15:15:26,988 [__main__] Prepared 227 rows of 1mo data for BRK-A
+WARNING 2025-08-12 15:15:26,995 [__main__] Insufficient 1d data for PG: 51 rows
+INFO 2025-08-12 15:15:27,012 [__main__] Prepared 227 rows of 1mo data for JPM
+INFO 2025-08-12 15:15:27,021 [__main__] Prepared 227 rows of 1mo data for BRK-B
+INFO 2025-08-12 15:15:27,032 [__main__] Training 1w model for PG
+INFO 2025-08-12 15:15:27,057 [__main__] Fetching 1w data for PG
+INFO 2025-08-12 15:15:27,146 [__main__] Prepared 55 rows of 1w data for PG
+WARNING 2025-08-12 15:15:27,152 [__main__] Insufficient 1w data for PG: 55 rows
+INFO 2025-08-12 15:15:27,162 [__main__] Training 1mo model for PG
+INFO 2025-08-12 15:15:27,165 [__main__] Fetching 1mo data for PG
+INFO 2025-08-12 15:15:27,391 [__main__] Prepared 83 rows of 1mo data for PG
+WARNING 2025-08-12 15:15:27,395 [__main__] Insufficient 1mo data for PG: 83 rows
+INFO 2025-08-12 15:15:27,412 [__main__] Training 1d model for UNH
+INFO 2025-08-12 15:15:27,423 [__main__] Fetching 1d data for UNH
+INFO 2025-08-12 15:15:27,543 [__main__] Prepared 14 rows of 1d data for UNH
+WARNING 2025-08-12 15:15:27,549 [__main__] Insufficient 1d data for UNH: 14 rows
+INFO 2025-08-12 15:15:27,556 [__main__] Training 1w model for UNH
+INFO 2025-08-12 15:15:27,571 [__main__] Fetching 1w data for UNH
+INFO 2025-08-12 15:15:27,600 [__main__] Prepared 55 rows of 1w data for UNH
+WARNING 2025-08-12 15:15:27,608 [__main__] Insufficient 1w data for UNH: 55 rows
+INFO 2025-08-12 15:15:27,608 [__main__] Training 1mo model for UNH
+INFO 2025-08-12 15:15:27,610 [__main__] Fetching 1mo data for UNH
+INFO 2025-08-12 15:15:27,702 [__main__] Prepared 83 rows of 1mo data for UNH
+WARNING 2025-08-12 15:15:27,709 [__main__] Insufficient 1mo data for UNH: 83 rows
+INFO 2025-08-12 15:15:31,700 [__main__] 1mo model training completed for JNJ
+INFO 2025-08-12 15:15:31,702 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:31,703 [__main__] Test accuracy: 47.83%
+INFO 2025-08-12 15:15:31,704 [__main__] CV mean accuracy: 43.61%
+INFO 2025-08-12 15:15:31,711 [__main__] 1mo model training completed for JPM
+INFO 2025-08-12 15:15:31,712 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:31,714 [__main__] Test accuracy: 47.83%
+INFO 2025-08-12 15:15:31,715 [__main__] CV mean accuracy: 43.61%
+INFO 2025-08-12 15:15:31,723 [__main__] 1mo model training completed for V
+INFO 2025-08-12 15:15:31,724 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:31,724 [__main__] Test accuracy: 47.83%
+INFO 2025-08-12 15:15:31,726 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JNJ_model_1mo.pkl
+INFO 2025-08-12 15:15:31,727 [__main__] CV mean accuracy: 43.61%
+INFO 2025-08-12 15:15:31,735 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JPM_model_1mo.pkl
+INFO 2025-08-12 15:15:31,738 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/V_model_1mo.pkl
+INFO 2025-08-12 15:15:31,740 [__main__] 1mo model training completed for BRK-A
+INFO 2025-08-12 15:15:31,740 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:31,740 [__main__] Test accuracy: 47.83%
+INFO 2025-08-12 15:15:31,740 [__main__] CV mean accuracy: 43.61%
+INFO 2025-08-12 15:15:31,746 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BRK_A_model_1mo.pkl
+INFO 2025-08-12 15:15:31,747 [__main__] Completed training for BRK-A
+INFO 2025-08-12 15:15:31,798 [__main__] 1mo model training completed for BRK-B
+INFO 2025-08-12 15:15:31,798 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:31,798 [__main__] Test accuracy: 47.83%
+INFO 2025-08-12 15:15:31,798 [__main__] CV mean accuracy: 43.61%
+INFO 2025-08-12 15:15:31,802 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BRK_B_model_1mo.pkl
+INFO 2025-08-12 15:15:31,803 [__main__] Completed training for BRK-B
+INFO 2025-08-12 15:15:31,803 [__main__] Completed training for JPM
+INFO 2025-08-12 15:15:31,803 [__main__] Completed training for JNJ
+INFO 2025-08-12 15:15:31,803 [__main__] Completed training for V
+INFO 2025-08-12 15:15:31,803 [__main__] Completed training for WMT
+INFO 2025-08-12 15:15:31,803 [__main__] Completed training for PG
+INFO 2025-08-12 15:15:31,803 [__main__] Completed training for UNH
+INFO 2025-08-12 15:15:31,803 [__main__] Category mega_cap_other training completed:
+INFO 2025-08-12 15:15:31,803 [__main__]   Successful: 5
+INFO 2025-08-12 15:15:31,803 [__main__]   Failed: 19
+INFO 2025-08-12 15:15:31,803 [__main__]   Success rate: 20.8%
+INFO 2025-08-12 15:15:31,803 [__main__] Category mega_cap_other: 5/24 successful
+INFO 2025-08-12 15:15:31,803 [__main__] Training category: etfs
+INFO 2025-08-12 15:15:31,803 [__main__] Training etfs models for 5 stocks across ['1d', '1w', '1mo']
+INFO 2025-08-12 15:15:31,803 [__main__] Training 1d model for SPY
+INFO 2025-08-12 15:15:31,803 [__main__] Training 1d model for QQQ
+INFO 2025-08-12 15:15:31,803 [__main__] Training 1d model for ARKK
+INFO 2025-08-12 15:15:31,803 [__main__] Fetching 1d data for SPY
+INFO 2025-08-12 15:15:31,804 [__main__] Training 1d model for IWM
+INFO 2025-08-12 15:15:31,804 [__main__] Fetching 1d data for QQQ
+INFO 2025-08-12 15:15:31,804 [__main__] Training 1d model for VTI
+INFO 2025-08-12 15:15:31,804 [__main__] Fetching 1d data for ARKK
+INFO 2025-08-12 15:15:31,804 [__main__] Fetching 1d data for IWM
+INFO 2025-08-12 15:15:31,804 [__main__] Fetching 1d data for VTI
+INFO 2025-08-12 15:15:32,161 [__main__] Prepared 14 rows of 1d data for ARKK
+INFO 2025-08-12 15:15:32,172 [__main__] Prepared 14 rows of 1d data for QQQ
+INFO 2025-08-12 15:15:32,175 [__main__] Prepared 14 rows of 1d data for VTI
+INFO 2025-08-12 15:15:32,180 [__main__] Prepared 14 rows of 1d data for SPY
+WARNING 2025-08-12 15:15:32,180 [__main__] Insufficient 1d data for ARKK: 14 rows
+WARNING 2025-08-12 15:15:32,187 [__main__] Insufficient 1d data for QQQ: 14 rows
+INFO 2025-08-12 15:15:32,189 [__main__] Prepared 14 rows of 1d data for IWM
+WARNING 2025-08-12 15:15:32,189 [__main__] Insufficient 1d data for VTI: 14 rows
+WARNING 2025-08-12 15:15:32,189 [__main__] Insufficient 1d data for SPY: 14 rows
+INFO 2025-08-12 15:15:32,190 [__main__] Training 1w model for ARKK
+INFO 2025-08-12 15:15:32,194 [__main__] Training 1w model for QQQ
+WARNING 2025-08-12 15:15:32,194 [__main__] Insufficient 1d data for IWM: 14 rows
+INFO 2025-08-12 15:15:32,198 [__main__] Training 1w model for VTI
+INFO 2025-08-12 15:15:32,201 [__main__] Training 1w model for SPY
+INFO 2025-08-12 15:15:32,205 [__main__] Fetching 1w data for ARKK
+INFO 2025-08-12 15:15:32,205 [__main__] Fetching 1w data for QQQ
+INFO 2025-08-12 15:15:32,205 [__main__] Training 1w model for IWM
+INFO 2025-08-12 15:15:32,205 [__main__] Fetching 1w data for VTI
+INFO 2025-08-12 15:15:32,205 [__main__] Fetching 1w data for SPY
+INFO 2025-08-12 15:15:32,206 [__main__] Fetching 1w data for IWM
+INFO 2025-08-12 15:15:32,569 [__main__] Prepared 199 rows of 1w data for IWM
+INFO 2025-08-12 15:15:32,571 [__main__] Prepared 199 rows of 1w data for SPY
+INFO 2025-08-12 15:15:32,572 [__main__] Prepared 199 rows of 1w data for QQQ
+INFO 2025-08-12 15:15:32,573 [__main__] Prepared 199 rows of 1w data for ARKK
+INFO 2025-08-12 15:15:32,638 [__main__] Prepared 199 rows of 1w data for VTI
+INFO 2025-08-12 15:15:35,487 [__main__] 1w model training completed for QQQ
+INFO 2025-08-12 15:15:35,492 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:35,494 [__main__] Test accuracy: 45.00%
+INFO 2025-08-12 15:15:35,496 [__main__] CV mean accuracy: 41.64%
+INFO 2025-08-12 15:15:35,513 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/QQQ_model_1w.pkl
+INFO 2025-08-12 15:15:35,516 [__main__] Training 1mo model for QQQ
+INFO 2025-08-12 15:15:35,518 [__main__] Fetching 1mo data for QQQ
+INFO 2025-08-12 15:15:35,544 [__main__] 1w model training completed for ARKK
+INFO 2025-08-12 15:15:35,546 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:35,546 [__main__] Test accuracy: 45.00%
+INFO 2025-08-12 15:15:35,547 [__main__] CV mean accuracy: 41.64%
+INFO 2025-08-12 15:15:35,559 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ARKK_model_1w.pkl
+INFO 2025-08-12 15:15:35,560 [__main__] Training 1mo model for ARKK
+INFO 2025-08-12 15:15:35,560 [__main__] 1w model training completed for VTI
+INFO 2025-08-12 15:15:35,560 [__main__] Fetching 1mo data for ARKK
+INFO 2025-08-12 15:15:35,562 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:35,563 [__main__] Test accuracy: 45.00%
+INFO 2025-08-12 15:15:35,563 [__main__] CV mean accuracy: 41.64%
+INFO 2025-08-12 15:15:35,571 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/VTI_model_1w.pkl
+INFO 2025-08-12 15:15:35,573 [__main__] Training 1mo model for VTI
+INFO 2025-08-12 15:15:35,575 [__main__] Fetching 1mo data for VTI
+INFO 2025-08-12 15:15:35,588 [__main__] 1w model training completed for IWM
+INFO 2025-08-12 15:15:35,589 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:35,589 [__main__] Test accuracy: 45.00%
+INFO 2025-08-12 15:15:35,589 [__main__] CV mean accuracy: 41.64%
+INFO 2025-08-12 15:15:35,592 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/IWM_model_1w.pkl
+INFO 2025-08-12 15:15:35,592 [__main__] Training 1mo model for IWM
+INFO 2025-08-12 15:15:35,592 [__main__] Fetching 1mo data for IWM
+INFO 2025-08-12 15:15:35,594 [__main__] 1w model training completed for SPY
+INFO 2025-08-12 15:15:35,594 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:35,594 [__main__] Test accuracy: 45.00%
+INFO 2025-08-12 15:15:35,594 [__main__] CV mean accuracy: 41.64%
+INFO 2025-08-12 15:15:35,599 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SPY_model_1w.pkl
+INFO 2025-08-12 15:15:35,599 [__main__] Training 1mo model for SPY
+INFO 2025-08-12 15:15:35,599 [__main__] Fetching 1mo data for SPY
+INFO 2025-08-12 15:15:35,899 [__main__] Prepared 83 rows of 1mo data for IWM
+WARNING 2025-08-12 15:15:35,899 [__main__] Insufficient 1mo data for IWM: 83 rows
+INFO 2025-08-12 15:15:35,899 [__main__] Prepared 83 rows of 1mo data for ARKK
+INFO 2025-08-12 15:15:35,899 [__main__] Prepared 83 rows of 1mo data for QQQ
+WARNING 2025-08-12 15:15:35,900 [__main__] Insufficient 1mo data for ARKK: 83 rows
+WARNING 2025-08-12 15:15:35,900 [__main__] Insufficient 1mo data for QQQ: 83 rows
+INFO 2025-08-12 15:15:35,900 [__main__] Prepared 83 rows of 1mo data for SPY
+INFO 2025-08-12 15:15:35,901 [__main__] Prepared 83 rows of 1mo data for VTI
+WARNING 2025-08-12 15:15:35,901 [__main__] Insufficient 1mo data for SPY: 83 rows
+WARNING 2025-08-12 15:15:35,901 [__main__] Insufficient 1mo data for VTI: 83 rows
+INFO 2025-08-12 15:15:35,902 [__main__] Completed training for SPY
+INFO 2025-08-12 15:15:35,902 [__main__] Completed training for QQQ
+INFO 2025-08-12 15:15:35,902 [__main__] Completed training for ARKK
+INFO 2025-08-12 15:15:35,902 [__main__] Completed training for IWM
+INFO 2025-08-12 15:15:35,902 [__main__] Completed training for VTI
+INFO 2025-08-12 15:15:35,902 [__main__] Category etfs training completed:
+INFO 2025-08-12 15:15:35,902 [__main__]   Successful: 5
+INFO 2025-08-12 15:15:35,902 [__main__]   Failed: 10
+INFO 2025-08-12 15:15:35,902 [__main__]   Success rate: 33.3%
+INFO 2025-08-12 15:15:35,902 [__main__] Category etfs: 5/15 successful
+INFO 2025-08-12 15:15:35,902 [__main__] Training category: financial
+INFO 2025-08-12 15:15:35,902 [__main__] Training financial models for 8 stocks across ['1d', '1w', '1mo']
+INFO 2025-08-12 15:15:35,902 [__main__] Training 1d model for BAC
+INFO 2025-08-12 15:15:35,902 [__main__] Fetching 1d data for BAC
+INFO 2025-08-12 15:15:35,905 [__main__] Training 1d model for WFC
+INFO 2025-08-12 15:15:35,905 [__main__] Training 1d model for GS
+INFO 2025-08-12 15:15:35,905 [__main__] Fetching 1d data for WFC
+INFO 2025-08-12 15:15:35,905 [__main__] Training 1d model for MS
+INFO 2025-08-12 15:15:35,907 [__main__] Training 1d model for C
+INFO 2025-08-12 15:15:35,907 [__main__] Training 1d model for MA
+INFO 2025-08-12 15:15:35,908 [__main__] Fetching 1d data for GS
+INFO 2025-08-12 15:15:35,908 [__main__] Fetching 1d data for MS
+INFO 2025-08-12 15:15:35,908 [__main__] Fetching 1d data for C
+INFO 2025-08-12 15:15:35,908 [__main__] Fetching 1d data for MA
+ERROR 2025-08-12 15:15:35,949 [__main__] Error preparing 1d data for BAC: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:35,951 [__main__] Error preparing 1d data for C: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:35,967 [__main__] Error preparing 1d data for MS: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:35,967 [__main__] Error training 1d model for BAC: arg must be a list, tuple, 1-d array, or Series
+INFO 2025-08-12 15:15:35,969 [__main__] Prepared 57 rows of 1d data for GS
+ERROR 2025-08-12 15:15:35,970 [__main__] Error training 1d model for C: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:35,970 [__main__] Error training 1d model for MS: arg must be a list, tuple, 1-d array, or Series
+INFO 2025-08-12 15:15:35,971 [__main__] Training 1w model for BAC
+WARNING 2025-08-12 15:15:35,972 [__main__] Insufficient 1d data for GS: 57 rows
+INFO 2025-08-12 15:15:35,972 [__main__] Prepared 57 rows of 1d data for MA
+INFO 2025-08-12 15:15:35,973 [__main__] Training 1w model for C
+INFO 2025-08-12 15:15:35,973 [__main__] Prepared 57 rows of 1d data for WFC
+INFO 2025-08-12 15:15:35,973 [__main__] Training 1w model for MS
+INFO 2025-08-12 15:15:35,973 [__main__] Fetching 1w data for BAC
+INFO 2025-08-12 15:15:35,973 [__main__] Training 1w model for GS
+WARNING 2025-08-12 15:15:35,973 [__main__] Insufficient 1d data for MA: 57 rows
+INFO 2025-08-12 15:15:35,973 [__main__] Fetching 1w data for C
+WARNING 2025-08-12 15:15:35,974 [__main__] Insufficient 1d data for WFC: 57 rows
+INFO 2025-08-12 15:15:35,974 [__main__] Fetching 1w data for MS
+INFO 2025-08-12 15:15:35,974 [__main__] Fetching 1w data for GS
+INFO 2025-08-12 15:15:35,974 [__main__] Training 1w model for MA
+INFO 2025-08-12 15:15:35,975 [__main__] Training 1w model for WFC
+INFO 2025-08-12 15:15:35,975 [__main__] Fetching 1w data for MA
+INFO 2025-08-12 15:15:35,975 [__main__] Fetching 1w data for WFC
+INFO 2025-08-12 15:15:36,015 [__main__] Prepared 55 rows of 1w data for BAC
+WARNING 2025-08-12 15:15:36,016 [__main__] Insufficient 1w data for BAC: 55 rows
+INFO 2025-08-12 15:15:36,035 [__main__] Prepared 55 rows of 1w data for MS
+INFO 2025-08-12 15:15:36,035 [__main__] Prepared 55 rows of 1w data for C
+INFO 2025-08-12 15:15:36,035 [__main__] Prepared 55 rows of 1w data for GS
+INFO 2025-08-12 15:15:36,035 [__main__] Training 1mo model for BAC
+INFO 2025-08-12 15:15:36,036 [__main__] Prepared 55 rows of 1w data for WFC
+WARNING 2025-08-12 15:15:36,036 [__main__] Insufficient 1w data for MS: 55 rows
+WARNING 2025-08-12 15:15:36,036 [__main__] Insufficient 1w data for C: 55 rows
+WARNING 2025-08-12 15:15:36,036 [__main__] Insufficient 1w data for GS: 55 rows
+INFO 2025-08-12 15:15:36,036 [__main__] Prepared 55 rows of 1w data for MA
+INFO 2025-08-12 15:15:36,037 [__main__] Fetching 1mo data for BAC
+WARNING 2025-08-12 15:15:36,037 [__main__] Insufficient 1w data for WFC: 55 rows
+INFO 2025-08-12 15:15:36,037 [__main__] Training 1mo model for MS
+INFO 2025-08-12 15:15:36,037 [__main__] Training 1mo model for C
+INFO 2025-08-12 15:15:36,037 [__main__] Training 1mo model for GS
+WARNING 2025-08-12 15:15:36,037 [__main__] Insufficient 1w data for MA: 55 rows
+INFO 2025-08-12 15:15:36,037 [__main__] Training 1mo model for WFC
+INFO 2025-08-12 15:15:36,037 [__main__] Fetching 1mo data for MS
+INFO 2025-08-12 15:15:36,037 [__main__] Fetching 1mo data for C
+INFO 2025-08-12 15:15:36,037 [__main__] Fetching 1mo data for GS
+INFO 2025-08-12 15:15:36,037 [__main__] Training 1mo model for MA
+INFO 2025-08-12 15:15:36,037 [__main__] Fetching 1mo data for WFC
+INFO 2025-08-12 15:15:36,038 [__main__] Fetching 1mo data for MA
+INFO 2025-08-12 15:15:36,245 [__main__] Prepared 40 rows of 1mo data for MS
+INFO 2025-08-12 15:15:36,247 [__main__] Prepared 40 rows of 1mo data for MA
+INFO 2025-08-12 15:15:36,249 [__main__] Prepared 40 rows of 1mo data for BAC
+INFO 2025-08-12 15:15:36,257 [__main__] Prepared 40 rows of 1mo data for GS
+INFO 2025-08-12 15:15:36,264 [__main__] Prepared 40 rows of 1mo data for C
+WARNING 2025-08-12 15:15:36,265 [__main__] Insufficient 1mo data for MS: 40 rows
+INFO 2025-08-12 15:15:36,266 [__main__] Prepared 40 rows of 1mo data for WFC
+WARNING 2025-08-12 15:15:36,266 [__main__] Insufficient 1mo data for MA: 40 rows
+WARNING 2025-08-12 15:15:36,266 [__main__] Insufficient 1mo data for BAC: 40 rows
+WARNING 2025-08-12 15:15:36,267 [__main__] Insufficient 1mo data for GS: 40 rows
+WARNING 2025-08-12 15:15:36,267 [__main__] Insufficient 1mo data for C: 40 rows
+INFO 2025-08-12 15:15:36,267 [__main__] Training 1d model for PYPL
+WARNING 2025-08-12 15:15:36,267 [__main__] Insufficient 1mo data for WFC: 40 rows
+INFO 2025-08-12 15:15:36,267 [__main__] Training 1d model for AXP
+INFO 2025-08-12 15:15:36,268 [__main__] Completed training for BAC
+INFO 2025-08-12 15:15:36,278 [__main__] Fetching 1d data for PYPL
+INFO 2025-08-12 15:15:36,285 [__main__] Fetching 1d data for AXP
+INFO 2025-08-12 15:15:36,286 [__main__] Completed training for WFC
+INFO 2025-08-12 15:15:36,288 [__main__] Completed training for GS
+INFO 2025-08-12 15:15:36,288 [__main__] Completed training for MS
+INFO 2025-08-12 15:15:36,288 [__main__] Completed training for C
+INFO 2025-08-12 15:15:36,288 [__main__] Completed training for MA
+INFO 2025-08-12 15:15:36,313 [__main__] Prepared 14 rows of 1d data for PYPL
+WARNING 2025-08-12 15:15:36,314 [__main__] Insufficient 1d data for PYPL: 14 rows
+INFO 2025-08-12 15:15:36,314 [__main__] Training 1w model for PYPL
+INFO 2025-08-12 15:15:36,323 [__main__] Fetching 1w data for PYPL
+INFO 2025-08-12 15:15:36,338 [__main__] Prepared 14 rows of 1d data for AXP
+WARNING 2025-08-12 15:15:36,346 [__main__] Insufficient 1d data for AXP: 14 rows
+ERROR 2025-08-12 15:15:36,367 [__main__] Error preparing 1w data for PYPL: arg must be a list, tuple, 1-d array, or Series
+INFO 2025-08-12 15:15:36,368 [__main__] Training 1w model for AXP
+ERROR 2025-08-12 15:15:36,368 [__main__] Error training 1w model for PYPL: arg must be a list, tuple, 1-d array, or Series
+INFO 2025-08-12 15:15:36,368 [__main__] Training 1mo model for PYPL
+INFO 2025-08-12 15:15:36,368 [__main__] Fetching 1w data for AXP
+INFO 2025-08-12 15:15:36,368 [__main__] Fetching 1mo data for PYPL
+INFO 2025-08-12 15:15:36,671 [__main__] Prepared 199 rows of 1w data for AXP
+INFO 2025-08-12 15:15:36,674 [__main__] Prepared 227 rows of 1mo data for PYPL
+INFO 2025-08-12 15:15:38,308 [__main__] 1w model training completed for AXP
+INFO 2025-08-12 15:15:38,309 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:38,309 [__main__] Test accuracy: 47.50%
+INFO 2025-08-12 15:15:38,309 [__main__] CV mean accuracy: 37.68%
+INFO 2025-08-12 15:15:38,317 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AXP_model_1w.pkl
+INFO 2025-08-12 15:15:38,318 [__main__] Training 1mo model for AXP
+INFO 2025-08-12 15:15:38,318 [__main__] Fetching 1mo data for AXP
+INFO 2025-08-12 15:15:38,702 [__main__] Prepared 83 rows of 1mo data for AXP
+WARNING 2025-08-12 15:15:38,702 [__main__] Insufficient 1mo data for AXP: 83 rows
+INFO 2025-08-12 15:15:38,824 [__main__] 1mo model training completed for PYPL
+INFO 2025-08-12 15:15:38,824 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:38,824 [__main__] Test accuracy: 45.65%
+INFO 2025-08-12 15:15:38,824 [__main__] CV mean accuracy: 44.94%
+INFO 2025-08-12 15:15:38,830 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/PYPL_model_1mo.pkl
+INFO 2025-08-12 15:15:38,831 [__main__] Completed training for PYPL
+INFO 2025-08-12 15:15:38,831 [__main__] Completed training for AXP
+INFO 2025-08-12 15:15:38,831 [__main__] Category financial training completed:
+INFO 2025-08-12 15:15:38,831 [__main__]   Successful: 2
+INFO 2025-08-12 15:15:38,831 [__main__]   Failed: 22
+INFO 2025-08-12 15:15:38,831 [__main__]   Success rate: 8.3%
+INFO 2025-08-12 15:15:38,831 [__main__] Category financial: 2/24 successful
+INFO 2025-08-12 15:15:38,831 [__main__] Training category: indian_market
+INFO 2025-08-12 15:15:38,831 [__main__] Training indian_market models for 9 stocks across ['1d', '1w', '1mo']
+INFO 2025-08-12 15:15:38,831 [__main__] Training 1d model for ^NSEI
+INFO 2025-08-12 15:15:38,831 [__main__] Training 1d model for RELIANCE.NS
+INFO 2025-08-12 15:15:38,831 [__main__] Fetching 1d data for ^NSEI
+INFO 2025-08-12 15:15:38,832 [__main__] Training 1d model for TCS.NS
+INFO 2025-08-12 15:15:38,832 [__main__] Training 1d model for HDFCBANK.NS
+INFO 2025-08-12 15:15:38,832 [__main__] Fetching 1d data for RELIANCE.NS
+INFO 2025-08-12 15:15:38,832 [__main__] Training 1d model for INFY.NS
+INFO 2025-08-12 15:15:38,832 [__main__] Training 1d model for HINDUNILVR.NS
+INFO 2025-08-12 15:15:38,832 [__main__] Fetching 1d data for TCS.NS
+INFO 2025-08-12 15:15:38,832 [__main__] Fetching 1d data for HDFCBANK.NS
+INFO 2025-08-12 15:15:38,832 [__main__] Fetching 1d data for INFY.NS
+INFO 2025-08-12 15:15:38,833 [__main__] Fetching 1d data for HINDUNILVR.NS
+INFO 2025-08-12 15:15:39,202 [__main__] Prepared 18 rows of 1d data for RELIANCE.NS
+INFO 2025-08-12 15:15:39,211 [__main__] Prepared 18 rows of 1d data for TCS.NS
+INFO 2025-08-12 15:15:39,213 [__main__] Prepared 18 rows of 1d data for HDFCBANK.NS
+INFO 2025-08-12 15:15:39,215 [__main__] Prepared 18 rows of 1d data for ^NSEI
+INFO 2025-08-12 15:15:39,217 [__main__] Prepared 18 rows of 1d data for INFY.NS
+INFO 2025-08-12 15:15:39,223 [__main__] Prepared 18 rows of 1d data for HINDUNILVR.NS
+WARNING 2025-08-12 15:15:39,223 [__main__] Insufficient 1d data for RELIANCE.NS: 18 rows
+WARNING 2025-08-12 15:15:39,224 [__main__] Insufficient 1d data for TCS.NS: 18 rows
+WARNING 2025-08-12 15:15:39,224 [__main__] Insufficient 1d data for HDFCBANK.NS: 18 rows
+WARNING 2025-08-12 15:15:39,224 [__main__] Insufficient 1d data for ^NSEI: 18 rows
+WARNING 2025-08-12 15:15:39,224 [__main__] Insufficient 1d data for INFY.NS: 18 rows
+WARNING 2025-08-12 15:15:39,225 [__main__] Insufficient 1d data for HINDUNILVR.NS: 18 rows
+INFO 2025-08-12 15:15:39,225 [__main__] Training 1w model for RELIANCE.NS
+INFO 2025-08-12 15:15:39,239 [__main__] Training 1w model for TCS.NS
+INFO 2025-08-12 15:15:39,239 [__main__] Training 1w model for HDFCBANK.NS
+INFO 2025-08-12 15:15:39,239 [__main__] Training 1w model for ^NSEI
+INFO 2025-08-12 15:15:39,239 [__main__] Training 1w model for INFY.NS
+INFO 2025-08-12 15:15:39,243 [__main__] Training 1w model for HINDUNILVR.NS
+INFO 2025-08-12 15:15:39,243 [__main__] Fetching 1w data for RELIANCE.NS
+INFO 2025-08-12 15:15:39,243 [__main__] Fetching 1w data for TCS.NS
+INFO 2025-08-12 15:15:39,243 [__main__] Fetching 1w data for HDFCBANK.NS
+INFO 2025-08-12 15:15:39,244 [__main__] Fetching 1w data for ^NSEI
+INFO 2025-08-12 15:15:39,244 [__main__] Fetching 1w data for INFY.NS
+INFO 2025-08-12 15:15:39,244 [__main__] Fetching 1w data for HINDUNILVR.NS
+INFO 2025-08-12 15:15:39,641 [__main__] Prepared 200 rows of 1w data for ^NSEI
+INFO 2025-08-12 15:15:39,668 [__main__] Prepared 200 rows of 1w data for INFY.NS
+INFO 2025-08-12 15:15:39,671 [__main__] Prepared 200 rows of 1w data for HDFCBANK.NS
+INFO 2025-08-12 15:15:39,671 [__main__] Prepared 200 rows of 1w data for HINDUNILVR.NS
+INFO 2025-08-12 15:15:39,673 [__main__] Prepared 200 rows of 1w data for RELIANCE.NS
+INFO 2025-08-12 15:15:39,685 [__main__] Prepared 200 rows of 1w data for TCS.NS
+INFO 2025-08-12 15:15:43,381 [__main__] 1w model training completed for RELIANCE.NS
+INFO 2025-08-12 15:15:43,384 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:43,386 [__main__] Test accuracy: 37.50%
+INFO 2025-08-12 15:15:43,391 [__main__] CV mean accuracy: 47.03%
+INFO 2025-08-12 15:15:43,397 [__main__] 1w model training completed for HDFCBANK.NS
+INFO 2025-08-12 15:15:43,398 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:43,401 [__main__] Test accuracy: 37.50%
+INFO 2025-08-12 15:15:43,407 [__main__] CV mean accuracy: 47.03%
+INFO 2025-08-12 15:15:43,408 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/RELIANCE_NS_model_1w.pkl
+INFO 2025-08-12 15:15:43,411 [__main__] Training 1mo model for RELIANCE.NS
+INFO 2025-08-12 15:15:43,412 [__main__] Fetching 1mo data for RELIANCE.NS
+INFO 2025-08-12 15:15:43,414 [__main__] 1w model training completed for ^NSEI
+INFO 2025-08-12 15:15:43,416 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:43,417 [__main__] Test accuracy: 37.50%
+INFO 2025-08-12 15:15:43,418 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/HDFCBANK_NS_model_1w.pkl
+INFO 2025-08-12 15:15:43,419 [__main__] CV mean accuracy: 47.03%
+INFO 2025-08-12 15:15:43,422 [__main__] Training 1mo model for HDFCBANK.NS
+INFO 2025-08-12 15:15:43,423 [__main__] Fetching 1mo data for HDFCBANK.NS
+INFO 2025-08-12 15:15:43,426 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/INDEX_NSEI_model_1w.pkl
+INFO 2025-08-12 15:15:43,427 [__main__] Training 1mo model for ^NSEI
+INFO 2025-08-12 15:15:43,428 [__main__] Fetching 1mo data for ^NSEI
+INFO 2025-08-12 15:15:43,430 [__main__] 1w model training completed for INFY.NS
+INFO 2025-08-12 15:15:43,430 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:43,430 [__main__] Test accuracy: 37.50%
+INFO 2025-08-12 15:15:43,430 [__main__] CV mean accuracy: 47.03%
+INFO 2025-08-12 15:15:43,437 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/INFY_NS_model_1w.pkl
+INFO 2025-08-12 15:15:43,437 [__main__] Training 1mo model for INFY.NS
+INFO 2025-08-12 15:15:43,438 [__main__] Fetching 1mo data for INFY.NS
+INFO 2025-08-12 15:15:43,463 [__main__] 1w model training completed for TCS.NS
+INFO 2025-08-12 15:15:43,463 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:43,463 [__main__] Test accuracy: 37.50%
+INFO 2025-08-12 15:15:43,463 [__main__] CV mean accuracy: 47.03%
+INFO 2025-08-12 15:15:43,466 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/TCS_NS_model_1w.pkl
+INFO 2025-08-12 15:15:43,466 [__main__] Training 1mo model for TCS.NS
+INFO 2025-08-12 15:15:43,467 [__main__] Fetching 1mo data for TCS.NS
+INFO 2025-08-12 15:15:43,470 [__main__] 1w model training completed for HINDUNILVR.NS
+INFO 2025-08-12 15:15:43,470 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:43,470 [__main__] Test accuracy: 37.50%
+INFO 2025-08-12 15:15:43,470 [__main__] CV mean accuracy: 47.03%
+INFO 2025-08-12 15:15:43,473 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/HINDUNILVR_NS_model_1w.pkl
+INFO 2025-08-12 15:15:43,473 [__main__] Training 1mo model for HINDUNILVR.NS
+INFO 2025-08-12 15:15:43,473 [__main__] Fetching 1mo data for HINDUNILVR.NS
+ERROR 2025-08-12 15:15:43,768 [__main__] Error preparing 1mo data for ^NSEI: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:43,780 [__main__] Error training 1mo model for ^NSEI: arg must be a list, tuple, 1-d array, or Series
+INFO 2025-08-12 15:15:43,788 [__main__] Training 1d model for ITC.NS
+INFO 2025-08-12 15:15:43,788 [__main__] Fetching 1d data for ITC.NS
+INFO 2025-08-12 15:15:43,790 [__main__] Completed training for ^NSEI
+INFO 2025-08-12 15:15:43,791 [__main__] Prepared 82 rows of 1mo data for HDFCBANK.NS
+INFO 2025-08-12 15:15:43,791 [__main__] Prepared 82 rows of 1mo data for RELIANCE.NS
+WARNING 2025-08-12 15:15:43,791 [__main__] Insufficient 1mo data for HDFCBANK.NS: 82 rows
+INFO 2025-08-12 15:15:43,794 [__main__] Prepared 82 rows of 1mo data for TCS.NS
+WARNING 2025-08-12 15:15:43,795 [__main__] Insufficient 1mo data for RELIANCE.NS: 82 rows
+INFO 2025-08-12 15:15:43,795 [__main__] Training 1d model for SBIN.NS
+INFO 2025-08-12 15:15:43,795 [__main__] Prepared 82 rows of 1mo data for INFY.NS
+INFO 2025-08-12 15:15:43,796 [__main__] Prepared 82 rows of 1mo data for HINDUNILVR.NS
+WARNING 2025-08-12 15:15:43,796 [__main__] Insufficient 1mo data for TCS.NS: 82 rows
+INFO 2025-08-12 15:15:43,796 [__main__] Training 1d model for BHARTIARTL.NS
+INFO 2025-08-12 15:15:43,797 [__main__] Completed training for RELIANCE.NS
+INFO 2025-08-12 15:15:43,797 [__main__] Fetching 1d data for SBIN.NS
+WARNING 2025-08-12 15:15:43,797 [__main__] Insufficient 1mo data for INFY.NS: 82 rows
+WARNING 2025-08-12 15:15:43,807 [__main__] Insufficient 1mo data for HINDUNILVR.NS: 82 rows
+ERROR 2025-08-12 15:15:43,808 [__main__] Error preparing 1d data for ITC.NS: arg must be a list, tuple, 1-d array, or Series
+INFO 2025-08-12 15:15:43,813 [__main__] Fetching 1d data for BHARTIARTL.NS
+INFO 2025-08-12 15:15:43,813 [__main__] Completed training for TCS.NS
+ERROR 2025-08-12 15:15:43,819 [__main__] Error training 1d model for ITC.NS: arg must be a list, tuple, 1-d array, or Series
+INFO 2025-08-12 15:15:43,824 [__main__] Completed training for HDFCBANK.NS
+INFO 2025-08-12 15:15:43,828 [__main__] Training 1w model for ITC.NS
+INFO 2025-08-12 15:15:43,836 [__main__] Completed training for INFY.NS
+INFO 2025-08-12 15:15:43,837 [__main__] Prepared 56 rows of 1d data for BHARTIARTL.NS
+INFO 2025-08-12 15:15:43,837 [__main__] Prepared 56 rows of 1d data for SBIN.NS
+INFO 2025-08-12 15:15:43,837 [__main__] Fetching 1w data for ITC.NS
+INFO 2025-08-12 15:15:43,838 [__main__] Completed training for HINDUNILVR.NS
+WARNING 2025-08-12 15:15:43,838 [__main__] Insufficient 1d data for BHARTIARTL.NS: 56 rows
+WARNING 2025-08-12 15:15:43,838 [__main__] Insufficient 1d data for SBIN.NS: 56 rows
+INFO 2025-08-12 15:15:43,838 [__main__] Training 1w model for BHARTIARTL.NS
+INFO 2025-08-12 15:15:43,838 [__main__] Training 1w model for SBIN.NS
+INFO 2025-08-12 15:15:43,838 [__main__] Fetching 1w data for BHARTIARTL.NS
+INFO 2025-08-12 15:15:43,838 [__main__] Fetching 1w data for SBIN.NS
+INFO 2025-08-12 15:15:44,190 [__main__] Prepared 16 rows of 1w data for ITC.NS
+INFO 2025-08-12 15:15:44,190 [__main__] Prepared 16 rows of 1w data for BHARTIARTL.NS
+WARNING 2025-08-12 15:15:44,194 [__main__] Insufficient 1w data for ITC.NS: 16 rows
+INFO 2025-08-12 15:15:44,196 [__main__] Prepared 16 rows of 1w data for SBIN.NS
+WARNING 2025-08-12 15:15:44,196 [__main__] Insufficient 1w data for BHARTIARTL.NS: 16 rows
+INFO 2025-08-12 15:15:44,196 [__main__] Training 1mo model for ITC.NS
+WARNING 2025-08-12 15:15:44,196 [__main__] Insufficient 1w data for SBIN.NS: 16 rows
+INFO 2025-08-12 15:15:44,196 [__main__] Training 1mo model for BHARTIARTL.NS
+INFO 2025-08-12 15:15:44,197 [__main__] Fetching 1mo data for ITC.NS
+INFO 2025-08-12 15:15:44,200 [__main__] Training 1mo model for SBIN.NS
+INFO 2025-08-12 15:15:44,200 [__main__] Fetching 1mo data for BHARTIARTL.NS
+INFO 2025-08-12 15:15:44,200 [__main__] Fetching 1mo data for SBIN.NS
+ERROR 2025-08-12 15:15:44,222 [__main__] Error preparing 1mo data for BHARTIARTL.NS: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:44,223 [__main__] Error training 1mo model for BHARTIARTL.NS: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:44,226 [__main__] Error preparing 1mo data for SBIN.NS: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:44,226 [__main__] Error training 1mo model for SBIN.NS: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:44,231 [__main__] Error preparing 1mo data for ITC.NS: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:44,232 [__main__] Error training 1mo model for ITC.NS: arg must be a list, tuple, 1-d array, or Series
+INFO 2025-08-12 15:15:44,232 [__main__] Completed training for ITC.NS
+INFO 2025-08-12 15:15:44,232 [__main__] Completed training for SBIN.NS
+INFO 2025-08-12 15:15:44,232 [__main__] Completed training for BHARTIARTL.NS
+INFO 2025-08-12 15:15:44,232 [__main__] Category indian_market training completed:
+INFO 2025-08-12 15:15:44,232 [__main__]   Successful: 6
+INFO 2025-08-12 15:15:44,232 [__main__]   Failed: 21
+INFO 2025-08-12 15:15:44,232 [__main__]   Success rate: 22.2%
+INFO 2025-08-12 15:15:44,232 [__main__] Category indian_market: 6/27 successful
+INFO 2025-08-12 15:15:44,232 [__main__] Training category: crypto_fintech
+INFO 2025-08-12 15:15:44,232 [__main__] Training crypto_fintech models for 4 stocks across ['1d', '1w', '1mo']
+INFO 2025-08-12 15:15:44,232 [__main__] Training 1d model for COIN
+INFO 2025-08-12 15:15:44,232 [__main__] Fetching 1d data for COIN
+INFO 2025-08-12 15:15:44,232 [__main__] Training 1d model for SQ
+INFO 2025-08-12 15:15:44,233 [__main__] Fetching 1d data for SQ
+INFO 2025-08-12 15:15:44,233 [__main__] Training 1d model for HOOD
+INFO 2025-08-12 15:15:44,233 [__main__] Fetching 1d data for HOOD
+INFO 2025-08-12 15:15:44,233 [__main__] Training 1d model for PLTR
+INFO 2025-08-12 15:15:44,234 [__main__] Fetching 1d data for PLTR
+ERROR 2025-08-12 15:15:44,565 [__main__] Error preparing 1d data for COIN: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:44,578 [__main__] Error training 1d model for COIN: arg must be a list, tuple, 1-d array, or Series
+INFO 2025-08-12 15:15:44,584 [__main__] Training 1w model for COIN
+INFO 2025-08-12 15:15:44,594 [__main__] Prepared 56 rows of 1d data for PLTR
+ERROR 2025-08-12 15:15:44,595 [__main__] Error preparing 1d data for SQ: arg must be a list, tuple, 1-d array, or Series
+INFO 2025-08-12 15:15:44,596 [__main__] Prepared 56 rows of 1d data for HOOD
+INFO 2025-08-12 15:15:44,596 [__main__] Fetching 1w data for COIN
+WARNING 2025-08-12 15:15:44,596 [__main__] Insufficient 1d data for PLTR: 56 rows
+ERROR 2025-08-12 15:15:44,596 [__main__] Error training 1d model for SQ: arg must be a list, tuple, 1-d array, or Series
+WARNING 2025-08-12 15:15:44,596 [__main__] Insufficient 1d data for HOOD: 56 rows
+INFO 2025-08-12 15:15:44,596 [__main__] Training 1w model for PLTR
+INFO 2025-08-12 15:15:44,596 [__main__] Training 1w model for SQ
+INFO 2025-08-12 15:15:44,596 [__main__] Training 1w model for HOOD
+INFO 2025-08-12 15:15:44,598 [__main__] Fetching 1w data for PLTR
+INFO 2025-08-12 15:15:44,599 [__main__] Fetching 1w data for SQ
+INFO 2025-08-12 15:15:44,599 [__main__] Fetching 1w data for HOOD
+INFO 2025-08-12 15:15:45,266 [__main__] Prepared 199 rows of 1w data for HOOD
+INFO 2025-08-12 15:15:45,268 [__main__] Prepared 199 rows of 1w data for SQ
+INFO 2025-08-12 15:15:45,273 [__main__] Prepared 199 rows of 1w data for PLTR
+INFO 2025-08-12 15:15:45,433 [__main__] Prepared 199 rows of 1w data for COIN
+INFO 2025-08-12 15:15:47,743 [__main__] 1w model training completed for HOOD
+INFO 2025-08-12 15:15:47,745 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:47,746 [__main__] Test accuracy: 67.50%
+INFO 2025-08-12 15:15:47,747 [__main__] CV mean accuracy: 39.21%
+INFO 2025-08-12 15:15:47,754 [__main__] 1w model training completed for PLTR
+INFO 2025-08-12 15:15:47,754 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:47,754 [__main__] Test accuracy: 67.50%
+INFO 2025-08-12 15:15:47,754 [__main__] CV mean accuracy: 39.21%
+INFO 2025-08-12 15:15:47,754 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/HOOD_model_1w.pkl
+INFO 2025-08-12 15:15:47,755 [__main__] Training 1mo model for HOOD
+INFO 2025-08-12 15:15:47,756 [__main__] Fetching 1mo data for HOOD
+INFO 2025-08-12 15:15:47,760 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/PLTR_model_1w.pkl
+INFO 2025-08-12 15:15:47,761 [__main__] 1w model training completed for SQ
+INFO 2025-08-12 15:15:47,761 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:47,761 [__main__] Training 1mo model for PLTR
+INFO 2025-08-12 15:15:47,761 [__main__] Test accuracy: 67.50%
+INFO 2025-08-12 15:15:47,761 [__main__] Fetching 1mo data for PLTR
+INFO 2025-08-12 15:15:47,761 [__main__] CV mean accuracy: 39.21%
+INFO 2025-08-12 15:15:47,766 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SQ_model_1w.pkl
+INFO 2025-08-12 15:15:47,767 [__main__] Training 1mo model for SQ
+INFO 2025-08-12 15:15:47,767 [__main__] Fetching 1mo data for SQ
+INFO 2025-08-12 15:15:47,853 [__main__] 1w model training completed for COIN
+INFO 2025-08-12 15:15:47,853 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:47,853 [__main__] Test accuracy: 67.50%
+INFO 2025-08-12 15:15:47,853 [__main__] CV mean accuracy: 39.21%
+INFO 2025-08-12 15:15:47,857 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/COIN_model_1w.pkl
+INFO 2025-08-12 15:15:47,857 [__main__] Training 1mo model for COIN
+INFO 2025-08-12 15:15:47,857 [__main__] Fetching 1mo data for COIN
+ERROR 2025-08-12 15:15:48,082 [__main__] Error preparing 1mo data for HOOD: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:48,085 [__main__] Error preparing 1mo data for COIN: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:48,087 [__main__] Error preparing 1mo data for SQ: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:48,088 [__main__] Error preparing 1mo data for PLTR: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:48,088 [__main__] Error training 1mo model for HOOD: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:48,088 [__main__] Error training 1mo model for COIN: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:48,088 [__main__] Error training 1mo model for SQ: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:48,088 [__main__] Error training 1mo model for PLTR: arg must be a list, tuple, 1-d array, or Series
+INFO 2025-08-12 15:15:48,089 [__main__] Completed training for COIN
+INFO 2025-08-12 15:15:48,089 [__main__] Completed training for SQ
+INFO 2025-08-12 15:15:48,090 [__main__] Completed training for HOOD
+INFO 2025-08-12 15:15:48,090 [__main__] Completed training for PLTR
+INFO 2025-08-12 15:15:48,090 [__main__] Category crypto_fintech training completed:
+INFO 2025-08-12 15:15:48,090 [__main__]   Successful: 4
+INFO 2025-08-12 15:15:48,090 [__main__]   Failed: 8
+INFO 2025-08-12 15:15:48,090 [__main__]   Success rate: 33.3%
+INFO 2025-08-12 15:15:48,090 [__main__] Category crypto_fintech: 4/12 successful
+INFO 2025-08-12 15:15:48,090 [__main__] Training category: meme_stocks
+INFO 2025-08-12 15:15:48,090 [__main__] Training meme_stocks models for 4 stocks across ['1d', '1w', '1mo']
+INFO 2025-08-12 15:15:48,090 [__main__] Training 1d model for GME
+INFO 2025-08-12 15:15:48,090 [__main__] Training 1d model for AMC
+INFO 2025-08-12 15:15:48,091 [__main__] Training 1d model for BB
+INFO 2025-08-12 15:15:48,091 [__main__] Fetching 1d data for GME
+INFO 2025-08-12 15:15:48,091 [__main__] Training 1d model for NOK
+INFO 2025-08-12 15:15:48,091 [__main__] Fetching 1d data for AMC
+INFO 2025-08-12 15:15:48,091 [__main__] Fetching 1d data for BB
+INFO 2025-08-12 15:15:48,091 [__main__] Fetching 1d data for NOK
+ERROR 2025-08-12 15:15:48,621 [yfinance] 
+1 Failed download:
+ERROR 2025-08-12 15:15:48,621 [yfinance] 
+1 Failed download:
+ERROR 2025-08-12 15:15:48,621 [yfinance] 
+1 Failed download:
+ERROR 2025-08-12 15:15:48,621 [yfinance] 
+1 Failed download:
+ERROR 2025-08-12 15:15:48,623 [yfinance] ['SQ']: YFPricesMissingError('possibly delisted; no price data found  (period=2y) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR 2025-08-12 15:15:48,623 [yfinance] ['SQ']: YFPricesMissingError('possibly delisted; no price data found  (period=2y) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR 2025-08-12 15:15:48,623 [yfinance] ['SQ']: YFPricesMissingError('possibly delisted; no price data found  (period=2y) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR 2025-08-12 15:15:48,627 [__main__] No data available for AMC
+ERROR 2025-08-12 15:15:48,622 [yfinance] ['SQ']: YFPricesMissingError('possibly delisted; no price data found  (period=2y) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR 2025-08-12 15:15:48,630 [__main__] No data available for BB
+ERROR 2025-08-12 15:15:48,631 [__main__] No data available for GME
+ERROR 2025-08-12 15:15:48,631 [__main__] Error preparing 1d data for AMC: No data available for ticker: AMC
+ERROR 2025-08-12 15:15:48,632 [__main__] No data available for NOK
+ERROR 2025-08-12 15:15:48,632 [__main__] Error preparing 1d data for BB: No data available for ticker: BB
+ERROR 2025-08-12 15:15:48,632 [__main__] Error preparing 1d data for GME: No data available for ticker: GME
+ERROR 2025-08-12 15:15:48,632 [__main__] Error training 1d model for AMC: No data available for ticker: AMC
+ERROR 2025-08-12 15:15:48,632 [__main__] Error preparing 1d data for NOK: No data available for ticker: NOK
+ERROR 2025-08-12 15:15:48,632 [__main__] Error training 1d model for BB: No data available for ticker: BB
+ERROR 2025-08-12 15:15:48,632 [__main__] Error training 1d model for GME: No data available for ticker: GME
+INFO 2025-08-12 15:15:48,632 [__main__] Training 1w model for AMC
+ERROR 2025-08-12 15:15:48,633 [__main__] Error training 1d model for NOK: No data available for ticker: NOK
+INFO 2025-08-12 15:15:48,633 [__main__] Training 1w model for BB
+INFO 2025-08-12 15:15:48,633 [__main__] Training 1w model for GME
+INFO 2025-08-12 15:15:48,633 [__main__] Fetching 1w data for AMC
+INFO 2025-08-12 15:15:48,633 [__main__] Training 1w model for NOK
+INFO 2025-08-12 15:15:48,633 [__main__] Fetching 1w data for BB
+INFO 2025-08-12 15:15:48,633 [__main__] Fetching 1w data for GME
+INFO 2025-08-12 15:15:48,633 [__main__] Fetching 1w data for NOK
+ERROR 2025-08-12 15:15:48,825 [__main__] Error preparing 1w data for GME: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:48,829 [__main__] Error preparing 1w data for BB: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:48,830 [__main__] Error preparing 1w data for AMC: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:48,831 [__main__] Error preparing 1w data for NOK: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:48,832 [__main__] Error training 1w model for GME: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:48,832 [__main__] Error training 1w model for BB: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:48,832 [__main__] Error training 1w model for AMC: arg must be a list, tuple, 1-d array, or Series
+ERROR 2025-08-12 15:15:48,832 [__main__] Error training 1w model for NOK: arg must be a list, tuple, 1-d array, or Series
+INFO 2025-08-12 15:15:48,832 [__main__] Training 1mo model for GME
+INFO 2025-08-12 15:15:48,832 [__main__] Training 1mo model for BB
+INFO 2025-08-12 15:15:48,833 [__main__] Training 1mo model for AMC
+INFO 2025-08-12 15:15:48,833 [__main__] Training 1mo model for NOK
+INFO 2025-08-12 15:15:48,833 [__main__] Fetching 1mo data for GME
+INFO 2025-08-12 15:15:48,833 [__main__] Fetching 1mo data for BB
+INFO 2025-08-12 15:15:48,833 [__main__] Fetching 1mo data for AMC
+INFO 2025-08-12 15:15:48,833 [__main__] Fetching 1mo data for NOK
+INFO 2025-08-12 15:15:48,971 [__main__] Prepared 227 rows of 1mo data for GME
+INFO 2025-08-12 15:15:49,015 [__main__] Prepared 227 rows of 1mo data for NOK
+INFO 2025-08-12 15:15:49,017 [__main__] Prepared 227 rows of 1mo data for BB
+INFO 2025-08-12 15:15:49,136 [__main__] Prepared 227 rows of 1mo data for AMC
+INFO 2025-08-12 15:15:52,454 [__main__] 1mo model training completed for BB
+INFO 2025-08-12 15:15:52,456 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:52,457 [__main__] Test accuracy: 52.17%
+INFO 2025-08-12 15:15:52,458 [__main__] CV mean accuracy: 52.89%
+INFO 2025-08-12 15:15:52,466 [__main__] 1mo model training completed for GME
+INFO 2025-08-12 15:15:52,467 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:52,468 [__main__] Test accuracy: 52.17%
+INFO 2025-08-12 15:15:52,468 [__main__] CV mean accuracy: 52.89%
+INFO 2025-08-12 15:15:52,476 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BB_model_1mo.pkl
+INFO 2025-08-12 15:15:52,485 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GME_model_1mo.pkl
+INFO 2025-08-12 15:15:52,485 [__main__] Completed training for GME
+INFO 2025-08-12 15:15:52,493 [__main__] 1mo model training completed for NOK
+INFO 2025-08-12 15:15:52,493 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:52,493 [__main__] Test accuracy: 52.17%
+INFO 2025-08-12 15:15:52,493 [__main__] CV mean accuracy: 52.89%
+INFO 2025-08-12 15:15:52,499 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/NOK_model_1mo.pkl
+INFO 2025-08-12 15:15:52,531 [__main__] 1mo model training completed for AMC
+INFO 2025-08-12 15:15:52,532 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:52,532 [__main__] Test accuracy: 52.17%
+INFO 2025-08-12 15:15:52,532 [__main__] CV mean accuracy: 52.89%
+INFO 2025-08-12 15:15:52,536 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMC_model_1mo.pkl
+INFO 2025-08-12 15:15:52,536 [__main__] Completed training for AMC
+INFO 2025-08-12 15:15:52,536 [__main__] Completed training for BB
+INFO 2025-08-12 15:15:52,536 [__main__] Completed training for NOK
+INFO 2025-08-12 15:15:52,537 [__main__] Category meme_stocks training completed:
+INFO 2025-08-12 15:15:52,537 [__main__]   Successful: 4
+INFO 2025-08-12 15:15:52,537 [__main__]   Failed: 8
+INFO 2025-08-12 15:15:52,537 [__main__]   Success rate: 33.3%
+INFO 2025-08-12 15:15:52,537 [__main__] Category meme_stocks: 4/12 successful
+INFO 2025-08-12 15:15:52,537 [__main__] 
+Phase 3: Training Additional Popular Stocks
+INFO 2025-08-12 15:15:52,537 [__main__] --------------------------------------------------
+INFO 2025-08-12 15:15:52,537 [__main__] Training additional stock: NVDA
+INFO 2025-08-12 15:15:52,537 [__main__] Training 1d model for NVDA
+INFO 2025-08-12 15:15:52,537 [__main__] Fetching 1d data for NVDA
+INFO 2025-08-12 15:15:52,910 [__main__] Prepared 14 rows of 1d data for NVDA
+WARNING 2025-08-12 15:15:52,911 [__main__] Insufficient 1d data for NVDA: 14 rows
+INFO 2025-08-12 15:15:52,911 [__main__] Training 1w model for NVDA
+INFO 2025-08-12 15:15:52,911 [__main__] Fetching 1w data for NVDA
+INFO 2025-08-12 15:15:53,254 [__main__] Prepared 199 rows of 1w data for NVDA
+INFO 2025-08-12 15:15:54,186 [__main__] 1w model training completed for NVDA
+INFO 2025-08-12 15:15:54,186 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:54,186 [__main__] Test accuracy: 62.50%
+INFO 2025-08-12 15:15:54,186 [__main__] CV mean accuracy: 35.70%
+INFO 2025-08-12 15:15:54,189 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/NVDA_model_1w.pkl
+INFO 2025-08-12 15:15:54,189 [__main__] Training 1mo model for NVDA
+INFO 2025-08-12 15:15:54,189 [__main__] Fetching 1mo data for NVDA
+INFO 2025-08-12 15:15:54,558 [__main__] Prepared 83 rows of 1mo data for NVDA
+WARNING 2025-08-12 15:15:54,558 [__main__] Insufficient 1mo data for NVDA: 83 rows
+INFO 2025-08-12 15:15:54,558 [__main__] Training additional stock: AMD
+INFO 2025-08-12 15:15:54,558 [__main__] Training 1d model for AMD
+INFO 2025-08-12 15:15:54,558 [__main__] Fetching 1d data for AMD
+INFO 2025-08-12 15:15:55,141 [__main__] Prepared 14 rows of 1d data for AMD
+WARNING 2025-08-12 15:15:55,142 [__main__] Insufficient 1d data for AMD: 14 rows
+INFO 2025-08-12 15:15:55,142 [__main__] Training 1w model for AMD
+INFO 2025-08-12 15:15:55,142 [__main__] Fetching 1w data for AMD
+INFO 2025-08-12 15:15:55,871 [__main__] Prepared 199 rows of 1w data for AMD
+INFO 2025-08-12 15:15:56,729 [__main__] 1w model training completed for AMD
+INFO 2025-08-12 15:15:56,729 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:56,729 [__main__] Test accuracy: 67.50%
+INFO 2025-08-12 15:15:56,730 [__main__] CV mean accuracy: 35.10%
+INFO 2025-08-12 15:15:56,732 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMD_model_1w.pkl
+INFO 2025-08-12 15:15:56,733 [__main__] Training 1mo model for AMD
+INFO 2025-08-12 15:15:56,733 [__main__] Fetching 1mo data for AMD
+INFO 2025-08-12 15:15:57,263 [__main__] Prepared 83 rows of 1mo data for AMD
+WARNING 2025-08-12 15:15:57,264 [__main__] Insufficient 1mo data for AMD: 83 rows
+INFO 2025-08-12 15:15:57,264 [__main__] Training additional stock: COIN
+INFO 2025-08-12 15:15:57,264 [__main__] Training 1d model for COIN
+INFO 2025-08-12 15:15:57,264 [__main__] Fetching 1d data for COIN
+INFO 2025-08-12 15:15:57,740 [__main__] Prepared 14 rows of 1d data for COIN
+WARNING 2025-08-12 15:15:57,741 [__main__] Insufficient 1d data for COIN: 14 rows
+INFO 2025-08-12 15:15:57,741 [__main__] Training 1w model for COIN
+INFO 2025-08-12 15:15:57,741 [__main__] Fetching 1w data for COIN
+INFO 2025-08-12 15:15:58,066 [__main__] Prepared 199 rows of 1w data for COIN
+INFO 2025-08-12 15:15:59,003 [__main__] 1w model training completed for COIN
+INFO 2025-08-12 15:15:59,004 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:15:59,004 [__main__] Test accuracy: 67.50%
+INFO 2025-08-12 15:15:59,004 [__main__] CV mean accuracy: 39.21%
+INFO 2025-08-12 15:15:59,006 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/COIN_model_1w.pkl
+INFO 2025-08-12 15:15:59,007 [__main__] Training 1mo model for COIN
+INFO 2025-08-12 15:15:59,007 [__main__] Fetching 1mo data for COIN
+INFO 2025-08-12 15:15:59,335 [__main__] Prepared 83 rows of 1mo data for COIN
+WARNING 2025-08-12 15:15:59,335 [__main__] Insufficient 1mo data for COIN: 83 rows
+INFO 2025-08-12 15:15:59,335 [__main__] Training additional stock: PLTR
+INFO 2025-08-12 15:15:59,335 [__main__] Training 1d model for PLTR
+INFO 2025-08-12 15:15:59,335 [__main__] Fetching 1d data for PLTR
+INFO 2025-08-12 15:15:59,665 [__main__] Prepared 14 rows of 1d data for PLTR
+WARNING 2025-08-12 15:15:59,665 [__main__] Insufficient 1d data for PLTR: 14 rows
+INFO 2025-08-12 15:15:59,665 [__main__] Training 1w model for PLTR
+INFO 2025-08-12 15:15:59,665 [__main__] Fetching 1w data for PLTR
+INFO 2025-08-12 15:15:59,983 [__main__] Prepared 199 rows of 1w data for PLTR
+INFO 2025-08-12 15:16:00,870 [__main__] 1w model training completed for PLTR
+INFO 2025-08-12 15:16:00,870 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:16:00,870 [__main__] Test accuracy: 67.50%
+INFO 2025-08-12 15:16:00,870 [__main__] CV mean accuracy: 67.83%
+INFO 2025-08-12 15:16:00,873 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/PLTR_model_1w.pkl
+INFO 2025-08-12 15:16:00,873 [__main__] Training 1mo model for PLTR
+INFO 2025-08-12 15:16:00,873 [__main__] Fetching 1mo data for PLTR
+INFO 2025-08-12 15:16:01,202 [__main__] Prepared 83 rows of 1mo data for PLTR
+WARNING 2025-08-12 15:16:01,202 [__main__] Insufficient 1mo data for PLTR: 83 rows
+INFO 2025-08-12 15:16:01,202 [__main__] Training additional stock: RBLX
+INFO 2025-08-12 15:16:01,202 [__main__] Training 1d model for RBLX
+INFO 2025-08-12 15:16:01,202 [__main__] Fetching 1d data for RBLX
+INFO 2025-08-12 15:16:01,551 [__main__] Prepared 14 rows of 1d data for RBLX
+WARNING 2025-08-12 15:16:01,551 [__main__] Insufficient 1d data for RBLX: 14 rows
+INFO 2025-08-12 15:16:01,551 [__main__] Training 1w model for RBLX
+INFO 2025-08-12 15:16:01,551 [__main__] Fetching 1w data for RBLX
+INFO 2025-08-12 15:16:01,891 [__main__] Prepared 199 rows of 1w data for RBLX
+INFO 2025-08-12 15:16:02,803 [__main__] 1w model training completed for RBLX
+INFO 2025-08-12 15:16:02,803 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:16:02,803 [__main__] Test accuracy: 67.50%
+INFO 2025-08-12 15:16:02,803 [__main__] CV mean accuracy: 61.34%
+INFO 2025-08-12 15:16:02,806 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/RBLX_model_1w.pkl
+INFO 2025-08-12 15:16:02,806 [__main__] Training 1mo model for RBLX
+INFO 2025-08-12 15:16:02,806 [__main__] Fetching 1mo data for RBLX
+INFO 2025-08-12 15:16:03,138 [__main__] Prepared 83 rows of 1mo data for RBLX
+WARNING 2025-08-12 15:16:03,139 [__main__] Insufficient 1mo data for RBLX: 83 rows
+INFO 2025-08-12 15:16:03,139 [__main__] Training additional stock: SNOW
+INFO 2025-08-12 15:16:03,139 [__main__] Training 1d model for SNOW
+INFO 2025-08-12 15:16:03,139 [__main__] Fetching 1d data for SNOW
+INFO 2025-08-12 15:16:03,463 [__main__] Prepared 14 rows of 1d data for SNOW
+WARNING 2025-08-12 15:16:03,463 [__main__] Insufficient 1d data for SNOW: 14 rows
+INFO 2025-08-12 15:16:03,464 [__main__] Training 1w model for SNOW
+INFO 2025-08-12 15:16:03,464 [__main__] Fetching 1w data for SNOW
+INFO 2025-08-12 15:16:03,815 [__main__] Prepared 199 rows of 1w data for SNOW
+INFO 2025-08-12 15:16:04,688 [__main__] 1w model training completed for SNOW
+INFO 2025-08-12 15:16:04,688 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:16:04,688 [__main__] Test accuracy: 35.00%
+INFO 2025-08-12 15:16:04,688 [__main__] CV mean accuracy: 52.26%
+INFO 2025-08-12 15:16:04,690 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SNOW_model_1w.pkl
+INFO 2025-08-12 15:16:04,691 [__main__] Training 1mo model for SNOW
+INFO 2025-08-12 15:16:04,691 [__main__] Fetching 1mo data for SNOW
+INFO 2025-08-12 15:16:05,008 [__main__] Prepared 83 rows of 1mo data for SNOW
+WARNING 2025-08-12 15:16:05,008 [__main__] Insufficient 1mo data for SNOW: 83 rows
+INFO 2025-08-12 15:16:05,008 [__main__] Training additional stock: ZM
+INFO 2025-08-12 15:16:05,009 [__main__] Training 1d model for ZM
+INFO 2025-08-12 15:16:05,009 [__main__] Fetching 1d data for ZM
+INFO 2025-08-12 15:16:05,343 [__main__] Prepared 14 rows of 1d data for ZM
+WARNING 2025-08-12 15:16:05,343 [__main__] Insufficient 1d data for ZM: 14 rows
+INFO 2025-08-12 15:16:05,343 [__main__] Training 1w model for ZM
+INFO 2025-08-12 15:16:05,343 [__main__] Fetching 1w data for ZM
+INFO 2025-08-12 15:16:05,660 [__main__] Prepared 199 rows of 1w data for ZM
+INFO 2025-08-12 15:16:06,536 [__main__] 1w model training completed for ZM
+INFO 2025-08-12 15:16:06,536 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:16:06,536 [__main__] Test accuracy: 70.00%
+INFO 2025-08-12 15:16:06,536 [__main__] CV mean accuracy: 64.29%
+INFO 2025-08-12 15:16:06,539 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ZM_model_1w.pkl
+INFO 2025-08-12 15:16:06,539 [__main__] Training 1mo model for ZM
+INFO 2025-08-12 15:16:06,539 [__main__] Fetching 1mo data for ZM
+INFO 2025-08-12 15:16:06,854 [__main__] Prepared 83 rows of 1mo data for ZM
+WARNING 2025-08-12 15:16:06,854 [__main__] Insufficient 1mo data for ZM: 83 rows
+INFO 2025-08-12 15:16:06,854 [__main__] Training additional stock: DOCU
+INFO 2025-08-12 15:16:06,855 [__main__] Training 1d model for DOCU
+INFO 2025-08-12 15:16:06,855 [__main__] Fetching 1d data for DOCU
+INFO 2025-08-12 15:16:07,177 [__main__] Prepared 14 rows of 1d data for DOCU
+WARNING 2025-08-12 15:16:07,177 [__main__] Insufficient 1d data for DOCU: 14 rows
+INFO 2025-08-12 15:16:07,177 [__main__] Training 1w model for DOCU
+INFO 2025-08-12 15:16:07,177 [__main__] Fetching 1w data for DOCU
+INFO 2025-08-12 15:16:07,511 [__main__] Prepared 199 rows of 1w data for DOCU
+INFO 2025-08-12 15:16:08,450 [__main__] 1w model training completed for DOCU
+INFO 2025-08-12 15:16:08,450 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:16:08,450 [__main__] Test accuracy: 45.00%
+INFO 2025-08-12 15:16:08,450 [__main__] CV mean accuracy: 52.24%
+INFO 2025-08-12 15:16:08,453 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/DOCU_model_1w.pkl
+INFO 2025-08-12 15:16:08,453 [__main__] Training 1mo model for DOCU
+INFO 2025-08-12 15:16:08,453 [__main__] Fetching 1mo data for DOCU
+INFO 2025-08-12 15:16:08,838 [__main__] Prepared 83 rows of 1mo data for DOCU
+WARNING 2025-08-12 15:16:08,838 [__main__] Insufficient 1mo data for DOCU: 83 rows
+INFO 2025-08-12 15:16:08,838 [__main__] Training additional stock: GME
+INFO 2025-08-12 15:16:08,838 [__main__] Training 1d model for GME
+INFO 2025-08-12 15:16:08,839 [__main__] Fetching 1d data for GME
+INFO 2025-08-12 15:16:09,179 [__main__] Prepared 14 rows of 1d data for GME
+WARNING 2025-08-12 15:16:09,179 [__main__] Insufficient 1d data for GME: 14 rows
+INFO 2025-08-12 15:16:09,179 [__main__] Training 1w model for GME
+INFO 2025-08-12 15:16:09,179 [__main__] Fetching 1w data for GME
+INFO 2025-08-12 15:16:09,596 [__main__] Prepared 199 rows of 1w data for GME
+INFO 2025-08-12 15:16:10,560 [__main__] 1w model training completed for GME
+INFO 2025-08-12 15:16:10,561 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:16:10,561 [__main__] Test accuracy: 47.50%
+INFO 2025-08-12 15:16:10,561 [__main__] CV mean accuracy: 39.79%
+INFO 2025-08-12 15:16:10,563 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GME_model_1w.pkl
+INFO 2025-08-12 15:16:10,564 [__main__] Training 1mo model for GME
+INFO 2025-08-12 15:16:10,564 [__main__] Fetching 1mo data for GME
+INFO 2025-08-12 15:16:10,912 [__main__] Prepared 83 rows of 1mo data for GME
+WARNING 2025-08-12 15:16:10,912 [__main__] Insufficient 1mo data for GME: 83 rows
+INFO 2025-08-12 15:16:10,912 [__main__] Training additional stock: AMC
+INFO 2025-08-12 15:16:10,912 [__main__] Training 1d model for AMC
+INFO 2025-08-12 15:16:10,912 [__main__] Fetching 1d data for AMC
+INFO 2025-08-12 15:16:11,233 [__main__] Prepared 14 rows of 1d data for AMC
+WARNING 2025-08-12 15:16:11,233 [__main__] Insufficient 1d data for AMC: 14 rows
+INFO 2025-08-12 15:16:11,233 [__main__] Training 1w model for AMC
+INFO 2025-08-12 15:16:11,233 [__main__] Fetching 1w data for AMC
+INFO 2025-08-12 15:16:11,563 [__main__] Prepared 199 rows of 1w data for AMC
+INFO 2025-08-12 15:16:12,526 [__main__] 1w model training completed for AMC
+INFO 2025-08-12 15:16:12,526 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:16:12,526 [__main__] Test accuracy: 52.50%
+INFO 2025-08-12 15:16:12,526 [__main__] CV mean accuracy: 65.33%
+INFO 2025-08-12 15:16:12,529 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMC_model_1w.pkl
+INFO 2025-08-12 15:16:12,529 [__main__] Training 1mo model for AMC
+INFO 2025-08-12 15:16:12,529 [__main__] Fetching 1mo data for AMC
+INFO 2025-08-12 15:16:12,957 [__main__] Prepared 83 rows of 1mo data for AMC
+WARNING 2025-08-12 15:16:12,957 [__main__] Insufficient 1mo data for AMC: 83 rows
+INFO 2025-08-12 15:16:12,958 [__main__] Training additional stock: DKNG
+INFO 2025-08-12 15:16:12,958 [__main__] Training 1d model for DKNG
+INFO 2025-08-12 15:16:12,958 [__main__] Fetching 1d data for DKNG
+INFO 2025-08-12 15:16:13,294 [__main__] Prepared 14 rows of 1d data for DKNG
+WARNING 2025-08-12 15:16:13,294 [__main__] Insufficient 1d data for DKNG: 14 rows
+INFO 2025-08-12 15:16:13,294 [__main__] Training 1w model for DKNG
+INFO 2025-08-12 15:16:13,294 [__main__] Fetching 1w data for DKNG
+INFO 2025-08-12 15:16:13,625 [__main__] Prepared 199 rows of 1w data for DKNG
+INFO 2025-08-12 15:16:14,557 [__main__] 1w model training completed for DKNG
+INFO 2025-08-12 15:16:14,558 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:16:14,558 [__main__] Test accuracy: 65.00%
+INFO 2025-08-12 15:16:14,558 [__main__] CV mean accuracy: 57.32%
+INFO 2025-08-12 15:16:14,560 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/DKNG_model_1w.pkl
+INFO 2025-08-12 15:16:14,561 [__main__] Training 1mo model for DKNG
+INFO 2025-08-12 15:16:14,561 [__main__] Fetching 1mo data for DKNG
+INFO 2025-08-12 15:16:14,881 [__main__] Prepared 83 rows of 1mo data for DKNG
+WARNING 2025-08-12 15:16:14,881 [__main__] Insufficient 1mo data for DKNG: 83 rows
+INFO 2025-08-12 15:16:14,882 [__main__] Training additional stock: ROKU
+INFO 2025-08-12 15:16:14,882 [__main__] Training 1d model for ROKU
+INFO 2025-08-12 15:16:14,882 [__main__] Fetching 1d data for ROKU
+INFO 2025-08-12 15:16:15,202 [__main__] Prepared 14 rows of 1d data for ROKU
+WARNING 2025-08-12 15:16:15,202 [__main__] Insufficient 1d data for ROKU: 14 rows
+INFO 2025-08-12 15:16:15,202 [__main__] Training 1w model for ROKU
+INFO 2025-08-12 15:16:15,202 [__main__] Fetching 1w data for ROKU
+INFO 2025-08-12 15:16:15,612 [__main__] Prepared 199 rows of 1w data for ROKU
+INFO 2025-08-12 15:16:16,456 [__main__] 1w model training completed for ROKU
+INFO 2025-08-12 15:16:16,456 [__main__] Train accuracy: 100.00%
+INFO 2025-08-12 15:16:16,456 [__main__] Test accuracy: 50.00%
+INFO 2025-08-12 15:16:16,456 [__main__] CV mean accuracy: 42.12%
+INFO 2025-08-12 15:16:16,459 [__main__] Model saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ROKU_model_1w.pkl
+INFO 2025-08-12 15:16:16,459 [__main__] Training 1mo model for ROKU
+INFO 2025-08-12 15:16:16,459 [__main__] Fetching 1mo data for ROKU
+INFO 2025-08-12 15:16:16,779 [__main__] Prepared 83 rows of 1mo data for ROKU
+WARNING 2025-08-12 15:16:16,779 [__main__] Insufficient 1mo data for ROKU: 83 rows
+INFO 2025-08-12 15:16:16,779 [__main__] ================================================================================
+INFO 2025-08-12 15:16:16,779 [__main__] TRAINING PIPELINE COMPLETED
+INFO 2025-08-12 15:16:16,779 [__main__] ================================================================================
+INFO 2025-08-12 15:16:16,780 [__main__] Total Models: 174
+INFO 2025-08-12 15:16:16,780 [__main__] Successful: 46
+INFO 2025-08-12 15:16:16,780 [__main__] Failed: 128
+INFO 2025-08-12 15:16:16,780 [__main__] Success Rate: 26.4%
+INFO 2025-08-12 15:16:16,780 [__main__] Duration: 0h 1m 27s
+INFO 2025-08-12 15:16:16,780 [__main__] Models saved to: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models
+INFO 2025-08-12 15:16:16,781 [__main__] Training summary saved: /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Performance/training_summary_20250812_151616.json
+INFO 2025-08-12 15:16:16,781 [__main__] Training system execution completed!
