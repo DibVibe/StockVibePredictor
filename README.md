@@ -741,8 +741,6 @@ pkill -f node
 
 ## ✅ **Success Indicators**
 
-</div>
-
 | Check              | Expected Result                           |
 | :----------------- | :---------------------------------------- |
 | ✅ Redis ping      | Returns `PONG`                            |
@@ -753,13 +751,13 @@ pkill -f node
 | ✅ Prediction test | Returns data for AAPL                     |
 | ✅ Browser         | Frontend loads at `http://localhost:3000` |
 
+</div>
+
 ---
 
 <div align="center">
 
 ## 👥 **Team Collaboration Tips**
-
-</div>
 
 | Tip                       | Description                                                                          |
 | :------------------------ | :----------------------------------------------------------------------------------- |
@@ -767,6 +765,8 @@ pkill -f node
 | **♻️ Regenerate Locally** | Each team member must recreate `venv`, `node_modules`, and `stock_model.pkl` locally |
 | **📦 Large Files**        | Use Git LFS for large model files if needed                                          |
 | **🔄 Consistency**        | Ensure all use same Python (3.8+) and Node.js (16+) versions                         |
+
+</div>
 
 ---
 
