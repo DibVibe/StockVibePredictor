@@ -206,7 +206,7 @@
 ├── 📚 Docs/
 │   ├── API.md
 │   ├── CHANGELOG.md
-│   └── Endpoints.txt
+│   └── Endpoints.json
 │
 ├── 🚀 Deployment/
 ├── 🔒 Security/
@@ -607,14 +607,14 @@ npm install
 
 ## 📱 **Access Points Summary**
 
-| Service               | URL                                 | Terminal   |
-| :-------------------- | :---------------------------------- | :--------- |
-| 🔥 **Redis**          | `localhost:6379`                    | Terminal 1 |
-| ⚙️ **Django Backend** | `http://127.0.0.1:8000`             | Terminal 2 |
-| 📊 **API Docs**       | `http://127.0.0.1:8000/api/`        | Terminal 2 |
-| 👤 **Django Admin**   | `http://127.0.0.1:8000/admin/`      | Terminal 2 |
-| 🎨 **Frontend App**   | `http://localhost:3000`             | Terminal 4 |
-| 📮 **Postman**        | Test endpoints from `Endpoints.txt` | -          |
+| Service               | URL                                  | Terminal   |
+| :-------------------- | :----------------------------------- | :--------- |
+| 🔥 **Redis**          | `localhost:6379`                     | Terminal 1 |
+| ⚙️ **Django Backend** | `http://127.0.0.1:8000`              | Terminal 2 |
+| 📊 **API Docs**       | `http://127.0.0.1:8000/api/`         | Terminal 2 |
+| 👤 **Django Admin**   | `http://127.0.0.1:8000/admin/`       | Terminal 2 |
+| 🎨 **Frontend App**   | `http://localhost:3000`              | Terminal 3 |
+| 📮 **Postman**        | Test endpoints from `Endpoints.json` | -          |
 
 </div>
 
@@ -1047,5 +1047,3 @@ financial professionals before making investment choices.
 </div>
 
 ---
-
-**Now it should render properly on GitHub! Just copy everything above and replace your entire README.md file!** 🚀✨
