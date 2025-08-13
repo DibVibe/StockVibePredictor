@@ -225,13 +225,13 @@
 
 ## 💻 **Code Standards**
 
-</div>
-
 | Language          | Standards            | Tools                     |
 | :---------------- | :------------------- | :------------------------ |
 | 🐍 **Python**     | PEP 8, Type Hints    | `flake8`, `black`, `mypy` |
 | 📜 **JavaScript** | ESLint Configuration | `eslint`, `prettier`      |
 | 🔄 **Git**        | Conventional Commits | `commitizen`, `husky`     |
+
+</div>
 
 ---
 
