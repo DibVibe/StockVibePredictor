@@ -1,30 +1,57 @@
+"""
+StockVibePredictor Views Module
+Organization: Dibakar
+Created: 2025
+
+This module contains all API endpoints for stock predictions, trading, and market analysis.
+"""
+
+# ============================================================================
+# IMPORTS
+# ============================================================================
+
+# Standard library imports
 import re
+import pickle
+import logging
+from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
+
+# Django imports
 from django.utils import timezone
+from django.core.cache import cache
+from asgiref.sync import sync_to_async
+
+# REST Framework imports
 from rest_framework.decorators import api_view, permission_classes, throttle_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.throttling import UserRateThrottle
+
+# Data processing imports
 import yfinance as yf
 import pandas as pd
 import numpy as np
-import pickle
-import logging
-from pathlib import Path
-from django.core.cache import cache
-from asgiref.sync import sync_to_async
+
+# Machine Learning imports
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
+
+# ============================================================================
+# CONFIGURATION & INITIALIZATION
+# ============================================================================
+
 # Base configuration
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 MODELS_DIR = BASE_DIR / "Scripts" / "Models"
 MODELS_DIR.mkdir(exist_ok=True)
 
+# Logger setup
 logger = logging.getLogger("Apps.StockPredict")
 
 # Thread pools for async operations
@@ -68,16 +95,26 @@ TIMEFRAMES = {
 }
 
 
+# ============================================================================
+# THROTTLE CLASSES
+# ============================================================================
+
+# Class for stock data fetching
 class PredictionRateThrottle(UserRateThrottle):
     scope = "prediction"
     rate = "100/hour"
 
-
+# Class for trading
 class TradingRateThrottle(UserRateThrottle):
     scope = "trading"
     rate = "50/hour"
 
 
+# ============================================================================
+# TECHNICAL INDICATOR CALCULATIONS
+# ============================================================================
+
+# Functions to compute various technical indicators
 def compute_rsi(series, period=14):
     """Compute Relative Strength Index (RSI)"""
     delta = series.diff()
@@ -86,7 +123,7 @@ def compute_rsi(series, period=14):
     rs = gain / loss
     return 100 - (100 / (1 + rs))
 
-
+# Functions to compute MACD Bands
 def compute_macd(data, fast=12, slow=26, signal=9):
     """Compute MACD (Moving Average Convergence Divergence)"""
     exp1 = data.ewm(span=fast, adjust=False).mean()
@@ -96,7 +133,7 @@ def compute_macd(data, fast=12, slow=26, signal=9):
     histogram = macd - signal_line
     return macd, signal_line, histogram
 
-
+# Functions to compute Bollinger Bands
 def compute_bollinger_bands(data, period=20, std=2):
     """Compute Bollinger Bands"""
     ma = data["Close"].rolling(window=period).mean()
@@ -106,7 +143,7 @@ def compute_bollinger_bands(data, period=20, std=2):
     bb_width = (upper - lower) / ma
     return upper, lower, bb_width
 
-
+# Functions to compute advanced technical indicators
 def compute_advanced_indicators(data):
     """Compute advanced technical indicators"""
     # Williams %R
@@ -150,10 +187,13 @@ def compute_advanced_indicators(data):
     }
 
 
+# ============================================================================
+# ANALYSIS & METRICS HELPERS
+# ============================================================================
+
+# Functions to compute sentiment metrics
 def compute_sentiment_score(ticker, data):
     """Placeholder for news sentiment analysis (integrate with news APIs later)"""
-    # This would integrate with news APIs like Alpha Vantage, NewsAPI, etc.
-    # For now, returning a neutral sentiment based on price momentum
     recent_returns = data["Close"].pct_change().tail(5).mean()
     sentiment = max(-1, min(1, recent_returns * 10))
     return {
@@ -165,7 +205,7 @@ def compute_sentiment_score(ticker, data):
         ),
     }
 
-
+# Functions to compute risk assessment metrics
 def compute_risk_metrics(data):
     """Compute risk assessment metrics"""
     returns = data["Close"].pct_change().dropna()
@@ -197,6 +237,481 @@ def compute_risk_metrics(data):
     }
 
 
+# ============================================================================
+# DATA VALIDATION & NORMALIZATION
+# ============================================================================
+
+# Functions to validate ticker symbols
+def validate_ticker(ticker):
+    """Enhanced ticker validation supporting international markets"""
+    if not ticker or not isinstance(ticker, str):
+        return False
+
+    if re.match(r"^[A-Z0-9\^\.\\_\-]{1,15}$", ticker):
+        return True
+    return False
+
+# Functions to normalize ticker symbols
+def normalize_ticker(ticker):
+    """Normalize ticker symbols for different markets"""
+    ticker = ticker.upper().strip()
+
+    ticker_mapping = {
+        "NIFTY": "^NSEI",
+        "NIFTY50": "^NSEI",
+        "SENSEX": "^BSESN",
+        "BERKSHIRE": "BRK-B",
+        "ALPHABET": "GOOGL",
+        "GOOGLE": "GOOGL",
+        "META": "META",
+        "FACEBOOK": "META",
+        "TESLA": "TSLA",
+    }
+
+    return ticker_mapping.get(ticker, ticker)
+
+
+# ============================================================================
+# DATA FETCHING FUNCTIONS
+# ============================================================================
+
+# Functions to fetch stock data
+def fetch_stock_data_sync(ticker, timeframe="1d"):
+    """Synchronous version of stock data fetching"""
+    try:
+        ticker = normalize_ticker(ticker)
+        config = TIMEFRAMES[timeframe]
+
+        logger.info(f"Sync fetch for {ticker} with timeframe {timeframe}")
+
+        # Use yfinance Ticker object
+        ticker_obj = yf.Ticker(ticker)
+        data = ticker_obj.history(
+            period=config["period"],
+            interval=config["interval"],
+            auto_adjust=True,
+            prepost=True,
+        )
+
+        if data.empty:
+            logger.error(f"No data returned for {ticker} ({timeframe})")
+            return None
+
+        logger.info(f"Successfully fetched {len(data)} rows for {ticker}")
+
+        # Try to get info, but don't fail if it doesn't work
+        market_info = {}
+        try:
+            ticker_info = ticker_obj.info
+            if ticker_info:
+                market_info = {
+                    "market_cap": ticker_info.get("marketCap"),
+                    "sector": ticker_info.get("sector"),
+                    "industry": ticker_info.get("industry"),
+                    "beta": ticker_info.get("beta"),
+                    "pe_ratio": ticker_info.get("trailingPE"),
+                    "dividend_yield": ticker_info.get("dividendYield"),
+                    "fifty_two_week_high": ticker_info.get("fiftyTwoWeekHigh"),
+                    "fifty_two_week_low": ticker_info.get("fiftyTwoWeekLow"),
+                }
+        except:
+            pass  # Info is optional
+
+        return {
+            "price_data": data,
+            "market_info": market_info,
+        }
+
+    except Exception as e:
+        logger.error(f"Sync fetch error for {ticker}: {str(e)}")
+        return None
+
+# Functions to fetch enhanced stock data asynchronously
+async def fetch_enhanced_stock_data(ticker, timeframe="1d"):
+    """Enhanced stock data fetching with multiple timeframes"""
+    try:
+        ticker = normalize_ticker(ticker)
+        config = TIMEFRAMES[timeframe]
+
+        logger.info(f"Attempting to fetch data for {ticker} with timeframe {timeframe}")
+
+        # Fetch price data synchronously first
+        def download_data():
+            return yf.download(
+                ticker,
+                period=config["period"],
+                interval=config["interval"],
+                progress=False,
+                timeout=30,
+                auto_adjust=True,
+                prepost=True,
+                threads=False,
+            )
+
+        # Use sync_to_async properly
+        data = await sync_to_async(download_data, thread_sensitive=True)()
+
+        if data.empty:
+            logger.error(f"No data returned for {ticker} ({timeframe})")
+            # Try alternative approach
+            logger.info(f"Trying alternative fetch for {ticker}")
+            ticker_obj = yf.Ticker(ticker)
+            data = await sync_to_async(
+                lambda: ticker_obj.history(
+                    period=config["period"],
+                    interval=config["interval"],
+                    auto_adjust=True,
+                    prepost=True,
+                ),
+                thread_sensitive=True,
+            )()
+
+            if data.empty:
+                logger.error(f"Alternative fetch also failed for {ticker}")
+                return None
+
+        logger.info(f"Successfully fetched {len(data)} rows for {ticker}")
+
+        # Fetch ticker info separately with error handling
+        market_info = {}
+        try:
+            ticker_obj = yf.Ticker(ticker)
+            ticker_info = await sync_to_async(
+                lambda: ticker_obj.info, thread_sensitive=True
+            )()
+
+            if ticker_info:
+                market_info = {
+                    "market_cap": ticker_info.get("marketCap"),
+                    "sector": ticker_info.get("sector"),
+                    "industry": ticker_info.get("industry"),
+                    "beta": ticker_info.get("beta"),
+                    "pe_ratio": ticker_info.get("trailingPE"),
+                    "dividend_yield": ticker_info.get("dividendYield"),
+                    "fifty_two_week_high": ticker_info.get("fiftyTwoWeekHigh"),
+                    "fifty_two_week_low": ticker_info.get("fiftyTwoWeekLow"),
+                }
+        except Exception as info_error:
+            logger.warning(
+                f"Could not fetch ticker info for {ticker}: {str(info_error)}"
+            )
+
+        return {
+            "price_data": data,
+            "market_info": market_info,
+        }
+
+    except Exception as e:
+        logger.error(f"Error fetching data for {ticker} ({timeframe}): {str(e)}")
+
+        # Try a simple synchronous fallback
+        try:
+            logger.info(f"Attempting synchronous fallback for {ticker}")
+            ticker_obj = yf.Ticker(ticker)
+            data = ticker_obj.history(
+                period=config["period"], interval=config["interval"]
+            )
+
+            if not data.empty:
+                return {"price_data": data, "market_info": {}}
+        except Exception as fallback_error:
+            logger.error(f"Fallback also failed: {str(fallback_error)}")
+
+        return None
+
+
+# ============================================================================
+# FEATURE ENGINEERING
+# ============================================================================
+
+# Functions to compute comprehensive technical features
+def compute_comprehensive_features(data, timeframe="1d"):
+    """Compute comprehensive technical features for different timeframes"""
+    try:
+        # Handle MultiIndex columns
+        if isinstance(data.columns, pd.MultiIndex):
+            data.columns = [col[0] for col in data.columns]
+
+        # Validate required columns
+        required_cols = ["Open", "High", "Low", "Close", "Volume"]
+        for col in required_cols:
+            if col not in data.columns:
+                raise ValueError(f"Missing required column: {col}")
+            data[col] = pd.to_numeric(data[col], errors="coerce")
+
+        data = data.dropna(subset=required_cols)
+
+        if len(data) < 50:
+            raise ValueError(f"Insufficient data: {len(data)} rows")
+
+        # Adjust periods based on timeframe
+        if timeframe == "1d":
+            ma_periods = [5, 10, 20, 50]
+            rsi_period = 14
+        elif timeframe == "1w":
+            ma_periods = [4, 8, 13, 26]
+            rsi_period = 10
+        elif timeframe == "1mo":
+            ma_periods = [3, 6, 12, 24]
+            rsi_period = 8
+        elif timeframe == "1y":
+            ma_periods = [2, 3, 6, 12]
+            rsi_period = 6
+        else:
+            logger.warning(f"Unexpected timeframe '{timeframe}'. Defaulting to 1d configuration.")
+            ma_periods = [5, 10, 20, 50]
+            rsi_period = 14
+
+
+        # Basic features
+        data["Return"] = data["Close"].pct_change()
+
+        # Moving averages
+        for period in ma_periods:
+            if len(data) >= period:
+                data[f"MA{period}"] = data["Close"].rolling(window=period).mean()
+
+        # Volatility and volume
+        data["Volatility"] = data["Return"].rolling(window=20).std()
+        data["Volume_Change"] = data["Volume"].pct_change()
+
+        # Technical indicators
+        data["RSI"] = compute_rsi(data["Close"], rsi_period)
+        macd, macd_signal, macd_hist = compute_macd(data["Close"])
+        data["MACD"] = macd
+        data["MACD_Signal"] = macd_signal
+        data["MACD_Histogram"] = macd_hist
+
+        # Bollinger Bands
+        bb_upper, bb_lower, bb_width = compute_bollinger_bands(data)
+        data["BB_Upper"] = bb_upper
+        data["BB_Lower"] = bb_lower
+        data["BB_Width"] = bb_width
+        data["BB_Position"] = (data["Close"] - bb_lower) / (bb_upper - bb_lower)
+
+        # Advanced indicators
+        advanced = compute_advanced_indicators(data)
+        for key, value in advanced.items():
+            data[key] = value
+
+        # Pattern features
+        data["Higher_High"] = (data["High"] > data["High"].shift(1)).astype(int)
+        data["Lower_Low"] = (data["Low"] < data["Low"].shift(1)).astype(int)
+        data["Doji"] = (
+            abs(data["Close"] - data["Open"]) <= (data["High"] - data["Low"]) * 0.1
+        ).astype(int)
+
+        # Trend features
+        if "MA20" in data.columns and "MA50" in data.columns:
+            data["Trend_Bullish"] = (data["Close"] > data["MA20"]).astype(int)
+            data["Golden_Cross"] = (data["MA20"] > data["MA50"]).astype(int)
+
+        # Market regime features
+        data["High_Volatility"] = (
+            data["Volatility"] > data["Volatility"].rolling(50).quantile(0.8)
+        ).astype(int)
+        data["Volume_Spike"] = (
+            data["Volume"] > data["Volume"].rolling(20).mean() * 1.5
+        ).astype(int)
+
+        logger.info(f"Computed comprehensive features for {timeframe} timeframe")
+        return data
+
+    except Exception as e:
+        logger.error(f"Error computing features for {timeframe}: {str(e)}")
+        raise
+
+
+# ============================================================================
+# MODEL MANAGEMENT FUNCTIONS
+# ============================================================================
+
+# Functions to load all available models
+def load_all_models():
+    """Load all available models - both universal and ticker-specific"""
+    global model_cache
+    model_cache.clear()
+
+    loaded_count = 0
+    failed_count = 0
+
+    if not MODELS_DIR.exists():
+        logger.error(f"Models directory does not exist: {MODELS_DIR}")
+        return
+
+    model_files = list(MODELS_DIR.glob("*.pkl"))
+    logger.info(f"Found {len(model_files)} model files in {MODELS_DIR}")
+
+    for model_path in model_files:
+        try:
+            filename = model_path.name
+
+            if filename.startswith("universal_model_"):
+                for timeframe in TIMEFRAMES.keys():
+                    if (
+                        f"_model_{timeframe}.pkl" in filename
+                        or f"model_{timeframe}.pkl" in filename
+                    ):
+                        with open(model_path, "rb") as f:
+                            model_data = pickle.load(f)
+                            cache_key = f"universal_{timeframe}"
+                            model_cache[cache_key] = {
+                                "model": model_data.get("model"),
+                                "features": model_data.get("features", []),
+                                "timeframe": timeframe,
+                                "accuracy": model_data.get("accuracy", 0.5),
+                                "type": "universal",
+                                "path": str(model_path),
+                                "last_updated": model_path.stat().st_mtime,
+                            }
+                            logger.info(f"Loaded universal model for {timeframe}")
+                            loaded_count += 1
+                            break
+
+            else:
+                parts = filename.replace(".pkl", "").split("_model_")
+                if len(parts) == 2:
+                    ticker = parts[0].upper()
+                    timeframe = parts[1]
+
+                    if timeframe in TIMEFRAMES:
+                        with open(model_path, "rb") as f:
+                            model_data = pickle.load(f)
+                            cache_key = f"{ticker}_{timeframe}"
+                            model_cache[cache_key] = {
+                                "model": model_data.get("model"),
+                                "features": model_data.get("features", []),
+                                "timeframe": timeframe,
+                                "ticker": ticker,
+                                "accuracy": model_data.get("accuracy", 0.5),
+                                "type": "ticker_specific",
+                                "path": str(model_path),
+                                "last_updated": model_path.stat().st_mtime,
+                            }
+                            logger.info(f"Loaded model for {ticker} ({timeframe})")
+                            loaded_count += 1
+                    else:
+                        logger.warning(f"Unknown timeframe in {filename}: {timeframe}")
+
+        except Exception as e:
+            logger.error(f"Failed to load model {model_path.name}: {str(e)}")
+            failed_count += 1
+
+    logger.info(f"Model loading complete: {loaded_count} loaded, {failed_count} failed")
+    logger.info(f"Total models in cache: {len(model_cache)}")
+
+    for timeframe in TIMEFRAMES.keys():
+        universal = f"universal_{timeframe}" in model_cache
+        ticker_specific = sum(
+            1
+            for k in model_cache.keys()
+            if k.endswith(f"_{timeframe}") and not k.startswith("universal")
+        )
+        logger.info(
+            f"Timeframe {timeframe}: Universal={universal}, Ticker-specific={ticker_specific}"
+        )
+
+
+# Function to get the best model for prediction
+def get_model_for_prediction(ticker, timeframe):
+    """Get the best available model for ticker and timeframe"""
+    # Normalize ticker for lookup
+    ticker = ticker.upper().replace(".", "_").replace("-", "_")
+
+    ticker_key = f"{ticker}_{timeframe}"
+    if ticker_key in model_cache:
+        logger.info(f"Using ticker-specific model for {ticker} ({timeframe})")
+        return model_cache[ticker_key]
+
+    for key in model_cache.keys():
+        if key.startswith(f"{ticker}_") and key.endswith(f"_{timeframe}"):
+            logger.info(f"Using variant ticker model {key}")
+            return model_cache[key]
+
+    universal_key = f"universal_{timeframe}"
+    if universal_key in model_cache:
+        logger.info(f"Using universal model for {ticker} ({timeframe})")
+        return model_cache[universal_key]
+
+    timeframe_models = [k for k in model_cache.keys() if k.endswith(f"_{timeframe}")]
+    if timeframe_models:
+        logger.warning(
+            f"Using random model for {ticker} ({timeframe}): {timeframe_models[0]}"
+        )
+        return model_cache[timeframe_models[0]]
+
+    if model_cache:
+        first_model = list(model_cache.keys())[0]
+        logger.warning(
+            f"Using fallback model for {ticker} ({timeframe}): {first_model}"
+        )
+        return model_cache[first_model]
+
+    logger.error(f"No models available for {ticker} ({timeframe})")
+    return None
+
+# Function to create dummy models for testing purposes
+def create_dummy_models():
+    """Create dummy models for testing purposes"""
+    from sklearn.ensemble import RandomForestClassifier
+    import pickle
+
+    # Define expected features
+    features = [
+        "Return", "MA5", "MA10", "MA20", "MA50",
+        "Volatility", "Volume_Change", "RSI",
+        "MACD", "MACD_Signal", "MACD_Histogram",
+        "BB_Upper", "BB_Lower", "BB_Width", "BB_Position",
+        "williams_r", "cci", "obv", "atr",
+        "stoch_k", "stoch_d", "vwap",
+        "Higher_High", "Lower_Low", "Doji",
+        "Trend_Bullish", "Golden_Cross",
+        "High_Volatility", "Volume_Spike",
+    ]
+
+    # Create dummy models for each timeframe
+    for timeframe, config in TIMEFRAMES.items():
+        try:
+            # Create a simple random forest model
+            model = RandomForestClassifier(n_estimators=10, random_state=42)
+
+            # Create dummy training data
+            import numpy as np
+
+            X_dummy = np.random.randn(100, len(features))
+            y_dummy = np.random.randint(0, 2, 100)
+
+            # Fit the model
+            model.fit(X_dummy, y_dummy)
+
+            # Save model
+            model_path = MODELS_DIR / f"universal_model{config['model_suffix']}.pkl"
+            model_data = {
+                "model": model,
+                "features": features,
+                "accuracy": 0.65,  # Dummy accuracy
+                "timeframe": timeframe,
+            }
+
+            with open(model_path, "wb") as f:
+                pickle.dump(model_data, f)
+
+            print(f"Created dummy model for {timeframe} at {model_path}")
+
+        except Exception as e:
+            print(f"Error creating dummy model for {timeframe}: {e}")
+
+    # Reload models
+    load_all_models()
+    print(f"Models loaded: {len(model_cache)}")
+    return True
+
+
+# ============================================================================
+# MODEL TRAINING FUNCTIONS
+# ============================================================================
+
+# Function to train a new model for a specific ticker and timeframe
 def train_model_for_ticker(ticker, timeframe, model_type="ensemble"):
     """Train a new model for a specific ticker and timeframe"""
     try:
@@ -212,35 +727,15 @@ def train_model_for_ticker(ticker, timeframe, model_type="ensemble"):
 
         # Prepare features and target
         feature_columns = [
-            "Return",
-            "MA5",
-            "MA10",
-            "MA20",
-            "MA50",
-            "Volatility",
-            "Volume_Change",
-            "RSI",
-            "MACD",
-            "MACD_Signal",
-            "MACD_Histogram",
-            "BB_Upper",
-            "BB_Lower",
-            "BB_Width",
-            "BB_Position",
-            "williams_r",
-            "cci",
-            "obv",
-            "atr",
-            "stoch_k",
-            "stoch_d",
-            "vwap",
-            "Higher_High",
-            "Lower_Low",
-            "Doji",
-            "Trend_Bullish",
-            "Golden_Cross",
-            "High_Volatility",
-            "Volume_Spike",
+            "Return", "MA5", "MA10", "MA20", "MA50",
+            "Volatility", "Volume_Change", "RSI",
+            "MACD", "MACD_Signal", "MACD_Histogram",
+            "BB_Upper", "BB_Lower", "BB_Width", "BB_Position",
+            "williams_r", "cci", "obv", "atr",
+            "stoch_k", "stoch_d", "vwap",
+            "Higher_High", "Lower_Low", "Doji",
+            "Trend_Bullish", "Golden_Cross",
+            "High_Volatility", "Volume_Spike",
         ]
 
         # Filter available features
@@ -378,687 +873,11 @@ def train_model_for_ticker(ticker, timeframe, model_type="ensemble"):
         return {"error": str(e)}
 
 
-@api_view(["POST"])
-@permission_classes([AllowAny])
-def train_model(request):
-    """Train a new model for a specific ticker and timeframe"""
-    ticker = request.data.get("ticker")
-    timeframe = request.data.get("timeframe", "1d")
-    model_type = request.data.get("model_type", "ensemble")
-
-    if not ticker:
-        return Response(
-            {"error": "Please provide a ticker"}, status=status.HTTP_400_BAD_REQUEST
-        )
-
-    if timeframe not in TIMEFRAMES:
-        return Response(
-            {"error": f"Invalid timeframe. Use: {list(TIMEFRAMES.keys())}"},
-            status=status.HTTP_400_BAD_REQUEST,
-        )
-
-    # Check if scikit-learn is installed
-    try:
-        import sklearn
-    except ImportError:
-        return Response(
-            {"error": "scikit-learn is not installed. Run: pip install scikit-learn"},
-            status=status.HTTP_500_INTERNAL_SERVER_ERROR,
-        )
-
-    # Train the model
-    result = train_model_for_ticker(ticker, timeframe, model_type)
-
-    if "error" in result:
-        return Response(result, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-    return Response(result, status=status.HTTP_201_CREATED)
-
-
-@api_view(["POST"])
-@permission_classes([AllowAny])
-def train_universal_models(request):
-    """Train universal models for all timeframes using multiple tickers"""
-    timeframes = request.data.get("timeframes", list(TIMEFRAMES.keys()))
-    sample_tickers = request.data.get(
-        "tickers",
-        ["AAPL", "MSFT", "GOOGL", "AMZN", "META", "TSLA", "NVDA", "JPM", "V", "JNJ"],
-    )
-
-    results = {}
-
-    for timeframe in timeframes:
-        if timeframe not in TIMEFRAMES:
-            results[timeframe] = {"error": "Invalid timeframe"}
-            continue
-
-        try:
-            logger.info(f"Training universal model for {timeframe}")
-
-            # Collect data from multiple tickers
-            all_X = []
-            all_y = []
-
-            for ticker in sample_tickers:
-                try:
-                    # Fetch and process data
-                    data_result = fetch_stock_data_sync(ticker, timeframe)
-                    if not data_result:
-                        continue
-
-                    data = compute_comprehensive_features(
-                        data_result["price_data"], timeframe
-                    )
-
-                    # Prepare features
-                    feature_columns = [
-                        "Return",
-                        "MA5",
-                        "MA10",
-                        "MA20",
-                        "MA50",
-                        "Volatility",
-                        "Volume_Change",
-                        "RSI",
-                        "MACD",
-                        "MACD_Signal",
-                        "MACD_Histogram",
-                        "BB_Upper",
-                        "BB_Lower",
-                        "BB_Width",
-                        "BB_Position",
-                        "williams_r",
-                        "cci",
-                        "obv",
-                        "atr",
-                        "stoch_k",
-                        "stoch_d",
-                        "vwap",
-                        "Higher_High",
-                        "Lower_Low",
-                        "Doji",
-                        "Trend_Bullish",
-                        "Golden_Cross",
-                        "High_Volatility",
-                        "Volume_Spike",
-                    ]
-
-                    available_features = [
-                        col for col in feature_columns if col in data.columns
-                    ]
-
-                    # Create target
-                    data["Target"] = (data["Close"].shift(-1) > data["Close"]).astype(
-                        int
-                    )
-                    data = data.dropna()
-
-                    if len(data) > 50:
-                        X = data[available_features].values
-                        y = data["Target"].values
-                        all_X.append(X)
-                        all_y.append(y)
-                        logger.info(f"Added {len(X)} samples from {ticker}")
-
-                except Exception as e:
-                    logger.error(f"Failed to process {ticker}: {str(e)}")
-                    continue
-
-            if not all_X:
-                results[timeframe] = {"error": "No data collected"}
-                continue
-
-            # Combine all data
-            X_combined = np.vstack(all_X)
-            y_combined = np.hstack(all_y)
-
-            logger.info(f"Total samples for {timeframe}: {len(X_combined)}")
-
-            # Split and scale
-            X_train, X_test, y_train, y_test = train_test_split(
-                X_combined, y_combined, test_size=0.2, random_state=42
-            )
-
-            scaler = StandardScaler()
-            X_train_scaled = scaler.fit_transform(X_train)
-            X_test_scaled = scaler.transform(X_test)
-
-            # Train ensemble
-            model = RandomForestClassifier(
-                n_estimators=200,
-                max_depth=10,
-                min_samples_split=10,
-                random_state=42,
-                n_jobs=-1,
-            )
-            model.fit(X_train_scaled, y_train)
-
-            # Evaluate
-            accuracy = model.score(X_test_scaled, y_test)
-
-            # Save model
-            model_filename = f"universal_model_{timeframe}.pkl"
-            model_path = MODELS_DIR / model_filename
-
-            model_data = {
-                "model": model,
-                "scaler": scaler,
-                "features": available_features,
-                "accuracy": accuracy,
-                "timeframe": timeframe,
-                "trained_at": timezone.now().isoformat(),
-                "training_tickers": sample_tickers,
-                "total_samples": len(X_combined),
-            }
-
-            with open(model_path, "wb") as f:
-                pickle.dump(model_data, f)
-
-            # Update cache
-            cache_key = f"universal_{timeframe}"
-            model_cache[cache_key] = {
-                "model": model,
-                "scaler": scaler,
-                "features": available_features,
-                "accuracy": accuracy,
-                "type": "universal",
-                "timeframe": timeframe,
-                "path": str(model_path),
-                "last_updated": timezone.now().timestamp(),
-            }
-
-            results[timeframe] = {
-                "success": True,
-                "accuracy": accuracy,
-                "samples": len(X_combined),
-                "path": str(model_path),
-            }
-
-            logger.info(f"Universal model for {timeframe}: {accuracy:.2%} accuracy")
-
-        except Exception as e:
-            logger.error(f"Failed to train universal model for {timeframe}: {str(e)}")
-            results[timeframe] = {"error": str(e)}
-
-    return Response(results, status=status.HTTP_201_CREATED)
-
-
-@api_view(["GET"])
-@permission_classes([AllowAny])
-def list_models(request):
-    """List all available models with their metrics"""
-    models = []
-
-    for key, model_info in model_cache.items():
-        models.append(
-            {
-                "key": key,
-                "type": model_info.get("type"),
-                "ticker": model_info.get("ticker", "N/A"),
-                "timeframe": model_info.get("timeframe"),
-                "accuracy": model_info.get("accuracy", 0),
-                "features_count": len(model_info.get("features", [])),
-                "path": model_info.get("path", ""),
-            }
-        )
-
-    # Sort by accuracy
-    models.sort(key=lambda x: x["accuracy"], reverse=True)
-
-    return Response(
-        {
-            "total_models": len(models),
-            "models": models,
-            "summary": {
-                "universal": sum(1 for m in models if m["type"] == "universal"),
-                "ticker_specific": sum(
-                    1 for m in models if m["type"] == "ticker_specific"
-                ),
-                "by_timeframe": {
-                    tf: sum(1 for m in models if m["timeframe"] == tf)
-                    for tf in TIMEFRAMES.keys()
-                },
-            },
-        },
-        status=status.HTTP_200_OK,
-    )
-
-
-@api_view(["DELETE"])
-@permission_classes([IsAuthenticated])
-def delete_model(request):
-    """Delete a specific model"""
-    ticker = request.data.get("ticker")
-    timeframe = request.data.get("timeframe")
-
-    if not ticker or not timeframe:
-        return Response(
-            {"error": "Please provide ticker and timeframe"},
-            status=status.HTTP_400_BAD_REQUEST,
-        )
-
-    cache_key = f"{ticker}_{timeframe}"
-
-    if cache_key not in model_cache:
-        return Response({"error": "Model not found"}, status=status.HTTP_404_NOT_FOUND)
-
-    try:
-        # Delete file
-        model_path = Path(model_cache[cache_key].get("path"))
-        if model_path.exists():
-            model_path.unlink()
-
-        # Remove from cache
-        del model_cache[cache_key]
-
-        return Response(
-            {"message": f"Model {cache_key} deleted successfully"},
-            status=status.HTTP_200_OK,
-        )
-
-    except Exception as e:
-        return Response(
-            {"error": f"Failed to delete model: {str(e)}"},
-            status=status.HTTP_500_INTERNAL_SERVER_ERROR,
-        )
-
-
-def load_all_models():
-    """Load all available models - both universal and ticker-specific"""
-    global model_cache
-    model_cache.clear()
-
-    loaded_count = 0
-    failed_count = 0
-
-    if not MODELS_DIR.exists():
-        logger.error(f"Models directory does not exist: {MODELS_DIR}")
-        return
-
-    model_files = list(MODELS_DIR.glob("*.pkl"))
-    logger.info(f"Found {len(model_files)} model files in {MODELS_DIR}")
-
-    for model_path in model_files:
-        try:
-            filename = model_path.name
-
-            if filename.startswith("universal_model_"):
-                for timeframe in TIMEFRAMES.keys():
-                    if (
-                        f"_model_{timeframe}.pkl" in filename
-                        or f"model_{timeframe}.pkl" in filename
-                    ):
-                        with open(model_path, "rb") as f:
-                            model_data = pickle.load(f)
-                            cache_key = f"universal_{timeframe}"
-                            model_cache[cache_key] = {
-                                "model": model_data.get("model"),
-                                "features": model_data.get("features", []),
-                                "timeframe": timeframe,
-                                "accuracy": model_data.get("accuracy", 0.5),
-                                "type": "universal",
-                                "path": str(model_path),
-                                "last_updated": model_path.stat().st_mtime,
-                            }
-                            logger.info(f"Loaded universal model for {timeframe}")
-                            loaded_count += 1
-                            break
-
-            else:
-                parts = filename.replace(".pkl", "").split("_model_")
-                if len(parts) == 2:
-                    ticker = parts[0].upper()
-                    timeframe = parts[1]
-
-                    if timeframe in TIMEFRAMES:
-                        with open(model_path, "rb") as f:
-                            model_data = pickle.load(f)
-                            cache_key = f"{ticker}_{timeframe}"
-                            model_cache[cache_key] = {
-                                "model": model_data.get("model"),
-                                "features": model_data.get("features", []),
-                                "timeframe": timeframe,
-                                "ticker": ticker,
-                                "accuracy": model_data.get("accuracy", 0.5),
-                                "type": "ticker_specific",
-                                "path": str(model_path),
-                                "last_updated": model_path.stat().st_mtime,
-                            }
-                            logger.info(f"Loaded model for {ticker} ({timeframe})")
-                            loaded_count += 1
-                    else:
-                        logger.warning(f"Unknown timeframe in {filename}: {timeframe}")
-
-        except Exception as e:
-            logger.error(f"Failed to load model {model_path.name}: {str(e)}")
-            failed_count += 1
-
-    logger.info(f"Model loading complete: {loaded_count} loaded, {failed_count} failed")
-    logger.info(f"Total models in cache: {len(model_cache)}")
-
-    for timeframe in TIMEFRAMES.keys():
-        universal = f"universal_{timeframe}" in model_cache
-        ticker_specific = sum(
-            1
-            for k in model_cache.keys()
-            if k.endswith(f"_{timeframe}") and not k.startswith("universal")
-        )
-        logger.info(
-            f"Timeframe {timeframe}: Universal={universal}, Ticker-specific={ticker_specific}"
-        )
-
-
-load_all_models()
-
-
-def get_model_for_prediction(ticker, timeframe):
-    """Get the best available model for ticker and timeframe"""
-    # Normalize ticker for lookup
-    ticker = ticker.upper().replace(".", "_").replace("-", "_")
-
-    ticker_key = f"{ticker}_{timeframe}"
-    if ticker_key in model_cache:
-        logger.info(f"Using ticker-specific model for {ticker} ({timeframe})")
-        return model_cache[ticker_key]
-
-    for key in model_cache.keys():
-        if key.startswith(f"{ticker}_") and key.endswith(f"_{timeframe}"):
-            logger.info(f"Using variant ticker model {key}")
-            return model_cache[key]
-
-    universal_key = f"universal_{timeframe}"
-    if universal_key in model_cache:
-        logger.info(f"Using universal model for {ticker} ({timeframe})")
-        return model_cache[universal_key]
-
-    timeframe_models = [k for k in model_cache.keys() if k.endswith(f"_{timeframe}")]
-    if timeframe_models:
-        logger.warning(
-            f"Using random model for {ticker} ({timeframe}): {timeframe_models[0]}"
-        )
-        return model_cache[timeframe_models[0]]
-
-    if model_cache:
-        first_model = list(model_cache.keys())[0]
-        logger.warning(
-            f"Using fallback model for {ticker} ({timeframe}): {first_model}"
-        )
-        return model_cache[first_model]
-
-    logger.error(f"No models available for {ticker} ({timeframe})")
-    return None
-
-
-def validate_ticker(ticker):
-    """Enhanced ticker validation supporting international markets"""
-    if not ticker or not isinstance(ticker, str):
-        return False
-
-    if re.match(r"^[A-Z0-9\^\.\\_\-]{1,15}$", ticker):
-        return True
-    return False
-
-
-def normalize_ticker(ticker):
-    """Normalize ticker symbols for different markets"""
-    ticker = ticker.upper().strip()
-
-    ticker_mapping = {
-        "NIFTY": "^NSEI",
-        "NIFTY50": "^NSEI",
-        "SENSEX": "^BSESN",
-        "BERKSHIRE": "BRK-B",
-        "ALPHABET": "GOOGL",
-        "GOOGLE": "GOOGL",
-        "META": "META",
-        "FACEBOOK": "META",
-        "TESLA": "TSLA",
-    }
-
-    return ticker_mapping.get(ticker, ticker)
-
-
-def fetch_stock_data_sync(ticker, timeframe="1d"):
-    """Synchronous version of stock data fetching"""
-    try:
-        ticker = normalize_ticker(ticker)
-        config = TIMEFRAMES[timeframe]
-
-        logger.info(f"Sync fetch for {ticker} with timeframe {timeframe}")
-
-        # Use yfinance Ticker object
-        ticker_obj = yf.Ticker(ticker)
-        data = ticker_obj.history(
-            period=config["period"],
-            interval=config["interval"],
-            auto_adjust=True,
-            prepost=True,
-        )
-
-        if data.empty:
-            logger.error(f"No data returned for {ticker} ({timeframe})")
-            return None
-
-        logger.info(f"Successfully fetched {len(data)} rows for {ticker}")
-
-        # Try to get info, but don't fail if it doesn't work
-        market_info = {}
-        try:
-            ticker_info = ticker_obj.info
-            if ticker_info:
-                market_info = {
-                    "market_cap": ticker_info.get("marketCap"),
-                    "sector": ticker_info.get("sector"),
-                    "industry": ticker_info.get("industry"),
-                    "beta": ticker_info.get("beta"),
-                    "pe_ratio": ticker_info.get("trailingPE"),
-                    "dividend_yield": ticker_info.get("dividendYield"),
-                    "fifty_two_week_high": ticker_info.get("fiftyTwoWeekHigh"),
-                    "fifty_two_week_low": ticker_info.get("fiftyTwoWeekLow"),
-                }
-        except:
-            pass  # Info is optional
-
-        return {
-            "price_data": data,
-            "market_info": market_info,
-        }
-
-    except Exception as e:
-        logger.error(f"Sync fetch error for {ticker}: {str(e)}")
-        return None
-
-
-async def fetch_enhanced_stock_data(ticker, timeframe="1d"):
-    """Enhanced stock data fetching with multiple timeframes"""
-    try:
-        ticker = normalize_ticker(ticker)
-        config = TIMEFRAMES[timeframe]
-
-        logger.info(f"Attempting to fetch data for {ticker} with timeframe {timeframe}")
-
-        # Fetch price data synchronously first
-        def download_data():
-            return yf.download(
-                ticker,
-                period=config["period"],
-                interval=config["interval"],
-                progress=False,
-                timeout=30,
-                auto_adjust=True,
-                prepost=True,
-                threads=False,  # Add this to avoid threading issues
-            )
-
-        # Use sync_to_async properly
-        data = await sync_to_async(download_data, thread_sensitive=True)()
-
-        if data.empty:
-            logger.error(f"No data returned for {ticker} ({timeframe})")
-            # Try alternative approach
-            logger.info(f"Trying alternative fetch for {ticker}")
-            ticker_obj = yf.Ticker(ticker)
-            data = await sync_to_async(
-                lambda: ticker_obj.history(
-                    period=config["period"],
-                    interval=config["interval"],
-                    auto_adjust=True,
-                    prepost=True,
-                ),
-                thread_sensitive=True,
-            )()
-
-            if data.empty:
-                logger.error(f"Alternative fetch also failed for {ticker}")
-                return None
-
-        logger.info(f"Successfully fetched {len(data)} rows for {ticker}")
-
-        # Fetch ticker info separately with error handling
-        market_info = {}
-        try:
-            ticker_obj = yf.Ticker(ticker)
-            # Wrap the info call properly
-            ticker_info = await sync_to_async(
-                lambda: ticker_obj.info, thread_sensitive=True
-            )()
-
-            if ticker_info:
-                market_info = {
-                    "market_cap": ticker_info.get("marketCap"),
-                    "sector": ticker_info.get("sector"),
-                    "industry": ticker_info.get("industry"),
-                    "beta": ticker_info.get("beta"),
-                    "pe_ratio": ticker_info.get("trailingPE"),
-                    "dividend_yield": ticker_info.get("dividendYield"),
-                    "fifty_two_week_high": ticker_info.get("fiftyTwoWeekHigh"),
-                    "fifty_two_week_low": ticker_info.get("fiftyTwoWeekLow"),
-                }
-        except Exception as info_error:
-            logger.warning(
-                f"Could not fetch ticker info for {ticker}: {str(info_error)}"
-            )
-            # Continue without market info - it's not critical
-
-        data_with_context = {
-            "price_data": data,
-            "market_info": market_info,
-        }
-
-        return data_with_context
-
-    except Exception as e:
-        logger.error(f"Error fetching data for {ticker} ({timeframe}): {str(e)}")
-        logger.error(f"Full error details: {e.__class__.__name__}: {str(e)}")
-
-        # Try a simple synchronous fallback
-        try:
-            logger.info(f"Attempting synchronous fallback for {ticker}")
-            ticker_obj = yf.Ticker(ticker)
-            data = ticker_obj.history(
-                period=config["period"], interval=config["interval"]
-            )
-
-            if not data.empty:
-                return {"price_data": data, "market_info": {}}
-        except Exception as fallback_error:
-            logger.error(f"Fallback also failed: {str(fallback_error)}")
-
-        return None
-
-
-def compute_comprehensive_features(data, timeframe="1d"):
-    """Compute comprehensive technical features for different timeframes"""
-    try:
-        # Handle MultiIndex columns
-        if isinstance(data.columns, pd.MultiIndex):
-            data.columns = [col[0] for col in data.columns]
-
-        # Validate required columns
-        required_cols = ["Open", "High", "Low", "Close", "Volume"]
-        for col in required_cols:
-            if col not in data.columns:
-                raise ValueError(f"Missing required column: {col}")
-            data[col] = pd.to_numeric(data[col], errors="coerce")
-
-        data = data.dropna(subset=required_cols)
-
-        if len(data) < 50:
-            raise ValueError(f"Insufficient data: {len(data)} rows")
-
-        # Adjust periods based on timeframe
-        if timeframe == "1d":
-            ma_periods = [5, 10, 20, 50]
-            rsi_period = 14
-        elif timeframe == "1w":
-            ma_periods = [4, 8, 13, 26]
-            rsi_period = 10
-        elif timeframe == "1mo":
-            ma_periods = [3, 6, 12, 24]
-            rsi_period = 8
-        else:  # 1y
-            ma_periods = [2, 3, 6, 12]
-            rsi_period = 6
-
-        # Basic features
-        data["Return"] = data["Close"].pct_change()
-
-        # Moving averages
-        for period in ma_periods:
-            if len(data) >= period:
-                data[f"MA{period}"] = data["Close"].rolling(window=period).mean()
-
-        # Volatility and volume
-        data["Volatility"] = data["Return"].rolling(window=20).std()
-        data["Volume_Change"] = data["Volume"].pct_change()
-
-        # Technical indicators
-        data["RSI"] = compute_rsi(data["Close"], rsi_period)
-        macd, macd_signal, macd_hist = compute_macd(data["Close"])
-        data["MACD"] = macd
-        data["MACD_Signal"] = macd_signal
-        data["MACD_Histogram"] = macd_hist
-
-        # Bollinger Bands
-        bb_upper, bb_lower, bb_width = compute_bollinger_bands(data)
-        data["BB_Upper"] = bb_upper
-        data["BB_Lower"] = bb_lower
-        data["BB_Width"] = bb_width
-        data["BB_Position"] = (data["Close"] - bb_lower) / (bb_upper - bb_lower)
-
-        # Advanced indicators
-        advanced = compute_advanced_indicators(data)
-        for key, value in advanced.items():
-            data[key] = value
-
-        # Pattern features
-        data["Higher_High"] = (data["High"] > data["High"].shift(1)).astype(int)
-        data["Lower_Low"] = (data["Low"] < data["Low"].shift(1)).astype(int)
-        data["Doji"] = (
-            abs(data["Close"] - data["Open"]) <= (data["High"] - data["Low"]) * 0.1
-        ).astype(int)
-
-        # Trend features
-        if "MA20" in data.columns and "MA50" in data.columns:
-            data["Trend_Bullish"] = (data["Close"] > data["MA20"]).astype(int)
-            data["Golden_Cross"] = (data["MA20"] > data["MA50"]).astype(int)
-
-        # Market regime features
-        data["High_Volatility"] = (
-            data["Volatility"] > data["Volatility"].rolling(50).quantile(0.8)
-        ).astype(int)
-        data["Volume_Spike"] = (
-            data["Volume"] > data["Volume"].rolling(20).mean() * 1.5
-        ).astype(int)
-
-        logger.info(f"Computed comprehensive features for {timeframe} timeframe")
-        return data
-
-    except Exception as e:
-        logger.error(f"Error computing features for {timeframe}: {str(e)}")
-        raise
-
-
+# ============================================================================
+# PREDICTION FUNCTIONS
+# ============================================================================
+
+# Function to make multi-timeframe predictions
 def make_multi_timeframe_prediction(ticker, data_dict):
     """Make predictions across multiple timeframes"""
     predictions = {}
@@ -1141,6 +960,7 @@ def make_multi_timeframe_prediction(ticker, data_dict):
     return predictions
 
 
+# Function to process multi-timeframe prediction without request object
 def process_multi_timeframe_prediction(ticker, timeframes, include_analysis=True):
     """
     Core business logic for multi-timeframe predictions.
@@ -1314,212 +1134,14 @@ def process_multi_timeframe_prediction(ticker, timeframes, include_analysis=True
         }, status.HTTP_500_INTERNAL_SERVER_ERROR
 
 
-@api_view(["GET"])
-@permission_classes([AllowAny])
-def debug_models(request):
-    """Debug endpoint to check model status"""
-    return Response(
-        {
-            "models_loaded": len(model_cache),
-            "model_keys": list(model_cache.keys()),
-            "models_dir": str(MODELS_DIR),
-            "models_dir_exists": MODELS_DIR.exists(),
-            "files_in_models_dir": (
-                [str(f) for f in MODELS_DIR.glob("*.pkl")]
-                if MODELS_DIR.exists()
-                else []
-            ),
-            "timeframes": list(TIMEFRAMES.keys()),
-            "expected_model_files": [
-                f"universal_model{TIMEFRAMES[tf]['model_suffix']}.pkl"
-                for tf in TIMEFRAMES.keys()
-            ],
-        }
-    )
+# ============================================================================
+# 📈 PREDICTION ENDPOINTS
+# ============================================================================
 
-
-def create_dummy_models():
-    """Create dummy models for testing purposes"""
-    from sklearn.ensemble import RandomForestClassifier
-    import pickle
-
-    # Define expected features
-    features = [
-        "Return",
-        "MA5",
-        "MA10",
-        "MA20",
-        "MA50",
-        "Volatility",
-        "Volume_Change",
-        "RSI",
-        "MACD",
-        "MACD_Signal",
-        "MACD_Histogram",
-        "BB_Upper",
-        "BB_Lower",
-        "BB_Width",
-        "BB_Position",
-        "williams_r",
-        "cci",
-        "obv",
-        "atr",
-        "stoch_k",
-        "stoch_d",
-        "vwap",
-        "Higher_High",
-        "Lower_Low",
-        "Doji",
-        "Trend_Bullish",
-        "Golden_Cross",
-        "High_Volatility",
-        "Volume_Spike",
-    ]
-
-    # Create dummy models for each timeframe
-    for timeframe, config in TIMEFRAMES.items():
-        try:
-            # Create a simple random forest model
-            model = RandomForestClassifier(n_estimators=10, random_state=42)
-
-            # Create dummy training data
-            import numpy as np
-
-            X_dummy = np.random.randn(100, len(features))
-            y_dummy = np.random.randint(0, 2, 100)
-
-            # Fit the model
-            model.fit(X_dummy, y_dummy)
-
-            # Save model
-            model_path = MODELS_DIR / f"universal_model{config['model_suffix']}.pkl"
-            model_data = {
-                "model": model,
-                "features": features,
-                "accuracy": 0.65,  # Dummy accuracy
-                "timeframe": timeframe,
-            }
-
-            with open(model_path, "wb") as f:
-                pickle.dump(model_data, f)
-
-            print(f"Created dummy model for {timeframe} at {model_path}")
-
-        except Exception as e:
-            print(f"Error creating dummy model for {timeframe}: {e}")
-
-    # Reload models
-    load_multi_timeframe_models()
-    print(f"Models loaded: {len(model_cache)}")
-    return True
-
-
-@api_view(["POST"])
-@permission_classes([AllowAny])
-def create_test_models(request):
-    """Create dummy models for testing"""
-    try:
-        # First, check if sklearn is installed
-        try:
-            from sklearn.ensemble import RandomForestClassifier
-        except ImportError:
-            return Response(
-                {
-                    "status": "error",
-                    "message": "scikit-learn is not installed. Please run: pip install scikit-learn",
-                },
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            )
-
-        success = create_dummy_models()
-        if success:
-            return Response(
-                {
-                    "status": "success",
-                    "message": "Dummy models created",
-                    "models_loaded": len(model_cache),
-                    "model_keys": list(model_cache.keys()),
-                }
-            )
-        else:
-            return Response({"status": "error", "message": "Failed to create models"})
-    except Exception as e:
-        return Response({"status": "error", "message": str(e)})
-
-
-@api_view(["GET"])
-@permission_classes([AllowAny])
-def system_health(request):
-    """Comprehensive system health check"""
-    try:
-        health_status = {
-            "timestamp": timezone.now().isoformat(),
-            "status": "healthy",
-            "services": {
-                "cache": "unknown",
-                "models": "unknown",
-                "data_source": "unknown",
-            },
-            "metrics": {
-                "model_cache_size": len(model_cache),
-                "prediction_cache_size": len(prediction_cache),
-                "available_timeframes": list(TIMEFRAMES.keys()),
-            },
-        }
-
-        # Check cache
-        try:
-            cache.set("health_check", "ok", timeout=60)
-            if cache.get("health_check") == "ok":
-                health_status["services"]["cache"] = "healthy"
-            else:
-                health_status["services"]["cache"] = "degraded"
-        except:
-            health_status["services"]["cache"] = "unhealthy"
-
-        # Check models
-        if len(model_cache) > 0:
-            health_status["services"]["models"] = "healthy"
-        else:
-            health_status["services"]["models"] = "degraded"
-
-        # Check data source
-        try:
-            test_ticker = yf.Ticker("AAPL")
-            test_data = test_ticker.history(period="1d")
-            if not test_data.empty:
-                health_status["services"]["data_source"] = "healthy"
-            else:
-                health_status["services"]["data_source"] = "degraded"
-        except:
-            health_status["services"]["data_source"] = "unhealthy"
-
-        # Overall status
-        if all(status == "healthy" for status in health_status["services"].values()):
-            health_status["status"] = "healthy"
-        elif any(
-            status == "unhealthy" for status in health_status["services"].values()
-        ):
-            health_status["status"] = "unhealthy"
-        else:
-            health_status["status"] = "degraded"
-
-        return Response(health_status, status=status.HTTP_200_OK)
-
-    except Exception as e:
-        return Response(
-            {
-                "status": "unhealthy",
-                "error": str(e),
-                "timestamp": timezone.now().isoformat(),
-            },
-            status=status.HTTP_500_INTERNAL_SERVER_ERROR,
-        )
-
-
+# Prediction endpoint for multi-timeframe analysis
 @api_view(["POST"])
 @throttle_classes([PredictionRateThrottle])
-@permission_classes([AllowAny])  # Change to [IsAuthenticated] for production
+@permission_classes([AllowAny])
 def predict_multi_timeframe(request):
     """Advanced multi-timeframe stock prediction with comprehensive analysis"""
     ticker = request.data.get("ticker")
@@ -1533,7 +1155,7 @@ def predict_multi_timeframe(request):
 
     return Response(response_data, status=status_code)
 
-
+# Batch prediction endpoint for multiple tickers
 @api_view(["POST"])
 @permission_classes([AllowAny])
 def batch_predictions(request):
@@ -1587,7 +1209,345 @@ def batch_predictions(request):
             status=status.HTTP_500_INTERNAL_SERVER_ERROR,
         )
 
+# Legacy single-timeframe prediction endpoint for backward compatibility
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def predict_stock_trend(request):
+    """Legacy single-timeframe prediction endpoint"""
+    ticker = request.data.get("ticker")
 
+    if not ticker:
+        return Response(
+            {"error": "Please provide a ticker symbol"},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    # Call the core business logic directly
+    response_data, status_code = process_multi_timeframe_prediction(
+        ticker, ["1d"], include_analysis=True
+    )
+
+    if status_code == status.HTTP_200_OK:
+        # Format for legacy response
+        legacy_response = {
+            "ticker": response_data["ticker"],
+            "prediction": response_data["predictions"].get("1d", {}),
+            "history": [],
+            "analysis": response_data.get("analysis", {}),
+        }
+        return Response(legacy_response, status=status.HTTP_200_OK)
+    else:
+        return Response(response_data, status=status_code)
+
+
+# ============================================================================
+# 🤖 MODEL MANAGEMENT ENDPOINTS
+# ============================================================================
+
+# Endpoint to load all models
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def train_model(request):
+    """Train a new model for a specific ticker and timeframe"""
+    ticker = request.data.get("ticker")
+    timeframe = request.data.get("timeframe", "1d")
+    model_type = request.data.get("model_type", "ensemble")
+
+    if not ticker:
+        return Response(
+            {"error": "Please provide a ticker"}, status=status.HTTP_400_BAD_REQUEST
+        )
+
+    if timeframe not in TIMEFRAMES:
+        return Response(
+            {"error": f"Invalid timeframe. Use: {list(TIMEFRAMES.keys())}"},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    # Check if scikit-learn is installed
+    try:
+        import sklearn
+    except ImportError:
+        return Response(
+            {"error": "scikit-learn is not installed. Run: pip install scikit-learn"},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        )
+
+    # Train the model
+    result = train_model_for_ticker(ticker, timeframe, model_type)
+
+    if "error" in result:
+        return Response(result, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    return Response(result, status=status.HTTP_201_CREATED)
+
+# Endpoint to train universal models for multiple tickers and timeframes
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def train_universal_models(request):
+    """Train universal models for all timeframes using multiple tickers"""
+    timeframes = request.data.get("timeframes", list(TIMEFRAMES.keys()))
+    sample_tickers = request.data.get(
+        "tickers",
+        ["AAPL", "MSFT", "GOOGL", "AMZN", "META", "TSLA", "NVDA", "JPM", "V", "JNJ"],
+    )
+
+    results = {}
+
+    for timeframe in timeframes:
+        if timeframe not in TIMEFRAMES:
+            results[timeframe] = {"error": "Invalid timeframe"}
+            continue
+
+        try:
+            logger.info(f"Training universal model for {timeframe}")
+
+            # Collect data from multiple tickers
+            all_X = []
+            all_y = []
+
+            for ticker in sample_tickers:
+                try:
+                    # Fetch and process data
+                    data_result = fetch_stock_data_sync(ticker, timeframe)
+                    if not data_result:
+                        continue
+
+                    data = compute_comprehensive_features(
+                        data_result["price_data"], timeframe
+                    )
+
+                    # Prepare features
+                    feature_columns = [
+                        "Return", "MA5", "MA10", "MA20", "MA50",
+                        "Volatility", "Volume_Change", "RSI",
+                        "MACD", "MACD_Signal", "MACD_Histogram",
+                        "BB_Upper", "BB_Lower", "BB_Width", "BB_Position",
+                        "williams_r", "cci", "obv", "atr",
+                        "stoch_k", "stoch_d", "vwap",
+                        "Higher_High", "Lower_Low", "Doji",
+                        "Trend_Bullish", "Golden_Cross",
+                        "High_Volatility", "Volume_Spike",
+                    ]
+
+                    available_features = [
+                        col for col in feature_columns if col in data.columns
+                    ]
+
+                    # Create target
+                    data["Target"] = (data["Close"].shift(-1) > data["Close"]).astype(
+                        int
+                    )
+                    data = data.dropna()
+
+                    if len(data) > 50:
+                        X = data[available_features].values
+                        y = data["Target"].values
+                        all_X.append(X)
+                        all_y.append(y)
+                        logger.info(f"Added {len(X)} samples from {ticker}")
+
+                except Exception as e:
+                    logger.error(f"Failed to process {ticker}: {str(e)}")
+                    continue
+
+            if not all_X:
+                results[timeframe] = {"error": "No data collected"}
+                continue
+
+            # Combine all data
+            X_combined = np.vstack(all_X)
+            y_combined = np.hstack(all_y)
+
+            logger.info(f"Total samples for {timeframe}: {len(X_combined)}")
+
+            # Split and scale
+            X_train, X_test, y_train, y_test = train_test_split(
+                X_combined, y_combined, test_size=0.2, random_state=42
+            )
+
+            scaler = StandardScaler()
+            X_train_scaled = scaler.fit_transform(X_train)
+            X_test_scaled = scaler.transform(X_test)
+
+            # Train ensemble
+            model = RandomForestClassifier(
+                n_estimators=200,
+                max_depth=10,
+                min_samples_split=10,
+                random_state=42,
+                n_jobs=-1,
+            )
+            model.fit(X_train_scaled, y_train)
+
+            # Evaluate
+            accuracy = model.score(X_test_scaled, y_test)
+
+            # Save model
+            model_filename = f"universal_model_{timeframe}.pkl"
+            model_path = MODELS_DIR / model_filename
+
+            model_data = {
+                "model": model,
+                "scaler": scaler,
+                "features": available_features,
+                "accuracy": accuracy,
+                "timeframe": timeframe,
+                "trained_at": timezone.now().isoformat(),
+                "training_tickers": sample_tickers,
+                "total_samples": len(X_combined),
+            }
+
+            with open(model_path, "wb") as f:
+                pickle.dump(model_data, f)
+
+            # Update cache
+            cache_key = f"universal_{timeframe}"
+            model_cache[cache_key] = {
+                "model": model,
+                "scaler": scaler,
+                "features": available_features,
+                "accuracy": accuracy,
+                "type": "universal",
+                "timeframe": timeframe,
+                "path": str(model_path),
+                "last_updated": timezone.now().timestamp(),
+            }
+
+            results[timeframe] = {
+                "success": True,
+                "accuracy": accuracy,
+                "samples": len(X_combined),
+                "path": str(model_path),
+            }
+
+            logger.info(f"Universal model for {timeframe}: {accuracy:.2%} accuracy")
+
+        except Exception as e:
+            logger.error(f"Failed to train universal model for {timeframe}: {str(e)}")
+            results[timeframe] = {"error": str(e)}
+
+    return Response(results, status=status.HTTP_201_CREATED)
+
+# Endpoint to list all available models
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def list_models(request):
+    """List all available models with their metrics"""
+    models = []
+
+    for key, model_info in model_cache.items():
+        models.append(
+            {
+                "key": key,
+                "type": model_info.get("type"),
+                "ticker": model_info.get("ticker", "N/A"),
+                "timeframe": model_info.get("timeframe"),
+                "accuracy": model_info.get("accuracy", 0),
+                "features_count": len(model_info.get("features", [])),
+                "path": model_info.get("path", ""),
+            }
+        )
+
+    # Sort by accuracy
+    models.sort(key=lambda x: x["accuracy"], reverse=True)
+
+    return Response(
+        {
+            "total_models": len(models),
+            "models": models,
+            "summary": {
+                "universal": sum(1 for m in models if m["type"] == "universal"),
+                "ticker_specific": sum(
+                    1 for m in models if m["type"] == "ticker_specific"
+                ),
+                "by_timeframe": {
+                    tf: sum(1 for m in models if m["timeframe"] == tf)
+                    for tf in TIMEFRAMES.keys()
+                },
+            },
+        },
+        status=status.HTTP_200_OK,
+    )
+
+# Endpoint to delete a specific model
+@api_view(["DELETE"])
+@permission_classes([IsAuthenticated])
+def delete_model(request):
+    """Delete a specific model"""
+    ticker = request.data.get("ticker")
+    timeframe = request.data.get("timeframe")
+
+    if not ticker or not timeframe:
+        return Response(
+            {"error": "Please provide ticker and timeframe"},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    cache_key = f"{ticker}_{timeframe}"
+
+    if cache_key not in model_cache:
+        return Response({"error": "Model not found"}, status=status.HTTP_404_NOT_FOUND)
+
+    try:
+        # Delete file
+        model_path = Path(model_cache[cache_key].get("path"))
+        if model_path.exists():
+            model_path.unlink()
+
+        # Remove from cache
+        del model_cache[cache_key]
+
+        return Response(
+            {"message": f"Model {cache_key} deleted successfully"},
+            status=status.HTTP_200_OK,
+        )
+
+    except Exception as e:
+        return Response(
+            {"error": f"Failed to delete model: {str(e)}"},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        )
+
+# Endpoint to create dummy models for testing purposes
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def create_test_models(request):
+    """Create dummy models for testing"""
+    try:
+        # First, check if sklearn is installed
+        try:
+            from sklearn.ensemble import RandomForestClassifier
+        except ImportError:
+            return Response(
+                {
+                    "status": "error",
+                    "message": "scikit-learn is not installed. Please run: pip install scikit-learn",
+                },
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
+
+        success = create_dummy_models()
+        if success:
+            return Response(
+                {
+                    "status": "success",
+                    "message": "Dummy models created",
+                    "models_loaded": len(model_cache),
+                    "model_keys": list(model_cache.keys()),
+                }
+            )
+        else:
+            return Response({"status": "error", "message": "Failed to create models"})
+    except Exception as e:
+        return Response({"status": "error", "message": str(e)})
+
+
+# ============================================================================
+# 💼 TRADING ENDPOINTS
+# ============================================================================
+
+# Endpoint to simulate a trade (paper trading)
 @api_view(["POST"])
 @throttle_classes([TradingRateThrottle])
 @permission_classes([IsAuthenticated])
@@ -1755,7 +1715,7 @@ def simulate_trade(request):
             status=status.HTTP_500_INTERNAL_SERVER_ERROR,
         )
 
-
+# Endpoint to get user's simulated portfolio
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def get_portfolio(request):
@@ -1856,7 +1816,7 @@ def get_portfolio(request):
             status=status.HTTP_500_INTERNAL_SERVER_ERROR,
         )
 
-
+# Endpoint to get user's trade history (placeholder for integration)
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def get_trade_history(request):
@@ -1899,7 +1859,31 @@ def get_trade_history(request):
             status=status.HTTP_500_INTERNAL_SERVER_ERROR,
         )
 
+# Endpoint to place a real trade (placeholder for future broker integration)
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def place_real_trade(request):
+    """Place real trade through broker API (placeholder for integration)"""
+    return Response(
+        {
+            "message": "Real trading integration coming soon",
+            "note": "This will integrate with brokers like Alpaca, Interactive Brokers, etc.",
+            "required_setup": [
+                "Broker API credentials",
+                "User account verification",
+                "Risk management rules",
+                "Compliance checks",
+            ],
+        },
+        status=status.HTTP_501_NOT_IMPLEMENTED,
+    )
 
+
+# ============================================================================
+# 👁️ WATCHLIST ENDPOINTS
+# ============================================================================
+
+# Endpoint to create or update user's watchlist
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
 def create_watchlist(request):
@@ -1950,7 +1934,7 @@ def create_watchlist(request):
             status=status.HTTP_500_INTERNAL_SERVER_ERROR,
         )
 
-
+# Endpoint to get predictions for all tickers in user's watchlist
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def get_watchlist_predictions(request):
@@ -2036,6 +2020,11 @@ def get_watchlist_predictions(request):
         )
 
 
+# ============================================================================
+# 📊 MARKET DATA ENDPOINTS
+# ============================================================================
+
+# Endpoint to get overall market overview and top movers
 @api_view(["GET"])
 @permission_classes([AllowAny])
 def market_overview(request):
@@ -2104,7 +2093,7 @@ def market_overview(request):
             status=status.HTTP_500_INTERNAL_SERVER_ERROR,
         )
 
-
+# Endpoint to get analytics and performance metrics
 @api_view(["GET"])
 @permission_classes([AllowAny])
 def analytics_dashboard(request):
@@ -2146,56 +2135,7 @@ def analytics_dashboard(request):
             status=status.HTTP_500_INTERNAL_SERVER_ERROR,
         )
 
-
-@api_view(["POST"])
-@permission_classes([AllowAny])
-def predict_stock_trend(request):
-    """Legacy single-timeframe prediction endpoint"""
-    ticker = request.data.get("ticker")
-
-    if not ticker:
-        return Response(
-            {"error": "Please provide a ticker symbol"},
-            status=status.HTTP_400_BAD_REQUEST,
-        )
-
-    # Call the core business logic directly
-    response_data, status_code = process_multi_timeframe_prediction(
-        ticker, ["1d"], include_analysis=True
-    )
-
-    if status_code == status.HTTP_200_OK:
-        # Format for legacy response
-        legacy_response = {
-            "ticker": response_data["ticker"],
-            "prediction": response_data["predictions"].get("1d", {}),
-            "history": [],
-            "analysis": response_data.get("analysis", {}),
-        }
-        return Response(legacy_response, status=status.HTTP_200_OK)
-    else:
-        return Response(response_data, status=status_code)
-
-
-@api_view(["POST"])
-@permission_classes([IsAuthenticated])
-def place_real_trade(request):
-    """Place real trade through broker API (placeholder for integration)"""
-    return Response(
-        {
-            "message": "Real trading integration coming soon",
-            "note": "This will integrate with brokers like Alpaca, Interactive Brokers, etc.",
-            "required_setup": [
-                "Broker API credentials",
-                "User account verification",
-                "Risk management rules",
-                "Compliance checks",
-            ],
-        },
-        status=status.HTTP_501_NOT_IMPLEMENTED,
-    )
-
-
+# Endpoint to get detailed model performance metrics
 @api_view(["GET"])
 @permission_classes([AllowAny])
 def get_model_performance(request):
@@ -2251,6 +2191,81 @@ def get_model_performance(request):
         )
 
 
+# ============================================================================
+# 🧪 SYSTEM MONITORING ENDPOINTS
+# ============================================================================
+
+# Endpoint to check system health and status
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def system_health(request):
+    """Comprehensive system health check"""
+    try:
+        health_status = {
+            "timestamp": timezone.now().isoformat(),
+            "status": "healthy",
+            "services": {
+                "cache": "unknown",
+                "models": "unknown",
+                "data_source": "unknown",
+            },
+            "metrics": {
+                "model_cache_size": len(model_cache),
+                "prediction_cache_size": len(prediction_cache),
+                "available_timeframes": list(TIMEFRAMES.keys()),
+            },
+        }
+
+        # Check cache
+        try:
+            cache.set("health_check", "ok", timeout=60)
+            if cache.get("health_check") == "ok":
+                health_status["services"]["cache"] = "healthy"
+            else:
+                health_status["services"]["cache"] = "degraded"
+        except:
+            health_status["services"]["cache"] = "unhealthy"
+
+        # Check models
+        if len(model_cache) > 0:
+            health_status["services"]["models"] = "healthy"
+        else:
+            health_status["services"]["models"] = "degraded"
+
+        # Check data source
+        try:
+            test_ticker = yf.Ticker("AAPL")
+            test_data = test_ticker.history(period="1d")
+            if not test_data.empty:
+                health_status["services"]["data_source"] = "healthy"
+            else:
+                health_status["services"]["data_source"] = "degraded"
+        except:
+            health_status["services"]["data_source"] = "unhealthy"
+
+        # Overall status
+        if all(status == "healthy" for status in health_status["services"].values()):
+            health_status["status"] = "healthy"
+        elif any(
+            status == "unhealthy" for status in health_status["services"].values()
+        ):
+            health_status["status"] = "unhealthy"
+        else:
+            health_status["status"] = "degraded"
+
+        return Response(health_status, status=status.HTTP_200_OK)
+
+    except Exception as e:
+        return Response(
+            {
+                "status": "unhealthy",
+                "error": str(e),
+                "timestamp": timezone.now().isoformat(),
+            },
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        )
+
+# Endpoint to check Redis connectivity (legacy endpoint)
 @api_view(["GET"])
 @permission_classes([AllowAny])
 def redis_check(request):
@@ -2281,3 +2296,33 @@ def redis_check(request):
             {"status": "error", "message": f"Redis connection failed: {str(e)}"},
             status=status.HTTP_500_INTERNAL_SERVER_ERROR,
         )
+
+# Endpoint to debug models and their status
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def debug_models(request):
+    """Debug endpoint to check model status"""
+    return Response(
+        {
+            "models_loaded": len(model_cache),
+            "model_keys": list(model_cache.keys()),
+            "models_dir": str(MODELS_DIR),
+            "models_dir_exists": MODELS_DIR.exists(),
+            "files_in_models_dir": (
+                [str(f) for f in MODELS_DIR.glob("*.pkl")]
+                if MODELS_DIR.exists()
+                else []
+            ),
+            "timeframes": list(TIMEFRAMES.keys()),
+            "expected_model_files": [
+                f"universal_model{TIMEFRAMES[tf]['model_suffix']}.pkl"
+                for tf in TIMEFRAMES.keys()
+            ],
+        }
+    )
+
+
+# ============================================================================
+# INITIALIZATION - Load models at startup
+# ============================================================================
+load_all_models()
