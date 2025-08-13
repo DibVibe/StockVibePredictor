@@ -989,7 +989,7 @@ For issues and questions:
 
 <div align="center">
 
-This project is licensed under the **MIT License**
+This project is licensed under the **MIT License**<br>
 Feel free to fork, remix, and use — just don't forget to credit 😎
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
