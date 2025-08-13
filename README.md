@@ -850,8 +850,6 @@ git push origin Group
 
 ## 🎯 **API Endpoints**
 
-</div>
-
 | Method   | Endpoint               | Description                |
 | :------- | :--------------------- | :------------------------- |
 | **POST** | `/api/predict/`        | Get stock prediction       |
@@ -859,6 +857,8 @@ git push origin Group
 | **GET**  | `/api/health/`         | Health check               |
 | **GET**  | `/api/models/list/`    | List available models      |
 | **POST** | `/api/predict/multi/`  | Multi-timeframe prediction |
+
+</div>
 
 > 📚 **For Complete Endpoints Guide → `Docs/API-Endpoints.json`**
 
@@ -868,14 +868,14 @@ git push origin Group
 
 ## ❌ **Common Issues and Fixes**
 
-</div>
-
 | Issue                    | Solution                                   |
 | :----------------------- | :----------------------------------------- |
 | **Missing stock models** | Run `python TrainModel.py`                 |
 | **Dependency Errors**    | Re-run `pip install` or `npm install`      |
 | **CORS Issues**          | Verify `django-cors-headers` is configured |
 | **Git Conflicts**        | Pull latest (`git pull origin main`)       |
+
+</div>
 
 ---
 
@@ -955,8 +955,6 @@ Assign one member to handle deployment and test the live app
 
 ## 🔮 **Future Improvements**
 
-</div>
-
 | Feature                    | Description                              |
 | :------------------------- | :--------------------------------------- |
 | 📊 **Confidence Scores**   | Add ML prediction confidence metrics     |
@@ -964,6 +962,8 @@ Assign one member to handle deployment and test the live app
 | 🧠 **Advanced Indicators** | Include MACD, Bollinger Bands, etc.      |
 | ☁️ **Cloud Storage**       | Save and track predictions over time     |
 | 🔐 **Authentication**      | Add user login & personalized dashboards |
+
+</div>
 
 ---
 
@@ -1000,7 +1000,7 @@ Feel free to fork, remix, and use — just don't forget to credit 😎
 
 <div align="center">
 
-## 🎉 **Acknowledgments**
+## 🎉 **Acknowledgments** 🎉
 
 </div>
 
@@ -1021,14 +1021,14 @@ Feel free to fork, remix, and use — just don't forget to credit 😎
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,12,20&height=100&section=footer" alt="footer" />
 
-## ⚠️ **DISCLAIMER**
+## ⚠️ **DISCLAIMER** ⚠️
 
-```
-This application is for educational and research purposes only.
-Stock predictions are not guaranteed and should not be used as
-the sole basis for investment decisions. Always consult with
+<p align="center">
+This application is for educational and research purposes only.<br/>
+Stock predictions are not guaranteed and should not be used as<br/>
+the sole basis for investment decisions. Always consult with<br/>
 financial professionals before making investment choices.
-```
+</p>
 
 ---
 
