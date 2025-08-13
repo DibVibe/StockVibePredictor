@@ -1,4 +1,3 @@
-````markdown
 <div align="center">
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,12,20&height=300&section=header&text=StockVibePredictor&fontSize=90&animation=fadeIn&fontAlignY=35&desc=AI-Powered%20Stock%20Market%20Prediction%20System&descAlignY=51&descAlign=62" alt="header" />
@@ -33,7 +32,6 @@
 ║  🚀 Full-Stack Machine Learning Web Application              ║
 ╚═══════════════════════════════════════════════════════════════╝
 ```
-````
 
 </div>
 
@@ -352,7 +350,6 @@ venv\Scripts\activate
 
 ```bash
 # 📥 Install all dependencies
-cd Backend
 pip install -r requirements.txt
 ```
 
@@ -493,7 +490,7 @@ npm start
 
 1. Open Postman
 2. Click "Import" → "Raw text"
-3. Paste all endpoints from the Endpoints.txt file in Docs
+3. Paste all endpoints from the Endpoints.txt file
 4. Click "Continue" → "Import"
 
 ### **🧪 Test Basic Endpoints:**
@@ -1050,3 +1047,5 @@ financial professionals before making investment choices.
 </div>
 
 ---
+
+**Now it should render properly on GitHub! Just copy everything above and replace your entire README.md file!** 🚀✨
