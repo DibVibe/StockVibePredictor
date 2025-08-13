@@ -25,13 +25,13 @@
 
 <br/>
 
-```ascii
+<pre align="center">
 ╔═══════════════════════════════════════════════════════════════╗
 ║  🎯 AI-Powered Stock Market Prediction System                ║
 ║  📅 Created with ❤️ • August 2025                            ║
 ║  🚀 Full-Stack Machine Learning Web Application              ║
 ╚═══════════════════════════════════════════════════════════════╝
-```
+</pre>
 
 </div>
 
@@ -99,8 +99,6 @@
 
 <img src="https://skillicons.dev/icons?i=python,django,react,nextjs,redis,sklearn,nodejs,postgres,docker,git&theme=dark" />
 
-</div>
-
 <br/>
 
 | **Layer**          | **Technology**                     | **Purpose**                         |
@@ -112,6 +110,8 @@
 | 💾 **Database**    | `SQLite` / `PostgreSQL`            | Data Persistence                    |
 | 🔥 **Cache**       | `Redis`                            | High-Performance Caching            |
 | 🚀 **Deployment**  | `Heroku` + `Vercel`                | Production Hosting                  |
+
+</div>
 
 ---
 
