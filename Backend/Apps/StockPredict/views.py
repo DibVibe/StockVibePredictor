@@ -2191,6 +2191,266 @@ def get_model_performance(request):
         )
 
 
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def get_chart_data(request, ticker):
+    """Get historical stock data optimized for charting with caching and enhanced data"""
+    try:
+        # Get parameters
+        timeframe = request.GET.get('timeframe', '1mo')
+        chart_type = request.GET.get('chart_type', 'candlestick')  # candlestick, line, ohlc
+        indicators = request.GET.get('indicators', '').split(',') if request.GET.get('indicators') else []
+
+        # Validate timeframe
+        if timeframe not in TIMEFRAMES:
+            return Response(
+                {"error": f"Invalid timeframe. Use: {list(TIMEFRAMES.keys())}"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        # Validate and normalize ticker
+        if not validate_ticker(ticker):
+            return Response(
+                {"error": "Invalid ticker format"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        original_ticker = ticker
+        ticker = normalize_ticker(ticker)
+
+        # Check cache first
+        cache_key = f"chart_data_{ticker}_{timeframe}_{chart_type}"
+        cached_data = cache.get(cache_key)
+
+        if cached_data:
+            logger.info(f"Returning cached chart data for {ticker} ({timeframe})")
+            return Response(cached_data, status=status.HTTP_200_OK)
+
+        # Fetch stock data
+        logger.info(f"Fetching chart data for {ticker} ({timeframe})")
+        stock_data = fetch_stock_data_sync(ticker, timeframe)
+
+        if not stock_data or stock_data['price_data'].empty:
+            return Response(
+                {"error": f"Could not fetch data for {ticker}"},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        price_data = stock_data['price_data']
+
+        # Format data based on chart type
+        chart_data = []
+
+        for date, row in price_data.iterrows():
+            data_point = {
+                'Date': date.strftime('%Y-%m-%d %H:%M:%S') if hasattr(date, 'hour') else date.strftime('%Y-%m-%d'),
+                'Timestamp': int(date.timestamp() * 1000),  # JavaScript timestamp
+            }
+
+            if chart_type == 'line':
+                # For line charts, only need close price
+                data_point['Close'] = float(row['Close'])
+            else:
+                # For candlestick and OHLC charts
+                data_point.update({
+                    'Open': float(row['Open']),
+                    'High': float(row['High']),
+                    'Low': float(row['Low']),
+                    'Close': float(row['Close']),
+                })
+
+            # Always include volume
+            data_point['Volume'] = int(row['Volume']) if pd.notna(row['Volume']) else 0
+
+            chart_data.append(data_point)
+
+        # Calculate technical indicators if requested
+        indicator_data = {}
+
+        if indicators and 'none' not in indicators:
+            try:
+                # Compute comprehensive features for indicators
+                enhanced_data = compute_comprehensive_features(price_data, timeframe)
+
+                # Extract requested indicators
+                for indicator in indicators:
+                    indicator_lower = indicator.lower()
+
+                    if indicator_lower == 'sma20' and 'MA20' in enhanced_data.columns:
+                        indicator_data['SMA20'] = [
+                            float(val) if pd.notna(val) else None
+                            for val in enhanced_data['MA20'].values
+                        ]
+
+                    elif indicator_lower == 'sma50' and 'MA50' in enhanced_data.columns:
+                        indicator_data['SMA50'] = [
+                            float(val) if pd.notna(val) else None
+                            for val in enhanced_data['MA50'].values
+                        ]
+
+                    elif indicator_lower == 'rsi' and 'RSI' in enhanced_data.columns:
+                        indicator_data['RSI'] = [
+                            float(val) if pd.notna(val) else None
+                            for val in enhanced_data['RSI'].values
+                        ]
+
+                    elif indicator_lower == 'macd' and 'MACD' in enhanced_data.columns:
+                        indicator_data['MACD'] = {
+                            'MACD': [float(val) if pd.notna(val) else None for val in enhanced_data['MACD'].values],
+                            'Signal': [float(val) if pd.notna(val) else None for val in enhanced_data['MACD_Signal'].values],
+                            'Histogram': [float(val) if pd.notna(val) else None for val in enhanced_data['MACD_Histogram'].values],
+                        }
+
+                    elif indicator_lower == 'bollinger' and 'BB_Upper' in enhanced_data.columns:
+                        indicator_data['BollingerBands'] = {
+                            'Upper': [float(val) if pd.notna(val) else None for val in enhanced_data['BB_Upper'].values],
+                            'Lower': [float(val) if pd.notna(val) else None for val in enhanced_data['BB_Lower'].values],
+                            'Middle': [float(val) if pd.notna(val) else None for val in enhanced_data['MA20'].values] if 'MA20' in enhanced_data.columns else None,
+                        }
+
+                    elif indicator_lower == 'volume' and 'Volume' in price_data.columns:
+                        # Volume is already included in main data
+                        pass
+
+            except Exception as e:
+                logger.error(f"Error calculating indicators for {ticker}: {str(e)}")
+                # Continue without indicators rather than failing the request
+
+        # Calculate summary statistics
+        latest_close = float(price_data['Close'].iloc[-1])
+        prev_close = float(price_data['Close'].iloc[-2]) if len(price_data) > 1 else latest_close
+        change = latest_close - prev_close
+        change_percent = (change / prev_close * 100) if prev_close != 0 else 0
+
+        # Calculate price range statistics
+        period_high = float(price_data['High'].max())
+        period_low = float(price_data['Low'].min())
+        average_volume = int(price_data['Volume'].mean()) if 'Volume' in price_data.columns else 0
+
+        # Build response
+        response_data = {
+            'ticker': original_ticker,
+            'normalized_ticker': ticker,
+            'timeframe': timeframe,
+            'chart_type': chart_type,
+            'data': chart_data,
+            'indicators': indicator_data,
+            'summary': {
+                'latest_price': latest_close,
+                'change': round(change, 2),
+                'change_percent': round(change_percent, 2),
+                'period_high': period_high,
+                'period_low': period_low,
+                'average_volume': average_volume,
+                'data_points': len(chart_data),
+            },
+            'market_info': stock_data.get('market_info', {}),
+            'metadata': {
+                'start_date': chart_data[0]['Date'] if chart_data else None,
+                'end_date': chart_data[-1]['Date'] if chart_data else None,
+                'total_records': len(chart_data),
+                'timezone': 'UTC',
+                'exchange': stock_data.get('market_info', {}).get('exchange', 'Unknown'),
+            }
+        }
+
+        # Cache the response
+        cache_timeout = TIMEFRAMES[timeframe]['cache_time']
+        cache.set(cache_key, response_data, timeout=cache_timeout)
+
+        logger.info(f"Chart data successfully prepared for {ticker} ({len(chart_data)} data points)")
+        return Response(response_data, status=status.HTTP_200_OK)
+
+    except Exception as e:
+        logger.error(f"Error fetching chart data for {ticker}: {str(e)}")
+        return Response(
+            {"error": f"Failed to fetch chart data: {str(e)}"},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        )
+
+
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def get_multi_chart_data(request):
+    """Get chart data for multiple tickers - useful for comparison charts"""
+    try:
+        tickers = request.data.get('tickers', [])
+        timeframe = request.data.get('timeframe', '1mo')
+        chart_type = request.data.get('chart_type', 'line')  # Line charts work best for comparison
+
+        if not tickers or len(tickers) > 5:
+            return Response(
+                {"error": "Please provide 1-5 tickers for comparison"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        if timeframe not in TIMEFRAMES:
+            return Response(
+                {"error": f"Invalid timeframe. Use: {list(TIMEFRAMES.keys())}"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        # Validate all tickers
+        for ticker in tickers:
+            if not validate_ticker(ticker):
+                return Response(
+                    {"error": f"Invalid ticker format: {ticker}"},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+
+        comparison_data = {}
+        base_dates = None
+
+        for ticker in tickers:
+            try:
+                normalized_ticker = normalize_ticker(ticker)
+
+                # Fetch data
+                stock_data = fetch_stock_data_sync(normalized_ticker, timeframe)
+
+                if stock_data and not stock_data['price_data'].empty:
+                    price_data = stock_data['price_data']
+
+                    # Normalize prices to percentage change from first value
+                    first_price = float(price_data['Close'].iloc[0])
+                    normalized_prices = ((price_data['Close'] / first_price) - 1) * 100
+
+                    # Store data
+                    comparison_data[ticker] = {
+                        'dates': [date.strftime('%Y-%m-%d') for date in price_data.index],
+                        'prices': [float(price) for price in price_data['Close'].values],
+                        'normalized_prices': [float(price) for price in normalized_prices.values],
+                        'volumes': [int(vol) if pd.notna(vol) else 0 for vol in price_data['Volume'].values],
+                        'info': stock_data.get('market_info', {}),
+                    }
+
+                    # Set base dates from first ticker
+                    if base_dates is None:
+                        base_dates = comparison_data[ticker]['dates']
+                else:
+                    comparison_data[ticker] = {"error": "Data not available"}
+
+            except Exception as e:
+                logger.error(f"Error fetching comparison data for {ticker}: {str(e)}")
+                comparison_data[ticker] = {"error": str(e)}
+
+        return Response({
+            'tickers': tickers,
+            'timeframe': timeframe,
+            'chart_type': chart_type,
+            'comparison_data': comparison_data,
+            'base_dates': base_dates,
+            'timestamp': timezone.now().isoformat(),
+        }, status=status.HTTP_200_OK)
+
+    except Exception as e:
+        logger.error(f"Multi-chart data fetch failed: {str(e)}")
+        return Response(
+            {"error": f"Failed to fetch comparison data: {str(e)}"},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        )
+
+
 # ============================================================================
 # 🧪 SYSTEM MONITORING ENDPOINTS
 # ============================================================================
@@ -2325,4 +2585,5 @@ def debug_models(request):
 # ============================================================================
 # INITIALIZATION - Load models at startup
 # ============================================================================
+
 load_all_models()

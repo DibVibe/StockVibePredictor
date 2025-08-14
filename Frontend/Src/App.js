@@ -1,19 +1,30 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import "./App.css";
-import StockInput from "./Components/StockInput";
-import PredictionResult from "./Components/PredictionResult";
-import StockChart from "./Components/StockChart";
-import LoadingSpinner from "./Components/LoadingSpinner";
-import CompanyEssentials from "./Components/CompanyEssentials";
+
+// Components
+import StockInput from "./Components/Javascript/StockInput";
+import StockChart from "./Components/Javascript/StockChart";
+import LoadingSpinner from "./Components/Javascript/LoadingSpinner";
+import CompanyEssentials from "./Components/Javascript/CompanyEssentials";
+import PredictionsTab from "./Components/Javascript/PredictionTab";
+import AnalysisTab from "./Components/Javascript/AnalysisTab";
+import SystemStatus from "./Components/Javascript/SystemStatus";
+import TimeframeSelector from "./Components/Javascript/TimeframeSelector";
+import ErrorMessage from "./Components/Javascript/ErrorMessage";
+import TabNavigation from "./Components/Javascript/TabNavigation";
+import SentimentAnalysis from "./Components/Javascript/SentimentAnalysis";
 
 function App() {
+  // State Management
   const [stockData, setStockData] = useState(null);
+  const [chartData, setChartData] = useState(null);
   const [predictions, setPredictions] = useState(null);
   const [analysis, setAnalysis] = useState(null);
   const [marketInfo, setMarketInfo] = useState(null);
   const [companyData, setCompanyData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [chartLoading, setChartLoading] = useState(false);
   const [error, setError] = useState(null);
   const [currentTicker, setCurrentTicker] = useState("");
   const [selectedTimeframes, setSelectedTimeframes] = useState([
@@ -21,13 +32,17 @@ function App() {
     "1w",
     "1mo",
   ]);
+  const [chartTimeframe, setChartTimeframe] = useState("1mo");
+  const [chartType, setChartType] = useState("candlestick");
+  const [selectedIndicators, setSelectedIndicators] = useState([
+    "sma20",
+    "rsi",
+  ]);
   const [systemHealth, setSystemHealth] = useState(null);
-  const [activeTab, setActiveTab] = useState("predictions"); // For tab navigation
+  const [activeTab, setActiveTab] = useState("predictions");
 
-  // API base URL - your Django serves at /api/
+  // Configuration
   const API_BASE_URL = "http://localhost:8000/api";
-
-  // Available timeframes for user selection
   const TIMEFRAMES = {
     "1d": "1 Day",
     "1w": "1 Week",
@@ -35,10 +50,36 @@ function App() {
     "1y": "1 Year",
   };
 
-  // Check system health on app load
+  const CHART_TIMEFRAMES = {
+    "1d": "1 Day",
+    "5d": "5 Days",
+    "1mo": "1 Month",
+    "3mo": "3 Months",
+    "6mo": "6 Months",
+    "1y": "1 Year",
+    "2y": "2 Years",
+    "5y": "5 Years",
+  };
+
+  const CHART_TYPES = {
+    candlestick: "Candlestick",
+    line: "Line",
+    ohlc: "OHLC",
+  };
+
+  const AVAILABLE_INDICATORS = {
+    sma20: "SMA 20",
+    sma50: "SMA 50",
+    rsi: "RSI",
+    macd: "MACD",
+    bollinger: "Bollinger Bands",
+    volume: "Volume",
+  };
+
+  // System Health Check
   useEffect(() => {
     checkSystemHealth();
-    const healthInterval = setInterval(checkSystemHealth, 60000); // Check every minute
+    const healthInterval = setInterval(checkSystemHealth, 60000);
     return () => clearInterval(healthInterval);
   }, []);
 
@@ -56,11 +97,10 @@ function App() {
     }
   };
 
-  // Callback for when CompanyEssentials loads data
+  // Company Data Handler
   const handleCompanyDataReceived = useCallback((data) => {
     setCompanyData(data);
 
-    // Update market info with company essentials data if available
     if (data && data.company_info) {
       setMarketInfo((prevMarketInfo) => ({
         ...prevMarketInfo,
@@ -70,10 +110,45 @@ function App() {
         pe_ratio: data.essentials?.pe_ratio?.value,
         dividend_yield: data.essentials?.dividend_yield?.value,
         exchange: data.company_info.exchange,
+        week_52_high: data.price_summary?.week_52_high,
+        week_52_low: data.price_summary?.week_52_low,
+        current_price: data.current_price,
       }));
     }
   }, []);
 
+  // Enhanced Chart Data Fetcher
+  const fetchChartData = async (
+    ticker,
+    timeframe = chartTimeframe,
+    type = chartType,
+    indicators = selectedIndicators
+  ) => {
+    setChartLoading(true);
+    try {
+      const response = await axios.get(`${API_BASE_URL}/chart/${ticker}/`, {
+        params: {
+          timeframe: timeframe,
+          chart_type: type,
+          indicators: indicators.join(","),
+        },
+      });
+
+      setChartData(response.data);
+      console.log("Chart data fetched successfully:", {
+        ticker: response.data.ticker,
+        dataPoints: response.data.data?.length || 0,
+        indicators: Object.keys(response.data.indicators || {}),
+      });
+    } catch (err) {
+      console.warn("Chart data fetch failed:", err);
+      setChartData(null);
+    } finally {
+      setChartLoading(false);
+    }
+  };
+
+  // Stock Data Fetcher
   const fetchStockData = async (ticker) => {
     if (!ticker.trim()) {
       setError("Please enter a stock ticker symbol! 📈");
@@ -86,103 +161,155 @@ function App() {
     setCurrentTicker(ticker.toUpperCase());
 
     try {
-      // Use the multi-timeframe prediction endpoint
+      // Fetch predictions and analysis
       const response = await axios.post(`${API_BASE_URL}/predict/multi/`, {
         ticker: ticker.toUpperCase(),
         timeframes: selectedTimeframes,
         include_analysis: true,
       });
 
-      // Extract data from the enhanced response
       const data = response.data;
-
       setPredictions(data.predictions);
       setAnalysis(data.analysis || null);
       setMarketInfo(data.market_info || null);
       setStockData(data.history || null);
 
-      // Log successful prediction for debugging
+      // Fetch enhanced chart data separately
+      await fetchChartData(ticker.toUpperCase());
+
       console.log("Prediction successful:", {
         ticker: data.ticker,
         timeframes: Object.keys(data.predictions),
         hasAnalysis: !!data.analysis,
       });
 
-      // Switch to predictions tab after successful fetch
       setActiveTab("predictions");
     } catch (err) {
       console.error("Error fetching stock data:", err);
-
-      // Enhanced error handling
-      let errorMessage = "Unable to fetch stock data. Please try again.";
-
-      if (err.response?.status === 404) {
-        errorMessage = `Stock ticker "${ticker}" not found. Please check the symbol.`;
-      } else if (err.response?.status === 400) {
-        errorMessage = err.response.data?.error || "Invalid ticker format.";
-      } else if (err.response?.status >= 500) {
-        errorMessage =
-          "Server error. The backend might be down or models need training.";
-      } else if (err.code === "ECONNREFUSED") {
-        errorMessage =
-          "Cannot connect to backend. Make sure Django server is running on port 8000.";
-      } else if (err.response?.data?.error) {
-        errorMessage = err.response.data.error;
-      }
-
-      setError(errorMessage);
-      resetData();
+      handleFetchError(err, ticker);
     } finally {
       setLoading(false);
     }
   };
 
+  // Error Handler
+  const handleFetchError = (err, ticker) => {
+    let errorMessage = "Unable to fetch stock data. Please try again.";
+
+    if (err.response?.status === 404) {
+      errorMessage = `Stock ticker "${ticker}" not found. Please check the symbol.`;
+    } else if (err.response?.status === 400) {
+      errorMessage = err.response.data?.error || "Invalid ticker format.";
+    } else if (err.response?.status >= 500) {
+      errorMessage =
+        "Server error. The backend might be down or models need training.";
+    } else if (err.code === "ECONNREFUSED") {
+      errorMessage =
+        "Cannot connect to backend. Make sure Django server is running on port 8000.";
+    } else if (err.response?.data?.error) {
+      errorMessage = err.response.data.error;
+    }
+
+    setError(errorMessage);
+    resetData();
+  };
+
+  // Reset Data
   const resetData = () => {
     setStockData(null);
+    setChartData(null);
     setPredictions(null);
     setAnalysis(null);
     setMarketInfo(null);
     setCompanyData(null);
   };
 
+  // Timeframe Handler
   const handleTimeframeChange = (timeframe) => {
     setSelectedTimeframes((prevSelected) => {
       if (prevSelected.includes(timeframe)) {
-        // Remove timeframe (but always keep at least one)
         return prevSelected.length > 1
           ? prevSelected.filter((tf) => tf !== timeframe)
           : prevSelected;
       } else {
-        // Add timeframe
         return [...prevSelected, timeframe];
       }
     });
   };
 
-  const getSystemHealthStatus = () => {
-    if (!systemHealth) return { color: "gray", text: "Checking..." };
-
-    switch (systemHealth.status) {
-      case "healthy":
-        return { color: "#4caf50", text: "● Online" };
-      case "degraded":
-        return { color: "#ff9800", text: "● Partial" };
-      case "unhealthy":
-        return { color: "#f44336", text: "● Offline" };
-      default:
-        return { color: "#9e9e9e", text: "● Unknown" };
+  // Chart Controls Handlers
+  const handleChartTimeframeChange = (timeframe) => {
+    setChartTimeframe(timeframe);
+    if (currentTicker) {
+      fetchChartData(currentTicker, timeframe, chartType, selectedIndicators);
     }
   };
 
-  const formatMarketCap = (value) => {
-    if (!value) return "N/A";
-    if (value >= 1e12) return `$${(value / 1e12).toFixed(2)}T`;
-    if (value >= 1e9) return `$${(value / 1e9).toFixed(2)}B`;
-    if (value >= 1e6) return `$${(value / 1e6).toFixed(2)}M`;
-    return `$${value.toLocaleString()}`;
+  const handleChartTypeChange = (type) => {
+    setChartType(type);
+    if (currentTicker) {
+      fetchChartData(currentTicker, chartTimeframe, type, selectedIndicators);
+    }
   };
 
-  const healthStatus = getSystemHealthStatus();
+  const handleIndicatorChange = (indicator) => {
+    const newIndicators = selectedIndicators.includes(indicator)
+      ? selectedIndicators.filter((ind) => ind !== indicator)
+      : [...selectedIndicators, indicator];
+
+    setSelectedIndicators(newIndicators);
+    if (currentTicker) {
+      fetchChartData(currentTicker, chartTimeframe, chartType, newIndicators);
+    }
+  };
+
+  // Tab Configuration
+  const tabConfig = [
+    {
+      id: "all",
+      label: "Overview",
+      icon: "📋",
+      tooltip: "Complete overview of all data",
+      disabled: !currentTicker,
+    },
+    {
+      id: "predictions",
+      label: "Predictions",
+      icon: "📈",
+      tooltip: "View AI-powered price predictions",
+      badge: predictions ? Object.keys(predictions).length : 0,
+      disabled: !predictions,
+    },
+    {
+      id: "analysis",
+      label: "Analysis",
+      icon: "🔍",
+      tooltip: "Technical and market analysis",
+      badge: analysis ? "New" : null,
+      disabled: !analysis && !marketInfo && !companyData,
+    },
+    {
+      id: "chart",
+      label: "Charts",
+      icon: "📉",
+      tooltip: "Interactive price charts with indicators",
+      disabled: !currentTicker,
+    },
+    {
+      id: "essentials",
+      label: "Company",
+      icon: "📊",
+      tooltip: "Company financials and metrics",
+      disabled: false,
+    },
+    {
+      id: "sentiment",
+      label: "Sentiment",
+      icon: "😊",
+      tooltip: "Market sentiment analysis",
+      disabled: !currentTicker,
+    },
+  ];
 
   return (
     <div className="App">
@@ -190,80 +317,25 @@ function App() {
         <div className="header-content">
           <h1 className="app-title">StockVibePredictor 🚀</h1>
           <p className="app-subtitle">
-            Enterprise AI-Powered Multi-Timeframe Stock Predictions
+            Enterprise AI-Powered Multi-Timeframe Stock Predictions with
+            Advanced Charting
           </p>
-
-          <div className="system-status">
-            <span
-              className="status-indicator"
-              style={{ color: healthStatus.color }}
-              title={
-                systemHealth?.services
-                  ? JSON.stringify(systemHealth.services, null, 2)
-                  : "System status"
-              }
-            >
-              {healthStatus.text}
-            </span>
-            {systemHealth?.metrics && (
-              <span className="system-metrics">
-                | {systemHealth.metrics.model_cache_size || 0} models loaded
-              </span>
-            )}
-          </div>
+          <SystemStatus systemHealth={systemHealth} />
         </div>
       </header>
 
       <main className="app-main">
         <div className="container">
-          {/* Timeframe Selection */}
-          <div className="timeframe-selector">
-            <h3>Select Prediction Timeframes:</h3>
-            <div className="timeframe-buttons">
-              {Object.entries(TIMEFRAMES).map(([key, label]) => (
-                <button
-                  key={key}
-                  className={`timeframe-btn ${
-                    selectedTimeframes.includes(key) ? "active" : ""
-                  }`}
-                  onClick={() => handleTimeframeChange(key)}
-                  disabled={loading}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-            <p className="selected-timeframes">
-              Selected:{" "}
-              {selectedTimeframes.map((tf) => TIMEFRAMES[tf]).join(", ")}
-            </p>
-          </div>
+          <TimeframeSelector
+            timeframes={TIMEFRAMES}
+            selectedTimeframes={selectedTimeframes}
+            onTimeframeChange={handleTimeframeChange}
+            loading={loading}
+          />
 
           <StockInput onSubmit={fetchStockData} loading={loading} />
 
-          {error && (
-            <div className="error-message">
-              <span className="error-icon">⚠️</span>
-              <div className="error-content">
-                <strong>Error:</strong> {error}
-                {error.includes("backend") && (
-                  <div className="error-help">
-                    <p>
-                      💡 <strong>Quick Fix:</strong>
-                    </p>
-                    <p>
-                      1. Make sure Django is running:{" "}
-                      <code>python manage.py runserver</code>
-                    </p>
-                    <p>
-                      2. Train models if needed:{" "}
-                      <code>python TrainModel.py full</code>
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
+          {error && <ErrorMessage error={error} />}
 
           {loading && (
             <div className="loading-container">
@@ -275,308 +347,358 @@ function App() {
             </div>
           )}
 
-          {/* Tab Navigation for Results */}
-          {currentTicker && !loading && (predictions || companyData) && (
-            <div className="results-tabs">
-              <div className="tab-header">
-                <button
-                  className={`tab-btn ${
-                    activeTab === "predictions" ? "active" : ""
-                  }`}
-                  onClick={() => setActiveTab("predictions")}
-                >
-                  📈 Predictions
-                </button>
-                <button
-                  className={`tab-btn ${
-                    activeTab === "essentials" ? "active" : ""
-                  }`}
-                  onClick={() => setActiveTab("essentials")}
-                >
-                  📊 Company Essentials
-                </button>
-                <button
-                  className={`tab-btn ${activeTab === "chart" ? "active" : ""}`}
-                  onClick={() => setActiveTab("chart")}
-                >
-                  📉 Chart
-                </button>
-                <button
-                  className={`tab-btn ${
-                    activeTab === "analysis" ? "active" : ""
-                  }`}
-                  onClick={() => setActiveTab("analysis")}
-                >
-                  🔍 Analysis
-                </button>
-              </div>
+          {currentTicker &&
+            !loading &&
+            (predictions || companyData || chartData) && (
+              <div className="results-tabs">
+                <TabNavigation
+                  tabs={tabConfig}
+                  activeTab={activeTab}
+                  onTabChange={setActiveTab}
+                />
 
-              <div className="tab-content">
-                {/* Prediction Results Tab */}
-                {activeTab === "predictions" && predictions && (
-                  <div className="results-container">
-                    <PredictionResult
+                <div className="tab-content">
+                  {/* Overview Tab - Shows everything */}
+                  {activeTab === "all" && (
+                    <div className="overview-container">
+                      <div className="section-header">
+                        <div className="header-content-section">
+                          <h2 className="section-title">
+                            📋 Complete Overview for {currentTicker}
+                          </h2>
+                          <p className="section-subtitle">
+                            Comprehensive analysis including predictions,
+                            charts, fundamentals, and sentiment
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Quick Stats */}
+                      <div className="quick-stats">
+                        <div className="stat-card">
+                          <span className="stat-label">Current Price</span>
+                          <span className="stat-value">
+                            {chartData?.summary?.latest_price
+                              ? `$${chartData.summary.latest_price.toFixed(2)}`
+                              : companyData?.current_price
+                              ? `$${companyData.current_price.toFixed(2)}`
+                              : "Loading..."}
+                          </span>
+                          <span
+                            className={`stat-change ${
+                              chartData?.summary?.change_percent > 0
+                                ? "positive"
+                                : chartData?.summary?.change_percent < 0
+                                ? "negative"
+                                : "neutral"
+                            }`}
+                          >
+                            {chartData?.summary?.change_percent !== undefined
+                              ? `${
+                                  chartData.summary.change_percent > 0
+                                    ? "+"
+                                    : ""
+                                }${chartData.summary.change_percent.toFixed(
+                                  2
+                                )}%`
+                              : ""}
+                          </span>
+                        </div>
+
+                        <div className="stat-card">
+                          <span className="stat-label">Market Cap</span>
+                          <span className="stat-value">
+                            {companyData?.essentials?.market_cap?.formatted ||
+                              "Loading..."}
+                          </span>
+                        </div>
+
+                        <div className="stat-card">
+                          <span className="stat-label">Overall Signal</span>
+                          <span
+                            className={`stat-value ${
+                              analysis?.recommendation?.overall?.toLowerCase() ===
+                              "buy"
+                                ? "positive"
+                                : analysis?.recommendation?.overall?.toLowerCase() ===
+                                  "sell"
+                                ? "negative"
+                                : "neutral"
+                            }`}
+                          >
+                            {analysis?.recommendation?.overall ||
+                              "Analyzing..."}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Predictions Section */}
+                      {predictions && (
+                        <section className="overview-section">
+                          <h3>📈 AI Predictions</h3>
+                          <PredictionsTab
+                            predictions={predictions}
+                            ticker={currentTicker}
+                            selectedTimeframes={selectedTimeframes}
+                          />
+                        </section>
+                      )}
+
+                      {/* Chart Section */}
+                      <section className="overview-section">
+                        <h3>📉 Price Chart</h3>
+                        {chartData ? (
+                          <StockChart
+                            data={chartData}
+                            ticker={currentTicker}
+                            predictions={predictions}
+                            loading={chartLoading}
+                          />
+                        ) : (
+                          <div className="chart-placeholder">
+                            <LoadingSpinner />
+                            <p>Loading interactive chart...</p>
+                          </div>
+                        )}
+                      </section>
+
+                      {/* Analysis Section */}
+                      <section className="overview-section">
+                        <h3>🔍 Technical Analysis</h3>
+                        <AnalysisTab
+                          analysis={analysis}
+                          marketInfo={marketInfo}
+                          companyData={companyData}
+                          ticker={currentTicker}
+                        />
+                      </section>
+
+                      {/* Company Essentials Section */}
+                      <section className="overview-section">
+                        <h3>📊 Company Fundamentals</h3>
+                        <CompanyEssentials
+                          ticker={currentTicker}
+                          onCompanyDataReceived={handleCompanyDataReceived}
+                        />
+                      </section>
+                    </div>
+                  )}
+
+                  {/* Individual Tabs */}
+                  {activeTab === "predictions" && predictions && (
+                    <PredictionsTab
                       predictions={predictions}
-                      analysis={analysis}
-                      marketInfo={marketInfo}
                       ticker={currentTicker}
                       selectedTimeframes={selectedTimeframes}
                     />
-                  </div>
-                )}
+                  )}
 
-                {/* Company Essentials Tab */}
-                {activeTab === "essentials" && (
-                  <CompanyEssentials
-                    ticker={currentTicker}
-                    onCompanyDataReceived={handleCompanyDataReceived}
-                  />
-                )}
+                  {activeTab === "analysis" && (
+                    <AnalysisTab
+                      analysis={analysis}
+                      marketInfo={marketInfo}
+                      companyData={companyData}
+                      ticker={currentTicker}
+                    />
+                  )}
 
-                {/* Stock Chart Tab */}
-                {activeTab === "chart" && stockData && (
-                  <StockChart
-                    data={stockData}
-                    ticker={currentTicker}
-                    predictions={predictions}
-                  />
-                )}
+                  {activeTab === "chart" && (
+                    <div className="chart-tab-container">
+                      <div className="section-header">
+                        <div className="header-content-section">
+                          <h2 className="section-title">
+                            📉 Advanced Stock Charts
+                          </h2>
+                          <p className="section-subtitle">
+                            Interactive charts with technical indicators for{" "}
+                            {currentTicker}
+                          </p>
+                        </div>
+                      </div>
 
-                {/* Analysis Tab */}
-                {activeTab === "analysis" && (
-                  <div className="analysis-container">
-                    {/* Market Information Panel */}
-                    {(marketInfo || companyData) && (
-                      <div className="market-info-panel">
-                        <h3>📊 Market Information</h3>
-                        <div className="market-stats">
-                          {(marketInfo?.sector ||
-                            companyData?.company_info?.sector) && (
-                            <div className="stat">
-                              <label>Sector:</label>
-                              <span>
-                                {marketInfo?.sector ||
-                                  companyData?.company_info?.sector}
-                              </span>
-                            </div>
-                          )}
-                          {(marketInfo?.industry ||
-                            companyData?.company_info?.industry) && (
-                            <div className="stat">
-                              <label>Industry:</label>
-                              <span>
-                                {marketInfo?.industry ||
-                                  companyData?.company_info?.industry}
-                              </span>
-                            </div>
-                          )}
-                          {(marketInfo?.market_cap ||
-                            companyData?.essentials?.market_cap?.value) && (
-                            <div className="stat">
-                              <label>Market Cap:</label>
-                              <span>
-                                {companyData?.essentials?.market_cap
-                                  ?.formatted ||
-                                  formatMarketCap(marketInfo?.market_cap)}
-                              </span>
-                            </div>
-                          )}
-                          {(marketInfo?.pe_ratio ||
-                            companyData?.essentials?.pe_ratio?.value) && (
-                            <div className="stat">
-                              <label>P/E Ratio:</label>
-                              <span>
-                                {companyData?.essentials?.pe_ratio?.formatted ||
-                                  marketInfo?.pe_ratio?.toFixed(2)}
-                              </span>
-                            </div>
-                          )}
-                          {marketInfo?.beta && (
-                            <div className="stat">
-                              <label>Beta:</label>
-                              <span>{marketInfo.beta.toFixed(2)}</span>
-                            </div>
-                          )}
-                          {(marketInfo?.dividend_yield ||
-                            companyData?.essentials?.dividend_yield?.value) && (
-                            <div className="stat">
-                              <label>Dividend Yield:</label>
-                              <span>
-                                {companyData?.essentials?.dividend_yield
-                                  ?.formatted ||
-                                  `${(marketInfo.dividend_yield * 100).toFixed(
-                                    2
-                                  )}%`}
-                              </span>
-                            </div>
-                          )}
-                          {companyData?.company_info?.exchange && (
-                            <div className="stat">
-                              <label>Exchange:</label>
-                              <span>{companyData.company_info.exchange}</span>
-                            </div>
-                          )}
+                      {/* Chart Controls */}
+                      <div className="chart-controls">
+                        <div className="control-group">
+                          <label>Timeframe:</label>
+                          <div className="control-buttons">
+                            {Object.entries(CHART_TIMEFRAMES).map(
+                              ([key, label]) => (
+                                <button
+                                  key={key}
+                                  className={`control-btn ${
+                                    chartTimeframe === key ? "active" : ""
+                                  }`}
+                                  onClick={() =>
+                                    handleChartTimeframeChange(key)
+                                  }
+                                  disabled={chartLoading}
+                                >
+                                  {label}
+                                </button>
+                              )
+                            )}
+                          </div>
                         </div>
 
-                        {/* 52-Week Range from Company Essentials */}
-                        {companyData?.price_summary && (
-                          <div className="price-range">
-                            <h4>52-Week Range</h4>
-                            <div className="range-info">
-                              <span className="range-low">
-                                Low: {companyData.currency?.symbol}
-                                {companyData.price_summary.week_52_low?.toFixed(
-                                  2
-                                )}
-                              </span>
-                              <div className="range-bar-container">
-                                <div className="range-bar">
-                                  <div
-                                    className="current-position"
-                                    style={{
-                                      left: `${
-                                        ((companyData.current_price -
-                                          companyData.price_summary
-                                            .week_52_low) /
-                                          (companyData.price_summary
-                                            .week_52_high -
-                                            companyData.price_summary
-                                              .week_52_low)) *
-                                        100
-                                      }%`,
-                                    }}
-                                  />
-                                </div>
-                              </div>
-                              <span className="range-high">
-                                High: {companyData.currency?.symbol}
-                                {companyData.price_summary.week_52_high?.toFixed(
-                                  2
-                                )}
-                              </span>
+                        <div className="control-group">
+                          <label>Chart Type:</label>
+                          <div className="control-buttons">
+                            {Object.entries(CHART_TYPES).map(([key, label]) => (
+                              <button
+                                key={key}
+                                className={`control-btn ${
+                                  chartType === key ? "active" : ""
+                                }`}
+                                onClick={() => handleChartTypeChange(key)}
+                                disabled={chartLoading}
+                              >
+                                {label}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="control-group">
+                          <label>Indicators:</label>
+                          <div className="control-indicators">
+                            {Object.entries(AVAILABLE_INDICATORS).map(
+                              ([key, label]) => (
+                                <button
+                                  key={key}
+                                  className={`indicator-btn ${
+                                    selectedIndicators.includes(key)
+                                      ? "active"
+                                      : ""
+                                  }`}
+                                  onClick={() => handleIndicatorChange(key)}
+                                  disabled={chartLoading}
+                                >
+                                  {label}
+                                </button>
+                              )
+                            )}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Chart Component */}
+                      <div className="chart-wrapper">
+                        {chartData ? (
+                          <StockChart
+                            data={chartData}
+                            ticker={currentTicker}
+                            predictions={predictions}
+                            loading={chartLoading}
+                            timeframe={chartTimeframe}
+                            chartType={chartType}
+                            indicators={selectedIndicators}
+                          />
+                        ) : (
+                          <div className="chart-placeholder">
+                            <div className="placeholder-content">
+                              <h3>📈 Loading Chart Data</h3>
+                              <p>
+                                Fetching {chartTimeframe} chart data for{" "}
+                                {currentTicker}...
+                              </p>
+                              <LoadingSpinner />
                             </div>
                           </div>
                         )}
                       </div>
-                    )}
 
-                    {/* Technical Analysis Panel */}
-                    {analysis && (
-                      <div className="analysis-panel">
-                        <h3>🔍 Technical Analysis</h3>
-
-                        {analysis.technical && (
-                          <div className="technical-analysis">
-                            <h4>Technical Indicators</h4>
-                            <div className="indicators">
-                              <div className="indicator">
-                                <label>RSI:</label>
-                                <span
-                                  className={`rsi-value ${analysis.technical.rsi_signal}`}
-                                >
-                                  {analysis.technical.rsi} (
-                                  {analysis.technical.rsi_signal})
-                                </span>
-                              </div>
-                              <div className="indicator">
-                                <label>Trend:</label>
-                                <span
-                                  className={`trend ${analysis.technical.trend}`}
-                                >
-                                  {analysis.technical.trend}
-                                </span>
-                              </div>
-                              <div className="indicator">
-                                <label>Volume:</label>
-                                <span>{analysis.technical.volume_trend}</span>
-                              </div>
-                              <div className="indicator">
-                                <label>Volatility:</label>
-                                <span>
-                                  {analysis.technical.volatility_regime}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-
-                        {analysis.recommendation && (
-                          <div className="recommendation">
-                            <h4>📈 Overall Recommendation</h4>
-                            <div
-                              className={`rec-badge ${analysis.recommendation.overall.toLowerCase()}`}
-                            >
-                              {analysis.recommendation.overall}
-                            </div>
-                            <div className="rec-details">
-                              <p>
-                                Confidence: {analysis.recommendation.confidence}
-                                %
-                              </p>
-                              <p>
-                                Risk Level: {analysis.recommendation.risk_level}
-                              </p>
-                              <p>
-                                Suggested Holding:{" "}
-                                {analysis.recommendation.holding_period}
-                              </p>
-                            </div>
-                          </div>
-                        )}
-
-                        {analysis.sentiment && (
-                          <div className="sentiment-analysis">
-                            <h4>📰 Market Sentiment</h4>
-                            <div
-                              className={`sentiment ${analysis.sentiment.sentiment_label}`}
-                            >
-                              {analysis.sentiment.sentiment_label}
-                              <span className="sentiment-score">
-                                (
-                                {(
-                                  analysis.sentiment.sentiment_score * 100
-                                ).toFixed(1)}
-                                %)
+                      {/* Chart Info */}
+                      {chartData?.summary && (
+                        <div className="chart-summary">
+                          <div className="summary-stats">
+                            <div className="summary-stat">
+                              <label>Period High:</label>
+                              <span>
+                                $
+                                {chartData.summary.period_high?.toFixed(2) ||
+                                  "N/A"}
                               </span>
                             </div>
-                          </div>
-                        )}
-
-                        {/* Additional Metrics from Company Essentials */}
-                        {companyData?.additional_metrics && (
-                          <div className="additional-analysis">
-                            <h4>📊 Additional Metrics</h4>
-                            <div className="metrics-grid">
-                              {Object.entries(
-                                companyData.additional_metrics
-                              ).map(([key, metric]) => (
-                                <div key={key} className="metric">
-                                  <label>{metric.label}:</label>
-                                  <span>{metric.formatted}</span>
-                                </div>
-                              ))}
+                            <div className="summary-stat">
+                              <label>Period Low:</label>
+                              <span>
+                                $
+                                {chartData.summary.period_low?.toFixed(2) ||
+                                  "N/A"}
+                              </span>
+                            </div>
+                            <div className="summary-stat">
+                              <label>Avg Volume:</label>
+                              <span>
+                                {chartData.summary.average_volume?.toLocaleString() ||
+                                  "N/A"}
+                              </span>
+                            </div>
+                            <div className="summary-stat">
+                              <label>Data Points:</label>
+                              <span>{chartData.summary.data_points || 0}</span>
                             </div>
                           </div>
-                        )}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {activeTab === "essentials" && (
+                    <div className="essentials-tab-container">
+                      <div className="section-header">
+                        <div className="header-content-section">
+                          <h2 className="section-title">
+                            📊 Company Essentials
+                          </h2>
+                          <p className="section-subtitle">
+                            Comprehensive financial metrics and company
+                            information for {currentTicker}
+                          </p>
+                        </div>
                       </div>
-                    )}
-                  </div>
-                )}
+
+                      <CompanyEssentials
+                        ticker={currentTicker}
+                        onCompanyDataReceived={handleCompanyDataReceived}
+                      />
+                    </div>
+                  )}
+
+                  {activeTab === "sentiment" && (
+                    <div className="sentiment-tab-container">
+                      <div className="section-header">
+                        <div className="header-content-section">
+                          <h2 className="section-title">😊 Market Sentiment</h2>
+                          <p className="section-subtitle">
+                            Real-time sentiment analysis from news and social
+                            media for {currentTicker}
+                          </p>
+                        </div>
+                      </div>
+
+                      <SentimentAnalysis ticker={currentTicker} />
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          )}
+            )}
         </div>
       </main>
 
       <footer className="app-footer">
         <div className="footer-content">
-          <p>🚀 Built with React + Django + Enterprise ML</p>
+          <p>
+            🚀 Built with React + Django + Enterprise ML + Advanced Charting
+          </p>
           <div className="api-info">
-            <span>API Status: {healthStatus.text}</span>
+            <span>API Status: {systemHealth?.status || "Unknown"}</span>
             <span>•</span>
             <span>
               Models: {systemHealth?.metrics?.model_cache_size || 0} loaded
             </span>
+            <span>•</span>
+            <span>Chart Engine: TradingView Compatible</span>
             <span>•</span>
             <span>Timeframes: {Object.values(TIMEFRAMES).join(", ")}</span>
             {companyData && (
@@ -588,6 +710,17 @@ function App() {
                 </span>
               </>
             )}
+          </div>
+
+          {/* Global Disclaimer */}
+          <div className="global-disclaimer">
+            <p>
+              <strong>⚠️ Disclaimer:</strong> These predictions and charts are
+              for educational purposes only. Past performance does not guarantee
+              future results. Always conduct your own research and consider
+              consulting with a financial advisor before making investment
+              decisions.
+            </p>
           </div>
         </div>
       </footer>

@@ -1,5 +1,5 @@
 import React from "react";
-import "./PredictionResult.css";
+import "../CSS/PredictionResult.css";
 
 const PredictionResult = ({
   predictions,
@@ -347,17 +347,6 @@ const PredictionResult = ({
             );
           })()}
         </div>
-      </div>
-
-      {/* Risk Disclaimer */}
-      <div className="disclaimer">
-        <p>
-          ⚠️ <strong>Disclaimer:</strong> These predictions are based on
-          technical analysis and machine learning models. Past performance does
-          not guarantee future results. Always do your own research and consider
-          consulting with a financial advisor before making investment
-          decisions.
-        </p>
       </div>
     </div>
   );

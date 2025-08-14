@@ -13,7 +13,7 @@ import {
 } from "chart.js";
 import zoomPlugin from "chartjs-plugin-zoom";
 import { Line, Bar } from "react-chartjs-2";
-import "./StockChart.css";
+import "../CSS/StockChart.css";
 
 ChartJS.register(
   CategoryScale,

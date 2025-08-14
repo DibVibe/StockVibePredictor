@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./StockInput.css";
-import { searchStocks, getPopularStocks } from "../Database/StockDatabase";
+import "../CSS/StockInput.css";
+import { searchStocks, getPopularStocks } from "../../Database/StockDatabase";
 
 const StockInput = ({ onSubmit, loading }) => {
   const [ticker, setTicker] = useState("");
@@ -151,13 +151,6 @@ const StockInput = ({ onSubmit, loading }) => {
               </div>
             )}
           </div>
-          <button
-            type="submit"
-            className="predict-button"
-            disabled={!ticker.trim() || loading}
-          >
-            {loading ? "🔄 Analyzing..." : "🔮 Predict"}
-          </button>
         </div>
       </form>
 

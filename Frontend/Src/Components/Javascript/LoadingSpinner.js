@@ -1,5 +1,5 @@
-import React from 'react';
-import './LoadingSpinner.css';
+import React from "react";
+import "../CSS/LoadingSpinner.css";
 
 const LoadingSpinner = () => {
   return (
@@ -11,11 +11,11 @@ const LoadingSpinner = () => {
           <div className="spinner-ring"></div>
           <div className="spinner-ring"></div>
         </div>
-        
+
         <div className="loading-text">
           <h3>🤖 AI is Analyzing...</h3>
           <p>Fetching stock data and generating predictions</p>
-          
+
           <div className="loading-steps">
             <div className="step active">
               <span className="step-icon">📊</span>
@@ -36,12 +36,14 @@ const LoadingSpinner = () => {
           </div>
         </div>
       </div>
-      
+
       <div className="loading-progress">
         <div className="progress-bar">
           <div className="progress-fill"></div>
         </div>
-        <p className="progress-text">Please wait while we process your request...</p>
+        <p className="progress-text">
+          Please wait while we process your request...
+        </p>
       </div>
     </div>
   );

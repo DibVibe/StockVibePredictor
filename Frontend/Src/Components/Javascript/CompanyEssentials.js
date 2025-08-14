@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "./CompanyEssentials.css";
+import "../CSS/CompanyEssentials.css";
 
 const CompanyEssentials = ({ ticker, onCompanyDataReceived = null }) => {
   const [companyData, setCompanyData] = useState(null);
