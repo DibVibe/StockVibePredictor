@@ -65,12 +65,12 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/ThisIsDibakar/StockVibePredictor"
-Documentation = "https://github.com/ThisIsDibakar/StockVibePredictor/wiki"
-Repository = "https://github.com/ThisIsDibakar/StockVibePredictor.git"
-"Bug Tracker" = "https://github.com/ThisIsDibakar/StockVibePredictor/issues"
-"Source Code" = "https://github.com/ThisIsDibakar/StockVibePredictor"
-Changelog = "https://github.com/ThisIsDibakar/StockVibePredictor/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/DibVibe/StockVibePredictor"
+Documentation = "https://github.com/DibVibe/StockVibePredictor/wiki"
+Repository = "https://https://github.com/DibVibe/StockVibePredictor.git"
+"Bug Tracker" = "https://github.com/DibVibe/StockVibePredictor/issues"
+"Source Code" = "https://github.com/DibVibe/StockVibePredictor"
+Changelog = "https://github.com/DibVibe/StockVibePredictor/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 dev = [
@@ -234,9 +234,6 @@ exclude = [
 ]
 plugins = ["mypy_django_plugin.main", "mypy_drf_plugin.main"]
 
-[tool.mypy.plugins.django-stubs]
-django_settings_module = "Backend.Backend.settings"
-
 [tool.flake8]
 max-line-length = 88
 exclude = [
@@ -280,9 +277,9 @@ license = "MIT"
 license_files = ["LICENSE"]
 platform = ["any"]
 project_urls = {
-    "Bug Tracker" = "https://github.com/ThisIsDibakar/StockVibePredictor/issues"
-    "Documentation" = "https://github.com/ThisIsDibakar/StockVibePredictor/wiki"
-    "Source Code" = "https://github.com/ThisIsDibakar/StockVibePredictor"
+    "Bug Tracker" = "https://github.com/DibVibe/StockVibePredictor/issues"
+    "Documentation" = "https://github.com/DibVibe/StockVibePredictor/wiki"
+    "Source Code" = "https://github.com/DibVibe/StockVibePredictor"
 }
 
 # Custom metadata for the project

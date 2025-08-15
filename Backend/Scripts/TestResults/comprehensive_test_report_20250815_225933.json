@@ -1,0 +1,1901 @@
+{
+  "timestamp": "2025-08-15T22:59:28.323293",
+  "total_models": 35,
+  "successful_tests": 35,
+  "failed_tests": 0,
+  "models": {
+    "ARKK_model_1w": {
+      "model_name": "ARKK_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ARKK_model_1w.pkl",
+      "file_size_mb": 1.05,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "DOWN",
+            "raw_prediction": 0,
+            "confidence": 0.9142392757438567,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 49.0,
+            "up_predictions": 1,
+            "down_predictions": 9,
+            "prediction_distribution": "1UP/9DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 1.73,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "ARKK",
+        "timeframe": "1w",
+        "accuracy": 0.425,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "HOOD_model_1w": {
+      "model_name": "HOOD_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/HOOD_model_1w.pkl",
+      "file_size_mb": 0.78,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.7512766580600976,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 50.1,
+            "up_predictions": 5,
+            "down_predictions": 5,
+            "prediction_distribution": "5UP/5DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 1.73,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "HOOD",
+        "timeframe": "1w",
+        "accuracy": 0.65,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "QQQ_model_1w": {
+      "model_name": "QQQ_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/QQQ_model_1w.pkl",
+      "file_size_mb": 1.05,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "DOWN",
+            "raw_prediction": 0,
+            "confidence": 0.9157392757438565,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 49.6,
+            "up_predictions": 0,
+            "down_predictions": 10,
+            "prediction_distribution": "0UP/10DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 1.75,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "QQQ",
+        "timeframe": "1w",
+        "accuracy": 0.425,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "HINDUNILVR_NS_model_1mo": {
+      "model_name": "HINDUNILVR_NS_model_1mo",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/HINDUNILVR_NS_model_1mo.pkl",
+      "file_size_mb": 1.85,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.8051789498512657,
+            "features_used": 21
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 53.5,
+            "up_predictions": 10,
+            "down_predictions": 0,
+            "prediction_distribution": "10UP/0DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 1.77,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "HINDUNILVR.NS",
+        "timeframe": "1mo",
+        "accuracy": 0.41304347826086957,
+        "features_count": 21,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "SNOW_model_1w": {
+      "model_name": "SNOW_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SNOW_model_1w.pkl",
+      "file_size_mb": 0.78,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "DOWN",
+            "raw_prediction": 0,
+            "confidence": 0.7730622829649307,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 54.69,
+            "up_predictions": 3,
+            "down_predictions": 7,
+            "prediction_distribution": "3UP/7DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 1.78,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "SNOW",
+        "timeframe": "1w",
+        "accuracy": 0.35,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "BRK_B_model_1mo": {
+      "model_name": "BRK_B_model_1mo",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BRK_B_model_1mo.pkl",
+      "file_size_mb": 1.68,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.892897631294376,
+            "features_used": 21
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 56.51,
+            "up_predictions": 10,
+            "down_predictions": 0,
+            "prediction_distribution": "10UP/0DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 1.78,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "BRK-B",
+        "timeframe": "1mo",
+        "accuracy": 0.30434782608695654,
+        "features_count": 21,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "UNH_model_1w": {
+      "model_name": "UNH_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/UNH_model_1w.pkl",
+      "file_size_mb": 0.89,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.7185335154071635,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 54.1,
+            "up_predictions": 10,
+            "down_predictions": 0,
+            "prediction_distribution": "10UP/0DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.74,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "UNH",
+        "timeframe": "1w",
+        "accuracy": 0.3,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "COIN_model_1w": {
+      "model_name": "COIN_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/COIN_model_1w.pkl",
+      "file_size_mb": 0.8,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "DOWN",
+            "raw_prediction": 0,
+            "confidence": 0.9158015466201074,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 49.0,
+            "up_predictions": 7,
+            "down_predictions": 3,
+            "prediction_distribution": "7UP/3DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.69,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "COIN",
+        "timeframe": "1w",
+        "accuracy": 0.675,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "universal_model_1w": {
+      "model_name": "universal_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_1w.pkl",
+      "file_size_mb": 7.22,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "DOWN",
+            "raw_prediction": 0,
+            "confidence": 0.5439884892117817,
+            "features_used": 25
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 50.43,
+            "up_predictions": 5,
+            "down_predictions": 5,
+            "prediction_distribution": "5UP/5DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.78,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "Unknown",
+        "timeframe": "1w",
+        "accuracy": 0.6053571428571428,
+        "features_count": 25,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "SPY_model_1w": {
+      "model_name": "SPY_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SPY_model_1w.pkl",
+      "file_size_mb": 1.05,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "DOWN",
+            "raw_prediction": 0,
+            "confidence": 0.9162948312994121,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 54.3,
+            "up_predictions": 0,
+            "down_predictions": 10,
+            "prediction_distribution": "0UP/10DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.76,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "SPY",
+        "timeframe": "1w",
+        "accuracy": 0.425,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "TCS_NS_model_1mo": {
+      "model_name": "TCS_NS_model_1mo",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/TCS_NS_model_1mo.pkl",
+      "file_size_mb": 1.85,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.8026789498512656,
+            "features_used": 21
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 56.57,
+            "up_predictions": 10,
+            "down_predictions": 0,
+            "prediction_distribution": "10UP/0DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.79,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "TCS.NS",
+        "timeframe": "1mo",
+        "accuracy": 0.41304347826086957,
+        "features_count": 21,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "WMT_model_1mo": {
+      "model_name": "WMT_model_1mo",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WMT_model_1mo.pkl",
+      "file_size_mb": 1.68,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.906022631294376,
+            "features_used": 21
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 57.71,
+            "up_predictions": 10,
+            "down_predictions": 0,
+            "prediction_distribution": "10UP/0DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.8,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "WMT",
+        "timeframe": "1mo",
+        "accuracy": 0.30434782608695654,
+        "features_count": 21,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "SQ_model_1w": {
+      "model_name": "SQ_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SQ_model_1w.pkl",
+      "file_size_mb": 0.78,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.7930623723458118,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 53.23,
+            "up_predictions": 4,
+            "down_predictions": 6,
+            "prediction_distribution": "4UP/6DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.66,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "SQ",
+        "timeframe": "1w",
+        "accuracy": 0.65,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "PLTR_model_1w": {
+      "model_name": "PLTR_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/PLTR_model_1w.pkl",
+      "file_size_mb": 0.78,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.7803322136156531,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 62.7,
+            "up_predictions": 3,
+            "down_predictions": 7,
+            "prediction_distribution": "3UP/7DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.73,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "PLTR",
+        "timeframe": "1w",
+        "accuracy": 0.65,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "BRK_A_model_1mo": {
+      "model_name": "BRK_A_model_1mo",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BRK_A_model_1mo.pkl",
+      "file_size_mb": 1.68,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.9121059646277093,
+            "features_used": 21
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 65.92,
+            "up_predictions": 10,
+            "down_predictions": 0,
+            "prediction_distribution": "10UP/0DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.81,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "BRK-A",
+        "timeframe": "1mo",
+        "accuracy": 0.30434782608695654,
+        "features_count": 21,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "AXP_model_1mo": {
+      "model_name": "AXP_model_1mo",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AXP_model_1mo.pkl",
+      "file_size_mb": 1.83,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "DOWN",
+            "raw_prediction": 0,
+            "confidence": 0.7947558093035829,
+            "features_used": 21
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 59.71,
+            "up_predictions": 0,
+            "down_predictions": 10,
+            "prediction_distribution": "0UP/10DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.75,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "AXP",
+        "timeframe": "1mo",
+        "accuracy": 0.3695652173913043,
+        "features_count": 21,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "V_model_1mo": {
+      "model_name": "V_model_1mo",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/V_model_1mo.pkl",
+      "file_size_mb": 1.68,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.8776892979610427,
+            "features_used": 21
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 62.32,
+            "up_predictions": 10,
+            "down_predictions": 0,
+            "prediction_distribution": "10UP/0DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.78,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "V",
+        "timeframe": "1mo",
+        "accuracy": 0.30434782608695654,
+        "features_count": 21,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "GOOG_model_1mo": {
+      "model_name": "GOOG_model_1mo",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GOOG_model_1mo.pkl",
+      "file_size_mb": 2.27,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.5141789949325299,
+            "features_used": 21
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 65.73,
+            "up_predictions": 6,
+            "down_predictions": 4,
+            "prediction_distribution": "6UP/4DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.84,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "GOOG",
+        "timeframe": "1mo",
+        "accuracy": 0.5,
+        "features_count": 21,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "IWM_model_1w": {
+      "model_name": "IWM_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/IWM_model_1w.pkl",
+      "file_size_mb": 1.05,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "DOWN",
+            "raw_prediction": 0,
+            "confidence": 0.918763085267666,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 50.6,
+            "up_predictions": 0,
+            "down_predictions": 10,
+            "prediction_distribution": "0UP/10DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.64,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "IWM",
+        "timeframe": "1w",
+        "accuracy": 0.425,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "RBLX_model_1w": {
+      "model_name": "RBLX_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/RBLX_model_1w.pkl",
+      "file_size_mb": 0.8,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "DOWN",
+            "raw_prediction": 0,
+            "confidence": 0.6617525183571562,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 50.48,
+            "up_predictions": 8,
+            "down_predictions": 2,
+            "prediction_distribution": "8UP/2DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.64,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "RBLX",
+        "timeframe": "1w",
+        "accuracy": 0.675,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "ZM_model_1w": {
+      "model_name": "ZM_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ZM_model_1w.pkl",
+      "file_size_mb": 0.74,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "DOWN",
+            "raw_prediction": 0,
+            "confidence": 0.7516077658539361,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 44.4,
+            "up_predictions": 0,
+            "down_predictions": 10,
+            "prediction_distribution": "0UP/10DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.57,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "ZM",
+        "timeframe": "1w",
+        "accuracy": 0.675,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "TSLA_model_1mo": {
+      "model_name": "TSLA_model_1mo",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/TSLA_model_1mo.pkl",
+      "file_size_mb": 1.79,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.6898440415208601,
+            "features_used": 21
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 65.16,
+            "up_predictions": 6,
+            "down_predictions": 4,
+            "prediction_distribution": "6UP/4DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.81,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "TSLA",
+        "timeframe": "1mo",
+        "accuracy": 0.4782608695652174,
+        "features_count": 21,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "JPM_model_1mo": {
+      "model_name": "JPM_model_1mo",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JPM_model_1mo.pkl",
+      "file_size_mb": 1.68,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.8674809646277094,
+            "features_used": 21
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 60.59,
+            "up_predictions": 10,
+            "down_predictions": 0,
+            "prediction_distribution": "10UP/0DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.73,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "JPM",
+        "timeframe": "1mo",
+        "accuracy": 0.30434782608695654,
+        "features_count": 21,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "INDEX_NSEI_model_1mo": {
+      "model_name": "INDEX_NSEI_model_1mo",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/INDEX_NSEI_model_1mo.pkl",
+      "file_size_mb": 1.85,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.8300956165179324,
+            "features_used": 21
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 62.47,
+            "up_predictions": 10,
+            "down_predictions": 0,
+            "prediction_distribution": "10UP/0DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.78,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "^NSEI",
+        "timeframe": "1mo",
+        "accuracy": 0.41304347826086957,
+        "features_count": 21,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "GME_model_1w": {
+      "model_name": "GME_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GME_model_1w.pkl",
+      "file_size_mb": 0.88,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.5586111696148259,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 54.71,
+            "up_predictions": 5,
+            "down_predictions": 5,
+            "prediction_distribution": "5UP/5DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.67,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "GME",
+        "timeframe": "1w",
+        "accuracy": 0.45,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "PG_model_1w": {
+      "model_name": "PG_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/PG_model_1w.pkl",
+      "file_size_mb": 0.89,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.8183668487404967,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 58.43,
+            "up_predictions": 8,
+            "down_predictions": 2,
+            "prediction_distribution": "8UP/2DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.73,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "PG",
+        "timeframe": "1w",
+        "accuracy": 0.3,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "AMC_model_1w": {
+      "model_name": "AMC_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMC_model_1w.pkl",
+      "file_size_mb": 0.82,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.6930849089023199,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 56.69,
+            "up_predictions": 8,
+            "down_predictions": 2,
+            "prediction_distribution": "8UP/2DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.68,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "AMC",
+        "timeframe": "1w",
+        "accuracy": 0.5,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "RELIANCE_NS_model_1mo": {
+      "model_name": "RELIANCE_NS_model_1mo",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/RELIANCE_NS_model_1mo.pkl",
+      "file_size_mb": 1.85,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.8341789498512657,
+            "features_used": 21
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 63.12,
+            "up_predictions": 10,
+            "down_predictions": 0,
+            "prediction_distribution": "10UP/0DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.77,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "RELIANCE.NS",
+        "timeframe": "1mo",
+        "accuracy": 0.41304347826086957,
+        "features_count": 21,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "AMZN_model_1mo": {
+      "model_name": "AMZN_model_1mo",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMZN_model_1mo.pkl",
+      "file_size_mb": 2.27,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "DOWN",
+            "raw_prediction": 0,
+            "confidence": 0.587153082408838,
+            "features_used": 21
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 60.81,
+            "up_predictions": 10,
+            "down_predictions": 0,
+            "prediction_distribution": "10UP/0DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.79,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "AMZN",
+        "timeframe": "1mo",
+        "accuracy": 0.5,
+        "features_count": 21,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "DOCU_model_1w": {
+      "model_name": "DOCU_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/DOCU_model_1w.pkl",
+      "file_size_mb": 0.86,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "DOWN",
+            "raw_prediction": 0,
+            "confidence": 0.8268883215032664,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 55.97,
+            "up_predictions": 2,
+            "down_predictions": 8,
+            "prediction_distribution": "2UP/8DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.74,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "DOCU",
+        "timeframe": "1w",
+        "accuracy": 0.425,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "ROKU_model_1w": {
+      "model_name": "ROKU_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ROKU_model_1w.pkl",
+      "file_size_mb": 0.85,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "DOWN",
+            "raw_prediction": 0,
+            "confidence": 0.85747209207096,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 43.37,
+            "up_predictions": 0,
+            "down_predictions": 10,
+            "prediction_distribution": "0UP/10DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.54,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "ROKU",
+        "timeframe": "1w",
+        "accuracy": 0.6,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "DKNG_model_1w": {
+      "model_name": "DKNG_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/DKNG_model_1w.pkl",
+      "file_size_mb": 0.9,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.5300860617228438,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 41.64,
+            "up_predictions": 4,
+            "down_predictions": 6,
+            "prediction_distribution": "4UP/6DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.55,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "DKNG",
+        "timeframe": "1w",
+        "accuracy": 0.625,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "AAPL_model_1mo": {
+      "model_name": "AAPL_model_1mo",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AAPL_model_1mo.pkl",
+      "file_size_mb": 2.27,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.7859503817739394,
+            "features_used": 21
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 44.95,
+            "up_predictions": 8,
+            "down_predictions": 2,
+            "prediction_distribution": "8UP/2DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.6,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "AAPL",
+        "timeframe": "1mo",
+        "accuracy": 0.5,
+        "features_count": 21,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "VTI_model_1w": {
+      "model_name": "VTI_model_1w",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/VTI_model_1w.pkl",
+      "file_size_mb": 1.05,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "DOWN",
+            "raw_prediction": 0,
+            "confidence": 0.9185170535216344,
+            "features_used": 24
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 43.95,
+            "up_predictions": 0,
+            "down_predictions": 10,
+            "prediction_distribution": "0UP/10DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.56,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "VTI",
+        "timeframe": "1w",
+        "accuracy": 0.425,
+        "features_count": 24,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    },
+    "JNJ_model_1mo": {
+      "model_name": "JNJ_model_1mo",
+      "file_path": "/Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JNJ_model_1mo.pkl",
+      "file_size_mb": 1.68,
+      "tests": {
+        "loading": {
+          "status": "PASS",
+          "details": "Model loaded successfully"
+        },
+        "structure": {
+          "status": "PASS",
+          "details": {
+            "has_predict": true,
+            "has_predict_proba": true,
+            "features_available": true
+          }
+        },
+        "prediction": {
+          "status": "PASS",
+          "details": {
+            "prediction": "UP",
+            "raw_prediction": 1,
+            "confidence": 0.8846059646277094,
+            "features_used": 21
+          }
+        },
+        "performance": {
+          "status": "PASS",
+          "details": {
+            "batch_size": 10,
+            "avg_prediction_time_ms": 40.75,
+            "up_predictions": 10,
+            "down_predictions": 0,
+            "prediction_distribution": "10UP/0DOWN"
+          }
+        }
+      },
+      "overall_status": "PASSED",
+      "test_duration": 0.55,
+      "error_messages": [],
+      "model_info": {
+        "ticker": "JNJ",
+        "timeframe": "1mo",
+        "accuracy": 0.30434782608695654,
+        "features_count": 21,
+        "has_scaler": true,
+        "model_type": "VotingClassifier"
+      }
+    }
+  },
+  "summary": {
+    "total_models": 35,
+    "successful_models": 35,
+    "failed_models": 0,
+    "success_rate": 100.0,
+    "test_completion_time": "2025-08-15T22:59:33.590917"
+  },
+  "performance_rankings": {
+    "best_accuracy": [
+      [
+        "COIN_model_1w",
+        0.675
+      ],
+      [
+        "RBLX_model_1w",
+        0.675
+      ],
+      [
+        "ZM_model_1w",
+        0.675
+      ],
+      [
+        "HOOD_model_1w",
+        0.65
+      ],
+      [
+        "SQ_model_1w",
+        0.65
+      ],
+      [
+        "PLTR_model_1w",
+        0.65
+      ],
+      [
+        "DKNG_model_1w",
+        0.625
+      ],
+      [
+        "universal_model_1w",
+        0.6053571428571428
+      ],
+      [
+        "ROKU_model_1w",
+        0.6
+      ],
+      [
+        "GOOG_model_1mo",
+        0.5
+      ]
+    ],
+    "fastest_prediction": [
+      [
+        "JNJ_model_1mo",
+        40.75
+      ],
+      [
+        "DKNG_model_1w",
+        41.64
+      ],
+      [
+        "ROKU_model_1w",
+        43.37
+      ],
+      [
+        "VTI_model_1w",
+        43.95
+      ],
+      [
+        "ZM_model_1w",
+        44.4
+      ],
+      [
+        "AAPL_model_1mo",
+        44.95
+      ],
+      [
+        "ARKK_model_1w",
+        49.0
+      ],
+      [
+        "COIN_model_1w",
+        49.0
+      ],
+      [
+        "QQQ_model_1w",
+        49.6
+      ],
+      [
+        "HOOD_model_1w",
+        50.1
+      ]
+    ],
+    "largest_models": [
+      [
+        "universal_model_1w",
+        7.22
+      ],
+      [
+        "GOOG_model_1mo",
+        2.27
+      ],
+      [
+        "AMZN_model_1mo",
+        2.27
+      ],
+      [
+        "AAPL_model_1mo",
+        2.27
+      ],
+      [
+        "HINDUNILVR_NS_model_1mo",
+        1.85
+      ],
+      [
+        "TCS_NS_model_1mo",
+        1.85
+      ],
+      [
+        "INDEX_NSEI_model_1mo",
+        1.85
+      ],
+      [
+        "RELIANCE_NS_model_1mo",
+        1.85
+      ],
+      [
+        "AXP_model_1mo",
+        1.83
+      ],
+      [
+        "TSLA_model_1mo",
+        1.79
+      ]
+    ],
+    "most_features": [
+      [
+        "universal_model_1w",
+        25
+      ],
+      [
+        "ARKK_model_1w",
+        24
+      ],
+      [
+        "HOOD_model_1w",
+        24
+      ],
+      [
+        "QQQ_model_1w",
+        24
+      ],
+      [
+        "SNOW_model_1w",
+        24
+      ],
+      [
+        "UNH_model_1w",
+        24
+      ],
+      [
+        "COIN_model_1w",
+        24
+      ],
+      [
+        "SPY_model_1w",
+        24
+      ],
+      [
+        "SQ_model_1w",
+        24
+      ],
+      [
+        "PLTR_model_1w",
+        24
+      ]
+    ]
+  },
+  "errors": []
+}

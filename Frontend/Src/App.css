@@ -33,6 +33,7 @@
  * 27. RESPONSIVE DESIGN
  * 28. ACCESSIBILITY & PREFERENCES
  * 29. PRINT STYLES
+ * 30. LOADING UI
  *═══════════════════════════════════════════════════════════════════════════*
  */
 
@@ -886,7 +887,7 @@ INFO: 12. TAB NAVIGATION SYSTEM
   flex: 1;
   padding: var(--spacing-6) var(--spacing-10);
   background: transparent;
-  border: none;
+  border: 2px solid transparent;
   color: var(--gray-600);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
@@ -897,13 +898,15 @@ INFO: 12. TAB NAVIGATION SYSTEM
   align-items: center;
   justify-content: center;
   gap: var(--spacing-4);
-  transition: var(--transition-all);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
   overflow: hidden;
   letter-spacing: var(--letter-spacing-wide);
   min-height: 48px;
+  outline: none;
 }
 
+/* Hover background effect layer */
 .tab-btn::before {
   content: "";
   position: absolute;
@@ -911,22 +914,46 @@ INFO: 12. TAB NAVIGATION SYSTEM
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--primary-gradient);
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.1),
+    rgba(118, 75, 162, 0.1)
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
   border-radius: var(--radius-lg);
   z-index: -1;
 }
 
-.tab-btn:hover:not(.active):not(:disabled) {
+/* Improved hover state for non-active tabs */
+.tab-btn:not(.active):not(.disabled):hover {
   color: var(--primary-blue);
-  transform: translateY(-1px);
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.05),
+    rgba(118, 75, 162, 0.05)
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+  border-color: rgba(102, 126, 234, 0.3);
 }
 
-.tab-btn:hover:not(.active):not(:disabled)::before {
-  opacity: 0.08;
+.tab-btn:not(.active):not(.disabled):hover::before {
+  opacity: 1;
 }
 
+/* Icon hover animation */
+.tab-btn span:first-child {
+  font-size: var(--font-size-lg);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+}
+
+.tab-btn:not(.disabled):hover span:first-child {
+  transform: rotate(5deg) scale(1.1);
+}
+
+/* Active state */
 .tab-btn.active {
   background: var(--primary-gradient);
   color: var(--white);
@@ -935,8 +962,10 @@ INFO: 12. TAB NAVIGATION SYSTEM
   transform: scale(1.02);
   z-index: 2;
   font-weight: var(--font-weight-bold);
+  border-color: transparent;
 }
 
+/* Active tab glow effect */
 .tab-btn.active::after {
   content: "";
   position: absolute;
@@ -947,34 +976,103 @@ INFO: 12. TAB NAVIGATION SYSTEM
   background: var(--primary-gradient);
   border-radius: var(--radius-lg);
   opacity: 0.4;
-  z-index: -1;
+  z-index: -2;
   filter: blur(8px);
   animation: pulse 2s ease-in-out infinite;
 }
 
-.tab-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  color: var(--gray-400);
+/* Active tab hover - subtle enhancement */
+.tab-btn.active:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
-.tab-btn .tab-icon {
-  font-size: var(--font-size-lg);
-  transition: transform 0.3s ease;
-  display: inline-block;
-}
-
-.tab-btn:hover .tab-icon {
-  transform: rotate(5deg) scale(1.05);
-}
-
-.tab-btn.active .tab-icon {
+.tab-btn.active:hover span:first-child {
   animation: iconBounce 0.5s ease;
 }
 
+/* Disabled state */
+.tab-btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  color: var(--gray-400);
+  background: var(--gray-100);
+}
+
+.tab-btn.disabled:hover {
+  transform: none;
+  box-shadow: none;
+  background: var(--gray-100);
+  color: var(--gray-400);
+  border-color: transparent;
+}
+
+/* Badge styles */
+.tab-btn .badge {
+  background: var(--error-color);
+  color: var(--white);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: var(--radius-full);
+  margin-left: var(--spacing-2);
+  min-width: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:not(.disabled):hover .badge {
+  transform: scale(1.1);
+  background: var(--error-dark);
+}
+
+.tab-btn.active .badge {
+  background: rgba(255, 255, 255, 0.3);
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+/* Tooltip styles */
+.tab-btn[data-tooltip] {
+  position: relative;
+}
+
+.tab-btn[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--gray-800);
+  color: var(--white);
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: var(--z-tooltip);
+  box-shadow: var(--shadow-lg);
+}
+
+.tab-btn[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Focus state for accessibility */
+.tab-btn:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
+/* Loading state */
 .tab-btn.loading {
   pointer-events: none;
   opacity: 0.6;
+  position: relative;
 }
 
 .tab-btn.loading::after {
@@ -989,40 +1087,32 @@ INFO: 12. TAB NAVIGATION SYSTEM
   animation: spin 0.8s linear infinite;
 }
 
-.tab-btn .tab-badge {
-  position: absolute;
-  top: var(--spacing-2);
-  right: var(--spacing-4);
-  background: var(--error-color);
-  color: var(--white);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-bold);
-  padding: var(--spacing-1) var(--spacing-3);
-  border-radius: var(--radius-full);
-  animation: badgePulse 2s ease-in-out infinite;
+/* Ripple effect on click */
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
 }
 
-.tab-btn[data-tooltip] {
-  position: relative;
-}
-
-.tab-btn[data-tooltip]:hover::before {
-  content: attr(data-tooltip);
+.tab-btn:not(.disabled):active::after {
+  content: "";
   position: absolute;
-  bottom: 100%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  background: var(--gray-800);
-  color: var(--white);
-  padding: var(--spacing-2) var(--spacing-6);
-  border-radius: var(--radius-md);
-  font-size: var(--font-size-sm);
-  white-space: nowrap;
-  z-index: var(--z-tooltip);
-  margin-bottom: var(--spacing-4);
-  animation: tooltipFade var(--transition-fast);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(102, 126, 234, 0.5);
+  transform: translate(-50%, -50%) scale(0);
+  animation: ripple 0.6s ease-out;
 }
 
+/* Tab content */
 .tab-content {
   background: var(--white);
   border-radius: var(--radius-2xl);
@@ -1044,6 +1134,60 @@ INFO: 12. TAB NAVIGATION SYSTEM
   background: var(--primary-gradient);
   opacity: 0.05;
   border-radius: 50%;
+}
+
+/* Animations used in tabs */
+@keyframes iconBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes badgePulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .tab-header {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: var(--spacing-2);
+    gap: var(--spacing-2);
+  }
+
+  .tab-header::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-btn {
+    flex: 0 0 auto;
+    min-width: 100px;
+    padding: var(--spacing-4) var(--spacing-6);
+    font-size: var(--font-size-sm);
+  }
+
+  /* Reduce hover effects on mobile */
+  .tab-btn:not(.active):not(.disabled):hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .tab-btn[data-tooltip]::after {
+    display: none; /* Hide tooltips on mobile */
+  }
 }
 
 /*
@@ -3237,6 +3381,115 @@ INFO: 29. PRINT STYLES
   .chart-placeholder {
     display: none;
   }
+}
+
+/*
+*═══════════════════════════════════════════════════════════════════════════*
+INFO: 30. Loading UI
+*═══════════════════════════════════════════════════════════════════════════*
+*/
+
+.chart-skeleton {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-10);
+  min-height: 500px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.skeleton-header {
+  height: 30px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-8);
+  width: 200px;
+}
+
+.skeleton-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 350px;
+  gap: var(--spacing-4);
+  margin: var(--spacing-10) 0;
+}
+
+.skeleton-bar {
+  flex: 1;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+  opacity: 0.7;
+}
+
+.skeleton-bar:nth-child(1) {
+  height: 60%;
+  animation-delay: 0.1s;
+}
+.skeleton-bar:nth-child(2) {
+  height: 80%;
+  animation-delay: 0.2s;
+}
+.skeleton-bar:nth-child(3) {
+  height: 40%;
+  animation-delay: 0.3s;
+}
+.skeleton-bar:nth-child(4) {
+  height: 70%;
+  animation-delay: 0.4s;
+}
+.skeleton-bar:nth-child(5) {
+  height: 50%;
+  animation-delay: 0.5s;
+}
+
+.skeleton-footer {
+  display: flex;
+  gap: var(--spacing-8);
+  justify-content: center;
+}
+
+.skeleton-footer::before,
+.skeleton-footer::after {
+  content: "";
+  height: 20px;
+  width: 100px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.chart-wrapper.loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.chart-wrapper.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--gray-200);
+  border-top-color: var(--primary-blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
 }
 
 /*

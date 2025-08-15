@@ -1073,7 +1073,7 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains
 
 ## 📞 Support & Contact
 
-- **GitHub Issues:** [github.com/ThisIsDibakar/StockVibePredictor/issues](https://github.com/ThisIsDibakar/StockVibePredictor/issues)
+- **GitHub Issues:** [github.com/DibVibe/StockVibePredictor/issues](https://github.com/DibVibe/StockVibePredictor/issues)
 - **Email:** support@stockvibepredictor.com
 - **Documentation:** [docs.stockvibepredictor.com](https://docs.stockvibepredictor.com)
 

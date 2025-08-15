@@ -386,8 +386,8 @@ python manage.py shell
 
 ## 🔗 Links
 
-- **Repository:** [github.com/ThisIsDibakar/StockVibePredictor](https://github.com/ThisIsDibakar/StockVibePredictor)
-- **Issues:** [github.com/ThisIsDibakar/StockVibePredictor/issues](https://github.com/ThisIsDibakar/StockVibePredictor/issues)
+- **Repository:** [github.com/DibVibe/StockVibePredictor](https://github.com/DibVibe/StockVibePredictor)
+- **Issues:** [github.com/DibVibe/StockVibePredictor/issues](https://github.com/DibVibe/StockVibePredictor/issues)
 - **Documentation:** [docs.stockvibepredictor.com](https://docs.stockvibepredictor.com)
 - **API Reference:** [API.md](./API.md)
 

@@ -285,7 +285,7 @@ sudo apt install redis-server
 
 ```bash
 # 📥 Clone the repository
-git clone https://github.com/ThisIsDibakar/StockVibePredictor.git
+git clone https://github.com/DibVibe/StockVibePredictor.git
 cd StockVibePredictor
 
 # 👀 Check you're in the right place
@@ -784,7 +784,7 @@ pkill -f node
 #### **1️⃣ Clone the Repository**
 
 ```bash
-git clone https://github.com/ThisIsDibakar/StockVibePredictor.git
+git clone https://github.com/DibVibe/StockVibePredictor.git
 cd StockVibePredictor
 ```
 

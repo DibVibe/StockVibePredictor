@@ -29,9 +29,9 @@ git config team.backend-lead "Dibakar"
 git config team.frontend-lead "Dibakar"
 git config team.ml-lead "Dibakar"
 git config team.devops-lead "Dibakar"
-git config team.project-url "https://github.com/ThisIsDibakar/StockVibePredictor"
-git config team.documentation "https://github.com/ThisIsDibakar/StockVibePredictor/wiki"
-git config team.issues "https://github.com/ThisIsDibakar/StockVibePredictor/issues"
+git config team.project-url "https://github.com/DibVibe/StockVibePredictor"
+git config team.documentation "https://github.com/DibVibe/StockVibePredictor/wiki"
+git config team.issues "https://github.com/DibVibe/StockVibePredictor/issues"
 
 # ========================================
 # REPOSITORY SETTINGS

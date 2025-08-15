@@ -10,9 +10,9 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/ThisIsDibakar/StockVibePredictor",
     project_urls={
-        "Bug Tracker": "https://github.com/ThisIsDibakar/StockVibePredictor/issues",
-        "Documentation": "https://github.com/ThisIsDibakar/StockVibePredictor/wiki",
-        "Source Code": "https://github.com/ThisIsDibakar/StockVibePredictor",
+        "Bug Tracker": "https://github.com/DibVibe/StockVibePredictor/issues",
+        "Documentation": "https://github.com/DibVibe/StockVibePredictor/wiki",
+        "Source Code": "https://github.com/DibVibe/StockVibePredictor",
     },
     packages=find_packages(),
     classifiers=[

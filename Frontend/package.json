@@ -8,29 +8,31 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ThisIsDibakar/StockVibePredictor.git"
+    "url": "https://github.com/DibVibe/StockVibePredictor.git"
   },
   "bugs": {
-    "url": "https://github.com/ThisIsDibakar/StockVibePredictor/issues"
+    "url": "https://github.com/DibVibe/StockVibePredictor.git/issues"
   },
-  "homepage": "https://github.com/ThisIsDibakar/StockVibePredictor",
+  "homepage": "https://github.com/DibVibe/StockVibePredictor",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^0.27.2",
+    "axios": "^1.11.0",
     "chart.js": "^3.9.1",
     "chartjs-plugin-zoom": "^2.2.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^4.3.1",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test",
+    "test": "craco test --watchAll=false",
+    "test:watch": "craco test",
+    "test:coverage": "craco test --coverage --watchAll=false",
+    "test:debug": "craco test --no-watch --verbose",
+    "test:specific": "craco test --testPathPattern",
+    "test:ci": "craco test --coverage --watchAll=false --ci",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -52,8 +54,15 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.28.3",
     "@babel/preset-env": "^7.28.0",
     "@babel/preset-react": "^7.27.1",
-    "@craco/craco": "^7.1.0"
+    "@craco/craco": "^7.1.0",
+    "@testing-library/jest-dom": "^6.7.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "babel-jest": "^30.0.5",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-transform-stub": "^2.0.0"
   }
 }
