@@ -74,6 +74,12 @@ TIMEFRAMES = {
         "model_suffix": "_1d",
         "cache_time": 300,
     },
+    "5d": {
+        "period": "3mo",
+        "interval": "1d",
+        "model_suffix": "_1w",  # Use 1w model for 5d timeframe
+        "cache_time": 600,
+    },
     "1w": {
         "period": "1y",
         "interval": "1d",
@@ -86,11 +92,35 @@ TIMEFRAMES = {
         "model_suffix": "_1mo",
         "cache_time": 3600,
     },
+    "3mo": {
+        "period": "2y",
+        "interval": "1wk",
+        "model_suffix": "_1mo",  # Use 1mo model for 3mo timeframe
+        "cache_time": 5400,
+    },
+    "6mo": {
+        "period": "5y",
+        "interval": "1wk",
+        "model_suffix": "_1mo",  # Use 1mo model for 6mo timeframe
+        "cache_time": 7200,
+    },
     "1y": {
         "period": "10y",
         "interval": "1mo",
         "model_suffix": "_1y",
         "cache_time": 21600,
+    },
+    "2y": {
+        "period": "10y",
+        "interval": "1mo",
+        "model_suffix": "_1y",  # Use 1y model for 2y timeframe
+        "cache_time": 28800,
+    },
+    "5y": {
+        "period": "max",
+        "interval": "1mo",
+        "model_suffix": "_1y",  # Use 1y model for 5y timeframe
+        "cache_time": 43200,
     },
 }
 
