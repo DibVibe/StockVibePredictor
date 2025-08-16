@@ -406,10 +406,6 @@ const StockChart = ({ data, ticker }) => {
           AI model analyzes patterns, trends, and technical indicators from this
           historical data.
         </p>
-        <p className="zoom-instructions">
-          🖱️ <strong>Zoom:</strong> Use mouse wheel to zoom in/out on charts |{" "}
-          <strong>Pan:</strong> Click and drag to move around
-        </p>
       </div>
     </div>
   );

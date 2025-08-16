@@ -695,7 +695,7 @@ function App() {
                         {chartData ? (
                           <SuspenseWrapper fallback={<ChartSkeleton />}>
                             <StockChart
-                              data={chartData}
+                              data={chartData.data}
                               ticker={currentTicker}
                               predictions={predictions}
                               loading={chartLoading}
@@ -854,7 +854,7 @@ function App() {
                         {chartData ? (
                           <SuspenseWrapper fallback={<ChartSkeleton />}>
                             <StockChart
-                              data={chartData}
+                              data={chartData.data}
                               ticker={currentTicker}
                               predictions={predictions}
                               loading={chartLoading}

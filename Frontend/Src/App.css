@@ -2155,14 +2155,15 @@ INFO: 16. CHART TAB STYLES
   color: var(--success-dark);
 }
 
-.chart-wrapper {
+.chart-tab-container .chart-wrapper {
   background: var(--white);
   border-radius: var(--radius-xl);
   padding: var(--spacing-10);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--gray-200);
   margin-bottom: var(--spacing-10);
-  min-height: 500px;
+  min-height: 600px;
+  height: auto;
 }
 
 .chart-placeholder {
