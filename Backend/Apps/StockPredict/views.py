@@ -66,67 +66,70 @@ model_cache = {}
 prediction_cache = {}
 performance_cache = {}
 
-# Timeframe configurations
+# Timeframe configurations - Balanced for chart display and data requirements
 TIMEFRAMES = {
     "1d": {
-        "period": "3mo",
-        "interval": "1d",
+        "period": "1mo",  # Get 1 month of data to ensure sufficient history
+        "interval": "1h",  # Hourly data for 1-day view
         "model_suffix": "_1d",
         "cache_time": 300,
+        "display_limit": 24,  # Show only last 24 hours for 1-day chart
     },
-    # TODO: Remove these
-    # Added 5d timeframe
     "5d": {
-        "period": "3mo",
-        "interval": "1d",
-        "model_suffix": "_1w",  # Use 1w model for 5d timeframe
+        "period": "1mo",  # Get 1 month to ensure sufficient data
+        "interval": "1d",  # Daily intervals for 5-day view
+        "model_suffix": "_1w",
         "cache_time": 600,
+        "display_limit": 5,  # Show only last 5 days for 5-day chart
     },
     "1w": {
-        "period": "1y",
-        "interval": "1d",
+        "period": "3mo",  # Get 3 months to ensure sufficient data
+        "interval": "1d",  # Daily data for 1-week view
         "model_suffix": "_1w",
         "cache_time": 1800,
+        "display_limit": 7,  # Show only last 7 days for 1-week chart
     },
     "1mo": {
-        "period": "2y",
-        "interval": "1wk",
+        "period": "6mo",  # Get 6 months to ensure sufficient data
+        "interval": "1d",  # Daily intervals for 1-month view
         "model_suffix": "_1mo",
         "cache_time": 3600,
+        "display_limit": 30,  # Show only last 30 days for 1-month chart
     },
-    # TODO: Remove these
-    # Added 3mo and 6mo timeframes
     "3mo": {
-        "period": "2y",
-        "interval": "1wk",
-        "model_suffix": "_1mo",  # Use 1mo model for 3mo timeframe
+        "period": "1y",  # Get 1 year to ensure sufficient data
+        "interval": "1d",  # Daily intervals for 3-month view
+        "model_suffix": "_1mo",
         "cache_time": 5400,
+        "display_limit": 90,  # Show only last 90 days for 3-month chart
     },
     "6mo": {
-        "period": "5y",
-        "interval": "1wk",
-        "model_suffix": "_1mo",  # Use 1mo model for 6mo timeframe
+        "period": "2y",  # Get 2 years to ensure sufficient data
+        "interval": "1wk",  # Weekly intervals for 6-month view
+        "model_suffix": "_1mo",
         "cache_time": 7200,
+        "display_limit": 26,  # Show only last 26 weeks for 6-month chart
     },
     "1y": {
-        "period": "10y",
-        "interval": "1mo",
+        "period": "3y",  # Get 3 years to ensure sufficient data
+        "interval": "1wk",  # Weekly intervals for 1-year view
         "model_suffix": "_1y",
         "cache_time": 21600,
+        "display_limit": 52,  # Show only last 52 weeks for 1-year chart
     },
-    # TODO: Remove these
-    # Added 2y and 5y timeframes
     "2y": {
-        "period": "10y",
-        "interval": "1mo",
-        "model_suffix": "_1y",  # Use 1y model for 2y timeframe
+        "period": "5y",  # Get 5 years to ensure sufficient data
+        "interval": "1mo",  # Monthly intervals for 2-year view
+        "model_suffix": "_1y",
         "cache_time": 28800,
+        "display_limit": 24,  # Show only last 24 months for 2-year chart
     },
     "5y": {
-        "period": "max",
-        "interval": "1mo",
-        "model_suffix": "_1y",  # Use 1y model for 5y timeframe
+        "period": "max",  # Get maximum available data
+        "interval": "1mo",  # Monthly intervals for 5-year view
+        "model_suffix": "_1y",
         "cache_time": 43200,
+        "display_limit": 60,  # Show only last 60 months for 5-year chart
     },
 }
 
@@ -2274,6 +2277,64 @@ def get_chart_data(request, ticker):
 
         price_data = stock_data['price_data']
 
+        # Apply display limit to show only the required timeframe ending today
+        config = TIMEFRAMES[timeframe]
+        if 'display_limit' in config:
+            display_limit = config['display_limit']
+            
+            # Get the latest data timestamp to understand the data timezone
+            if not price_data.empty:
+                latest_data_time = price_data.index[-1]
+                logger.info(f"Latest data timestamp for {ticker} ({timeframe}): {latest_data_time}, Total rows: {len(price_data)}")
+                
+                # For timeframes that need current data, try to fetch more recent data if needed
+                if timeframe in ["1d", "5d", "1w"] and latest_data_time.date() < timezone.now().date():
+                    logger.info(f"Data seems outdated for {timeframe}, trying to fetch current data")
+                    # Try to fetch current day data if we're missing recent data
+                    try:
+                        ticker_obj = yf.Ticker(ticker)
+                        current_data = ticker_obj.history(period="5d", interval="1d")
+                        if not current_data.empty and current_data.index[-1].date() >= latest_data_time.date():
+                            logger.info(f"Found more recent data, using current data for {timeframe}")
+                            # Use the more recent data
+                            price_data = current_data
+                    except Exception as e:
+                        logger.warning(f"Could not fetch current data: {str(e)}")
+                
+                # Apply display limits based on timeframe
+                if timeframe == "1d":
+                    # For 1 day: show last 24 data points (hours)
+                    price_data = price_data.tail(24)
+                elif timeframe == "5d":
+                    # For 5 days: show last 5 data points (days)
+                    price_data = price_data.tail(5)
+                elif timeframe == "1w":
+                    # For 1 week: show last 7 data points (days)
+                    price_data = price_data.tail(7)
+                elif timeframe == "1mo":
+                    # For 1 month: show last 30 data points (days)
+                    price_data = price_data.tail(30)
+                elif timeframe == "3mo":
+                    # For 3 months: show last 90 data points (days)
+                    price_data = price_data.tail(90)
+                elif timeframe == "6mo":
+                    # For 6 months: show last 26 data points (weeks)
+                    price_data = price_data.tail(26)
+                elif timeframe == "1y":
+                    # For 1 year: show last 52 data points (weeks)
+                    price_data = price_data.tail(52)
+                elif timeframe == "2y":
+                    # For 2 years: show last 24 data points (months)
+                    price_data = price_data.tail(24)
+                elif timeframe == "5y":
+                    # For 5 years: show last 60 data points (months)
+                    price_data = price_data.tail(60)
+                else:
+                    # Fallback to display_limit if timeframe not specifically handled
+                    price_data = price_data.tail(display_limit)
+                
+                logger.info(f"After applying display limit for {timeframe}: {len(price_data)} rows, Date range: {price_data.index[0]} to {price_data.index[-1]}")
+        
         # Format data based on chart type
         chart_data = []
 

@@ -12,6 +12,8 @@ from .views import (
     market_overview,
     analytics_dashboard,
     get_model_performance,
+    get_chart_data,
+    get_multi_chart_data,
     system_health,
     redis_check,
     debug_models,
@@ -20,6 +22,7 @@ from .views import (
     list_models,
     delete_model,
 )
+
 from .CompanyEssentials import company_essentials
 
 app_name = "StockPredict"
@@ -62,6 +65,10 @@ urlpatterns = [
         company_essentials,
         name="company_essentials"
     ),
+
+    # Chart data endpoints
+    path("chart/<str:ticker>/", get_chart_data, name="get_chart_data"),
+    path("chart/multi/", get_multi_chart_data, name="get_multi_chart_data"),
 
     # System monitoring endpoints
     path("system/health/", system_health, name="system_health"),
