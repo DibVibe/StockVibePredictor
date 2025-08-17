@@ -10,6 +10,7 @@ import axios from "axios";
 import "./App.css";
 
 // Regular Components
+import Navbar from "./Components/Javascript/Navbar";
 import StockInput from "./Components/Javascript/StockInput";
 import LoadingSpinner from "./Components/Javascript/LoadingSpinner";
 import SystemStatus from "./Components/Javascript/SystemStatus";
@@ -17,7 +18,7 @@ import TimeframeSelector from "./Components/Javascript/TimeframeSelector";
 import ErrorMessage from "./Components/Javascript/ErrorMessage";
 import TabNavigation from "./Components/Javascript/TabNavigation";
 
-// Lazy load heavy components
+// Lazy Load Heavy Components
 const StockChart = lazy(() => import("./Components/Javascript/StockChart"));
 const CompanyEssentials = lazy(() =>
   import("./Components/Javascript/CompanyEssentials")
@@ -30,7 +31,7 @@ const SentimentAnalysis = lazy(() =>
   import("./Components/Javascript/SentimentAnalysis")
 );
 
-// Utility: Debounce function
+// Utility: Debounce Function
 const debounce = (func, wait) => {
   let timeout;
   return function executedFunction(...args) {
@@ -58,10 +59,35 @@ const ChartSkeleton = () => (
   </div>
 );
 
-// Component wrapper with Suspense
+// Component Wrapper with Suspense
 const SuspenseWrapper = ({ children, fallback }) => (
   <Suspense fallback={fallback || <LoadingSpinner />}>{children}</Suspense>
 );
+
+// Utility function to extract company name
+const extractCompanyName = (data, ticker) => {
+  if (data.market_info?.company_name) {
+    return data.market_info.company_name;
+  }
+
+  if (data.market_info?.long_name) {
+    return data.market_info.long_name;
+  }
+
+  if (data.market_info?.short_name) {
+    return data.market_info.short_name;
+  }
+
+  if (data.company_info?.company_name) {
+    return data.company_info.company_name;
+  }
+
+  if (data.company_info?.long_name) {
+    return data.company_info.long_name;
+  }
+
+  return ticker.toUpperCase();
+};
 
 function App() {
   // ==================== STATE MANAGEMENT ====================
@@ -85,8 +111,7 @@ function App() {
   const [selectedIndicators, setSelectedIndicators] = useState(["sma20"]);
   const [systemHealth, setSystemHealth] = useState(null);
   const [activeTab, setActiveTab] = useState("predictions");
-
-  // Cache for chart data
+  const [currentCompanyName, setCurrentCompanyName] = useState("");
   const [chartCache, setChartCache] = useState({});
   const [requestQueue, setRequestQueue] = useState([]);
 
@@ -140,11 +165,9 @@ function App() {
 
   // ==================== AXIOS CONFIGURATION ====================
   useEffect(() => {
-    // Set default axios config for better performance
-    axios.defaults.timeout = 15000; // 15 second timeout (increased)
+    axios.defaults.timeout = 15000;
     axios.defaults.headers.common["Content-Type"] = "application/json";
 
-    // Add request interceptor for caching headers
     const requestInterceptor = axios.interceptors.request.use(
       (config) => {
         config.headers["Cache-Control"] = "max-age=300";
@@ -169,35 +192,48 @@ function App() {
     try {
       const response = await axios.get(`${API_BASE_URL}/system/health/`);
       setSystemHealth(response.data);
-
-      if (response.data.status !== "healthy") {
-        console.warn("System health issues detected:", response.data);
-      }
     } catch (err) {
-      console.error("System health check failed:", err);
       setSystemHealth({ status: "unhealthy", error: "Cannot connect to API" });
     }
   };
 
-  // ==================== COMPANY DATA HANDLER ====================
-  const handleCompanyDataReceived = useCallback((data) => {
-    setCompanyData(data);
-
-    if (data && data.company_info) {
-      setMarketInfo((prevMarketInfo) => ({
-        ...prevMarketInfo,
-        sector: data.company_info.sector,
-        industry: data.company_info.industry,
-        market_cap: data.essentials?.market_cap?.value,
-        pe_ratio: data.essentials?.pe_ratio?.value,
-        dividend_yield: data.essentials?.dividend_yield?.value,
-        exchange: data.company_info.exchange,
-        week_52_high: data.price_summary?.week_52_high,
-        week_52_low: data.price_summary?.week_52_low,
-        current_price: data.current_price,
-      }));
-    }
+  // ==================== NAVBAR HANDLERS ====================
+  const handleQuickSearch = useCallback((ticker) => {
+    fetchStockData(ticker);
   }, []);
+
+  // ==================== COMPANY DATA HANDLER ====================
+  const handleCompanyDataReceived = useCallback(
+    (data) => {
+      setCompanyData(data);
+
+      // Update company name with better data from company essentials
+      if (data) {
+        const betterCompanyName = extractCompanyName(data, currentTicker);
+        if (betterCompanyName !== currentTicker.toUpperCase()) {
+          setCurrentCompanyName(betterCompanyName);
+        }
+
+        // Update market info with enhanced data
+        if (data.company_info) {
+          setMarketInfo((prevMarketInfo) => ({
+            ...prevMarketInfo,
+            company_name: betterCompanyName,
+            sector: data.company_info.sector,
+            industry: data.company_info.industry,
+            market_cap: data.essentials?.market_cap?.value,
+            pe_ratio: data.essentials?.pe_ratio?.value,
+            dividend_yield: data.essentials?.dividend_yield?.value,
+            exchange: data.company_info.exchange,
+            week_52_high: data.price_summary?.week_52_high,
+            week_52_low: data.price_summary?.week_52_low,
+            current_price: data.current_price,
+          }));
+        }
+      }
+    },
+    [currentTicker]
+  );
 
   // ==================== OPTIMIZED CHART DATA FETCHER ====================
   const fetchChartData = useCallback(
@@ -207,19 +243,14 @@ function App() {
       type = chartType,
       indicators = selectedIndicators
     ) => {
-      // Create cache key
       const cacheKey = `${ticker}_${timeframe}_${type}_${indicators.join(",")}`;
 
-      // Check cache first
       if (chartCache[cacheKey]) {
-        console.log("Using cached chart data for:", cacheKey);
         setChartData(chartCache[cacheKey]);
         return chartCache[cacheKey];
       }
 
-      // Check if request is already in queue
       if (requestQueue.includes(cacheKey)) {
-        console.log("Request already in progress for:", cacheKey);
         return;
       }
 
@@ -228,7 +259,7 @@ function App() {
 
       try {
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 12000); // 12 second timeout (increased)
+        const timeoutId = setTimeout(() => controller.abort(), 12000);
 
         const response = await axios.get(`${API_BASE_URL}/chart/${ticker}/`, {
           params: {
@@ -243,7 +274,6 @@ function App() {
 
         clearTimeout(timeoutId);
 
-        // Store in cache with timestamp
         const cacheData = {
           ...response.data,
           _timestamp: Date.now(),
@@ -255,20 +285,10 @@ function App() {
         }));
 
         setChartData(response.data);
-
-        console.log("Chart data fetched successfully:", {
-          ticker: response.data.ticker,
-          dataPoints: response.data.data?.length || 0,
-          indicators: Object.keys(response.data.indicators || {}),
-        });
-
         return response.data;
       } catch (err) {
-        if (err.name === "AbortError" || err.code === "ECONNABORTED") {
-          console.error("Chart request timeout");
-          // Don't set error for chart timeout - it's not critical
-        } else {
-          console.warn("Chart data fetch failed:", err);
+        if (err.name !== "AbortError" && err.code !== "ECONNABORTED") {
+          console.warn("Chart data fetch failed:", err.message);
         }
         setChartData(null);
         return null;
@@ -280,13 +300,13 @@ function App() {
     [chartCache, requestQueue, chartTimeframe, chartType, selectedIndicators]
   );
 
-  // Debounced version for indicator changes
+  // Debounced Version for Indicator Changes
   const debouncedFetchChart = useMemo(
     () => debounce(fetchChartData, 500),
     [fetchChartData]
   );
 
-  // ==================== DEBUGGING STOCK DATA FETCHER ====================
+  // ==================== STOCK DATA FETCHER ====================
   const fetchStockData = async (ticker) => {
     if (!ticker.trim()) {
       setError("Please enter a stock ticker symbol! 📈");
@@ -297,11 +317,7 @@ function App() {
     setLoading(true);
     setError(null);
     setCurrentTicker(ticker.toUpperCase());
-
-    console.log("=== DEBUG INFO ===");
-    console.log("API Base URL:", API_BASE_URL);
-    console.log("Ticker:", ticker.toUpperCase());
-    console.log("Selected timeframes:", selectedTimeframes);
+    setCurrentCompanyName("");
 
     try {
       const requestUrl = `${API_BASE_URL}/predict/multi/`;
@@ -311,91 +327,62 @@ function App() {
         include_analysis: true,
       };
 
-      console.log("Request URL:", requestUrl);
-      console.log("Request payload:", requestPayload);
-
-      // Test basic connectivity first
-      console.log("Testing basic connectivity...");
-
       const predictionsResponse = await axios.post(requestUrl, requestPayload, {
-        timeout: 30000, // 30 seconds for debugging
+        timeout: 30000,
       });
 
-      console.log("Response received:", predictionsResponse.status);
-      console.log("Response data:", predictionsResponse.data);
-
       const data = predictionsResponse.data;
+
       setPredictions(data.predictions);
       setAnalysis(data.analysis || null);
       setMarketInfo(data.market_info || null);
       setStockData(data.history || null);
 
-      console.log("Data processed successfully");
+      // Extract and set Company Name from the API response
+      const companyName = extractCompanyName(data, ticker.toUpperCase());
+      setCurrentCompanyName(companyName);
+
       setActiveTab("predictions");
 
-      // Chart data (separate - non-critical)
+      // Chart Data (separate - non-critical)
       fetchChartData(
         ticker.toUpperCase(),
         chartTimeframe,
         chartType,
         selectedIndicators.slice(0, 1)
       ).catch((chartErr) => {
-        console.warn("Chart data failed (non-critical):", chartErr);
+        console.warn("Chart data failed (non-critical):", chartErr.message);
       });
     } catch (err) {
-      console.log("=== ERROR DETAILS ===");
-      console.log("Error object:", err);
-      console.log("Error message:", err.message);
-      console.log("Error code:", err.code);
-      console.log("Response status:", err.response?.status);
-      console.log("Response data:", err.response?.data);
-      console.log("Response headers:", err.response?.headers);
-
       handleFetchError(err, ticker);
     } finally {
       setLoading(false);
     }
   };
 
-  // ==================== ENHANCED ERROR HANDLER ====================
+  // ==================== ERROR HANDLER ====================
   const handleFetchError = (err, ticker) => {
-    console.log("=== HANDLING ERROR ===");
-    console.log("Error type:", typeof err);
-    console.log("Error details:", err);
-
     let errorMessage = "Unable to fetch stock data. Please try again.";
-    let debugInfo = "";
 
     if (err.code === "ECONNREFUSED") {
       errorMessage = "❌ Cannot connect to backend server";
-      debugInfo = `Make sure Django server is running on ${API_BASE_URL}`;
     } else if (err.code === "ENOTFOUND") {
       errorMessage = "❌ Network error - cannot resolve hostname";
-      debugInfo = "Check your internet connection and API URL";
     } else if (err.code === "ECONNABORTED" || err.name === "AbortError") {
       errorMessage = "❌ Request timeout (30+ seconds)";
-      debugInfo = "Server is taking too long to respond";
     } else if (err.response?.status === 404) {
       errorMessage = `❌ Stock ticker "${ticker}" not found`;
-      debugInfo = "Please check the ticker symbol";
     } else if (err.response?.status === 400) {
       errorMessage = err.response.data?.error || "❌ Invalid request format";
-      debugInfo = "Check the request parameters";
     } else if (err.response?.status >= 500) {
       errorMessage = "❌ Server error";
-      debugInfo = err.response.data?.error || "Backend server issue";
     } else if (err.response?.data?.error) {
       errorMessage = `❌ ${err.response.data.error}`;
-      debugInfo = "Server returned an error";
     } else {
       errorMessage = `❌ Unknown error: ${err.message}`;
-      debugInfo = `Error code: ${err.code || "UNKNOWN"}`;
     }
 
-    console.log("Final error message:", errorMessage);
-    console.log("Debug info:", debugInfo);
-
-    setError(`${errorMessage}\n\n🔧 Debug: ${debugInfo}`);
+    setError(errorMessage);
     resetData();
   };
 
@@ -407,7 +394,7 @@ function App() {
     setAnalysis(null);
     setMarketInfo(null);
     setCompanyData(null);
-    // Keep cache for performance
+    setCurrentCompanyName("");
   };
 
   // ==================== TIMEFRAME HANDLER ====================
@@ -451,7 +438,6 @@ function App() {
       if (selectedIndicators.includes(indicator)) {
         newIndicators = selectedIndicators.filter((ind) => ind !== indicator);
       } else {
-        // Limit to 2 indicators for performance
         if (selectedIndicators.length >= 2) {
           newIndicators = [selectedIndicators[1], indicator];
         } else {
@@ -462,7 +448,6 @@ function App() {
       setSelectedIndicators(newIndicators);
 
       if (currentTicker) {
-        // Use debounced version to avoid rapid API calls
         debouncedFetchChart(
           currentTicker,
           chartTimeframe,
@@ -533,10 +518,9 @@ function App() {
 
   // ==================== CLEAR OLD CACHE ====================
   useEffect(() => {
-    // Clear cache older than 5 minutes
     const clearOldCache = () => {
       const now = Date.now();
-      const maxAge = 5 * 60 * 1000; // 5 minutes
+      const maxAge = 5 * 60 * 1000;
 
       setChartCache((prev) => {
         const newCache = {};
@@ -549,13 +533,21 @@ function App() {
       });
     };
 
-    const interval = setInterval(clearOldCache, 60000); // Check every minute
+    const interval = setInterval(clearOldCache, 60000);
     return () => clearInterval(interval);
   }, []);
 
   // ==================== RENDER ====================
   return (
     <div className="App">
+      {/* Modern Navbar */}
+      <Navbar
+        currentTicker={currentTicker}
+        currentCompanyName={currentCompanyName}
+        systemHealth={systemHealth}
+        onQuickSearch={handleQuickSearch}
+      />
+
       <header className="app-header">
         <div className="header-content">
           <h1 className="app-title">StockVibePredictor 🚀</h1>
@@ -613,6 +605,12 @@ function App() {
                             Comprehensive analysis including predictions,
                             charts, fundamentals, and sentiment
                           </p>
+                          {currentCompanyName &&
+                            currentCompanyName !== currentTicker && (
+                              <p className="company-full-name">
+                                {currentCompanyName}
+                              </p>
+                            )}
                         </div>
                       </div>
 
@@ -767,6 +765,12 @@ function App() {
                             Interactive charts with technical indicators for{" "}
                             {currentTicker}
                           </p>
+                          {currentCompanyName &&
+                            currentCompanyName !== currentTicker && (
+                              <p className="company-full-name">
+                                {currentCompanyName}
+                              </p>
+                            )}
                         </div>
                       </div>
 
@@ -917,6 +921,12 @@ function App() {
                             Comprehensive financial metrics and company
                             information for {currentTicker}
                           </p>
+                          {currentCompanyName &&
+                            currentCompanyName !== currentTicker && (
+                              <p className="company-full-name">
+                                {currentCompanyName}
+                              </p>
+                            )}
                         </div>
                       </div>
 
@@ -939,6 +949,12 @@ function App() {
                             Real-time sentiment analysis from news and social
                             media for {currentTicker}
                           </p>
+                          {currentCompanyName &&
+                            currentCompanyName !== currentTicker && (
+                              <p className="company-full-name">
+                                {currentCompanyName}
+                              </p>
+                            )}
                         </div>
                       </div>
 

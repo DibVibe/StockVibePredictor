@@ -412,20 +412,56 @@ source ../../venv/bin/activate
 # Windows:
 ..\..\venv\Scripts\activate
 
-# 🎯 Train models - Choose one:
+# 🎯 Train models - Smart modes available:
 
-# Option 1: Quick training (just universal models)
+# 🚀 RECOMMENDED: Essential training (default)
 python TrainModel.py
+# OR explicitly:
+python TrainModel.py essential
+# Trains: 1d, 1w, 1mo, 1y (covers 80% of use cases, ~15-30 mins)
 
-# Option 2: Train specific category
-python TrainModel.py category mega_cap_tech 1d,1w
+# ⚡ Quick training (fastest)
+python TrainModel.py minimal
+# Trains: 1d, 1w, 1mo (covers 60% of use cases, ~10-15 mins)
 
-# Option 3: Full training (takes longer)
-python TrainModel.py full
+# 📈 Thorough training (more coverage)
+python TrainModel.py extended
+# Trains: 1d, 5d, 1w, 1mo, 3mo, 1y (covers 95% of use cases, ~45-60 mins)
+
+# 🏆 Complete training (everything)
+python TrainModel.py complete
+# Trains: All 9 timeframes (100% coverage, ~2-3 hours)
 
 # 📊 You should see progress logs:
-# INFO: Training universal model for 1d...
-# INFO: Model saved: Models/universal_model_1d.pkl
+# 🚀 STARTING COMPREHENSIVE MODEL TRAINING PIPELINE
+# 🎯 Training Mode: essential
+# ⏱️ Timeframes: ['1d', '1w', '1mo', '1y']
+# 📊 Phase 1: Training Universal Models
+# ✓ Universal 1d model saved: Models/universal_model_1d.pkl (Accuracy: 67.8%)
+# 🏢 Phase 2: Training Category-Specific Models
+# ✅ mega_cap_tech: 15/15 successful
+# 🎉 TRAINING PIPELINE COMPLETED
+# 🎯 Success Rate: 95.2%
+```
+
+### **🔧 Additional Training Options:**
+
+```bash
+# 🌐 Train only universal models (lightweight)
+python TrainModel.py universal
+
+# 🎯 Train single stock model
+python TrainModel.py single AAPL 1d ensemble
+
+# 🔍 Validate model compatibility with views.py
+python TrainModel.py validate
+
+# 📊 Get model summary and statistics
+python TrainModel.py summary
+
+# 💡 See all available options
+python TrainModel.py help
+
 ```
 
 ### **✅ Verify Models are Created:**
@@ -433,8 +469,42 @@ python TrainModel.py full
 ```bash
 # 📁 Check Models directory
 ls Models/
-# Should show: universal_model_1d.pkl, universal_model_1w.pkl, etc.
+# Should show files like:
+# universal_model_1d.pkl
+# universal_model_1w.pkl
+# universal_model_1mo.pkl
+# universal_model_1y.pkl
+# AAPL_model_1d.pkl
+# MSFT_model_1w.pkl
+# ... (and more based on training mode)
+
+# 📊 Quick model count
+ls Models/*.pkl | wc -l
+# Should show number of trained models (varies by mode):
+# minimal: ~15-20 models
+# essential: ~25-35 models
+# extended: ~40-55 models
+# complete: ~60+ models
 ```
+
+### **📈 Training Mode Comparison:**
+
+|   Mode    | Timeframe | Models | Duration  | Coverage |          Best For          |
+| :-------: | :-------: | :----: | :-------: | :------: | :------------------------: |
+|  minimal  |     3     |  ~20   | 10-15 min |   60%    |    Testing, Development    |
+| essential |     4     |  ~35   | 15-30 min |   80%    | Recommended for most users |
+| extended  |     6     |  ~55   | 45-60 min |   95%    |   Production deployment    |
+| complete  |     9     |  ~80+  | 2-3 hours |   100%   |  Maximum coverage needed   |
+
+### **💡 Pro Tips:**
+
+- Start with ⁠essential mode for quick deployment.
+- Use ⁠extended for production systems.
+- Only use ⁠complete if you need 2y/5y predictions.
+- Models are automatically compatible with your views.py.
+- Training runs in parallel for faster completion.
+- Failed models don't stop the training process.
+- All results are logged and summarized.
 
 ---
 

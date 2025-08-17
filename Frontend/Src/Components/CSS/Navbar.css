@@ -1,0 +1,1007 @@
+/* ==================== NAVBAR BASE STYLES ==================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.5s ease-out;
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-bottom-color: rgba(226, 232, 240, 1);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+}
+
+.navbar-container {
+  max-width: 1536px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  gap: 32px;
+  min-height: 64px;
+}
+
+/* ==================== BRAND SECTION ==================== */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #1e293b;
+  font-weight: 700;
+  font-size: 22px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  user-select: none;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.brand-logo:hover {
+  transform: scale(1.05) translateY(-1px);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+}
+
+.logo-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
+  letter-spacing: -0.5px;
+  font-size: 22px;
+  font-weight: 800;
+  position: relative;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease-in-out infinite;
+}
+
+.logo-text::before {
+  content: "";
+  position: absolute;
+  left: -28px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.brand-logo:hover .logo-text::before {
+  opacity: 1;
+  left: -32px;
+  animation: rocketFloat 0.6s ease-in-out;
+}
+
+.logo-text::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+  transition: width 0.4s ease;
+  border-radius: 2px;
+}
+
+.brand-logo:hover .logo-text::after {
+  width: 100%;
+}
+
+.brand-logo::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+  border-radius: 14px;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  filter: blur(8px);
+}
+
+.brand-logo:hover::before {
+  opacity: 0.3;
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+/* ==================== CENTER SECTION - COMPANY INFO ==================== */
+.navbar-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.current-ticker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(
+    135deg,
+    rgba(76, 175, 80, 0.1),
+    rgba(129, 199, 132, 0.1)
+  );
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 24px;
+  padding: 8px 16px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  max-width: 100%;
+  box-shadow: 0 2px 4px rgba(76, 175, 80, 0.1);
+}
+
+.current-ticker:hover {
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+  border-color: rgba(76, 175, 80, 0.4);
+}
+
+.current-ticker::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.current-ticker:hover::before {
+  left: 100%;
+}
+
+.ticker-info {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1;
+}
+
+.ticker-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.company-display-name {
+  color: #2e7d32;
+  font-weight: 600;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 500px;
+  line-height: 1.2;
+}
+
+.ticker-pulse {
+  width: 8px;
+  height: 8px;
+  background: #4caf50;
+  border-radius: 50%;
+  animation: tickerPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+/* ==================== RIGHT SECTION - SEARCH & ACTIONS ==================== */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+/* ==================== SEARCH SECTION ==================== */
+
+.navbar-search {
+  position: relative;
+}
+
+.search-form {
+  position: relative;
+}
+
+.search-input-group {
+  display: flex;
+  align-items: center;
+  background: rgba(248, 250, 252, 0.9);
+  border: 1px solid #e2e8f0;
+  border-radius: 28px;
+  padding: 3px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+  isolation: isolate;
+  will-change: transform, box-shadow;
+}
+
+.search-input::placeholder {
+  color: #64748b;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
+  font-weight: 400;
+  letter-spacing: normal;
+  font-size: 15px;
+}
+
+.search-input:focus-within {
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.search-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  color: white;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(102, 126, 234, 0.25);
+  flex-shrink: 0;
+  position: relative;
+  overflow: visible;
+}
+
+.search-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.35);
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.search-btn::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #00d4ff,
+    #667eea,
+    #764ba2,
+    #00ffff,
+    #667eea,
+    #00d4ff
+  );
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.4s ease;
+}
+
+.search-btn::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    transparent 60%,
+    rgba(0, 212, 255, 0.2) 70%,
+    transparent 80%
+  );
+  opacity: 0;
+  z-index: -2;
+  transition: all 0.4s ease;
+}
+
+/* ==================== ACTIONS SECTION ==================== */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(248, 250, 252, 0.8);
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 12px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.status-indicator:hover {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: statusPulse 3s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.status-text {
+  color: #475569;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Courier New", monospace;
+  letter-spacing: 0.5px;
+}
+
+.status-icon {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  background: rgba(248, 250, 252, 0.8);
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.action-btn:hover {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1e293b;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-color: #cbd5e1;
+}
+
+/* ==================== MOBILE MENU TOGGLE ==================== */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(248, 250, 252, 0.8);
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.mobile-menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu-toggle span {
+  width: 18px;
+  height: 2px;
+  background: #64748b;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+  background: #667eea;
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+  background: #667eea;
+}
+
+/* ==================== MOBILE NAVIGATION ==================== */
+.mobile-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid #e2e8f0;
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav.active {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ==================== MOBILE SEARCH ==================== */
+.mobile-search {
+  width: 100%;
+}
+
+.mobile-search .search-input-group {
+  width: 100%;
+  border-radius: 24px;
+  padding: 3px;
+}
+
+.mobile-search .search-input {
+  width: 100%;
+  flex: 1;
+  font-size: 18px;
+  padding: 14px 20px;
+}
+
+.mobile-search .search-btn {
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+}
+
+/* ==================== MOBILE CURRENT STOCK ==================== */
+.mobile-current-stock {
+  background: linear-gradient(
+    135deg,
+    rgba(76, 175, 80, 0.1),
+    rgba(129, 199, 132, 0.1)
+  );
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+}
+
+.mobile-ticker-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.mobile-ticker-display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+.mobile-company-display-name {
+  color: #2e7d32;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  line-height: 1.3;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.mobile-ticker-pulse {
+  width: 10px;
+  height: 10px;
+  background: #4caf50;
+  border-radius: 50%;
+  animation: tickerPulse 2s ease-in-out infinite;
+}
+
+/* ==================== MOBILE ACTIONS ==================== */
+.mobile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(248, 250, 252, 0.8);
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  padding: 16px 20px;
+  border-radius: 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.mobile-action-btn:hover {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1e293b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.mobile-action-btn:active {
+  transform: translateY(0);
+}
+
+.mobile-action-icon {
+  font-size: 20px;
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.mobile-action-text {
+  flex: 1;
+}
+
+/* ==================== MOBILE FOOTER ==================== */
+.mobile-nav-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+  margin: 8px 0;
+}
+
+.mobile-nav-footer {
+  padding: 16px 0;
+}
+
+.mobile-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #64748b;
+  font-size: 14px;
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Courier New", monospace;
+}
+
+.mobile-status-label {
+  font-weight: 500;
+}
+
+.mobile-status-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobile-status-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+}
+
+.mobile-status-text {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.mobile-system-info {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.mobile-info-text {
+  color: #64748b;
+  font-size: 12px;
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Courier New", monospace;
+}
+
+/* ==================== MOBILE OVERLAY ==================== */
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-nav.active + .mobile-overlay {
+  opacity: 1;
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+}
+
+@keyframes rocketFloat {
+  0%,
+  100% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-60%) rotate(-10deg);
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes tickerPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes statusPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 1280px) {
+  .navbar-container {
+    gap: 24px;
+  }
+
+  .search-input {
+    width: 200px;
+    font-size: 15px;
+    padding: 11px 18px;
+  }
+
+  .search-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+  }
+
+  .search-input-group {
+    border-radius: 26px;
+  }
+
+  .navbar-right {
+    gap: 16px;
+  }
+
+  .company-display-name {
+    max-width: 400px;
+  }
+
+  .brand-logo {
+    font-size: 20px;
+  }
+
+  .logo-text {
+    font-size: 20px;
+  }
+
+  .logo-text::before {
+    font-size: 16px;
+    left: -26px;
+  }
+
+  .brand-logo:hover .logo-text::before {
+    left: -30px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .navbar-container {
+    gap: 20px;
+  }
+
+  .search-input {
+    width: 180px;
+    font-size: 15px;
+    padding: 10px 16px;
+  }
+
+  .search-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+  }
+
+  .company-display-name {
+    max-width: 300px;
+  }
+
+  .brand-logo {
+    font-size: 18px;
+    padding: 6px 10px;
+  }
+
+  .logo-text {
+    font-size: 18px;
+  }
+
+  .logo-text::before {
+    font-size: 14px;
+    left: -24px;
+  }
+
+  .brand-logo:hover .logo-text::before {
+    left: -28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 8px 16px;
+    gap: 16px;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .navbar-search {
+    flex: 1;
+    max-width: 250px;
+  }
+
+  .search-input {
+    width: 100%;
+    min-width: 140px;
+    font-size: 16px;
+    padding: 10px 16px;
+  }
+
+  .search-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+  }
+
+  .search-input-group {
+    border-radius: 24px;
+  }
+
+  .action-buttons {
+    display: none;
+  }
+
+  .status-indicator {
+    display: none;
+  }
+
+  .navbar-center {
+    display: none;
+  }
+
+  .navbar-right {
+    flex: 1;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+
+  .brand-logo {
+    font-size: 17px;
+    padding: 6px 8px;
+  }
+
+  .logo-text {
+    font-size: 17px;
+  }
+
+  .logo-text::before {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    gap: 12px;
+    padding: 8px 12px;
+  }
+
+  .logo-text {
+    font-size: 16px;
+  }
+
+  .search-input {
+    font-size: 16px;
+    padding: 9px 14px;
+  }
+
+  .search-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+
+  .mobile-nav-content {
+    padding: 16px;
+  }
+
+  .brand-logo {
+    font-size: 16px;
+    padding: 4px 6px;
+  }
+
+  .mobile-company-display-name {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  .search-input {
+    min-width: 120px;
+    padding: 8px 12px;
+  }
+
+  .search-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .brand-logo {
+    font-size: 14px;
+  }
+
+  .logo-text {
+    font-size: 14px;
+  }
+}
+
+/* ==================== ACCESSIBILITY ==================== */
+.navbar button:focus-visible,
+.navbar input:focus-visible {
+  outline: none;
+  outline-offset: none;
+}
+
+/* ==================== REDUCED MOTION ==================== */
+@media (prefers-reduced-motion: reduce) {
+  .logo-text,
+  .brand-logo::before,
+  .logo-text::before {
+    animation: none;
+  }
+
+  .brand-logo:hover {
+    transform: none;
+  }
+
+  .brand-logo:hover .logo-text::before {
+    animation: none;
+  }
+
+  .search-input-group:focus-within {
+    transform: none;
+  }
+
+  .search-btn:hover {
+    transform: none;
+  }
+}
+
+/* ==================== PRINT STYLES ==================== */
+@media print {
+  .navbar {
+    display: none;
+  }
+}
