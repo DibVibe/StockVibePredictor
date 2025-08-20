@@ -45,6 +45,7 @@ app_name = "StockPredict"
 urlpatterns = [
     # 📈 Prediction Endpoints (UPDATED PATHS)
     path("predict/multi-timeframe/", predict_multi_timeframe, name="predict_multi_timeframe"),
+    path("predict/multi/", predict_multi_timeframe, name="predict_multi_alias"),  # Alias for frontend compatibility
     path("predict/batch/", batch_predictions, name="batch_predictions"),
     path("predict/trend/", predict_stock_trend, name="predict_stock_trend"),
     path("predict/status/", prediction_status, name="prediction_status"),
@@ -72,6 +73,8 @@ urlpatterns = [
     path("market/performance/", get_model_performance, name="get_model_performance"),
     path("market/chart/<str:ticker>/", get_chart_data, name="get_chart_data"),
     path("market/chart/multi/", get_multi_chart_data, name="get_multi_chart_data"),
+    # Test endpoint for chart debugging
+    path("chart/<str:ticker>/", get_chart_data, name="chart_simple"),
 
     # 🏢 Company Information (Keep your existing endpoint)
     path("company/<str:ticker>/essentials/", company_essentials, name="company_essentials"),
