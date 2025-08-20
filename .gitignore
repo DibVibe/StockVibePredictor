@@ -367,5 +367,24 @@ development/
 stock_model.pkl
 migrations/
 
+# Postman Shitz
+
+postman/environments/*_local.json
+postman/environments/*_secrets.json
+
+Tests/results/
+*.html
+*.json
+
+Environments/*_local.json
+Environments/*_secrets.json
+
+newman/
+
+*.tmp
+*.log
+
+.env
+
 # Uncomment the line below if you want to track migration files
 # !*/migrations/__init__.py

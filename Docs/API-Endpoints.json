@@ -1,520 +1,90 @@
 {
   "info": {
-    "_postman_id": "stock-vibe-predictor-api",
-    "name": "StockVibePredictor API",
-    "description": "Comprehensive API collection for stock predictions, trading, and market analysis",
+    "_postman_id": "stock-vibe-predictor-api-v2",
+    "name": "StockVibePredictor API v2.0",
+    "description": "Enhanced API collection with advanced features, environments, and comprehensive testing",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Enhanced pre-request script",
+          "pm.globals.set('timestamp', new Date().toISOString());",
+          "pm.globals.set('requestId', pm.variables.replaceIn('{{$guid}}'));",
+          "",
+          "// Auto-refresh auth token if expired",
+          "if (pm.globals.get('tokenExpiry') && new Date() > new Date(pm.globals.get('tokenExpiry'))) {",
+          "    console.log('Token expired, refreshing...');",
+          "    // Add token refresh logic here",
+          "}",
+          "",
+          "// Set user agent",
+          "pm.request.headers.add({",
+          "    key: 'User-Agent',",
+          "    value: 'StockVibe-Postman-Client/2.0'",
+          "});"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Enhanced global test scripts",
+          "pm.test('Response time is acceptable', function () {",
+          "    const responseTime = pm.response.responseTime;",
+          "    pm.expect(responseTime).to.be.below(5000);",
+          "    ",
+          "    // Log performance",
+          "    console.log(`Response time: ${responseTime}ms`);",
+          "});",
+          "",
+          "pm.test('Status code is successful', function () {",
+          "    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);",
+          "});",
+          "",
+          "pm.test('Headers contain required fields', function () {",
+          "    pm.expect(pm.response.headers.has('Content-Type')).to.be.true;",
+          "});",
+          "",
+          "if (pm.response.headers.get('Content-Type').includes('application/json')) {",
+          "    pm.test('Response is valid JSON', function () {",
+          "        pm.response.to.have.jsonBody();",
+          "    });",
+          "    ",
+          "    pm.test('Response contains timestamp', function () {",
+          "        const jsonData = pm.response.json();",
+          "        pm.expect(jsonData).to.have.property('timestamp');",
+          "    });",
+          "}"
+        ]
+      }
+    }
+  ],
   "variable": [
     {
       "key": "baseUrl",
-      "value": "http://localhost:8000/api",
+      "value": "{{protocol}}://{{host}}:{{port}}/api/v1",
       "type": "string"
-    }
-  ],
-  "item": [
-    {
-      "name": "📈 Prediction Endpoints",
-      "item": [
-        {
-          "name": "Multi-Timeframe Prediction",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"ticker\": \"AAPL\",\n    \"timeframes\": [\"1d\", \"1w\", \"1mo\"],\n    \"include_analysis\": true\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/predict/multi-timeframe/",
-              "host": ["{{baseUrl}}"],
-              "path": ["predict", "multi-timeframe", ""]
-            },
-            "description": "Advanced multi-timeframe stock prediction with comprehensive analysis"
-          }
-        },
-        {
-          "name": "Batch Predictions",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"tickers\": [\"AAPL\", \"MSFT\", \"GOOGL\"],\n    \"timeframe\": \"1d\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/predict/batch/",
-              "host": ["{{baseUrl}}"],
-              "path": ["predict", "batch", ""]
-            },
-            "description": "Batch predictions for multiple tickers"
-          }
-        },
-        {
-          "name": "Legacy Stock Trend Prediction",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"ticker\": \"TSLA\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/predict/trend/",
-              "host": ["{{baseUrl}}"],
-              "path": ["predict", "trend", ""]
-            },
-            "description": "Legacy single-timeframe prediction endpoint"
-          }
-        },
-        {
-          "name": "Prediction Service Status",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/predict/status/",
-              "host": ["{{baseUrl}}"],
-              "path": ["predict", "status", ""]
-            },
-            "description": "Get current prediction service status and performance metrics"
-          }
-        }
-      ]
     },
     {
-      "name": "🤖 Model Management",
-      "item": [
-        {
-          "name": "Train Model",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"ticker\": \"AAPL\",\n    \"timeframe\": \"1d\",\n    \"model_type\": \"ensemble\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/models/train/",
-              "host": ["{{baseUrl}}"],
-              "path": ["models", "train", ""]
-            },
-            "description": "Train a new model for a specific ticker and timeframe"
-          }
-        },
-        {
-          "name": "Train Universal Models",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"timeframes\": [\"1d\", \"1w\", \"1mo\"],\n    \"tickers\": [\"AAPL\", \"MSFT\", \"GOOGL\", \"AMZN\", \"META\"]\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/models/train-universal/",
-              "host": ["{{baseUrl}}"],
-              "path": ["models", "train-universal", ""]
-            },
-            "description": "Train universal models for multiple tickers and timeframes"
-          }
-        },
-        {
-          "name": "List Models",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/models/list/",
-              "host": ["{{baseUrl}}"],
-              "path": ["models", "list", ""]
-            },
-            "description": "List all available models with their metrics"
-          }
-        },
-        {
-          "name": "Delete Model",
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{authToken}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"ticker\": \"AAPL\",\n    \"timeframe\": \"1d\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/models/delete/",
-              "host": ["{{baseUrl}}"],
-              "path": ["models", "delete", ""]
-            },
-            "description": "Delete a specific model (requires authentication)"
-          }
-        },
-        {
-          "name": "Create Test Models",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/models/create-test/",
-              "host": ["{{baseUrl}}"],
-              "path": ["models", "create-test", ""]
-            },
-            "description": "Create dummy models for testing"
-          }
-        }
-      ]
+      "key": "protocol",
+      "value": "http",
+      "type": "string"
     },
     {
-      "name": "💼 Trading Endpoints",
-      "item": [
-        {
-          "name": "Simulate Trade",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{authToken}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"ticker\": \"AAPL\",\n    \"action\": \"buy\",\n    \"quantity\": 10,\n    \"order_type\": \"market\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/trading/simulate/",
-              "host": ["{{baseUrl}}"],
-              "path": ["trading", "simulate", ""]
-            },
-            "description": "Simulate a trade (paper trading)"
-          }
-        },
-        {
-          "name": "Get Portfolio",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{authToken}}"
-              }
-            ],
-            "url": {
-              "raw": "{{baseUrl}}/trading/portfolio/",
-              "host": ["{{baseUrl}}"],
-              "path": ["trading", "portfolio", ""]
-            },
-            "description": "Get user's simulated portfolio"
-          }
-        },
-        {
-          "name": "Get Trade History",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{authToken}}"
-              }
-            ],
-            "url": {
-              "raw": "{{baseUrl}}/trading/history/?page=1&per_page=20",
-              "host": ["{{baseUrl}}"],
-              "path": ["trading", "history", ""],
-              "query": [
-                {
-                  "key": "page",
-                  "value": "1"
-                },
-                {
-                  "key": "per_page",
-                  "value": "20"
-                }
-              ]
-            },
-            "description": "Get user's trade history"
-          }
-        },
-        {
-          "name": "Place Real Trade (Placeholder)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{authToken}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"ticker\": \"AAPL\",\n    \"action\": \"buy\",\n    \"quantity\": 10\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/trading/real/",
-              "host": ["{{baseUrl}}"],
-              "path": ["trading", "real", ""]
-            },
-            "description": "Place real trade (placeholder - not implemented)"
-          }
-        }
-      ]
+      "key": "host",
+      "value": "localhost",
+      "type": "string"
     },
     {
-      "name": "👁️ Watchlist Endpoints",
-      "item": [
-        {
-          "name": "Create Watchlist",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{authToken}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"name\": \"Tech Stocks\",\n    \"tickers\": [\"AAPL\", \"MSFT\", \"GOOGL\", \"AMZN\"]\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/watchlist/create/",
-              "host": ["{{baseUrl}}"],
-              "path": ["watchlist", "create", ""]
-            },
-            "description": "Create or update user's watchlist"
-          }
-        },
-        {
-          "name": "Get Watchlist Predictions",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{authToken}}"
-              }
-            ],
-            "url": {
-              "raw": "{{baseUrl}}/watchlist/predictions/?name=Tech Stocks&timeframe=1d",
-              "host": ["{{baseUrl}}"],
-              "path": ["watchlist", "predictions", ""],
-              "query": [
-                {
-                  "key": "name",
-                  "value": "Tech Stocks"
-                },
-                {
-                  "key": "timeframe",
-                  "value": "1d"
-                }
-              ]
-            },
-            "description": "Get predictions for all tickers in watchlist"
-          }
-        }
-      ]
-    },
-    {
-      "name": "📊 Market Data",
-      "item": [
-        {
-          "name": "Market Overview",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/market/overview/",
-              "host": ["{{baseUrl}}"],
-              "path": ["market", "overview", ""]
-            },
-            "description": "Get overall market overview and top movers"
-          }
-        },
-        {
-          "name": "Analytics Dashboard",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/market/analytics/",
-              "host": ["{{baseUrl}}"],
-              "path": ["market", "analytics", ""]
-            },
-            "description": "Get analytics and performance metrics"
-          }
-        },
-        {
-          "name": "Model Performance",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/market/performance/?timeframe=1d",
-              "host": ["{{baseUrl}}"],
-              "path": ["market", "performance", ""],
-              "query": [
-                {
-                  "key": "timeframe",
-                  "value": "1d"
-                }
-              ]
-            },
-            "description": "Get detailed model performance metrics"
-          }
-        },
-        {
-          "name": "Get Chart Data",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/market/chart/AAPL/?timeframe=1mo&chart_type=candlestick&indicators=sma20,rsi",
-              "host": ["{{baseUrl}}"],
-              "path": ["market", "chart", "AAPL", ""],
-              "query": [
-                {
-                  "key": "timeframe",
-                  "value": "1mo"
-                },
-                {
-                  "key": "chart_type",
-                  "value": "candlestick"
-                },
-                {
-                  "key": "indicators",
-                  "value": "sma20,rsi"
-                }
-              ]
-            },
-            "description": "Get historical stock data for charting"
-          }
-        },
-        {
-          "name": "Multi-Chart Data",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"tickers\": [\"AAPL\", \"MSFT\", \"GOOGL\"],\n    \"timeframe\": \"1mo\",\n    \"chart_type\": \"line\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/market/chart/multi/",
-              "host": ["{{baseUrl}}"],
-              "path": ["market", "chart", "multi", ""]
-            },
-            "description": "Get chart data for multiple tickers comparison"
-          }
-        }
-      ]
-    },
-    {
-      "name": "🧪 System Monitoring",
-      "item": [
-        {
-          "name": "System Health",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/system/health/",
-              "host": ["{{baseUrl}}"],
-              "path": ["system", "health", ""]
-            },
-            "description": "Comprehensive system health check"
-          }
-        },
-        {
-          "name": "Memory Status",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/system/memory/",
-              "host": ["{{baseUrl}}"],
-              "path": ["system", "memory", ""]
-            },
-            "description": "Monitor memory usage and system resources"
-          }
-        },
-        {
-          "name": "Redis Check",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/system/redis/",
-              "host": ["{{baseUrl}}"],
-              "path": ["system", "redis", ""]
-            },
-            "description": "Test Redis connectivity"
-          }
-        },
-        {
-          "name": "Debug Models",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/system/debug/models/",
-              "host": ["{{baseUrl}}"],
-              "path": ["system", "debug", "models", ""]
-            },
-            "description": "Debug endpoint to check model status"
-          }
-        }
-      ]
+      "key": "port",
+      "value": "8000",
+      "type": "string"
     }
   ],
   "auth": {
@@ -527,38 +97,368 @@
       }
     ]
   },
-  "event": [
+  "item": [
     {
-      "listen": "prerequest",
-      "script": {
-        "type": "text/javascript",
-        "exec": [
-          "// Set common variables",
-          "pm.globals.set('timestamp', new Date().toISOString());"
-        ]
-      }
+      "name": "🔐 Authentication",
+      "item": [
+        {
+          "name": "Get Auth Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"{{username}}\",\n    \"password\": \"{{password}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/token/",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "token", ""]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.globals.set('authToken', jsonData.access_token);",
+                  "    pm.globals.set('refreshToken', jsonData.refresh_token);",
+                  "    ",
+                  "    // Calculate expiry time",
+                  "    const expiry = new Date();",
+                  "    expiry.setSeconds(expiry.getSeconds() + jsonData.expires_in);",
+                  "    pm.globals.set('tokenExpiry', expiry.toISOString());",
+                  "    ",
+                  "    pm.test('Token received', function () {",
+                  "        pm.expect(jsonData.access_token).to.be.a('string');",
+                  "    });",
+                  "}"
+                ]
+              }
+            }
+          ]
+        }
+      ]
     },
     {
-      "listen": "test",
-      "script": {
-        "type": "text/javascript",
-        "exec": [
-          "// Common test scripts",
-          "pm.test('Status code is successful', function () {",
-          "    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);",
-          "});",
-          "",
-          "pm.test('Response time is acceptable', function () {",
-          "    pm.expect(pm.response.responseTime).to.be.below(5000);",
-          "});",
-          "",
-          "if (pm.response.headers.get('Content-Type').includes('application/json')) {",
-          "    pm.test('Response is valid JSON', function () {",
-          "        pm.response.to.have.jsonBody();",
-          "    });",
-          "}"
-        ]
-      }
+      "name": "📈 Advanced Predictions",
+      "item": [
+        {
+          "name": "Enhanced Multi-Timeframe Prediction",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Request-ID",
+                "value": "{{requestId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"ticker\": \"{{testTicker}}\",\n    \"timeframes\": [\"1d\", \"1w\", \"1mo\", \"1y\"],\n    \"include_analysis\": true,\n    \"confidence_threshold\": 0.7,\n    \"include_technical_indicators\": true,\n    \"risk_analysis\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/predict/multi-timeframe/",
+              "host": ["{{baseUrl}}"],
+              "path": ["predict", "multi-timeframe", ""]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Multi-timeframe prediction successful', function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('predictions');",
+                  "    pm.expect(jsonData).to.have.property('analysis');",
+                  "    pm.expect(jsonData).to.have.property('metadata');",
+                  "});",
+                  "",
+                  "pm.test('Predictions contain required fields', function () {",
+                  "    const predictions = pm.response.json().predictions;",
+                  "    Object.keys(predictions).forEach(timeframe => {",
+                  "        pm.expect(predictions[timeframe]).to.have.property('direction');",
+                  "        pm.expect(predictions[timeframe]).to.have.property('confidence');",
+                  "        pm.expect(predictions[timeframe]).to.have.property('price_target');",
+                  "    });",
+                  "});",
+                  "",
+                  "// Store prediction for comparison",
+                  "if (pm.response.code === 200) {",
+                  "    const result = pm.response.json();",
+                  "    pm.globals.set('lastPrediction', JSON.stringify(result.predictions));",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Real-time Batch Predictions",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"tickers\": [\"AAPL\", \"MSFT\", \"GOOGL\", \"AMZN\", \"TSLA\"],\n    \"timeframe\": \"1d\",\n    \"parallel_processing\": true,\n    \"include_market_context\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/predict/batch/",
+              "host": ["{{baseUrl}}"],
+              "path": ["predict", "batch", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📊 Enhanced Market Data",
+      "item": [
+        {
+          "name": "Advanced Chart Data with Indicators",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/market/chart/{{testTicker}}/?timeframe=3mo&chart_type=candlestick&indicators=sma20,sma50,rsi,macd,bollinger&volume=true",
+              "host": ["{{baseUrl}}"],
+              "path": ["market", "chart", "{{testTicker}}", ""],
+              "query": [
+                {
+                  "key": "timeframe",
+                  "value": "3mo"
+                },
+                {
+                  "key": "chart_type",
+                  "value": "candlestick"
+                },
+                {
+                  "key": "indicators",
+                  "value": "sma20,sma50,rsi,macd,bollinger"
+                },
+                {
+                  "key": "volume",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Chart data structure is valid', function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('data');",
+                  "    pm.expect(jsonData).to.have.property('indicators');",
+                  "    pm.expect(jsonData).to.have.property('summary');",
+                  "    pm.expect(jsonData.data).to.be.an('array');",
+                  "});",
+                  "",
+                  "pm.test('Technical indicators included', function () {",
+                  "    const indicators = pm.response.json().indicators;",
+                  "    pm.expect(Object.keys(indicators).length).to.be.greaterThan(0);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Market Sentiment Analysis",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/market/sentiment/?sectors=technology,finance,healthcare&timeframe=1d",
+              "host": ["{{baseUrl}}"],
+              "path": ["market", "sentiment", ""],
+              "query": [
+                {
+                  "key": "sectors",
+                  "value": "technology,finance,healthcare"
+                },
+                {
+                  "key": "timeframe",
+                  "value": "1d"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🤖 Advanced Model Management",
+      "item": [
+        {
+          "name": "Model Performance Analytics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/models/performance/?model_type=universal&timeframe=all&metrics=accuracy,precision,recall,f1",
+              "host": ["{{baseUrl}}"],
+              "path": ["models", "performance", ""],
+              "query": [
+                {
+                  "key": "model_type",
+                  "value": "universal"
+                },
+                {
+                  "key": "timeframe",
+                  "value": "all"
+                },
+                {
+                  "key": "metrics",
+                  "value": "accuracy,precision,recall,f1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Auto-Retrain Models",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"schedule\": \"daily\",\n    \"performance_threshold\": 0.65,\n    \"retrain_conditions\": {\n        \"accuracy_drop\": 0.05,\n        \"data_age_days\": 30\n    },\n    \"notification_webhook\": \"https://your-webhook-url.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/models/auto-retrain/",
+              "host": ["{{baseUrl}}"],
+              "path": ["models", "auto-retrain", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📱 Mobile & WebSocket Endpoints",
+      "item": [
+        {
+          "name": "Mobile-Optimized Predictions",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Client-Type",
+                "value": "mobile"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"ticker\": \"{{testTicker}}\",\n    \"timeframes\": [\"1d\", \"1w\"],\n    \"mobile_optimized\": true,\n    \"data_compression\": true,\n    \"battery_conscious\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/predict/mobile/",
+              "host": ["{{baseUrl}}"],
+              "path": ["predict", "mobile", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔧 Advanced System Monitoring",
+      "item": [
+        {
+          "name": "Comprehensive Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/system/health/?detailed=true&include_performance=true",
+              "host": ["{{baseUrl}}"],
+              "path": ["system", "health", ""],
+              "query": [
+                {
+                  "key": "detailed",
+                  "value": "true"
+                },
+                {
+                  "key": "include_performance",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('System is healthy', function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.status).to.be.oneOf(['healthy', 'degraded']);",
+                  "});",
+                  "",
+                  "pm.test('All critical services operational', function () {",
+                  "    const services = pm.response.json().services;",
+                  "    pm.expect(services.cache).to.not.equal('unhealthy');",
+                  "    pm.expect(services.models).to.not.equal('unhealthy');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Performance Metrics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/system/metrics/?period=24h&granularity=1h",
+              "host": ["{{baseUrl}}"],
+              "path": ["system", "metrics", ""],
+              "query": [
+                {
+                  "key": "period",
+                  "value": "24h"
+                },
+                {
+                  "key": "granularity",
+                  "value": "1h"
+                }
+              ]
+            }
+          }
+        }
+      ]
     }
   ]
 }
