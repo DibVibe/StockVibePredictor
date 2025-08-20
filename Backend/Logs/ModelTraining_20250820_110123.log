@@ -1,0 +1,6 @@
+INFO 2025-08-20 11:01:23,111 [__main__:1157] 🚀 StockVibePredictor Model Training System v5.0
+INFO 2025-08-20 11:01:23,111 [__main__:1158] ================================================================================
+ERROR 2025-08-20 11:01:23,111 [__main__:1350] Unknown mode: diagnostics
+INFO 2025-08-20 11:01:23,111 [__main__:1351] Run 'python TrainModel.py help' for usage information
+INFO 2025-08-20 11:01:23,111 [__main__:1353] 
+✅ Execution completed successfully

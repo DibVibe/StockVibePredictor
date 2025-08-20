@@ -412,99 +412,253 @@ source ../../venv/bin/activate
 # Windows:
 ..\..\venv\Scripts\activate
 
-# 🎯 Train models - Smart modes available:
+# 🎯 Train models - Smart modes available (v5.0 ENHANCED):
 
-# 🚀 RECOMMENDED: Essential training (default)
-python TrainModel.py
-# OR explicitly:
+# 🚀 RECOMMENDED: Essential training with validation
 python TrainModel.py essential
-# Trains: 1d, 1w, 1mo, 1y (covers 80% of use cases, ~15-30 mins)
+# Trains: 1d, 1w, 1mo, 1y with pre-flight validation
+# Features: Auto-validation, retry logic, quality scoring
+# Duration: ~20-30 mins, Success rate: 99%+
 
 # ⚡ Quick training (fastest)
 python TrainModel.py minimal
 # Trains: 1d, 1w, 1mo (covers 60% of use cases, ~10-15 mins)
 
-# 📈 Thorough training (more coverage)
+# 📈 Extended training (thorough)
 python TrainModel.py extended
 # Trains: 1d, 5d, 1w, 1mo, 3mo, 1y (covers 95% of use cases, ~45-60 mins)
 
 # 🏆 Complete training (everything)
 python TrainModel.py complete
-# Trains: All 9 timeframes (100% coverage, ~2-3 hours)
+# Trains: All 9 timeframes (100% coverage, ~90-120 mins)
 
-# 📊 You should see progress logs:
-# 🚀 STARTING COMPREHENSIVE MODEL TRAINING PIPELINE
-# 🎯 Training Mode: essential
-# ⏱️ Timeframes: ['1d', '1w', '1mo', '1y']
-# 📊 Phase 1: Training Universal Models
-# ✓ Universal 1d model saved: Models/universal_model_1d.pkl (Accuracy: 67.8%)
-# 🏢 Phase 2: Training Category-Specific Models
-# ✅ mega_cap_tech: 15/15 successful
-# 🎉 TRAINING PIPELINE COMPLETED
-# 🎯 Success Rate: 95.2%
+# 🔧 Skip validation for faster start (not recommended)
+python TrainModel.py essential --no-validate
+
+# 🤖 Use different model type
+python TrainModel.py essential --model-type random_forest
 ```
 
 ### **🔧 Additional Training Options:**
 
 ```bash
-# 🌐 Train only universal models (lightweight)
-python TrainModel.py universal
-
-# 🎯 Train single stock model
-python TrainModel.py single AAPL 1d ensemble
-
-# 🔍 Validate model compatibility with views.py
+# 🔍 Pre-Training Validation
 python TrainModel.py validate
+# Validates all timeframe configurations before training
+# Checks: Data availability, API connectivity, minimum samples
+# Creates: validation report in Validation/ folder
 
-# 📊 Get model summary and statistics
-python TrainModel.py summary
+# 🏥 System Health Check
+python TrainModel.py health
+# Comprehensive system diagnostics:
+# ✓ Directory structure
+# ✓ Dependencies installed
+# ✓ API connectivity
+# ✓ Model inventory
 
-# 💡 See all available options
-python TrainModel.py help
+# 🧹 Model Cleanup
+python TrainModel.py cleanup
+# Removes old model versions, keeps latest 3
+python TrainModel.py cleanup --keep-models 5  # Keep latest 5
 
+# 📤 Export Model Metadata
+python TrainModel.py export
+# Exports comprehensive model metadata to JSON
+# Includes: versions, accuracy, training time, file sizes
+
+# 🧪 Test Specific Timeframe
+python TrainModel.py test 5d
+# Tests data fetching for specific timeframe
+# Shows: Data points, quality score, issues
+
+# 🎯 Train Single Model with Options
+python TrainModel.py single AAPL 1mo
+python TrainModel.py single AAPL 1mo --model-type random_forest
+
+# 🏃 Performance Benchmark
+python TrainModel.py benchmark
+# Quick benchmark on key models
+# Shows: Training time, accuracy, performance
 ```
 
-### **✅ Verify Models are Created:**
+### **📊 Progress Monitoring:**
 
 ```bash
-# 📁 Check Models directory
-ls Models/
-# Should show files like:
-# universal_model_1d.pkl
-# universal_model_1w.pkl
-# universal_model_1mo.pkl
-# universal_model_1y.pkl
-# AAPL_model_1d.pkl
-# MSFT_model_1w.pkl
-# ... (and more based on training mode)
+# 📊 You'll see enhanced progress logs:
+========================================================================
+🚀 STOCKVIBEPREDICTOR MODEL TRAINING SYSTEM v5.0
+📅 Build Date: 2024-08-20
+========================================================================
+📋 Running pre-training validation...
+🔍 VALIDATING TIMEFRAME CONFIGURATIONS
+  ✅ PASS 1d: 721 samples
+  ✅ PASS 5d: 320 samples (fixed!)
+  ✅ PASS 1w: 65 samples
+📊 Validation Summary: 9/9 timeframes valid
 
-# 📊 Quick model count
-ls Models/*.pkl | wc -l
-# Should show number of trained models (varies by mode):
-# minimal: ~15-20 models
-# essential: ~25-35 models
-# extended: ~40-55 models
-# complete: ~60+ models
+🎯 Training Mode: essential
+⏱️ Timeframes: ['1d', '1w', '1mo', '1y']
+🤖 Model Type: ensemble
+
+📊 PHASE 1: TRAINING UNIVERSAL MODELS
+✅ Universal 1d: Success (Accuracy: 52.56%)
+✅ Universal 1w: Success (Accuracy: 54.02%)
+
+🏢 PHASE 2: TRAINING INDIVIDUAL STOCK MODELS
+🏷️ Category: mega_cap_tech
+📊 Stocks: ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'META']
+  Training AAPL_1d...
+    ✅ Success (Accuracy: 38.71%)
+
+🎉 TRAINING COMPLETED SUCCESSFULLY
+📈 Total Models: 94
+✅ Successful: 94
+❌ Failed: 0
+🎯 Success Rate: 100.0%
+⏰ Duration: 2m 20s
+
+📊 PERFORMANCE DISTRIBUTION:
+  🌟 Excellent (≥60%): 25
+  ✅ Good (≥55%): 18
+  ⚠️ Acceptable (≥45%): 38
+  ❌ Poor (<45%): 13
+
+💾 Summary saved: training_summary_20240820_104536.json
+```
+
+### **✅ Model Verifications:**
+
+```bash
+# 📁 Check Models with versioning
+ls Models/
+# Now shows versioned models:
+# universal_model_1d_v3fa2b1c9.pkl
+# AAPL_model_1mo_va8c3d2f1.pkl
+# (Version hash ensures unique identification)
+
+# 📊 Model validation with details
+python TrainModel.py check
+# Shows each model with version and accuracy
+
+# 📈 Comprehensive summary
+python TrainModel.py summary
+# Enhanced output:
+# ================================================================================
+# 📊 MODEL PORTFOLIO SUMMARY
+# ================================================================================
+# Total Models: 94
+# Average Accuracy: 53.2%
+# Accuracy Range: 16.0% - 76.0%
+# Total Size: 245.3 MB
+#
+# 📈 Accuracy by Timeframe:
+#   1d      : 48.5% ± 9.2% (20 models)
+#   1w      : 52.3% ± 7.8% (20 models)
+#   1mo     : 50.1% ± 11.3% (20 models)
+#
+# 🏆 Top 10 Models:
+#   MSFT     1mo  : 76.0% (v3fa2b1c9)
+#   JPM      1y   : 71.9% (va8c3d2f1)
 ```
 
 ### **📈 Training Mode Comparison:**
 
-|   Mode    | Timeframe | Models | Duration  | Coverage |          Best For          |
-| :-------: | :-------: | :----: | :-------: | :------: | :------------------------: |
-|  minimal  |     3     |  ~20   | 10-15 min |   60%    |    Testing, Development    |
-| essential |     4     |  ~35   | 15-30 min |   80%    | Recommended for most users |
-| extended  |     6     |  ~55   | 45-60 min |   95%    |   Production deployment    |
-| complete  |     9     |  ~80+  | 2-3 hours |   100%   |  Maximum coverage needed   |
+|   Mode    | Timeframes | Models |  Duration  | Accuracy |      Features      |     Best For     |
+| :-------: | :--------: | :----: | :--------: | :------: | :----------------: | :--------------: |
+|  minimal  |     3      |  ~20   | 10-15 min  |   ~50%   | Validation + Retry |     Testing      |
+| essential |     4      |  ~35   | 20-30 min  |   ~53%   | Full v5.0 Features |   Recommended    |
+| extended  |     6      |  ~55   | 45-60 min  |   ~54%   | Full v5.0 Features |    Production    |
+| complete  |     9      |  ~94   | 90-100 min |   ~55%   | Full v5.0 Features | Maximum coverage |
+
+### **🔧 Configuration Options:**
+
+```bash
+# Customize training behavior
+--no-validate       # Skip pre-training validation
+--model-type        # Choose: ensemble (default) or random_forest
+--keep-models       # Number of versions to keep in cleanup (default: 3)
+
+# Examples:
+python TrainModel.py essential --no-validate --model-type random_forest
+python TrainModel.py cleanup --keep-models 10
+```
+
+### **📊 Data Quality Monitoring:**
+
+```bash
+# Quality scores are now tracked (0-100):
+# 100: Perfect data
+# 80-99: Excellent quality
+# 60-79: Good quality
+# 40-59: Acceptable quality
+# <40: Poor quality (logged as warning)
+
+# Issues detected and reported:
+# • Missing values > 5%
+# • Duplicate timestamps
+# • Data gaps
+# • Extreme price moves (>20%)
+# • High zero volume days (>10%)
+```
+
+### **🚀 Workflow Recommendations:**
+
+- Pre-Flight Check :
+
+```bash
+python TrainModel.py health      # System check
+python TrainModel.py validate    # Timeframe validation
+```
+
+- Training :
+
+```bash
+python TrainModel.py essential   # With auto-validation
+```
+
+- Post-Training :
+
+```bash
+python TrainModel.py summary     # Review results
+python TrainModel.py export      # Export metadata
+```
+
+- Maintenance :
+
+```bash
+python TrainModel.py cleanup     # Weekly
+python TrainModel.py health      # Monthly
+```
 
 ### **💡 Pro Tips:**
 
-- Start with ⁠essential mode for quick deployment.
-- Use ⁠extended for production systems.
-- Only use ⁠complete if you need 2y/5y predictions.
-- Models are automatically compatible with your views.py.
-- Training runs in parallel for faster completion.
-- Failed models don't stop the training process.
-- All results are logged and summarized.
+- ✅ Always run with validation (default) for reliability.
+- 🔄 Automatic retry logic handles temporary API failures.
+- 📊 Data quality scores help identify problematic stocks.
+- 🏷️ Model versioning prevents accidental overwrites.
+- 🧹 Regular cleanup keeps storage optimized.
+- 📤 Export metadata for external analysis.
+- 🏥 Health checks prevent silent failures.
+- 📈 Performance categories help prioritize improvements.
+
+### **🔍 Troubleshooting:**
+
+```bash
+# Check system health first
+python TrainModel.py health
+
+# Validate specific timeframe
+python TrainModel.py test 5d
+
+# View detailed validation report
+cat Validation/timeframe_validation_*.json
+
+# Check model versions
+ls Models/*AAPL* | sort -t_ -k4
+
+# View latest training summary
+cat Performance/training_summary_latest.json | python -m json.tool
+```
 
 ---
 
