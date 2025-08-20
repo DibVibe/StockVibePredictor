@@ -50,8 +50,6 @@ import signal
 import psutil
 import asyncio
 
-
-
 # ============================================================================
 # CONFIGURATION & INITIALIZATION
 # ============================================================================
@@ -130,15 +128,15 @@ performance_cache = {}
 # Timeframe configurations - Balanced for chart display and data requirements
 TIMEFRAMES = {
     "1d": {
-        "period": "1mo",  
+        "period": "1mo",
         "interval": "1h",
         "model_suffix": "_1d",
         "cache_time": 300,
         "display_limit": 24,
     },
     "5d": {
-        "period": "1mo",
-        "interval": "1d",
+        "period": "5d",
+        "interval": "15m",
         "model_suffix": "_1w",
         "cache_time": 600,
     },
@@ -186,53 +184,76 @@ TIMEFRAMES = {
     },
 }
 
+# ============================================================================
+# CACHE MANAGEMENT - FIXED FOR DJANGO 5.2+
+# ============================================================================
 
-# Function to initialize the app
 def invalidate_stale_cache():
-    """Remove stale cache entries based on timeframe requirements"""
+    """Remove stale cache entries - Compatible with Django 5.2+"""
     try:
-        from django.core.cache.utils import make_key
         from django.core.cache import cache
-
-        # Get all cache keys (this is implementation-dependent)
-        # For Django's cache, we'll implement a cleanup strategy
 
         current_time = timezone.now().timestamp()
         cleanup_count = 0
 
-        # Clear old chart data cache entries
-        for timeframe, config in TIMEFRAMES.items():
-            cache_timeout = config['cache_time']
-
-            # This is a simplified version - in production,
-            # you'd want to track cache keys more systematically
-            logger.info(f"Cache cleanup for {timeframe}: timeout={cache_timeout}s")
-
-        # Clear prediction cache older than 1 hour
+        # Clear old prediction cache entries
         prediction_cache_keys_to_remove = []
         for key, cached_data in list(prediction_cache.items()):
             if hasattr(cached_data, 'get') and cached_data.get('timestamp'):
-                cache_time = pd.to_datetime(cached_data['timestamp']).timestamp()
-                if current_time - cache_time > 3600:
-                    prediction_cache_keys_to_remove.append(key)
+                try:
+                    cache_time = pd.to_datetime(cached_data['timestamp']).timestamp()
+                    # Use timeframe-specific cache times
+                    max_cache_time = max(tf['cache_time'] for tf in TIMEFRAMES.values())
+                    if current_time - cache_time > max_cache_time:
+                        prediction_cache_keys_to_remove.append(key)
+                except Exception as e:
+                    logger.debug(f"Error checking cache timestamp for {key}: {e}")
 
+        # Remove stale entries
         for key in prediction_cache_keys_to_remove:
             del prediction_cache[key]
             cleanup_count += 1
+
+        # Clear performance cache if too large
+        if len(performance_cache) > 1000:
+            # Keep only recent 500 entries by clearing all
+            performance_cache.clear()
+            cleanup_count += 500
+            logger.info("Performance cache cleared due to size limit")
 
         logger.info(f"Cache cleanup completed: removed {cleanup_count} stale entries")
         return cleanup_count
 
     except Exception as e:
-        logger.error(f"Cache cleanup failed: {str(e)}")
+        logger.warning(f"Cache cleanup partially completed: {str(e)}")
+        # Don't fail - cache cleanup is not critical
         return 0
 
-# Schedule periodic cache cleanup (call this from a cron job or celery task)
 def schedule_cache_cleanup():
     """Schedule periodic cache cleanup"""
-    return invalidate_stale_cache()
+    try:
+        return invalidate_stale_cache()
+    except Exception as e:
+        logger.warning(f"Scheduled cache cleanup skipped: {e}")
+        return 0
 
+def clear_all_caches():
+    """Clear all caches - useful for maintenance"""
+    try:
+        from django.core.cache import cache
 
+        # Clear Django cache
+        cache.clear()
+
+        # Clear local caches
+        prediction_cache.clear()
+        performance_cache.clear()
+
+        logger.info("All caches cleared successfully")
+        return True
+    except Exception as e:
+        logger.error(f"Failed to clear all caches: {e}")
+        return False
 
 # ============================================================================
 # THROTTLE CLASSES
@@ -247,7 +268,6 @@ class PredictionRateThrottle(UserRateThrottle):
 class TradingRateThrottle(UserRateThrottle):
     scope = "trading"
     rate = "50/hour"
-
 
 # ============================================================================
 # TECHNICAL INDICATOR CALCULATIONS
@@ -325,7 +345,6 @@ def compute_advanced_indicators(data):
         "vwap": vwap,
     }
 
-
 # ============================================================================
 # ANALYSIS & METRICS HELPERS
 # ============================================================================
@@ -374,7 +393,6 @@ def compute_risk_metrics(data):
             "high" if volatility > 0.3 else "medium" if volatility > 0.15 else "low"
         ),
     }
-
 
 # ============================================================================
 # DATA VALIDATION & NORMALIZATION
@@ -442,8 +460,6 @@ def is_data_fresh(data, timeframe):
     logger.debug(f"Data freshness check for {timeframe}: {time_diff}s < {threshold}s = {is_fresh}")
 
     return is_fresh
-
-
 
 # ============================================================================
 # DATA FETCHING FUNCTIONS
@@ -801,7 +817,6 @@ def secure_model_load(model_path):
         raise
 
 
-# Functions to load all available models
 def load_all_models():
     """Load all available models with enhanced security and validation"""
     global model_cache
@@ -821,6 +836,9 @@ def load_all_models():
     for model_path in model_files:
         try:
             filename = model_path.name
+
+            # Log the file being processed with hash
+            logger.info(f"Model file {model_path} hash: {hashlib.sha256(model_path.read_bytes()).hexdigest()}")
 
             # Security check
             if not verify_model_integrity(model_path):
@@ -881,10 +899,13 @@ def load_all_models():
     logger.info(f"Model loading complete: {loaded_count} loaded, {failed_count} failed, {security_failures} security failures")
     logger.info(f"Total models in cache: {len(model_cache)}")
 
-    # Clean up any stale cache after loading models
-    invalidate_stale_cache()
-
-
+    # Schedule cache cleanup separately (don't do it during startup)
+    try:
+        logger.info("Scheduling cache cleanup...")
+        # You can call this from a separate management command or celery task
+        # schedule_cache_cleanup()
+    except Exception as e:
+        logger.debug(f"Cache cleanup scheduling skipped: {e}")
 
 # Function to get the best model for prediction
 def get_model_for_prediction(ticker, timeframe):
