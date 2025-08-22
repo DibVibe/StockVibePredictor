@@ -45,6 +45,7 @@ app_name = "StockPredict"
 urlpatterns = [
     # 📈 Prediction Endpoints (UPDATED PATHS)
     path("predict/multi-timeframe/", predict_multi_timeframe, name="predict_multi_timeframe"),
+    path("predict/multi/", predict_multi_timeframe, name="predict_multi_alias"),  # 🆕 Frontend alias
     path("predict/batch/", batch_predictions, name="batch_predictions"),
     path("predict/trend/", predict_stock_trend, name="predict_stock_trend"),
     path("predict/status/", prediction_status, name="prediction_status"),
@@ -56,27 +57,30 @@ urlpatterns = [
     path("models/delete/", delete_model, name="delete_model"),
     path("models/create-test/", create_test_models, name="create_test_models"),
 
-    # 💼 Trading Endpoints (OK as is)
+    # 💼 Trading Endpoints
     path("trading/simulate/", simulate_trade, name="simulate_trade"),
     path("trading/portfolio/", get_portfolio, name="get_portfolio"),
     path("trading/history/", get_trade_history, name="get_trade_history"),
     path("trading/real/", place_real_trade, name="place_real_trade"),
 
-    # 👁️ Watchlist Endpoints (OK as is)
+    # 👁️ Watchlist Endpoints
     path("watchlist/create/", create_watchlist, name="create_watchlist"),
     path("watchlist/predictions/", get_watchlist_predictions, name="get_watchlist_predictions"),
 
-    # 📊 Market Data Endpoints (REORGANIZED)
+    # 📊 Market Data Endpoints
     path("market/overview/", market_overview, name="market_overview"),
     path("market/analytics/", analytics_dashboard, name="analytics_dashboard"),
     path("market/performance/", get_model_performance, name="get_model_performance"),
     path("market/chart/<str:ticker>/", get_chart_data, name="get_chart_data"),
     path("market/chart/multi/", get_multi_chart_data, name="get_multi_chart_data"),
 
-    # 🏢 Company Information (Keep your existing endpoint)
+    # 🔧 Quick Access / Debug Endpoints (Aliases)
+    path("chart/<str:ticker>/", get_chart_data, name="chart_simple"),  # 🆕 Simple chart endpoint
+
+    # 🏢 Company Information
     path("company/<str:ticker>/essentials/", company_essentials, name="company_essentials"),
 
-    # 🧪 System Monitoring Endpoints (REORGANIZED)
+    # 🧪 System Monitoring Endpoints
     path("system/health/", system_health, name="system_health"),
     path("system/memory/", memory_status, name="memory_status"),
     path("system/redis/", redis_check, name="redis_check"),

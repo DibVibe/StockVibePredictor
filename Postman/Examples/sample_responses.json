@@ -1,0 +1,36 @@
+{
+  "multi_timeframe_prediction": {
+    "ticker": "AAPL",
+    "predictions": {
+      "1d": {
+        "direction": "UP",
+        "confidence": 72.5,
+        "price_target": 195.5,
+        "current_price": 190.25
+      },
+      "1w": {
+        "direction": "UP",
+        "confidence": 68.3,
+        "price_target": 198.75
+      }
+    },
+    "analysis": {
+      "technical": {
+        "rsi": 58.4,
+        "trend": "bullish"
+      }
+    }
+  },
+  "batch_prediction": {
+    "results": {
+      "AAPL": {
+        "direction": "UP",
+        "confidence": 72.5
+      },
+      "MSFT": {
+        "direction": "DOWN",
+        "confidence": 65.2
+      }
+    }
+  }
+}

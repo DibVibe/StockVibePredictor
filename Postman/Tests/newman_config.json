@@ -1,0 +1,23 @@
+{
+  "collection": "../Collections/StockVibePredictor_API_v2.postman_collection.json",
+  "environment": "../Environments/Development.postman_environment.json",
+  "reporters": ["cli", "json", "html"],
+  "reporter": {
+    "json": {
+      "export": "./results/test-results.json"
+    },
+    "html": {
+      "export": "./results/test-results.html"
+    }
+  },
+  "insecure": true,
+  "timeout": 180000,
+  "timeoutRequest": 10000,
+  "timeoutScript": 5000,
+  "delayRequest": 0,
+  "iterationCount": 1,
+  "globalVar": [],
+  "envVar": [],
+  "color": true,
+  "silent": false
+}

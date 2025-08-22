@@ -1,0 +1,29 @@
+{
+  "name": "Alias Endpoints Tests",
+  "tests": [
+    {
+      "name": "Test Simple Chart Endpoint",
+      "endpoint": "/api/chart/AAPL/",
+      "method": "GET",
+      "assertions": [
+        "Status code is 200",
+        "Response contains data array",
+        "Response time < 2000ms"
+      ]
+    },
+    {
+      "name": "Test Multi Prediction Alias",
+      "endpoint": "/api/predict/multi/",
+      "method": "POST",
+      "body": {
+        "ticker": "AAPL",
+        "timeframes": ["1d"]
+      },
+      "assertions": [
+        "Status code is 200",
+        "Response contains predictions",
+        "Predictions have required fields"
+      ]
+    }
+  ]
+}

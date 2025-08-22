@@ -1,0 +1,372 @@
+{
+  "info": {
+    "_postman_id": "stock-vibe-v2-2024",
+    "name": "StockVibePredictor API v2.0",
+    "description": "Complete API collection for StockVibe Predictor with all endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "2.0.0"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{authToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Set request timestamp",
+          "pm.variables.set('timestamp', new Date().toISOString());",
+          "",
+          "// Generate request ID",
+          "pm.variables.set('requestId', pm.variables.replaceIn('{{$guid}}'));",
+          "",
+          "// Add custom headers",
+          "pm.request.headers.add({",
+          "    key: 'X-Request-ID',",
+          "    value: pm.variables.get('requestId')",
+          "});",
+          "",
+          "// Log request details if debug mode",
+          "if (pm.environment.get('debugMode') === 'true') {",
+          "    console.log('Request:', pm.request.method, pm.request.url.toString());",
+          "}"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Global tests",
+          "pm.test('Response time is acceptable', function () {",
+          "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+          "});",
+          "",
+          "// Log response if debug mode",
+          "if (pm.environment.get('debugMode') === 'true') {",
+          "    console.log('Response Status:', pm.response.code);",
+          "    console.log('Response Time:', pm.response.responseTime + 'ms');",
+          "}"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "📈 Predictions",
+      "item": [
+        {
+          "name": "Multi-Timeframe Prediction",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response has predictions', function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('predictions');",
+                  "});",
+                  "",
+                  "// Save prediction for later use",
+                  "if (pm.response.code === 200) {",
+                  "    const response = pm.response.json();",
+                  "    pm.environment.set('lastPrediction', JSON.stringify(response.predictions));",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"ticker\": \"{{testTicker}}\",\n    \"timeframes\": [\"1d\", \"1w\", \"1mo\", \"1y\"],\n    \"include_analysis\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/predict/multi-timeframe/",
+              "host": ["{{baseUrl}}"],
+              "path": ["predict", "multi-timeframe", ""]
+            },
+            "description": "Get predictions for multiple timeframes with comprehensive analysis"
+          }
+        },
+        {
+          "name": "Batch Predictions",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"tickers\": [\"AAPL\", \"MSFT\", \"GOOGL\", \"AMZN\", \"TSLA\"],\n    \"timeframe\": \"1d\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/predict/batch/",
+              "host": ["{{baseUrl}}"],
+              "path": ["predict", "batch", ""]
+            }
+          }
+        },
+        {
+          "name": "Single Stock Trend",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"ticker\": \"{{testTicker}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/predict/trend/",
+              "host": ["{{baseUrl}}"],
+              "path": ["predict", "trend", ""]
+            }
+          }
+        },
+        {
+          "name": "Prediction Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/predict/status/",
+              "host": ["{{baseUrl}}"],
+              "path": ["predict", "status", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🤖 Models",
+      "item": [
+        {
+          "name": "Train Model",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"ticker\": \"{{testTicker}}\",\n    \"timeframe\": \"1d\",\n    \"model_type\": \"ensemble\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/models/train/",
+              "host": ["{{baseUrl}}"],
+              "path": ["models", "train", ""]
+            }
+          }
+        },
+        {
+          "name": "List Models",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/models/list/",
+              "host": ["{{baseUrl}}"],
+              "path": ["models", "list", ""]
+            }
+          }
+        },
+        {
+          "name": "Create Test Models",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/models/create-test/",
+              "host": ["{{baseUrl}}"],
+              "path": ["models", "create-test", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "💼 Trading",
+      "item": [
+        {
+          "name": "Simulate Trade",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"ticker\": \"{{testTicker}}\",\n    \"action\": \"buy\",\n    \"quantity\": 10,\n    \"order_type\": \"market\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/trading/simulate/",
+              "host": ["{{baseUrl}}"],
+              "path": ["trading", "simulate", ""]
+            }
+          }
+        },
+        {
+          "name": "Get Portfolio",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/trading/portfolio/",
+              "host": ["{{baseUrl}}"],
+              "path": ["trading", "portfolio", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📊 Market Data",
+      "item": [
+        {
+          "name": "Market Overview",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/market/overview/",
+              "host": ["{{baseUrl}}"],
+              "path": ["market", "overview", ""]
+            }
+          }
+        },
+        {
+          "name": "Chart Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/market/chart/{{testTicker}}/?timeframe=1mo&chart_type=candlestick&indicators=sma20,rsi",
+              "host": ["{{baseUrl}}"],
+              "path": ["market", "chart", "{{testTicker}}", ""],
+              "query": [
+                {
+                  "key": "timeframe",
+                  "value": "1mo"
+                },
+                {
+                  "key": "chart_type",
+                  "value": "candlestick"
+                },
+                {
+                  "key": "indicators",
+                  "value": "sma20,rsi"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Multi-Chart Data",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"tickers\": [\"AAPL\", \"MSFT\", \"GOOGL\"],\n    \"timeframe\": \"1mo\",\n    \"chart_type\": \"line\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/market/chart/multi/",
+              "host": ["{{baseUrl}}"],
+              "path": ["market", "chart", "multi", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔧 System",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/system/health/",
+              "host": ["{{baseUrl}}"],
+              "path": ["system", "health", ""]
+            }
+          }
+        },
+        {
+          "name": "Memory Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/system/memory/",
+              "host": ["{{baseUrl}}"],
+              "path": ["system", "memory", ""]
+            }
+          }
+        },
+        {
+          "name": "Debug Models",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/system/debug/models/",
+              "host": ["{{baseUrl}}"],
+              "path": ["system", "debug", "models", ""]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

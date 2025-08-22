@@ -1,4 +1,18 @@
-# Byte-compiled / optimized / DLL files
+################################################################################
+# StockVibePredictor .gitignore
+#
+# A comprehensive gitignore for Python/Django backend with React/Node frontend
+# Includes ML model files, sensitive configs, and development artifacts
+#
+# Repository: https://github.com/YourUsername/StockVibePredictor
+# Last Updated: December 2024
+################################################################################
+
+# ==============================================================================
+# PYTHON & DJANGO
+# ==============================================================================
+
+# Python bytecode and optimization files
 __pycache__/
 **/__pycache__/
 *.py[cod]
@@ -11,7 +25,7 @@ __pycache__/
 # C extensions
 *.so
 
-# Distribution / packaging
+# Distribution and packaging
 .Python
 build/
 develop-eggs/
@@ -25,25 +39,23 @@ parts/
 sdist/
 var/
 wheels/
-pip-wheel-metadata/
 share/python-wheels/
+pip-wheel-metadata/
 *.egg-info/
 .installed.cfg
 *.egg
 *.whl
 MANIFEST
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+# PyInstaller artifacts
 *.manifest
 *.spec
 
-# Installer logs
+# Package manager logs
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
+# Testing and coverage
 htmlcov/
 .tox/
 .nox/
@@ -57,98 +69,47 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+.mutmut-cache
+.dmypy.json
+dmypy.json
 
 # Translations
 *.mo
 *.pot
 
-# Django stuff:
-# *.log
+# Django specific
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
 *.db
 *.sqlite
 *.sqlite3
-.env
-.env.*
-*.env
-*.env.*
-*.nn
-*.json.*
 
-# Django migrations (uncomment if you want to ignore them)
-# */migrations/*
-# !*/migrations/__init__.py
-
-# Django static files (if collected)
+# Django static and media files
 staticfiles/
 static_root/
 media_root/
 media/
+static/admin/
+static/rest_framework/
 
-# Django secret key
-.secret_key
+# Django migrations (comment out if you want to track them)
+# */migrations/*.py
+# !*/migrations/__init__.py
 
-# Flask stuff:
+# Flask/FastAPI
 instance/
 .webassets-cache
 
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-.pybuilder/
-target/
-
 # Jupyter Notebook
 .ipynb_checkpoints
+*.ipynb_checkpoints
 
 # IPython
 profile_default/
 ipython_config.py
 
-# pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
-.python-version
-
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-Pipfile.lock
-
-# poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-poetry.lock
-
-# pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
-pdm.lock
-#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
-#   in version control.
-#   https://pdm.fming.dev/#use-with-ide
-.pdm.toml
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
+# Virtual environments
 .env
 .venv
 env/
@@ -156,140 +117,94 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+virtualenv/
 .python-version
+.pyenv
 
-# Snyder project settings
-.spyderproject
-.spyproject
+# Package managers
+Pipfile.lock
+poetry.lock
+pdm.lock
+.pdm.toml
 
-# Rope project settings
-.ropeproject
+# Celery
+celerybeat-schedule
+celerybeat.pid
+celerybeat-schedule.db
 
-# mkdocs documentation
-/site
+# ==============================================================================
+# NODE.JS & FRONTEND
+# ==============================================================================
 
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
-
-# Node.js/React/Frontend
+# Dependencies
+node_modules/
 **/node_modules/
 Frontend/node_modules/
 frontend/node_modules/
 client/node_modules/
-static/node_modules/
-node_modules/
+jspm_packages/
+
+# Package manager locks (comment out if you want to track them)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.pnpm-store/
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
 
-# Frontend build outputs
+# Build outputs
 Frontend/build/
 Frontend/dist/
 frontend/build/
 frontend/dist/
 client/build/
 client/dist/
-static/build/
-static/dist/
 build/
 dist/
-
-# Frontend cache and temporary files
-Frontend/.cache/
-frontend/.cache/
-client/.cache/
-.cache/
+out/
 .next/
 .nuxt/
 .vuepress/dist
 .serverless/
+.fusebox/
+.dynamodb/
 
-# Package managers
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-
-# IDE and Editor Files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.project
-.metadata
-.settings/
-*.sublime-project
-*.sublime-workspace
-*.komodoproject
-.komodotools
-.brackets.json
-
-# OS Files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-Thumbs.db:encryptable
-desktop.ini
-$RECYCLE.BIN/
-
-# Redis
-*.rdb
-dump.rdb
-appendonly.aof
-
-# Database files
-*.sqlite
-*.sqlite3
-*.db
-*.db3
-*.s3db
-*.sl3
-db.json
-
-# Log files
-# *.log
-# *.log.*
-# logs/
-# log/
-
-# Backup files
-*.bak
-*.backup
-*.tmp
-*.temp
-*~
-.#*
-#*#
-
-# Temporary directories
-temp/
-tmp/
-.tmp/
-.temp/
-
-# Cache directories
+# Cache and temporary files
 .cache/
-cache/
+.parcel-cache/
+.webpack/
 .sass-cache/
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
 
-# Machine Learning / AI models
+# Testing
+coverage/
+.nyc_output/
+
+# Optional npm/yarn cache
+.npm
+.yarn-integrity
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# ESLint and Prettier
+.eslintcache
+.prettierignore
+
+# ==============================================================================
+# MACHINE LEARNING & DATA
+# ==============================================================================
+
+# Model files
 *.pkl
 *.pickle
 *.h5
@@ -302,89 +217,378 @@ cache/
 *.tflite
 *.pb
 *.onnx
+*.safetensors
+*.bin
+*.npz
+*.npy
+
+# Model directories
 models/
 performance/
 checkpoints/
+saved_models/
+model_outputs/
+experiments/
+mlruns/
 
-# Jupyter Notebooks (if you want to ignore them)
-# *.ipynb
+# Data files (uncomment specific extensions as needed)
+# *.csv
+# *.parquet
+# *.feather
+# *.arrow
+# *.json
+# *.jsonl
+# *.xlsx
+# *.xls
 
-# Configuration files with sensitive data
-config.ini
-settings.ini
+# Dataset directories
+data/raw/
+data/processed/
+data/interim/
+data/external/
+datasets/
+
+# ==============================================================================
+# ENVIRONMENT & CONFIGURATION
+# ==============================================================================
+
+# Environment variables
+.env
+.env.*
+*.env
+*.env.*
+!.env.example
+!.env.template
+
+# Secrets and credentials
+.secret_key
 secrets.json
 credentials.json
+config.ini
+settings.ini
+*.key
+*.pem
+*.cert
+*.crt
+service-account.json
+firebase-adminsdk.json
+
+# Configuration overrides
+local.settings.json
+appsettings.Development.json
+appsettings.Local.json
+
+# ==============================================================================
+# DATABASES & STORAGE
+# ==============================================================================
+
+# SQLite
+*.sqlite
+*.sqlite3
+*.db
+*.db3
+*.s3db
+*.sl3
+
+# Redis
+*.rdb
+dump.rdb
+appendonly.aof
+
+# PostgreSQL
+*.pgsql
+
+# MongoDB
+*.bson
+
+# Database backups
+*.sql
+*.dump
+*.bak
+*.backup
+
+# ==============================================================================
+# IDE & EDITORS
+# ==============================================================================
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+.history/
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+.\#*
+.org-id-locations
+*_flymake.*
+*_archive
+
+# Others
+.project
+.metadata
+.settings/
+*.komodoproject
+.komodotools
+.brackets.json
+nbproject/
+
+# ==============================================================================
+# OPERATING SYSTEMS
+# ==============================================================================
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+Icon?
+.DocumentRevisions-V100
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+.directory
+.Trash-*
+.nfs*
+
+# ==============================================================================
+# DOCKER & CONTAINERS
+# ==============================================================================
 
 # Docker
 .dockerignore
-Dockerfile.prod
 docker-compose.override.yml
+docker-compose.local.yml
+Dockerfile.local
+
+# Kubernetes
+*.kubeconfig
+kubeconfig
+
+# ==============================================================================
+# LOGS & MONITORING
+# ==============================================================================
+
+# Log files (uncomment if you want to ignore all logs)
+# *.log
+# *.log.*
+# logs/
+# log/
+
+# Specific log types
+error.log
+access.log
+debug.log
+*.error.log
+*.access.log
 
 # Monitoring and profiling
 .prof
 *.prof
+*.pstats
+.monitor/
+profiling/
 
-# Local development files
+# ==============================================================================
+# TESTING & QA
+# ==============================================================================
+
+# Test results
+test-results/
+playwright-report/
+playwright/.cache/
+test-output/
+allure-results/
+allure-report/
+
+# API Testing
+Postman/Tests/results/
+postman/environments/*_local.json
+postman/environments/*_secrets.json
+newman/
+*.test-results.json
+*.html
+
+# Load testing
+artillery_report*.json
+k6_results/
+
+# ==============================================================================
+# DOCUMENTATION
+# ==============================================================================
+
+# Documentation builds
+docs/_build/
+docs/*.html
+site/
+_book/
+.docusaurus/
+
+# API documentation
+swagger-ui/
+redoc-static.html
+
+# ==============================================================================
+# TEMPORARY FILES & DIRECTORIES
+# ==============================================================================
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+*.orig
+*~
+.#*
+\#*#
+
+# Temporary directories
+temp/
+tmp/
+.tmp/
+.temp/
+cache/
+.cache/
+
+# ==============================================================================
+# PROJECT SPECIFIC
+# ==============================================================================
+
+# StockVibePredictor specific
+stock_model.pkl
+universal_model_*.pkl
+*_model.pkl
+performance_cache.json
+prediction_cache.json
+
+# Sensitive project files
+StockTradingData/
+TradingHistory/
+UserPortfolios/
+BacktestResults/
+
+# Development databases
+development.db
+test.db
+
+# Local development
 local/
 .local/
 dev/
 development/
+sandbox/
+
+# Deployment artifacts
+deploy/
+deployment/
+releases/
+
+# ==============================================================================
+# MISCELLANEOUS
+# ==============================================================================
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# Output files
+output/
+outputs/
+results/
+reports/
 
 # Webpack
-.webpack/
+webpack-stats.json
+webpack-bundle-analyzer/
 
-# ESLint
-.eslintcache
+# Parcel
+.parcel-cache/
 
-# Optional npm cache directory
-.npm
+# Gatsby
+.cache/
+public/
 
-# Optional eslint cache
-.eslintcache
+# Certificates (be careful with this)
+*.p12
+*.pfx
 
-# Microbundle cache
-.rpt2_cache/
-.rts2_cache_cjs/
-.rts2_cache_es/
-.rts2_cache_umd/
+# ==============================================================================
+# EXCEPTIONS (Files to explicitly track)
+# ==============================================================================
 
-# Optional REPL history
-.node_repl_history
+# Keep these files
+!.gitignore
+!.gitkeep
+!.editorconfig
+!.prettierrc
+!.eslintrc
+!README.md
+!LICENSE
+!requirements.txt
+!package.json
+!docker-compose.yml
+!Dockerfile
+!.github/
+!.gitlab-ci.yml
+!.travis.yml
 
-# Output of 'npm pack'
-*.tgz
+# Keep initialization files
+!**/__init__.py
+!**/migrations/__init__.py
 
-# Yarn Integrity file
-.yarn-integrity
+# Keep example/template files
+!*.example
+!*.template
+!*.sample
 
-# parcel-bundler cache (https://parceljs.org/)
-.parcel-cache
-
-# Stores VSCode versions used for testing VSCode extensions
-.vscode-test
-
-# Project-specific ignores
-stock_model.pkl
-migrations/
-
-# Postman Shitz
-
-postman/environments/*_local.json
-postman/environments/*_secrets.json
-
-Tests/results/
-*.html
-*.json
-
-Environments/*_local.json
-Environments/*_secrets.json
-
-newman/
-
-*.tmp
-*.log
-
-.env
-
-# Uncomment the line below if you want to track migration files
-# !*/migrations/__init__.py
+################################################################################
+# End of .gitignore
+#
+# Remember to:
+# 1. Review and uncomment sections based on your project needs ...
+# 2. Add project-specific patterns as your project grows ...
+# 3. Use .gitkeep files to track empty directories ...
+# 4. Consider using git-secret or git-crypt for sensitive files that must be tracked ...
+################################################################################

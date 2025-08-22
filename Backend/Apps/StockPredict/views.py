@@ -128,61 +128,79 @@ performance_cache = {}
 # Timeframe configurations - Balanced for chart display and data requirements
 TIMEFRAMES = {
     "1d": {
-        "period": "1mo",
-        "interval": "1h",
+        "period": "7d",        # Fetch 7 days to ensure we have recent 1-day data
+        "interval": "5m",      # 5-minute intervals for intraday precision
         "model_suffix": "_1d",
-        "cache_time": 300,
-        "display_limit": 24,
+        "cache_time": 300,     # 5 minutes cache
+        "display_limit": 288,  # 24 hours * 12 (5-min intervals per hour)
+        "description": "1 Day - Intraday predictions with 5-minute intervals"
     },
     "5d": {
-        "period": "5d",
-        "interval": "15m",
+        "period": "1mo",       # Fetch 1 month to ensure we have 5 days
+        "interval": "15m",     # 15-minute intervals for short-term
         "model_suffix": "_1w",
-        "cache_time": 600,
+        "cache_time": 600,     # 10 minutes cache
+        "display_limit": 1920, # 5 days * 24 hours * 4 (15-min intervals)
+        "description": "5 Days - Short-term with 15-minute intervals"
     },
     "1w": {
-        "period": "3mo",
-        "interval": "1d",
+        "period": "2mo",       # Fetch 2 months to ensure we have 1 week
+        "interval": "1h",      # Hourly intervals for weekly view
         "model_suffix": "_1w",
-        "cache_time": 1800,
+        "cache_time": 1800,    # 30 minutes cache
+        "display_limit": 168,  # 7 days * 24 hours
+        "description": "1 Week - 7 days of hourly data"
     },
     "1mo": {
-        "period": "6mo",
-        "interval": "1d",
+        "period": "3mo",       # Fetch 3 months to ensure we have 1 month
+        "interval": "1d",      # Daily intervals for monthly view
         "model_suffix": "_1mo",
-        "cache_time": 3600,
+        "cache_time": 3600,    # 1 hour cache
+        "display_limit": 30,   # ~30 days
+        "description": "1 Month - 30 days of daily data"
     },
     "3mo": {
-        "period": "1y",
-        "interval": "1d",
+        "period": "6mo",       # Fetch 6 months to ensure we have 3 months
+        "interval": "1d",      # Daily intervals
         "model_suffix": "_1mo",
-        "cache_time": 5400,
+        "cache_time": 5400,    # 1.5 hours cache
+        "display_limit": 90,   # ~90 days
+        "description": "3 Months - 90 days of daily data"
     },
     "6mo": {
-        "period": "2y",
-        "interval": "1wk",
+        "period": "1y",        # Fetch 1 year to ensure we have 6 months
+        "interval": "1d",      # Daily intervals
         "model_suffix": "_1mo",
-        "cache_time": 7200,
+        "cache_time": 7200,    # 2 hours cache
+        "display_limit": 180,  # ~180 days
+        "description": "6 Months - 180 days of daily data"
     },
     "1y": {
-        "period": "3y",
-        "interval": "1wk",
+        "period": "2y",        # Fetch 2 years to ensure we have 1 year
+        "interval": "1d",      # Daily intervals for accuracy
         "model_suffix": "_1y",
-        "cache_time": 21600,
+        "cache_time": 21600,   # 6 hours cache
+        "display_limit": 365,  # 365 days (1 year)
+        "description": "1 Year - 365 days of daily data"
     },
     "2y": {
-        "period": "5y",
-        "interval": "1mo",
+        "period": "3y",        # Fetch 3 years to ensure we have 2 years
+        "interval": "1wk",     # Weekly intervals for longer periods
         "model_suffix": "_1y",
-        "cache_time": 28800,
+        "cache_time": 28800,   # 8 hours cache
+        "display_limit": 104,  # 2 years * 52 weeks
+        "description": "2 Years - 104 weeks of weekly data"
     },
     "5y": {
-        "period": "max",
-        "interval": "1mo",
+        "period": "max",       # Fetch maximum available data
+        "interval": "1mo",     # Monthly intervals for very long periods
         "model_suffix": "_1y",
-        "cache_time": 43200,
+        "cache_time": 43200,   # 12 hours cache
+        "display_limit": 60,   # 5 years * 12 months
+        "description": "5 Years - 60 months of monthly data"
     },
 }
+
 
 # ============================================================================
 # CACHE MANAGEMENT - FIXED FOR DJANGO 5.2+
@@ -3205,7 +3223,7 @@ def get_chart_data(request, ticker):
 
         price_data = stock_data['price_data']
 
-        # Apply display limit to show only the required timeframe ending today
+        # ✅ UPDATED: Apply display limit with improved logic
         config = TIMEFRAMES[timeframe]
         if 'display_limit' in config:
             display_limit = config['display_limit']
@@ -3229,34 +3247,54 @@ def get_chart_data(request, ticker):
                     except Exception as e:
                         logger.warning(f"Could not fetch current data: {str(e)}")
 
-                # Apply display limits based on timeframe
+                # ✅ UPDATED: Apply display limits based on timeframe with business day logic
                 if timeframe == "1d":
-                    # For 1 day: show last 24 data points (hours)
-                    price_data = price_data.tail(24)
+                    # For 1 day: show only the most recent trading day data
+                    # Get the latest trading day (not weekend)
+                    business_days = price_data[price_data.index.weekday < 5]
+                    if not business_days.empty:
+                        latest_date = business_days.index[-1].date()
+                        price_data = price_data[price_data.index.date == latest_date]
+                    else:
+                        price_data = price_data.tail(288)  # Fallback: last 288 points (24h * 12 intervals)
+
                 elif timeframe == "5d":
-                    # For 5 days: show last 5 data points (days)
-                    price_data = price_data.tail(5)
+                    # For 5 days: show last 5 business days only
+                    business_days = price_data[price_data.index.weekday < 5]  # Monday=0, Friday=4
+                    if not business_days.empty:
+                        # Get unique business days and take last 5
+                        unique_days = business_days.index.normalize().unique()[-5:]
+                        price_data = price_data[price_data.index.normalize().isin(unique_days)]
+                    else:
+                        price_data = price_data.tail(display_limit)
+
                 elif timeframe == "1w":
-                    # For 1 week: show last 7 data points (days)
-                    price_data = price_data.tail(7)
+                    # For 1 week: show last 7 calendar days of data
+                    price_data = price_data.tail(display_limit)
+
                 elif timeframe == "1mo":
-                    # For 1 month: show last 30 data points (days)
-                    price_data = price_data.tail(30)
+                    # For 1 month: show last 30 days of daily data
+                    price_data = price_data.tail(display_limit)
+
                 elif timeframe == "3mo":
-                    # For 3 months: show last 90 data points (days)
-                    price_data = price_data.tail(90)
+                    # For 3 months: show last 90 days of daily data
+                    price_data = price_data.tail(display_limit)
+
                 elif timeframe == "6mo":
-                    # For 6 months: show last 26 data points (weeks)
-                    price_data = price_data.tail(26)
+                    # For 6 months: show last 180 days of daily data
+                    price_data = price_data.tail(display_limit)
+
                 elif timeframe == "1y":
-                    # For 1 year: show last 52 data points (weeks)
-                    price_data = price_data.tail(52)
+                    # For 1 year: show last 365 days of daily data
+                    price_data = price_data.tail(display_limit)
+
                 elif timeframe == "2y":
-                    # For 2 years: show last 24 data points (months)
-                    price_data = price_data.tail(24)
+                    # For 2 years: show last 104 weeks of weekly data
+                    price_data = price_data.tail(display_limit)
+
                 elif timeframe == "5y":
-                    # For 5 years: show last 60 data points (months)
-                    price_data = price_data.tail(60)
+                    # For 5 years: show last 60 months of monthly data
+                    price_data = price_data.tail(display_limit)
                 else:
                     # Fallback to display_limit if timeframe not specifically handled
                     price_data = price_data.tail(display_limit)

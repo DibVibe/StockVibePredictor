@@ -1,0 +1,25 @@
+{
+  "name": "Integration Tests",
+  "description": "End-to-end integration tests for StockVibe API",
+  "tests": [
+    {
+      "name": "Complete Prediction Flow",
+      "steps": [
+        "1. Health Check",
+        "2. Get Prediction Status",
+        "3. Make Single Prediction",
+        "4. Make Batch Prediction",
+        "5. Verify Results"
+      ]
+    },
+    {
+      "name": "Model Management Flow",
+      "steps": [
+        "1. List Models",
+        "2. Train New Model",
+        "3. Verify Model Creation",
+        "4. Test Model Performance"
+      ]
+    }
+  ]
+}
