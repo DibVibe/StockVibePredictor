@@ -130,29 +130,25 @@
 ├── 📁 Backend/
 │   ├── 🔧 StockVibePredictor/
 │   │   ├── __init__.py
+│   │   ├── asgi.py
 │   │   ├── settings.py
 │   │   ├── urls.py
-│   │   ├── asgi.py
-│   │   ├── wsgi.py
-│   │   ├── middleware.py
-│   │   └── schema.graphql
+│   │   └── wsgi.py
 │   │
 │   ├── 📱 Apps/
 │   │   ├── StockPredict/
-│   │   │   ├── migrations/
 │   │   │   ├── __init__.py
-│   │   │   ├── models.py
-│   │   │   ├── views.py
-│   │   │   ├── serializers.py
-│   │   │   ├── urls.py
 │   │   │   ├── admin.py
-│   │   │   ├── forms.py
+│   │   │   ├── apps.py
+│   │   │   ├── CheckPath.py
+│   │   │   ├── CompanyEssentials.py
+│   │   │   ├── middleware.py
+│   │   │   ├── models.py
 │   │   │   ├── tests.py
-│   │   │   ├── permissions.py
-│   │   │   ├── tasks.py
-│   │   │   └── signals.py
-│   │   ├── Store/
-│   │   └── Blog/
+│   │   │   ├── urls.py
+│   │   │   └── views.py
+│   │   ├── Future_App_01/
+│   │   └── Future_App_02/
 │   │
 │   ├── 📊 Logs/
 │   │   ├── ModelTraining.log
@@ -179,6 +175,7 @@
 │   ├── 📜 Scripts/
 │   │
 │   ├── 📦 manage.py
+│   ├── 🦾 setup.py
 │   ├── 📋 requirements.txt
 │   ├── 🐳 Dockerfile
 │   └── 🔧 docker-compose.yml
@@ -196,25 +193,40 @@
 │   │   ├── App.js
 │   │   └── index.js
 │   ├── 📦 package.json
+│   ├── ⚙️ craco.config.js
 │   └── ⚙️ webpack.config.js
 │
 ├── 🧪 Tests/
-│   ├── Unit/
-│   ├── Integration/
-│   └── e2e/
+│   ├── Backend/
+│   ├── e2e/
+│   ├── integration/
+│   ├── unit/
+│   └── setupTests.js
+│
+├── 🏤 Postman/
+│   ├── Collections/
+│   ├── Environments/
+│   ├── Examples/
+│   ├── Scripts/
+│   ├── Tests/
+│   └── README.md
 │
 ├── 📚 Docs/
 │   ├── API.md
 │   ├── CHANGELOG.md
-│   └── Endpoints.json
+│   ├── Endpoints.json
+│   └── Migration-Notes.md
 │
 ├── 🚀 Deployment/
 ├── 🔒 Security/
 ├── 🔄 CI-CD/
 │
-├── 📖 README.md
-├── 📜 LICENSE
+├── 🔧 .gitconfig
 └── 🔧 .gitignore
+├── 📜 LICENSE
+└── 👨‍✈️ AUTHORS.md
+└── 🪖 pyproject.toml
+└── 📖 README.md
 ```
 
 </details>

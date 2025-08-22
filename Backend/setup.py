@@ -4,7 +4,7 @@ setup(
     name="stockvibepredictor",
     version="1.0.0",
     author="Dibakar",
-    author_email="[Hidden-For-Now]",
+    author_email="dibvibe.dev@gmail.com",
     description="AI-powered stock market prediction system using Django and ML",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",

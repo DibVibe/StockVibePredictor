@@ -10,10 +10,10 @@ readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
-    {name = "Dibakar", email = "[Hidden-For-Now]"},
+    {name = "Dibakar", email = "dibvibe.dev@gmail.com"},
 ]
 maintainers = [
-    {name = "Dibakar", email = "[Hidden-For-Now]"},
+    {name = "Dibakar", email = "dibvibe.dev@gmail.com"},
 ]
 keywords = [
     "stock-market",
@@ -271,7 +271,7 @@ ignore = ["migrations", "venv", "env", "Frontend"]
 [metadata]
 name = "StockVibePredictor"
 author = "Dibakar"
-author-email = "your-email@example.com"
+author-email = "dibvibe.dev@gmail.com"
 home-page = "https://github.com/ThisIsDibakar/StockVibePredictor"
 license = "MIT"
 license_files = ["LICENSE"]
