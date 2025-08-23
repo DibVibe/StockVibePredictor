@@ -475,7 +475,7 @@ def is_data_fresh(data, timeframe):
         "5y": 2592000,  # 1 month for very long term
     }
 
-    threshold = thresholds.get(timeframe, 86400)  # Default 1 day
+    threshold = thresholds.get(timeframe, 86400)
     time_diff = (now - latest_time).total_seconds()
 
     is_fresh = time_diff < threshold
