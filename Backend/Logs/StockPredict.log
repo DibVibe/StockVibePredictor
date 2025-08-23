@@ -6442,3 +6442,607 @@ ERROR 2025-08-23 17:53:06,473 views Error computing features for 1mo: Insufficie
 ERROR 2025-08-23 17:53:06,473 views Error calculating indicators for AAPL: Insufficient data: 30 rows
 INFO 2025-08-23 17:53:36,248 views Shutting down thread pools...
 INFO 2025-08-23 17:53:36,249 views Thread pools shut down successfully
+INFO 2025-08-23 18:45:26,346 ChartConfig Chart configuration module initialized
+INFO 2025-08-23 18:45:26,349 views Found 94 model files in /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models
+INFO 2025-08-23 18:45:26,350 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/META_model_1w.pkl hash: 5aee65d3da0c3b47e63c150743b83b56baecf65542cc42e1e120336a6afc8283
+INFO 2025-08-23 18:45:26,351 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/META_model_1w.pkl hash: 5aee65d3da0c3b47e63c150743b83b56baecf65542cc42e1e120336a6afc8283
+INFO 2025-08-23 18:45:26,351 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/META_model_1w.pkl hash: 5aee65d3da0c3b47e63c150743b83b56baecf65542cc42e1e120336a6afc8283
+INFO 2025-08-23 18:45:26,357 views Loaded model for META (1w)
+INFO 2025-08-23 18:45:26,358 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JPM_model_6mo.pkl hash: a3059370c7cb990d7c83674564c5f488b8eba5fbb00177f0e213acd3f296be58
+INFO 2025-08-23 18:45:26,359 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JPM_model_6mo.pkl hash: a3059370c7cb990d7c83674564c5f488b8eba5fbb00177f0e213acd3f296be58
+INFO 2025-08-23 18:45:26,359 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JPM_model_6mo.pkl hash: a3059370c7cb990d7c83674564c5f488b8eba5fbb00177f0e213acd3f296be58
+INFO 2025-08-23 18:45:26,362 views Loaded model for JPM (6mo)
+INFO 2025-08-23 18:45:26,363 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GOOGL_model_1w.pkl hash: cb0ff8978f95e80c98de36e2414727edc48b1ab9a3379a505bece1bb2d9dab52
+INFO 2025-08-23 18:45:26,363 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GOOGL_model_1w.pkl hash: cb0ff8978f95e80c98de36e2414727edc48b1ab9a3379a505bece1bb2d9dab52
+INFO 2025-08-23 18:45:26,363 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GOOGL_model_1w.pkl hash: cb0ff8978f95e80c98de36e2414727edc48b1ab9a3379a505bece1bb2d9dab52
+INFO 2025-08-23 18:45:26,367 views Loaded model for GOOGL (1w)
+INFO 2025-08-23 18:45:26,368 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/QQQ_model_6mo.pkl hash: 01f1c7f7b1ea9c53d08cbe86729650b6ce2b6b9d19b86c5414bd1a1dfcd48127
+INFO 2025-08-23 18:45:26,369 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/QQQ_model_6mo.pkl hash: 01f1c7f7b1ea9c53d08cbe86729650b6ce2b6b9d19b86c5414bd1a1dfcd48127
+INFO 2025-08-23 18:45:26,369 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/QQQ_model_6mo.pkl hash: 01f1c7f7b1ea9c53d08cbe86729650b6ce2b6b9d19b86c5414bd1a1dfcd48127
+INFO 2025-08-23 18:45:26,378 views Loaded model for QQQ (6mo)
+INFO 2025-08-23 18:45:26,379 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JPM_model_1y.pkl hash: 9dc90b31da977e0eac8f15ff3814570e5acb0a77dcab9280f31c6994c4f8b288
+INFO 2025-08-23 18:45:26,381 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JPM_model_1y.pkl hash: 9dc90b31da977e0eac8f15ff3814570e5acb0a77dcab9280f31c6994c4f8b288
+INFO 2025-08-23 18:45:26,382 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JPM_model_1y.pkl hash: 9dc90b31da977e0eac8f15ff3814570e5acb0a77dcab9280f31c6994c4f8b288
+INFO 2025-08-23 18:45:26,385 views Loaded model for JPM (1y)
+INFO 2025-08-23 18:45:26,386 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/V_model_6mo.pkl hash: 05c5091e63171afd04a014113c6ff473f87efe3285bd1757dcc53f4284072b81
+INFO 2025-08-23 18:45:26,386 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/V_model_6mo.pkl hash: 05c5091e63171afd04a014113c6ff473f87efe3285bd1757dcc53f4284072b81
+INFO 2025-08-23 18:45:26,387 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/V_model_6mo.pkl hash: 05c5091e63171afd04a014113c6ff473f87efe3285bd1757dcc53f4284072b81
+INFO 2025-08-23 18:45:26,390 views Loaded model for V (6mo)
+INFO 2025-08-23 18:45:26,390 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ARKK_model_1w.pkl hash: ba0db145b5336890f6e4b4a69e7386367b36f2fcad6ffc19617b7483231a3f2e
+INFO 2025-08-23 18:45:26,390 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ARKK_model_1w.pkl hash: ba0db145b5336890f6e4b4a69e7386367b36f2fcad6ffc19617b7483231a3f2e
+INFO 2025-08-23 18:45:26,391 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ARKK_model_1w.pkl hash: ba0db145b5336890f6e4b4a69e7386367b36f2fcad6ffc19617b7483231a3f2e
+INFO 2025-08-23 18:45:26,393 views Loaded model for ARKK (1w)
+INFO 2025-08-23 18:45:26,394 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SPY_model_1d.pkl hash: c470ae207a25cf3dbc9d490d0abe382f014648b797154a848534074b3b7828dc
+INFO 2025-08-23 18:45:26,395 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SPY_model_1d.pkl hash: c470ae207a25cf3dbc9d490d0abe382f014648b797154a848534074b3b7828dc
+INFO 2025-08-23 18:45:26,395 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SPY_model_1d.pkl hash: c470ae207a25cf3dbc9d490d0abe382f014648b797154a848534074b3b7828dc
+INFO 2025-08-23 18:45:26,399 views Loaded model for SPY (1d)
+INFO 2025-08-23 18:45:26,400 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_1d.pkl hash: 6bf89ba662513b4aeb7dbdd82b1c5302a3a58a4a240dc5eb855f8f7fa31882bb
+INFO 2025-08-23 18:45:26,401 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_1d.pkl hash: 6bf89ba662513b4aeb7dbdd82b1c5302a3a58a4a240dc5eb855f8f7fa31882bb
+INFO 2025-08-23 18:45:26,403 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_1d.pkl hash: 6bf89ba662513b4aeb7dbdd82b1c5302a3a58a4a240dc5eb855f8f7fa31882bb
+INFO 2025-08-23 18:45:26,405 views Loaded universal model for 1d
+INFO 2025-08-23 18:45:26,406 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/QQQ_model_1d.pkl hash: 5ad42665a787012e526a2d771c179e03aa2e624aa7da60262234c689efc37dd8
+INFO 2025-08-23 18:45:26,406 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/QQQ_model_1d.pkl hash: 5ad42665a787012e526a2d771c179e03aa2e624aa7da60262234c689efc37dd8
+INFO 2025-08-23 18:45:26,407 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/QQQ_model_1d.pkl hash: 5ad42665a787012e526a2d771c179e03aa2e624aa7da60262234c689efc37dd8
+INFO 2025-08-23 18:45:26,417 views Loaded model for QQQ (1d)
+INFO 2025-08-23 18:45:26,418 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GS_model_1d.pkl hash: 898308000935bc4bfa6c26611637db4cd5a59248d55d4ca9b1bfba2d34052a4b
+INFO 2025-08-23 18:45:26,419 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GS_model_1d.pkl hash: 898308000935bc4bfa6c26611637db4cd5a59248d55d4ca9b1bfba2d34052a4b
+INFO 2025-08-23 18:45:26,419 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GS_model_1d.pkl hash: 898308000935bc4bfa6c26611637db4cd5a59248d55d4ca9b1bfba2d34052a4b
+INFO 2025-08-23 18:45:26,424 views Loaded model for GS (1d)
+INFO 2025-08-23 18:45:26,424 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/QQQ_model_1w.pkl hash: 4c70e40ac980cb28b91fbbc9a1f60e4e1aca8273a0de0d05b698077b289d3d9c
+INFO 2025-08-23 18:45:26,425 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/QQQ_model_1w.pkl hash: 4c70e40ac980cb28b91fbbc9a1f60e4e1aca8273a0de0d05b698077b289d3d9c
+INFO 2025-08-23 18:45:26,425 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/QQQ_model_1w.pkl hash: 4c70e40ac980cb28b91fbbc9a1f60e4e1aca8273a0de0d05b698077b289d3d9c
+INFO 2025-08-23 18:45:26,427 views Loaded model for QQQ (1w)
+INFO 2025-08-23 18:45:26,428 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GS_model_1w.pkl hash: 3a5be2678068f5c8daa477c5be17b438041c36bfeb8c44ada59ab455959bf067
+INFO 2025-08-23 18:45:26,428 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GS_model_1w.pkl hash: 3a5be2678068f5c8daa477c5be17b438041c36bfeb8c44ada59ab455959bf067
+INFO 2025-08-23 18:45:26,429 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GS_model_1w.pkl hash: 3a5be2678068f5c8daa477c5be17b438041c36bfeb8c44ada59ab455959bf067
+INFO 2025-08-23 18:45:26,432 views Loaded model for GS (1w)
+INFO 2025-08-23 18:45:26,433 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_1w.pkl hash: 02368dcc58899e9887fa58dddd338b747d4a587ba555c080bcba826719ebc5c7
+INFO 2025-08-23 18:45:26,433 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_1w.pkl hash: 02368dcc58899e9887fa58dddd338b747d4a587ba555c080bcba826719ebc5c7
+INFO 2025-08-23 18:45:26,433 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_1w.pkl hash: 02368dcc58899e9887fa58dddd338b747d4a587ba555c080bcba826719ebc5c7
+INFO 2025-08-23 18:45:26,433 views Loaded universal model for 1w
+INFO 2025-08-23 18:45:26,434 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SPY_model_1w.pkl hash: 7dabeef5f253b4b0dc6e483e1dd6e4a0404b626d3720bee6301c9debbaf88104
+INFO 2025-08-23 18:45:26,434 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SPY_model_1w.pkl hash: 7dabeef5f253b4b0dc6e483e1dd6e4a0404b626d3720bee6301c9debbaf88104
+INFO 2025-08-23 18:45:26,434 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SPY_model_1w.pkl hash: 7dabeef5f253b4b0dc6e483e1dd6e4a0404b626d3720bee6301c9debbaf88104
+INFO 2025-08-23 18:45:26,437 views Loaded model for SPY (1w)
+INFO 2025-08-23 18:45:26,438 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ARKK_model_1d.pkl hash: 16414b9f15454aaff3c0053519dfad7435bddb1350d15d3bedb5cac8333d1e1c
+INFO 2025-08-23 18:45:26,438 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ARKK_model_1d.pkl hash: 16414b9f15454aaff3c0053519dfad7435bddb1350d15d3bedb5cac8333d1e1c
+INFO 2025-08-23 18:45:26,439 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ARKK_model_1d.pkl hash: 16414b9f15454aaff3c0053519dfad7435bddb1350d15d3bedb5cac8333d1e1c
+INFO 2025-08-23 18:45:26,452 views Loaded model for ARKK (1d)
+INFO 2025-08-23 18:45:26,453 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WMT_model_1mo.pkl hash: 2e66b6e1a5d8576726d7a524893090ea9bc27ed9f4afe79423374590c3afed9e
+INFO 2025-08-23 18:45:26,454 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WMT_model_1mo.pkl hash: 2e66b6e1a5d8576726d7a524893090ea9bc27ed9f4afe79423374590c3afed9e
+INFO 2025-08-23 18:45:26,454 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WMT_model_1mo.pkl hash: 2e66b6e1a5d8576726d7a524893090ea9bc27ed9f4afe79423374590c3afed9e
+INFO 2025-08-23 18:45:26,460 views Loaded model for WMT (1mo)
+INFO 2025-08-23 18:45:26,461 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/MSFT_model_1y.pkl hash: 8eb7da5280a85ce1438cf4941797c60eca98a143c29cf42bd33066fd600868c5
+INFO 2025-08-23 18:45:26,462 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/MSFT_model_1y.pkl hash: 8eb7da5280a85ce1438cf4941797c60eca98a143c29cf42bd33066fd600868c5
+INFO 2025-08-23 18:45:26,462 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/MSFT_model_1y.pkl hash: 8eb7da5280a85ce1438cf4941797c60eca98a143c29cf42bd33066fd600868c5
+INFO 2025-08-23 18:45:26,467 views Loaded model for MSFT (1y)
+INFO 2025-08-23 18:45:26,468 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GOOGL_model_1d.pkl hash: e8442e88ad53817266369637d2cf10af794ed4fbe91355963e65e155064a9bb4
+INFO 2025-08-23 18:45:26,468 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GOOGL_model_1d.pkl hash: e8442e88ad53817266369637d2cf10af794ed4fbe91355963e65e155064a9bb4
+INFO 2025-08-23 18:45:26,468 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GOOGL_model_1d.pkl hash: e8442e88ad53817266369637d2cf10af794ed4fbe91355963e65e155064a9bb4
+INFO 2025-08-23 18:45:26,471 views Loaded model for GOOGL (1d)
+INFO 2025-08-23 18:45:26,471 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SPY_model_1mo.pkl hash: 61dc75a8accc7a98ce97b33daa6d49d91dfe74390656bc7b24e744fd94fea27d
+INFO 2025-08-23 18:45:26,472 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SPY_model_1mo.pkl hash: 61dc75a8accc7a98ce97b33daa6d49d91dfe74390656bc7b24e744fd94fea27d
+INFO 2025-08-23 18:45:26,472 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SPY_model_1mo.pkl hash: 61dc75a8accc7a98ce97b33daa6d49d91dfe74390656bc7b24e744fd94fea27d
+INFO 2025-08-23 18:45:26,479 views Loaded model for SPY (1mo)
+INFO 2025-08-23 18:45:26,480 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^BSESN_model_1mo.pkl hash: 870099387bccfbc5bc05c14c4989b154f0e0e04411d412ce161cccd2d412e38e
+INFO 2025-08-23 18:45:26,480 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^BSESN_model_1mo.pkl hash: 870099387bccfbc5bc05c14c4989b154f0e0e04411d412ce161cccd2d412e38e
+INFO 2025-08-23 18:45:26,482 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^BSESN_model_1mo.pkl hash: 870099387bccfbc5bc05c14c4989b154f0e0e04411d412ce161cccd2d412e38e
+INFO 2025-08-23 18:45:26,486 views Loaded model for ^BSESN (1mo)
+INFO 2025-08-23 18:45:26,488 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/META_model_1d.pkl hash: 16f6035e47a8c5213a3cfe819d49330d00e9abfae89ad5b53b696ce58c09c9cb
+INFO 2025-08-23 18:45:26,488 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/META_model_1d.pkl hash: 16f6035e47a8c5213a3cfe819d49330d00e9abfae89ad5b53b696ce58c09c9cb
+INFO 2025-08-23 18:45:26,489 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/META_model_1d.pkl hash: 16f6035e47a8c5213a3cfe819d49330d00e9abfae89ad5b53b696ce58c09c9cb
+INFO 2025-08-23 18:45:26,492 views Loaded model for META (1d)
+INFO 2025-08-23 18:45:26,493 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^NSEI_model_1y.pkl hash: c462f8f38b6490d9b43751658da98c067ab13d6eaa7f486eb3d2db599ad65096
+INFO 2025-08-23 18:45:26,494 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^NSEI_model_1y.pkl hash: c462f8f38b6490d9b43751658da98c067ab13d6eaa7f486eb3d2db599ad65096
+INFO 2025-08-23 18:45:26,494 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^NSEI_model_1y.pkl hash: c462f8f38b6490d9b43751658da98c067ab13d6eaa7f486eb3d2db599ad65096
+INFO 2025-08-23 18:45:26,500 views Loaded model for ^NSEI (1y)
+INFO 2025-08-23 18:45:26,502 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_2y.pkl hash: 16caf3c777b46a75cd1e24f2b05422e7c40dfe4df8ff03665e6bfb14d1205976
+INFO 2025-08-23 18:45:26,504 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_2y.pkl hash: 16caf3c777b46a75cd1e24f2b05422e7c40dfe4df8ff03665e6bfb14d1205976
+INFO 2025-08-23 18:45:26,507 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_2y.pkl hash: 16caf3c777b46a75cd1e24f2b05422e7c40dfe4df8ff03665e6bfb14d1205976
+INFO 2025-08-23 18:45:26,528 views Loaded universal model for 2y
+INFO 2025-08-23 18:45:26,529 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ARKK_model_1mo.pkl hash: 58a0f5e04b4fcd116e39a7fb39d991e2d0a2a37409f23da463d8f1ec938fab67
+INFO 2025-08-23 18:45:26,530 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ARKK_model_1mo.pkl hash: 58a0f5e04b4fcd116e39a7fb39d991e2d0a2a37409f23da463d8f1ec938fab67
+INFO 2025-08-23 18:45:26,530 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ARKK_model_1mo.pkl hash: 58a0f5e04b4fcd116e39a7fb39d991e2d0a2a37409f23da463d8f1ec938fab67
+INFO 2025-08-23 18:45:26,536 views Loaded model for ARKK (1mo)
+INFO 2025-08-23 18:45:26,537 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^BSESN_model_1d.pkl hash: e8a778ab63dce30948810fcb0937ca13949153b1aa067142e3c66ea5dc3eee95
+INFO 2025-08-23 18:45:26,538 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^BSESN_model_1d.pkl hash: e8a778ab63dce30948810fcb0937ca13949153b1aa067142e3c66ea5dc3eee95
+INFO 2025-08-23 18:45:26,538 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^BSESN_model_1d.pkl hash: e8a778ab63dce30948810fcb0937ca13949153b1aa067142e3c66ea5dc3eee95
+INFO 2025-08-23 18:45:26,545 views Loaded model for ^BSESN (1d)
+INFO 2025-08-23 18:45:26,546 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SPY_model_6mo.pkl hash: 45f12f99e1604285d3d1f00a616b72cea5a7280020bd09e5bde5b22d8d8edbcd
+INFO 2025-08-23 18:45:26,547 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SPY_model_6mo.pkl hash: 45f12f99e1604285d3d1f00a616b72cea5a7280020bd09e5bde5b22d8d8edbcd
+INFO 2025-08-23 18:45:26,547 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SPY_model_6mo.pkl hash: 45f12f99e1604285d3d1f00a616b72cea5a7280020bd09e5bde5b22d8d8edbcd
+INFO 2025-08-23 18:45:26,550 views Loaded model for SPY (6mo)
+INFO 2025-08-23 18:45:26,551 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^BSESN_model_6mo.pkl hash: 139c8369e9e44c87f2266e5ad6537468963d0c9f749ff6c72376ba0677f999db
+INFO 2025-08-23 18:45:26,552 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^BSESN_model_6mo.pkl hash: 139c8369e9e44c87f2266e5ad6537468963d0c9f749ff6c72376ba0677f999db
+INFO 2025-08-23 18:45:26,552 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^BSESN_model_6mo.pkl hash: 139c8369e9e44c87f2266e5ad6537468963d0c9f749ff6c72376ba0677f999db
+INFO 2025-08-23 18:45:26,575 views Loaded model for ^BSESN (6mo)
+INFO 2025-08-23 18:45:26,577 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/V_model_1d.pkl hash: 0cbeb721aae8e82a2bc1c6cee373b8eeffbb0aafaf72a316e6110e5a1ae9be9a
+INFO 2025-08-23 18:45:26,577 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/V_model_1d.pkl hash: 0cbeb721aae8e82a2bc1c6cee373b8eeffbb0aafaf72a316e6110e5a1ae9be9a
+INFO 2025-08-23 18:45:26,578 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/V_model_1d.pkl hash: 0cbeb721aae8e82a2bc1c6cee373b8eeffbb0aafaf72a316e6110e5a1ae9be9a
+INFO 2025-08-23 18:45:26,586 views Loaded model for V (1d)
+INFO 2025-08-23 18:45:26,588 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JNJ_model_1d.pkl hash: b8aa21f56b59fd2003ba8b6df865a85f22b7724005e4678c5de459bd919e385c
+INFO 2025-08-23 18:45:26,589 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JNJ_model_1d.pkl hash: b8aa21f56b59fd2003ba8b6df865a85f22b7724005e4678c5de459bd919e385c
+INFO 2025-08-23 18:45:26,589 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JNJ_model_1d.pkl hash: b8aa21f56b59fd2003ba8b6df865a85f22b7724005e4678c5de459bd919e385c
+INFO 2025-08-23 18:45:26,592 views Loaded model for JNJ (1d)
+INFO 2025-08-23 18:45:26,594 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WFC_model_1y.pkl hash: 68d1e46b25d66636a24a4a4098f7ddd1346f2a0fb4af54703e57dbedfc4f1345
+INFO 2025-08-23 18:45:26,594 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WFC_model_1y.pkl hash: 68d1e46b25d66636a24a4a4098f7ddd1346f2a0fb4af54703e57dbedfc4f1345
+INFO 2025-08-23 18:45:26,594 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WFC_model_1y.pkl hash: 68d1e46b25d66636a24a4a4098f7ddd1346f2a0fb4af54703e57dbedfc4f1345
+INFO 2025-08-23 18:45:26,597 views Loaded model for WFC (1y)
+INFO 2025-08-23 18:45:26,598 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ARKK_model_6mo.pkl hash: 0ba0ca40f9d05510de8dd0d23f27a072ebee5c59cf211983d1750877e506ebd7
+INFO 2025-08-23 18:45:26,599 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ARKK_model_6mo.pkl hash: 0ba0ca40f9d05510de8dd0d23f27a072ebee5c59cf211983d1750877e506ebd7
+INFO 2025-08-23 18:45:26,599 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ARKK_model_6mo.pkl hash: 0ba0ca40f9d05510de8dd0d23f27a072ebee5c59cf211983d1750877e506ebd7
+INFO 2025-08-23 18:45:26,602 views Loaded model for ARKK (6mo)
+INFO 2025-08-23 18:45:26,603 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BAC_model_1w.pkl hash: 13765269ca27c33ff22dfe08101a52a0028a01432eafdf0ec0c023d77d1804b1
+INFO 2025-08-23 18:45:26,603 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BAC_model_1w.pkl hash: 13765269ca27c33ff22dfe08101a52a0028a01432eafdf0ec0c023d77d1804b1
+INFO 2025-08-23 18:45:26,603 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BAC_model_1w.pkl hash: 13765269ca27c33ff22dfe08101a52a0028a01432eafdf0ec0c023d77d1804b1
+INFO 2025-08-23 18:45:26,605 views Loaded model for BAC (1w)
+INFO 2025-08-23 18:45:26,610 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_5y.pkl hash: dec104b69fba9fa561b66893cf871da55c26438abb10486abc63a7dc81b4a309
+INFO 2025-08-23 18:45:26,612 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_5y.pkl hash: dec104b69fba9fa561b66893cf871da55c26438abb10486abc63a7dc81b4a309
+INFO 2025-08-23 18:45:26,614 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_5y.pkl hash: dec104b69fba9fa561b66893cf871da55c26438abb10486abc63a7dc81b4a309
+INFO 2025-08-23 18:45:26,622 views Loaded universal model for 5y
+INFO 2025-08-23 18:45:26,623 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WMT_model_1y.pkl hash: 7ab79479d708a2a3115a33bfdd4b73cc4bae039bb731234ffef3f75e239d27e4
+INFO 2025-08-23 18:45:26,624 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WMT_model_1y.pkl hash: 7ab79479d708a2a3115a33bfdd4b73cc4bae039bb731234ffef3f75e239d27e4
+INFO 2025-08-23 18:45:26,625 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WMT_model_1y.pkl hash: 7ab79479d708a2a3115a33bfdd4b73cc4bae039bb731234ffef3f75e239d27e4
+INFO 2025-08-23 18:45:26,628 views Loaded model for WMT (1y)
+INFO 2025-08-23 18:45:26,629 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WMT_model_6mo.pkl hash: 30902cdf3c3813078e6695f099085a342a36eceffbbd8851b5a4b25670f963ec
+INFO 2025-08-23 18:45:26,630 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WMT_model_6mo.pkl hash: 30902cdf3c3813078e6695f099085a342a36eceffbbd8851b5a4b25670f963ec
+INFO 2025-08-23 18:45:26,630 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WMT_model_6mo.pkl hash: 30902cdf3c3813078e6695f099085a342a36eceffbbd8851b5a4b25670f963ec
+INFO 2025-08-23 18:45:26,634 views Loaded model for WMT (6mo)
+INFO 2025-08-23 18:45:26,634 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMZN_model_1w.pkl hash: 062bbbdc6da04e7447dbbf27c7c7f4bc83850ee2346da134ca4159ab11c78a89
+INFO 2025-08-23 18:45:26,635 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMZN_model_1w.pkl hash: 062bbbdc6da04e7447dbbf27c7c7f4bc83850ee2346da134ca4159ab11c78a89
+INFO 2025-08-23 18:45:26,635 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMZN_model_1w.pkl hash: 062bbbdc6da04e7447dbbf27c7c7f4bc83850ee2346da134ca4159ab11c78a89
+INFO 2025-08-23 18:45:26,637 views Loaded model for AMZN (1w)
+INFO 2025-08-23 18:45:26,638 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMZN_model_1d.pkl hash: a8116765058d6f0fa30a72e9c9304c11d82603aa8f6b4a65992df2946d714483
+INFO 2025-08-23 18:45:26,639 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMZN_model_1d.pkl hash: a8116765058d6f0fa30a72e9c9304c11d82603aa8f6b4a65992df2946d714483
+INFO 2025-08-23 18:45:26,639 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMZN_model_1d.pkl hash: a8116765058d6f0fa30a72e9c9304c11d82603aa8f6b4a65992df2946d714483
+INFO 2025-08-23 18:45:26,642 views Loaded model for AMZN (1d)
+INFO 2025-08-23 18:45:26,643 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/QQQ_model_1mo.pkl hash: 4d6fc73927e90a230e6bbdd9197a6adc1cb48b81eb3e3369c8cc38e7ca73e1ec
+INFO 2025-08-23 18:45:26,643 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/QQQ_model_1mo.pkl hash: 4d6fc73927e90a230e6bbdd9197a6adc1cb48b81eb3e3369c8cc38e7ca73e1ec
+INFO 2025-08-23 18:45:26,643 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/QQQ_model_1mo.pkl hash: 4d6fc73927e90a230e6bbdd9197a6adc1cb48b81eb3e3369c8cc38e7ca73e1ec
+INFO 2025-08-23 18:45:26,646 views Loaded model for QQQ (1mo)
+INFO 2025-08-23 18:45:26,646 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/V_model_1mo.pkl hash: f42278ce58bc50a5037c32a3cf0ea60f9005d11e33a9d859c1f01480913166b5
+INFO 2025-08-23 18:45:26,647 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/V_model_1mo.pkl hash: f42278ce58bc50a5037c32a3cf0ea60f9005d11e33a9d859c1f01480913166b5
+INFO 2025-08-23 18:45:26,647 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/V_model_1mo.pkl hash: f42278ce58bc50a5037c32a3cf0ea60f9005d11e33a9d859c1f01480913166b5
+INFO 2025-08-23 18:45:26,651 views Loaded model for V (1mo)
+INFO 2025-08-23 18:45:26,652 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BAC_model_1d.pkl hash: 6b419d80af3a860e21650b66684f54b3aba24b8fed26faf491ea3c08339a0498
+INFO 2025-08-23 18:45:26,652 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BAC_model_1d.pkl hash: 6b419d80af3a860e21650b66684f54b3aba24b8fed26faf491ea3c08339a0498
+INFO 2025-08-23 18:45:26,652 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BAC_model_1d.pkl hash: 6b419d80af3a860e21650b66684f54b3aba24b8fed26faf491ea3c08339a0498
+INFO 2025-08-23 18:45:26,655 views Loaded model for BAC (1d)
+INFO 2025-08-23 18:45:26,656 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/V_model_1w.pkl hash: d49359d516ca152c8638b034f308b6228103a43d77e8aba850483909fb5eb1e1
+INFO 2025-08-23 18:45:26,657 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/V_model_1w.pkl hash: d49359d516ca152c8638b034f308b6228103a43d77e8aba850483909fb5eb1e1
+INFO 2025-08-23 18:45:26,658 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/V_model_1w.pkl hash: d49359d516ca152c8638b034f308b6228103a43d77e8aba850483909fb5eb1e1
+INFO 2025-08-23 18:45:26,667 views Loaded model for V (1w)
+INFO 2025-08-23 18:45:26,668 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JNJ_model_1w.pkl hash: 32cd3ac81898c30df831e565e8a32b406230be257e28cc783da19408d4ed0356
+INFO 2025-08-23 18:45:26,668 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JNJ_model_1w.pkl hash: 32cd3ac81898c30df831e565e8a32b406230be257e28cc783da19408d4ed0356
+INFO 2025-08-23 18:45:26,669 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JNJ_model_1w.pkl hash: 32cd3ac81898c30df831e565e8a32b406230be257e28cc783da19408d4ed0356
+INFO 2025-08-23 18:45:26,674 views Loaded model for JNJ (1w)
+INFO 2025-08-23 18:45:26,675 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AAPL_model_1y.pkl hash: af9ba5e9b8bd287778081d3539b05eeb4d1ae0805859c9c8cf66f73e16cbf6ba
+INFO 2025-08-23 18:45:26,676 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AAPL_model_1y.pkl hash: af9ba5e9b8bd287778081d3539b05eeb4d1ae0805859c9c8cf66f73e16cbf6ba
+INFO 2025-08-23 18:45:26,676 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AAPL_model_1y.pkl hash: af9ba5e9b8bd287778081d3539b05eeb4d1ae0805859c9c8cf66f73e16cbf6ba
+INFO 2025-08-23 18:45:26,679 views Loaded model for AAPL (1y)
+INFO 2025-08-23 18:45:26,680 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JPM_model_1mo.pkl hash: fc80486ceb07585cc9319a132d8038a762f63f761cbc9c0f1023094e7b41e7a2
+INFO 2025-08-23 18:45:26,680 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JPM_model_1mo.pkl hash: fc80486ceb07585cc9319a132d8038a762f63f761cbc9c0f1023094e7b41e7a2
+INFO 2025-08-23 18:45:26,682 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JPM_model_1mo.pkl hash: fc80486ceb07585cc9319a132d8038a762f63f761cbc9c0f1023094e7b41e7a2
+INFO 2025-08-23 18:45:26,689 views Loaded model for JPM (1mo)
+INFO 2025-08-23 18:45:26,689 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^BSESN_model_1w.pkl hash: c4bbc40a21eff1849fd24f6e2e3ed48e1ea76af25faecb72874312080fee4895
+INFO 2025-08-23 18:45:26,690 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^BSESN_model_1w.pkl hash: c4bbc40a21eff1849fd24f6e2e3ed48e1ea76af25faecb72874312080fee4895
+INFO 2025-08-23 18:45:26,690 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^BSESN_model_1w.pkl hash: c4bbc40a21eff1849fd24f6e2e3ed48e1ea76af25faecb72874312080fee4895
+INFO 2025-08-23 18:45:26,693 views Loaded model for ^BSESN (1w)
+INFO 2025-08-23 18:45:26,695 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_5d.pkl hash: 2b1b110c70978c1ad7ebb718010718cd27e89db56c93e36ea6095f4414d7da10
+INFO 2025-08-23 18:45:26,697 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_5d.pkl hash: 2b1b110c70978c1ad7ebb718010718cd27e89db56c93e36ea6095f4414d7da10
+INFO 2025-08-23 18:45:26,701 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_5d.pkl hash: 2b1b110c70978c1ad7ebb718010718cd27e89db56c93e36ea6095f4414d7da10
+INFO 2025-08-23 18:45:26,791 views Loaded universal model for 5d
+INFO 2025-08-23 18:45:26,793 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WMT_model_1d.pkl hash: c9b1e217b455d948ed25d7bf507b0d6b4b273ef0a924e4c7dd6817cdbb8d2663
+INFO 2025-08-23 18:45:26,793 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WMT_model_1d.pkl hash: c9b1e217b455d948ed25d7bf507b0d6b4b273ef0a924e4c7dd6817cdbb8d2663
+INFO 2025-08-23 18:45:26,794 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WMT_model_1d.pkl hash: c9b1e217b455d948ed25d7bf507b0d6b4b273ef0a924e4c7dd6817cdbb8d2663
+INFO 2025-08-23 18:45:26,797 views Loaded model for WMT (1d)
+INFO 2025-08-23 18:45:26,802 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GOOGL_model_1mo.pkl hash: 980a6bbaed4219aa58ace3501c37dc656e52c16c8049d26172c039032f80ab49
+INFO 2025-08-23 18:45:26,802 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GOOGL_model_1mo.pkl hash: 980a6bbaed4219aa58ace3501c37dc656e52c16c8049d26172c039032f80ab49
+INFO 2025-08-23 18:45:26,803 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GOOGL_model_1mo.pkl hash: 980a6bbaed4219aa58ace3501c37dc656e52c16c8049d26172c039032f80ab49
+INFO 2025-08-23 18:45:26,812 views Loaded model for GOOGL (1mo)
+INFO 2025-08-23 18:45:26,813 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^BSESN_model_1y.pkl hash: 530db453113d2a8b0e4d1a24aeea631b9cc11b2c80bda3d9f16ad58744d26166
+INFO 2025-08-23 18:45:26,813 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^BSESN_model_1y.pkl hash: 530db453113d2a8b0e4d1a24aeea631b9cc11b2c80bda3d9f16ad58744d26166
+INFO 2025-08-23 18:45:26,814 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^BSESN_model_1y.pkl hash: 530db453113d2a8b0e4d1a24aeea631b9cc11b2c80bda3d9f16ad58744d26166
+INFO 2025-08-23 18:45:26,826 views Loaded model for ^BSESN (1y)
+INFO 2025-08-23 18:45:26,827 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AAPL_model_1w.pkl hash: 66958478de1a473d7636163133216c123ee55ebfe51536fb57c1b10ffc1bfcd2
+INFO 2025-08-23 18:45:26,828 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AAPL_model_1w.pkl hash: 66958478de1a473d7636163133216c123ee55ebfe51536fb57c1b10ffc1bfcd2
+INFO 2025-08-23 18:45:26,829 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AAPL_model_1w.pkl hash: 66958478de1a473d7636163133216c123ee55ebfe51536fb57c1b10ffc1bfcd2
+INFO 2025-08-23 18:45:26,839 views Loaded model for AAPL (1w)
+INFO 2025-08-23 18:45:26,841 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/V_model_1y.pkl hash: a38c9b70b060f09bb14ecb17a9362942007694d79b83b55c2fc500a4aab2aa1c
+INFO 2025-08-23 18:45:26,842 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/V_model_1y.pkl hash: a38c9b70b060f09bb14ecb17a9362942007694d79b83b55c2fc500a4aab2aa1c
+INFO 2025-08-23 18:45:26,843 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/V_model_1y.pkl hash: a38c9b70b060f09bb14ecb17a9362942007694d79b83b55c2fc500a4aab2aa1c
+INFO 2025-08-23 18:45:26,846 views Loaded model for V (1y)
+INFO 2025-08-23 18:45:26,848 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JNJ_model_1y.pkl hash: 29c0a8a3c5a78464b57c71463c1ae653d859b90234326ab5b8f1511dc8f7dfec
+INFO 2025-08-23 18:45:26,850 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JNJ_model_1y.pkl hash: 29c0a8a3c5a78464b57c71463c1ae653d859b90234326ab5b8f1511dc8f7dfec
+INFO 2025-08-23 18:45:26,850 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JNJ_model_1y.pkl hash: 29c0a8a3c5a78464b57c71463c1ae653d859b90234326ab5b8f1511dc8f7dfec
+INFO 2025-08-23 18:45:26,853 views Loaded model for JNJ (1y)
+INFO 2025-08-23 18:45:26,854 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WFC_model_1d.pkl hash: 60e3959063487ef506b0788e0b5d75dbbc38d767356d4ea3a6474ba20e56ba10
+INFO 2025-08-23 18:45:26,854 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WFC_model_1d.pkl hash: 60e3959063487ef506b0788e0b5d75dbbc38d767356d4ea3a6474ba20e56ba10
+INFO 2025-08-23 18:45:26,855 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WFC_model_1d.pkl hash: 60e3959063487ef506b0788e0b5d75dbbc38d767356d4ea3a6474ba20e56ba10
+INFO 2025-08-23 18:45:26,858 views Loaded model for WFC (1d)
+INFO 2025-08-23 18:45:26,859 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WFC_model_1mo.pkl hash: a332e124ee3ee7c3deacd69775685ebb742a3c19a6480642b5e23d67aee85871
+INFO 2025-08-23 18:45:26,860 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WFC_model_1mo.pkl hash: a332e124ee3ee7c3deacd69775685ebb742a3c19a6480642b5e23d67aee85871
+INFO 2025-08-23 18:45:26,860 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WFC_model_1mo.pkl hash: a332e124ee3ee7c3deacd69775685ebb742a3c19a6480642b5e23d67aee85871
+INFO 2025-08-23 18:45:26,863 views Loaded model for WFC (1mo)
+INFO 2025-08-23 18:45:26,865 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WFC_model_1w.pkl hash: 110af5311cfbf2ae4f2badc1115aaabb0e2c0c35297888c9fe0543dc4bbf577d
+INFO 2025-08-23 18:45:26,865 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WFC_model_1w.pkl hash: 110af5311cfbf2ae4f2badc1115aaabb0e2c0c35297888c9fe0543dc4bbf577d
+INFO 2025-08-23 18:45:26,866 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WFC_model_1w.pkl hash: 110af5311cfbf2ae4f2badc1115aaabb0e2c0c35297888c9fe0543dc4bbf577d
+INFO 2025-08-23 18:45:26,869 views Loaded model for WFC (1w)
+INFO 2025-08-23 18:45:26,870 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/MSFT_model_1mo.pkl hash: 2f29f8a984b541ec59308126f13dcb14f325041ccc78043706274525d35991e2
+INFO 2025-08-23 18:45:26,870 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/MSFT_model_1mo.pkl hash: 2f29f8a984b541ec59308126f13dcb14f325041ccc78043706274525d35991e2
+INFO 2025-08-23 18:45:26,870 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/MSFT_model_1mo.pkl hash: 2f29f8a984b541ec59308126f13dcb14f325041ccc78043706274525d35991e2
+INFO 2025-08-23 18:45:26,873 views Loaded model for MSFT (1mo)
+INFO 2025-08-23 18:45:26,874 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AAPL_model_1d.pkl hash: 7e56dda870ce9da62414cfccba0638dfd55b136991c3a670de2a192379c5837c
+INFO 2025-08-23 18:45:26,874 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AAPL_model_1d.pkl hash: 7e56dda870ce9da62414cfccba0638dfd55b136991c3a670de2a192379c5837c
+INFO 2025-08-23 18:45:26,875 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AAPL_model_1d.pkl hash: 7e56dda870ce9da62414cfccba0638dfd55b136991c3a670de2a192379c5837c
+INFO 2025-08-23 18:45:26,877 views Loaded model for AAPL (1d)
+INFO 2025-08-23 18:45:26,878 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^NSEI_model_1mo.pkl hash: 3daa49f2b34b2557be4a32e850f26ef28aa7b30e2f5f9019b3a3023fdc789b38
+INFO 2025-08-23 18:45:26,879 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^NSEI_model_1mo.pkl hash: 3daa49f2b34b2557be4a32e850f26ef28aa7b30e2f5f9019b3a3023fdc789b38
+INFO 2025-08-23 18:45:26,879 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^NSEI_model_1mo.pkl hash: 3daa49f2b34b2557be4a32e850f26ef28aa7b30e2f5f9019b3a3023fdc789b38
+INFO 2025-08-23 18:45:26,884 views Loaded model for ^NSEI (1mo)
+INFO 2025-08-23 18:45:26,885 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMZN_model_1mo.pkl hash: 15b0920abcba0fd6c1b76bbe1ace00a0fa30aaddd1153670f64609dbb8522f5c
+INFO 2025-08-23 18:45:26,885 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMZN_model_1mo.pkl hash: 15b0920abcba0fd6c1b76bbe1ace00a0fa30aaddd1153670f64609dbb8522f5c
+INFO 2025-08-23 18:45:26,885 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMZN_model_1mo.pkl hash: 15b0920abcba0fd6c1b76bbe1ace00a0fa30aaddd1153670f64609dbb8522f5c
+INFO 2025-08-23 18:45:26,888 views Loaded model for AMZN (1mo)
+INFO 2025-08-23 18:45:26,889 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMZN_model_1y.pkl hash: 549e1965f069fb365a74e695c11c6b96f96f93468bf713fa88e0b0cf7f1903d8
+INFO 2025-08-23 18:45:26,890 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMZN_model_1y.pkl hash: 549e1965f069fb365a74e695c11c6b96f96f93468bf713fa88e0b0cf7f1903d8
+INFO 2025-08-23 18:45:26,890 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMZN_model_1y.pkl hash: 549e1965f069fb365a74e695c11c6b96f96f93468bf713fa88e0b0cf7f1903d8
+INFO 2025-08-23 18:45:26,893 views Loaded model for AMZN (1y)
+INFO 2025-08-23 18:45:26,895 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_6mo.pkl hash: 9107088f46f6103e898d1e6b345701aa3725ca0af73a73edde1d5a427f4e9816
+INFO 2025-08-23 18:45:26,897 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_6mo.pkl hash: 9107088f46f6103e898d1e6b345701aa3725ca0af73a73edde1d5a427f4e9816
+INFO 2025-08-23 18:45:26,899 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_6mo.pkl hash: 9107088f46f6103e898d1e6b345701aa3725ca0af73a73edde1d5a427f4e9816
+INFO 2025-08-23 18:45:26,904 views Loaded universal model for 6mo
+INFO 2025-08-23 18:45:26,905 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GS_model_6mo.pkl hash: 6c0fd644d28a96ef227e3c276d2226816936c2b0c4fcf767be904c7892ffd0fb
+INFO 2025-08-23 18:45:26,906 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GS_model_6mo.pkl hash: 6c0fd644d28a96ef227e3c276d2226816936c2b0c4fcf767be904c7892ffd0fb
+INFO 2025-08-23 18:45:26,906 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GS_model_6mo.pkl hash: 6c0fd644d28a96ef227e3c276d2226816936c2b0c4fcf767be904c7892ffd0fb
+INFO 2025-08-23 18:45:26,916 views Loaded model for GS (6mo)
+INFO 2025-08-23 18:45:26,918 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AAPL_model_1mo.pkl hash: 0efd7b5ba5dad6542b1ea6fc130e87eac11c5b6a2b11a53bc9825e1d349026b0
+INFO 2025-08-23 18:45:26,919 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AAPL_model_1mo.pkl hash: 0efd7b5ba5dad6542b1ea6fc130e87eac11c5b6a2b11a53bc9825e1d349026b0
+INFO 2025-08-23 18:45:26,920 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AAPL_model_1mo.pkl hash: 0efd7b5ba5dad6542b1ea6fc130e87eac11c5b6a2b11a53bc9825e1d349026b0
+INFO 2025-08-23 18:45:26,927 views Loaded model for AAPL (1mo)
+INFO 2025-08-23 18:45:26,928 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BAC_model_1mo.pkl hash: 63bff9840aadcdf3dc48d750658d88b15ee7b5036fcdeea6c4a51ef58099eae1
+INFO 2025-08-23 18:45:26,934 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BAC_model_1mo.pkl hash: 63bff9840aadcdf3dc48d750658d88b15ee7b5036fcdeea6c4a51ef58099eae1
+INFO 2025-08-23 18:45:26,935 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BAC_model_1mo.pkl hash: 63bff9840aadcdf3dc48d750658d88b15ee7b5036fcdeea6c4a51ef58099eae1
+INFO 2025-08-23 18:45:26,938 views Loaded model for BAC (1mo)
+INFO 2025-08-23 18:45:26,939 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JNJ_model_6mo.pkl hash: dcb6ababb5a173e565a3b309ce82e71324e6ad8585579b879a90a5a561eb6313
+INFO 2025-08-23 18:45:26,940 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JNJ_model_6mo.pkl hash: dcb6ababb5a173e565a3b309ce82e71324e6ad8585579b879a90a5a561eb6313
+INFO 2025-08-23 18:45:26,940 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JNJ_model_6mo.pkl hash: dcb6ababb5a173e565a3b309ce82e71324e6ad8585579b879a90a5a561eb6313
+INFO 2025-08-23 18:45:26,943 views Loaded model for JNJ (6mo)
+INFO 2025-08-23 18:45:26,944 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WMT_model_1w.pkl hash: 74c14596900274a9bccfa3e71a08562477fe88204f6d2f2203084eadda496cd4
+INFO 2025-08-23 18:45:26,944 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WMT_model_1w.pkl hash: 74c14596900274a9bccfa3e71a08562477fe88204f6d2f2203084eadda496cd4
+INFO 2025-08-23 18:45:26,945 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WMT_model_1w.pkl hash: 74c14596900274a9bccfa3e71a08562477fe88204f6d2f2203084eadda496cd4
+INFO 2025-08-23 18:45:26,949 views Loaded model for WMT (1w)
+INFO 2025-08-23 18:45:26,950 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BAC_model_1y.pkl hash: 2b85e04d9c1432266593ed104e9da30b3feb662375aef66e2a2228b3eef7242b
+INFO 2025-08-23 18:45:26,950 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BAC_model_1y.pkl hash: 2b85e04d9c1432266593ed104e9da30b3feb662375aef66e2a2228b3eef7242b
+INFO 2025-08-23 18:45:26,951 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BAC_model_1y.pkl hash: 2b85e04d9c1432266593ed104e9da30b3feb662375aef66e2a2228b3eef7242b
+INFO 2025-08-23 18:45:26,956 views Loaded model for BAC (1y)
+INFO 2025-08-23 18:45:26,957 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/META_model_6mo.pkl hash: 3ebabdf49097da66e1b060bd5667ee387aad8563c3c25bb27ce5aac4b29a27af
+INFO 2025-08-23 18:45:26,958 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/META_model_6mo.pkl hash: 3ebabdf49097da66e1b060bd5667ee387aad8563c3c25bb27ce5aac4b29a27af
+INFO 2025-08-23 18:45:26,958 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/META_model_6mo.pkl hash: 3ebabdf49097da66e1b060bd5667ee387aad8563c3c25bb27ce5aac4b29a27af
+INFO 2025-08-23 18:45:26,963 views Loaded model for META (6mo)
+INFO 2025-08-23 18:45:26,964 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/MSFT_model_1w.pkl hash: cb5f04c4c32dfd4980178fa4ab8546aa866bebb51020e496778aaa9dde10a557
+INFO 2025-08-23 18:45:26,965 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/MSFT_model_1w.pkl hash: cb5f04c4c32dfd4980178fa4ab8546aa866bebb51020e496778aaa9dde10a557
+INFO 2025-08-23 18:45:26,966 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/MSFT_model_1w.pkl hash: cb5f04c4c32dfd4980178fa4ab8546aa866bebb51020e496778aaa9dde10a557
+INFO 2025-08-23 18:45:26,973 views Loaded model for MSFT (1w)
+INFO 2025-08-23 18:45:26,973 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_1mo.pkl hash: e5c36de910949701ba6379b6406a17f949f30332b58216918b0b02cb162a30cc
+INFO 2025-08-23 18:45:26,973 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_1mo.pkl hash: e5c36de910949701ba6379b6406a17f949f30332b58216918b0b02cb162a30cc
+INFO 2025-08-23 18:45:26,973 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_1mo.pkl hash: e5c36de910949701ba6379b6406a17f949f30332b58216918b0b02cb162a30cc
+INFO 2025-08-23 18:45:26,974 views Loaded universal model for 1mo
+INFO 2025-08-23 18:45:26,975 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JPM_model_1d.pkl hash: f295e97a4094e927873b167c04a685ab66d34a68309fa9a6f36a65a681f39319
+INFO 2025-08-23 18:45:26,976 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JPM_model_1d.pkl hash: f295e97a4094e927873b167c04a685ab66d34a68309fa9a6f36a65a681f39319
+INFO 2025-08-23 18:45:26,976 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JPM_model_1d.pkl hash: f295e97a4094e927873b167c04a685ab66d34a68309fa9a6f36a65a681f39319
+INFO 2025-08-23 18:45:26,979 views Loaded model for JPM (1d)
+INFO 2025-08-23 18:45:26,980 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GS_model_1mo.pkl hash: e125bfdf949e2707c853506e78fb690130b631cb0c6d7062af888e53da834587
+INFO 2025-08-23 18:45:26,980 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GS_model_1mo.pkl hash: e125bfdf949e2707c853506e78fb690130b631cb0c6d7062af888e53da834587
+INFO 2025-08-23 18:45:26,980 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GS_model_1mo.pkl hash: e125bfdf949e2707c853506e78fb690130b631cb0c6d7062af888e53da834587
+INFO 2025-08-23 18:45:26,984 views Loaded model for GS (1mo)
+INFO 2025-08-23 18:45:26,985 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SPY_model_1y.pkl hash: e8a939bdb0f51d2224bba09aacef1fe9eb8c775e848b0bb0618bbe804bb5d432
+INFO 2025-08-23 18:45:26,985 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SPY_model_1y.pkl hash: e8a939bdb0f51d2224bba09aacef1fe9eb8c775e848b0bb0618bbe804bb5d432
+INFO 2025-08-23 18:45:26,986 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/SPY_model_1y.pkl hash: e8a939bdb0f51d2224bba09aacef1fe9eb8c775e848b0bb0618bbe804bb5d432
+INFO 2025-08-23 18:45:26,988 views Loaded model for SPY (1y)
+INFO 2025-08-23 18:45:26,988 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_1y.pkl hash: 5e4f268758ffa8dbbb8742bba9ede00b733af56506987bc1dd9aa06169f26c08
+INFO 2025-08-23 18:45:26,988 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_1y.pkl hash: 5e4f268758ffa8dbbb8742bba9ede00b733af56506987bc1dd9aa06169f26c08
+INFO 2025-08-23 18:45:26,989 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_1y.pkl hash: 5e4f268758ffa8dbbb8742bba9ede00b733af56506987bc1dd9aa06169f26c08
+INFO 2025-08-23 18:45:26,989 views Loaded universal model for 1y
+INFO 2025-08-23 18:45:26,990 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AAPL_model_6mo.pkl hash: 72758d5b9526a0258ba4c5724782ac2165770d2eeee2e775088be67d280dcb8d
+INFO 2025-08-23 18:45:26,991 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AAPL_model_6mo.pkl hash: 72758d5b9526a0258ba4c5724782ac2165770d2eeee2e775088be67d280dcb8d
+INFO 2025-08-23 18:45:26,991 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AAPL_model_6mo.pkl hash: 72758d5b9526a0258ba4c5724782ac2165770d2eeee2e775088be67d280dcb8d
+INFO 2025-08-23 18:45:26,996 views Loaded model for AAPL (6mo)
+INFO 2025-08-23 18:45:26,997 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JNJ_model_1mo.pkl hash: 6c0a2a3781a742f6f5f23a590afbee083864bc203ace7da1259c7a2afc16b5b0
+INFO 2025-08-23 18:45:26,997 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JNJ_model_1mo.pkl hash: 6c0a2a3781a742f6f5f23a590afbee083864bc203ace7da1259c7a2afc16b5b0
+INFO 2025-08-23 18:45:26,998 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JNJ_model_1mo.pkl hash: 6c0a2a3781a742f6f5f23a590afbee083864bc203ace7da1259c7a2afc16b5b0
+INFO 2025-08-23 18:45:27,001 views Loaded model for JNJ (1mo)
+INFO 2025-08-23 18:45:27,003 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BAC_model_6mo.pkl hash: fcf5d09adbd2bb2c79e934a17afc6176e662f16e31faf01e30b2423e6d1b4c88
+INFO 2025-08-23 18:45:27,003 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BAC_model_6mo.pkl hash: fcf5d09adbd2bb2c79e934a17afc6176e662f16e31faf01e30b2423e6d1b4c88
+INFO 2025-08-23 18:45:27,003 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/BAC_model_6mo.pkl hash: fcf5d09adbd2bb2c79e934a17afc6176e662f16e31faf01e30b2423e6d1b4c88
+INFO 2025-08-23 18:45:27,007 views Loaded model for BAC (6mo)
+INFO 2025-08-23 18:45:27,008 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GS_model_1y.pkl hash: 2a58db279d52afee86a9ff36ac1548d94483e02103a6d57919d2afa6d5a8828b
+INFO 2025-08-23 18:45:27,008 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GS_model_1y.pkl hash: 2a58db279d52afee86a9ff36ac1548d94483e02103a6d57919d2afa6d5a8828b
+INFO 2025-08-23 18:45:27,009 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GS_model_1y.pkl hash: 2a58db279d52afee86a9ff36ac1548d94483e02103a6d57919d2afa6d5a8828b
+INFO 2025-08-23 18:45:27,021 views Loaded model for GS (1y)
+INFO 2025-08-23 18:45:27,023 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/QQQ_model_1y.pkl hash: c23231c952db572ab4bf8a936056a2ca81e3966b6ebc5dbbbda80f6020b63301
+INFO 2025-08-23 18:45:27,024 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/QQQ_model_1y.pkl hash: c23231c952db572ab4bf8a936056a2ca81e3966b6ebc5dbbbda80f6020b63301
+INFO 2025-08-23 18:45:27,024 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/QQQ_model_1y.pkl hash: c23231c952db572ab4bf8a936056a2ca81e3966b6ebc5dbbbda80f6020b63301
+INFO 2025-08-23 18:45:27,031 views Loaded model for QQQ (1y)
+INFO 2025-08-23 18:45:27,033 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/META_model_1mo.pkl hash: eabd8bce266a048b489ecc18eef0dcefee35c92f364bd5a32176c02dccfac7aa
+INFO 2025-08-23 18:45:27,034 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/META_model_1mo.pkl hash: eabd8bce266a048b489ecc18eef0dcefee35c92f364bd5a32176c02dccfac7aa
+INFO 2025-08-23 18:45:27,035 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/META_model_1mo.pkl hash: eabd8bce266a048b489ecc18eef0dcefee35c92f364bd5a32176c02dccfac7aa
+INFO 2025-08-23 18:45:27,037 views Loaded model for META (1mo)
+INFO 2025-08-23 18:45:27,039 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WFC_model_6mo.pkl hash: 1e4ef04296d038242329220ced1314421fa8bf4f5e305344e8f26a7e4e866738
+INFO 2025-08-23 18:45:27,039 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WFC_model_6mo.pkl hash: 1e4ef04296d038242329220ced1314421fa8bf4f5e305344e8f26a7e4e866738
+INFO 2025-08-23 18:45:27,040 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/WFC_model_6mo.pkl hash: 1e4ef04296d038242329220ced1314421fa8bf4f5e305344e8f26a7e4e866738
+INFO 2025-08-23 18:45:27,046 views Loaded model for WFC (6mo)
+INFO 2025-08-23 18:45:27,048 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^NSEI_model_1w.pkl hash: 32b3981ab411f8c5aeedf9e462ee74ebb274b2fcf63350edc9ed6c85f617bd30
+INFO 2025-08-23 18:45:27,049 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^NSEI_model_1w.pkl hash: 32b3981ab411f8c5aeedf9e462ee74ebb274b2fcf63350edc9ed6c85f617bd30
+INFO 2025-08-23 18:45:27,049 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^NSEI_model_1w.pkl hash: 32b3981ab411f8c5aeedf9e462ee74ebb274b2fcf63350edc9ed6c85f617bd30
+INFO 2025-08-23 18:45:27,056 views Loaded model for ^NSEI (1w)
+INFO 2025-08-23 18:45:27,061 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_3mo.pkl hash: d6c2a39d5cb3791793580b29ab72f58669e89e6300589c97360b24f212d599f0
+INFO 2025-08-23 18:45:27,071 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_3mo.pkl hash: d6c2a39d5cb3791793580b29ab72f58669e89e6300589c97360b24f212d599f0
+INFO 2025-08-23 18:45:27,077 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/universal_model_3mo.pkl hash: d6c2a39d5cb3791793580b29ab72f58669e89e6300589c97360b24f212d599f0
+INFO 2025-08-23 18:45:27,085 views Loaded universal model for 3mo
+INFO 2025-08-23 18:45:27,086 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/MSFT_model_6mo.pkl hash: 9cb85267a01b0d663d6957fc8e4d7e63d856c56e46ac7301ffca676e3f55ae03
+INFO 2025-08-23 18:45:27,087 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/MSFT_model_6mo.pkl hash: 9cb85267a01b0d663d6957fc8e4d7e63d856c56e46ac7301ffca676e3f55ae03
+INFO 2025-08-23 18:45:27,087 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/MSFT_model_6mo.pkl hash: 9cb85267a01b0d663d6957fc8e4d7e63d856c56e46ac7301ffca676e3f55ae03
+INFO 2025-08-23 18:45:27,089 views Loaded model for MSFT (6mo)
+INFO 2025-08-23 18:45:27,090 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^NSEI_model_6mo.pkl hash: 670aa5e37dc548acad6e69db20ccf065276e301f77f04a356f39e50b6e3786db
+INFO 2025-08-23 18:45:27,091 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^NSEI_model_6mo.pkl hash: 670aa5e37dc548acad6e69db20ccf065276e301f77f04a356f39e50b6e3786db
+INFO 2025-08-23 18:45:27,091 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^NSEI_model_6mo.pkl hash: 670aa5e37dc548acad6e69db20ccf065276e301f77f04a356f39e50b6e3786db
+INFO 2025-08-23 18:45:27,094 views Loaded model for ^NSEI (6mo)
+INFO 2025-08-23 18:45:27,094 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMZN_model_6mo.pkl hash: 00d98866e2cb586e712ffa568137eb3aa8091a4b266e6f577518c61f51b11312
+INFO 2025-08-23 18:45:27,095 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMZN_model_6mo.pkl hash: 00d98866e2cb586e712ffa568137eb3aa8091a4b266e6f577518c61f51b11312
+INFO 2025-08-23 18:45:27,095 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/AMZN_model_6mo.pkl hash: 00d98866e2cb586e712ffa568137eb3aa8091a4b266e6f577518c61f51b11312
+INFO 2025-08-23 18:45:27,097 views Loaded model for AMZN (6mo)
+INFO 2025-08-23 18:45:27,099 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GOOGL_model_1y.pkl hash: bb6165ca91d617adfcacb0bdfccb93f6a7e52c02b3fd56f1eca2c07efc389974
+INFO 2025-08-23 18:45:27,099 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GOOGL_model_1y.pkl hash: bb6165ca91d617adfcacb0bdfccb93f6a7e52c02b3fd56f1eca2c07efc389974
+INFO 2025-08-23 18:45:27,100 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GOOGL_model_1y.pkl hash: bb6165ca91d617adfcacb0bdfccb93f6a7e52c02b3fd56f1eca2c07efc389974
+INFO 2025-08-23 18:45:27,102 views Loaded model for GOOGL (1y)
+INFO 2025-08-23 18:45:27,103 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/META_model_1y.pkl hash: 2ebb62e84f4bee70f5c87771e3327ca714a8a606251aa304000d402e3c61ec36
+INFO 2025-08-23 18:45:27,103 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/META_model_1y.pkl hash: 2ebb62e84f4bee70f5c87771e3327ca714a8a606251aa304000d402e3c61ec36
+INFO 2025-08-23 18:45:27,104 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/META_model_1y.pkl hash: 2ebb62e84f4bee70f5c87771e3327ca714a8a606251aa304000d402e3c61ec36
+INFO 2025-08-23 18:45:27,107 views Loaded model for META (1y)
+INFO 2025-08-23 18:45:27,109 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^NSEI_model_1d.pkl hash: 406a7de6e45c0342664ac7a322253198c1c6fc67a1b43519acc82f3a62588be3
+INFO 2025-08-23 18:45:27,110 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^NSEI_model_1d.pkl hash: 406a7de6e45c0342664ac7a322253198c1c6fc67a1b43519acc82f3a62588be3
+INFO 2025-08-23 18:45:27,111 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/^NSEI_model_1d.pkl hash: 406a7de6e45c0342664ac7a322253198c1c6fc67a1b43519acc82f3a62588be3
+INFO 2025-08-23 18:45:27,129 views Loaded model for ^NSEI (1d)
+INFO 2025-08-23 18:45:27,131 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ARKK_model_1y.pkl hash: 6e404185f1b19ab014e8546dde5ba9b978dae9a7ba9296006c9f645d2ca4f85d
+INFO 2025-08-23 18:45:27,132 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ARKK_model_1y.pkl hash: 6e404185f1b19ab014e8546dde5ba9b978dae9a7ba9296006c9f645d2ca4f85d
+INFO 2025-08-23 18:45:27,133 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/ARKK_model_1y.pkl hash: 6e404185f1b19ab014e8546dde5ba9b978dae9a7ba9296006c9f645d2ca4f85d
+INFO 2025-08-23 18:45:27,136 views Loaded model for ARKK (1y)
+INFO 2025-08-23 18:45:27,137 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GOOGL_model_6mo.pkl hash: 965efdc6567f4ed3b81acbf48394954d0c26cfa3bff2dd5c3b03358c681939a8
+INFO 2025-08-23 18:45:27,138 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GOOGL_model_6mo.pkl hash: 965efdc6567f4ed3b81acbf48394954d0c26cfa3bff2dd5c3b03358c681939a8
+INFO 2025-08-23 18:45:27,138 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/GOOGL_model_6mo.pkl hash: 965efdc6567f4ed3b81acbf48394954d0c26cfa3bff2dd5c3b03358c681939a8
+INFO 2025-08-23 18:45:27,141 views Loaded model for GOOGL (6mo)
+INFO 2025-08-23 18:45:27,142 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JPM_model_1w.pkl hash: 886999b942e1b333c20ca8f299ad941112ae8b93aee426188a2d32d0b411edaa
+INFO 2025-08-23 18:45:27,143 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JPM_model_1w.pkl hash: 886999b942e1b333c20ca8f299ad941112ae8b93aee426188a2d32d0b411edaa
+INFO 2025-08-23 18:45:27,144 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/JPM_model_1w.pkl hash: 886999b942e1b333c20ca8f299ad941112ae8b93aee426188a2d32d0b411edaa
+INFO 2025-08-23 18:45:27,153 views Loaded model for JPM (1w)
+INFO 2025-08-23 18:45:27,154 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/MSFT_model_1d.pkl hash: 3a8d05cc80521273920d6d366cd6e9d9a32bcf94211f4a2d1e1c84fc69383b41
+INFO 2025-08-23 18:45:27,155 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/MSFT_model_1d.pkl hash: 3a8d05cc80521273920d6d366cd6e9d9a32bcf94211f4a2d1e1c84fc69383b41
+INFO 2025-08-23 18:45:27,155 views Model file /Users/dibakar/Documents/Code/Git & Github/Repo/StockVibePredictor/Backend/Scripts/Models/MSFT_model_1d.pkl hash: 3a8d05cc80521273920d6d366cd6e9d9a32bcf94211f4a2d1e1c84fc69383b41
+INFO 2025-08-23 18:45:27,162 views Loaded model for MSFT (1d)
+INFO 2025-08-23 18:45:27,163 views Model loading complete: 94 loaded, 0 failed, 0 security failures
+INFO 2025-08-23 18:45:27,163 views Total models in cache: 94
+INFO 2025-08-23 18:45:27,163 views Scheduling cache cleanup...
+INFO 2025-08-23 18:45:56,146 views {"event": "prediction_request", "ticker": "AAPL", "timeframes": ["1d", "1w", "1mo", "1y"], "user_id": null, "request_ip": "127.0.0.1", "timestamp": "2025-08-23T18:45:56.146809+00:00"}
+INFO 2025-08-23 18:45:56,147 views {"event": "prediction_request_detailed", "ticker": "AAPL", "timeframes": ["1d", "1w", "1mo", "1y"], "include_analysis": true, "context": {"user_id": null, "ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.", "endpoint": "predict_multi_timeframe", "timeframes_count": 4, "analysis_requested": true, "request_size": 85}, "timestamp": "2025-08-23T18:45:56.147333+00:00"}
+INFO 2025-08-23 18:45:56,148 views Cache MISS: Processing new prediction for AAPL
+INFO 2025-08-23 18:45:56,148 views Fetching 1d data for AAPL (1/4)
+INFO 2025-08-23 18:45:56,148 views Sync fetch for AAPL with timeframe 1d
+INFO 2025-08-23 18:45:56,531 views Successfully fetched 1343 rows for AAPL
+WARNING 2025-08-23 18:45:57,585 views Stale data detected for AAPL (1d)
+INFO 2025-08-23 18:45:57,611 views Computed comprehensive features for 1d timeframe
+INFO 2025-08-23 18:45:57,611 views Fetching 1w data for AAPL (2/4)
+INFO 2025-08-23 18:45:57,611 views Sync fetch for AAPL with timeframe 1w
+INFO 2025-08-23 18:45:57,814 views Successfully fetched 744 rows for AAPL
+WARNING 2025-08-23 18:45:58,240 views Stale data detected for AAPL (1w)
+INFO 2025-08-23 18:45:58,266 views Computed comprehensive features for 1w timeframe
+INFO 2025-08-23 18:45:58,266 views Fetching 1mo data for AAPL (3/4)
+INFO 2025-08-23 18:45:58,266 views Sync fetch for AAPL with timeframe 1mo
+INFO 2025-08-23 18:45:58,537 views Successfully fetched 63 rows for AAPL
+WARNING 2025-08-23 18:45:58,936 views Stale data detected for AAPL (1mo)
+INFO 2025-08-23 18:45:58,955 views Computed comprehensive features for 1mo timeframe
+INFO 2025-08-23 18:45:58,956 views Fetching 1y data for AAPL (4/4)
+INFO 2025-08-23 18:45:58,956 views Sync fetch for AAPL with timeframe 1y
+INFO 2025-08-23 18:45:59,327 views Successfully fetched 502 rows for AAPL
+INFO 2025-08-23 18:45:59,599 views Computed comprehensive features for 1y timeframe
+INFO 2025-08-23 18:45:59,599 views Data fetching completed for AAPL: 4/4 successful in 3.45s
+INFO 2025-08-23 18:45:59,599 views Starting multi-timeframe prediction for AAPL across ['1d', 'market_info', '1w', '1mo', '1y']
+WARNING 2025-08-23 18:45:59,600 views Data for AAPL (1d) may be stale
+INFO 2025-08-23 18:45:59,600 views Using ticker-specific model for AAPL (1d)
+INFO 2025-08-23 18:45:59,600 views {"event": "model_usage", "model_key": "AAPL_1d", "ticker": "AAPL", "timeframe": "1d", "accuracy": 0.3870967741935484, "timestamp": "2025-08-23T18:45:59.600174+00:00"}
+WARNING 2025-08-23 18:45:59,600 views Missing/NaN features for AAPL (1d): ['Volume_Ratio(missing)', 'High_Low_Ratio(missing)', 'Close_Position(missing)', 'Price_Above_MA5(missing)', 'Price_Above_MA20(missing)']
+WARNING 2025-08-23 18:45:59,614 views Data for AAPL (1w) may be stale
+INFO 2025-08-23 18:45:59,614 views Using ticker-specific model for AAPL (1w)
+INFO 2025-08-23 18:45:59,614 views {"event": "model_usage", "model_key": "AAPL_1w", "ticker": "AAPL", "timeframe": "1w", "accuracy": 0.38461538461538464, "timestamp": "2025-08-23T18:45:59.614589+00:00"}
+WARNING 2025-08-23 18:45:59,614 views Missing/NaN features for AAPL (1w): ['MA5(missing)', 'MA10(missing)', 'MA20(missing)', 'Volume_Ratio(missing)', 'High_Low_Ratio(missing)']...
+WARNING 2025-08-23 18:45:59,620 views Data for AAPL (1mo) may be stale
+INFO 2025-08-23 18:45:59,621 views Using ticker-specific model for AAPL (1mo)
+INFO 2025-08-23 18:45:59,621 views {"event": "model_usage", "model_key": "AAPL_1mo", "ticker": "AAPL", "timeframe": "1mo", "accuracy": 0.6, "timestamp": "2025-08-23T18:45:59.621078+00:00"}
+WARNING 2025-08-23 18:45:59,621 views Missing/NaN features for AAPL (1mo): ['MA5(missing)', 'MA10(missing)', 'MA20(missing)', 'Volume_Ratio(missing)', 'High_Low_Ratio(missing)']...
+INFO 2025-08-23 18:45:59,626 views Using ticker-specific model for AAPL (1y)
+INFO 2025-08-23 18:45:59,626 views {"event": "model_usage", "model_key": "AAPL_1y", "ticker": "AAPL", "timeframe": "1y", "accuracy": 0.6875, "timestamp": "2025-08-23T18:45:59.626715+00:00"}
+WARNING 2025-08-23 18:45:59,626 views Missing/NaN features for AAPL (1y): ['MA5(missing)', 'MA10(missing)', 'MA20(missing)', 'Volume_Ratio(missing)', 'High_Low_Ratio(missing)']...
+INFO 2025-08-23 18:45:59,633 views Prediction completed for AAPL: 4/4 successful in 0.03s
+INFO 2025-08-23 18:45:59,633 views Prediction generation completed for AAPL in 0.03s
+INFO 2025-08-23 18:45:59,636 views Result cached for AAPL with timeout 300s
+INFO 2025-08-23 18:45:59,636 views Multi-timeframe prediction completed for AAPL in 3.49s
+INFO 2025-08-23 18:45:59,636 views {"event": "prediction_completed", "ticker": "AAPL", "status_code": 200, "processing_time": 3.489684, "predictions_generated": 4, "user_id": null, "timestamp": "2025-08-23T18:45:59.636321+00:00"}
+INFO 2025-08-23 18:45:59,647 views Fetching chart data for AAPL (1mo)
+INFO 2025-08-23 18:45:59,647 views Sync fetch for AAPL with timeframe 1mo
+INFO 2025-08-23 18:45:59,713 views Successfully fetched 63 rows for AAPL
+INFO 2025-08-23 18:45:59,976 DataService Processing 63 rows for timeframe 1mo
+INFO 2025-08-23 18:45:59,976 DataService Applying display limit of 30 to 63 rows for 1mo
+INFO 2025-08-23 18:45:59,978 DataService After processing: 30 rows, Date range: 2025-05-23 00:00:00-04:00 to 2025-08-22 00:00:00-04:00
+ERROR 2025-08-23 18:45:59,986 views Error computing features for 1mo: Insufficient data: 30 rows
+ERROR 2025-08-23 18:45:59,987 views Error calculating indicators for AAPL: Insufficient data: 30 rows
+INFO 2025-08-23 18:46:16,729 CompanyEssentials Fetching company essentials for AAPL
+INFO 2025-08-23 18:46:17,307 CompanyEssentials Successfully fetched and cached data for AAPL
+INFO 2025-08-23 18:46:17,311 CompanyEssentials Returning cached data for AAPL
+INFO 2025-08-23 18:46:38,417 CompanyEssentials Returning cached data for AAPL
+INFO 2025-08-23 18:46:38,420 CompanyEssentials Returning cached data for AAPL
+INFO 2025-08-23 18:47:08,791 views {"event": "prediction_request", "ticker": "GOOGL", "timeframes": ["1d", "1w", "1mo", "1y"], "user_id": null, "request_ip": "127.0.0.1", "timestamp": "2025-08-23T18:47:08.791106+00:00"}
+INFO 2025-08-23 18:47:08,797 views {"event": "prediction_request_detailed", "ticker": "GOOGL", "timeframes": ["1d", "1w", "1mo", "1y"], "include_analysis": true, "context": {"user_id": null, "ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.", "endpoint": "predict_multi_timeframe", "timeframes_count": 4, "analysis_requested": true, "request_size": 86}, "timestamp": "2025-08-23T18:47:08.797346+00:00"}
+INFO 2025-08-23 18:47:08,797 views Cache MISS: Processing new prediction for GOOGL
+INFO 2025-08-23 18:47:08,797 views Fetching 1d data for GOOGL (1/4)
+INFO 2025-08-23 18:47:08,797 views Sync fetch for GOOGL with timeframe 1d
+INFO 2025-08-23 18:47:09,191 views Successfully fetched 1341 rows for GOOGL
+WARNING 2025-08-23 18:47:09,627 views Stale data detected for GOOGL (1d)
+INFO 2025-08-23 18:47:09,655 views Computed comprehensive features for 1d timeframe
+INFO 2025-08-23 18:47:09,656 views Fetching 1w data for GOOGL (2/4)
+INFO 2025-08-23 18:47:09,656 views Sync fetch for GOOGL with timeframe 1w
+INFO 2025-08-23 18:47:09,849 views Successfully fetched 744 rows for GOOGL
+WARNING 2025-08-23 18:47:09,969 views Stale data detected for GOOGL (1w)
+INFO 2025-08-23 18:47:09,987 views Computed comprehensive features for 1w timeframe
+INFO 2025-08-23 18:47:09,987 views Fetching 1mo data for GOOGL (3/4)
+INFO 2025-08-23 18:47:09,987 views Sync fetch for GOOGL with timeframe 1mo
+INFO 2025-08-23 18:47:10,211 views Successfully fetched 63 rows for GOOGL
+WARNING 2025-08-23 18:47:10,475 views Stale data detected for GOOGL (1mo)
+INFO 2025-08-23 18:47:10,494 views Computed comprehensive features for 1mo timeframe
+INFO 2025-08-23 18:47:10,495 views Fetching 1y data for GOOGL (4/4)
+INFO 2025-08-23 18:47:10,495 views Sync fetch for GOOGL with timeframe 1y
+INFO 2025-08-23 18:47:10,825 views Successfully fetched 502 rows for GOOGL
+INFO 2025-08-23 18:47:10,965 views Computed comprehensive features for 1y timeframe
+INFO 2025-08-23 18:47:10,966 views Data fetching completed for GOOGL: 4/4 successful in 2.17s
+INFO 2025-08-23 18:47:10,966 views Starting multi-timeframe prediction for GOOGL across ['1d', 'market_info', '1w', '1mo', '1y']
+WARNING 2025-08-23 18:47:10,966 views Data for GOOGL (1d) may be stale
+INFO 2025-08-23 18:47:10,966 views Using ticker-specific model for GOOGL (1d)
+INFO 2025-08-23 18:47:10,966 views {"event": "model_usage", "model_key": "GOOGL_1d", "ticker": "GOOGL", "timeframe": "1d", "accuracy": 0.3548387096774194, "timestamp": "2025-08-23T18:47:10.966620+00:00"}
+WARNING 2025-08-23 18:47:10,966 views Missing/NaN features for GOOGL (1d): ['Volume_Ratio(missing)', 'High_Low_Ratio(missing)', 'Close_Position(missing)', 'Price_Above_MA5(missing)', 'Price_Above_MA20(missing)']
+WARNING 2025-08-23 18:47:10,976 views Data for GOOGL (1w) may be stale
+INFO 2025-08-23 18:47:10,976 views Using ticker-specific model for GOOGL (1w)
+INFO 2025-08-23 18:47:10,977 views {"event": "model_usage", "model_key": "GOOGL_1w", "ticker": "GOOGL", "timeframe": "1w", "accuracy": 0.6923076923076923, "timestamp": "2025-08-23T18:47:10.977050+00:00"}
+WARNING 2025-08-23 18:47:10,977 views Missing/NaN features for GOOGL (1w): ['MA5(missing)', 'MA10(missing)', 'MA20(missing)', 'Volume_Ratio(missing)', 'High_Low_Ratio(missing)']...
+WARNING 2025-08-23 18:47:10,984 views Data for GOOGL (1mo) may be stale
+INFO 2025-08-23 18:47:10,984 views Using ticker-specific model for GOOGL (1mo)
+INFO 2025-08-23 18:47:10,984 views {"event": "model_usage", "model_key": "GOOGL_1mo", "ticker": "GOOGL", "timeframe": "1mo", "accuracy": 0.44, "timestamp": "2025-08-23T18:47:10.984666+00:00"}
+WARNING 2025-08-23 18:47:10,984 views Missing/NaN features for GOOGL (1mo): ['MA5(missing)', 'MA10(missing)', 'MA20(missing)', 'Volume_Ratio(missing)', 'High_Low_Ratio(missing)']...
+INFO 2025-08-23 18:47:10,990 views Using ticker-specific model for GOOGL (1y)
+INFO 2025-08-23 18:47:10,990 views {"event": "model_usage", "model_key": "GOOGL_1y", "ticker": "GOOGL", "timeframe": "1y", "accuracy": 0.59375, "timestamp": "2025-08-23T18:47:10.990468+00:00"}
+WARNING 2025-08-23 18:47:10,990 views Missing/NaN features for GOOGL (1y): ['MA5(missing)', 'MA10(missing)', 'MA20(missing)', 'Volume_Ratio(missing)', 'High_Low_Ratio(missing)']...
+INFO 2025-08-23 18:47:10,996 views Prediction completed for GOOGL: 4/4 successful in 0.03s
+INFO 2025-08-23 18:47:10,996 views Prediction generation completed for GOOGL in 0.03s
+INFO 2025-08-23 18:47:10,999 views Result cached for GOOGL with timeout 300s
+INFO 2025-08-23 18:47:10,999 views Multi-timeframe prediction completed for GOOGL in 2.20s
+INFO 2025-08-23 18:47:10,999 views {"event": "prediction_completed", "ticker": "GOOGL", "status_code": 200, "processing_time": 2.210381, "predictions_generated": 4, "user_id": null, "timestamp": "2025-08-23T18:47:10.999709+00:00"}
+INFO 2025-08-23 18:47:11,010 views Fetching chart data for GOOGL (1mo)
+INFO 2025-08-23 18:47:11,010 views Sync fetch for GOOGL with timeframe 1mo
+INFO 2025-08-23 18:47:11,071 views Successfully fetched 63 rows for GOOGL
+INFO 2025-08-23 18:47:11,305 DataService Processing 63 rows for timeframe 1mo
+INFO 2025-08-23 18:47:11,306 DataService Applying display limit of 30 to 63 rows for 1mo
+INFO 2025-08-23 18:47:11,306 DataService After processing: 30 rows, Date range: 2025-05-23 00:00:00-04:00 to 2025-08-22 00:00:00-04:00
+ERROR 2025-08-23 18:47:11,314 views Error computing features for 1mo: Insufficient data: 30 rows
+ERROR 2025-08-23 18:47:11,314 views Error calculating indicators for GOOGL: Insufficient data: 30 rows
+INFO 2025-08-23 18:47:14,038 views {"event": "prediction_request", "ticker": "MSFT", "timeframes": ["1d", "1w", "1mo", "1y"], "user_id": null, "request_ip": "127.0.0.1", "timestamp": "2025-08-23T18:47:14.038268+00:00"}
+INFO 2025-08-23 18:47:14,038 views {"event": "prediction_request_detailed", "ticker": "MSFT", "timeframes": ["1d", "1w", "1mo", "1y"], "include_analysis": true, "context": {"user_id": null, "ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.", "endpoint": "predict_multi_timeframe", "timeframes_count": 4, "analysis_requested": true, "request_size": 85}, "timestamp": "2025-08-23T18:47:14.038521+00:00"}
+INFO 2025-08-23 18:47:14,038 views Cache MISS: Processing new prediction for MSFT
+INFO 2025-08-23 18:47:14,038 views Fetching 1d data for MSFT (1/4)
+INFO 2025-08-23 18:47:14,038 views Sync fetch for MSFT with timeframe 1d
+INFO 2025-08-23 18:47:14,278 views Successfully fetched 1328 rows for MSFT
+WARNING 2025-08-23 18:47:14,797 views Stale data detected for MSFT (1d)
+INFO 2025-08-23 18:47:14,821 views Computed comprehensive features for 1d timeframe
+INFO 2025-08-23 18:47:14,821 views Fetching 1w data for MSFT (2/4)
+INFO 2025-08-23 18:47:14,821 views Sync fetch for MSFT with timeframe 1w
+INFO 2025-08-23 18:47:15,045 views Successfully fetched 744 rows for MSFT
+WARNING 2025-08-23 18:47:15,174 views Stale data detected for MSFT (1w)
+INFO 2025-08-23 18:47:15,197 views Computed comprehensive features for 1w timeframe
+INFO 2025-08-23 18:47:15,198 views Fetching 1mo data for MSFT (3/4)
+INFO 2025-08-23 18:47:15,198 views Sync fetch for MSFT with timeframe 1mo
+INFO 2025-08-23 18:47:15,345 views Successfully fetched 63 rows for MSFT
+WARNING 2025-08-23 18:47:15,464 views Stale data detected for MSFT (1mo)
+INFO 2025-08-23 18:47:15,484 views Computed comprehensive features for 1mo timeframe
+INFO 2025-08-23 18:47:15,484 views Fetching 1y data for MSFT (4/4)
+INFO 2025-08-23 18:47:15,484 views Sync fetch for MSFT with timeframe 1y
+INFO 2025-08-23 18:47:15,673 views Successfully fetched 502 rows for MSFT
+INFO 2025-08-23 18:47:15,816 views Computed comprehensive features for 1y timeframe
+INFO 2025-08-23 18:47:15,816 views Data fetching completed for MSFT: 4/4 successful in 1.78s
+INFO 2025-08-23 18:47:15,816 views Starting multi-timeframe prediction for MSFT across ['1d', 'market_info', '1w', '1mo', '1y']
+WARNING 2025-08-23 18:47:15,816 views Data for MSFT (1d) may be stale
+INFO 2025-08-23 18:47:15,816 views Using ticker-specific model for MSFT (1d)
+INFO 2025-08-23 18:47:15,817 views {"event": "model_usage", "model_key": "MSFT_1d", "ticker": "MSFT", "timeframe": "1d", "accuracy": 0.5806451612903226, "timestamp": "2025-08-23T18:47:15.816983+00:00"}
+WARNING 2025-08-23 18:47:15,817 views Missing/NaN features for MSFT (1d): ['Volume_Ratio(missing)', 'High_Low_Ratio(missing)', 'Close_Position(missing)', 'Price_Above_MA5(missing)', 'Price_Above_MA20(missing)']
+WARNING 2025-08-23 18:47:15,823 views Data for MSFT (1w) may be stale
+INFO 2025-08-23 18:47:15,823 views Using ticker-specific model for MSFT (1w)
+INFO 2025-08-23 18:47:15,823 views {"event": "model_usage", "model_key": "MSFT_1w", "ticker": "MSFT", "timeframe": "1w", "accuracy": 0.5384615384615384, "timestamp": "2025-08-23T18:47:15.823616+00:00"}
+WARNING 2025-08-23 18:47:15,823 views Missing/NaN features for MSFT (1w): ['MA5(missing)', 'MA10(missing)', 'MA20(missing)', 'Volume_Ratio(missing)', 'High_Low_Ratio(missing)']...
+WARNING 2025-08-23 18:47:15,831 views Data for MSFT (1mo) may be stale
+INFO 2025-08-23 18:47:15,831 views Using ticker-specific model for MSFT (1mo)
+INFO 2025-08-23 18:47:15,831 views {"event": "model_usage", "model_key": "MSFT_1mo", "ticker": "MSFT", "timeframe": "1mo", "accuracy": 0.76, "timestamp": "2025-08-23T18:47:15.831462+00:00"}
+WARNING 2025-08-23 18:47:15,831 views Missing/NaN features for MSFT (1mo): ['MA5(missing)', 'MA10(missing)', 'MA20(missing)', 'Volume_Ratio(missing)', 'High_Low_Ratio(missing)']...
+INFO 2025-08-23 18:47:15,839 views Using ticker-specific model for MSFT (1y)
+INFO 2025-08-23 18:47:15,840 views {"event": "model_usage", "model_key": "MSFT_1y", "ticker": "MSFT", "timeframe": "1y", "accuracy": 0.59375, "timestamp": "2025-08-23T18:47:15.839991+00:00"}
+WARNING 2025-08-23 18:47:15,840 views Missing/NaN features for MSFT (1y): ['MA5(missing)', 'MA10(missing)', 'MA20(missing)', 'Volume_Ratio(missing)', 'High_Low_Ratio(missing)']...
+INFO 2025-08-23 18:47:15,845 views Prediction completed for MSFT: 4/4 successful in 0.03s
+INFO 2025-08-23 18:47:15,845 views Prediction generation completed for MSFT in 0.03s
+INFO 2025-08-23 18:47:15,847 views Result cached for MSFT with timeout 300s
+INFO 2025-08-23 18:47:15,847 views Multi-timeframe prediction completed for MSFT in 1.81s
+INFO 2025-08-23 18:47:15,848 views {"event": "prediction_completed", "ticker": "MSFT", "status_code": 200, "processing_time": 1.809924, "predictions_generated": 4, "user_id": null, "timestamp": "2025-08-23T18:47:15.848077+00:00"}
+INFO 2025-08-23 18:47:15,853 views Fetching chart data for MSFT (1mo)
+INFO 2025-08-23 18:47:15,853 views Sync fetch for MSFT with timeframe 1mo
+INFO 2025-08-23 18:47:15,918 views Successfully fetched 63 rows for MSFT
+INFO 2025-08-23 18:47:16,181 DataService Processing 63 rows for timeframe 1mo
+INFO 2025-08-23 18:47:16,181 DataService Applying display limit of 30 to 63 rows for 1mo
+INFO 2025-08-23 18:47:16,182 DataService After processing: 30 rows, Date range: 2025-05-23 00:00:00-04:00 to 2025-08-22 00:00:00-04:00
+ERROR 2025-08-23 18:47:16,190 views Error computing features for 1mo: Insufficient data: 30 rows
+ERROR 2025-08-23 18:47:16,190 views Error calculating indicators for MSFT: Insufficient data: 30 rows
+INFO 2025-08-23 18:47:19,032 views {"event": "prediction_request", "ticker": "TSLA", "timeframes": ["1d", "1w", "1mo", "1y"], "user_id": null, "request_ip": "127.0.0.1", "timestamp": "2025-08-23T18:47:19.032656+00:00"}
+INFO 2025-08-23 18:47:19,032 views {"event": "prediction_request_detailed", "ticker": "TSLA", "timeframes": ["1d", "1w", "1mo", "1y"], "include_analysis": true, "context": {"user_id": null, "ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.", "endpoint": "predict_multi_timeframe", "timeframes_count": 4, "analysis_requested": true, "request_size": 85}, "timestamp": "2025-08-23T18:47:19.032888+00:00"}
+INFO 2025-08-23 18:47:19,033 views Cache MISS: Processing new prediction for TSLA
+INFO 2025-08-23 18:47:19,033 views Fetching 1d data for TSLA (1/4)
+INFO 2025-08-23 18:47:19,033 views Sync fetch for TSLA with timeframe 1d
+INFO 2025-08-23 18:47:19,360 views Successfully fetched 1344 rows for TSLA
+WARNING 2025-08-23 18:47:19,813 views Stale data detected for TSLA (1d)
+INFO 2025-08-23 18:47:19,834 views Computed comprehensive features for 1d timeframe
+INFO 2025-08-23 18:47:19,835 views Fetching 1w data for TSLA (2/4)
+INFO 2025-08-23 18:47:19,835 views Sync fetch for TSLA with timeframe 1w
+INFO 2025-08-23 18:47:20,163 views Successfully fetched 744 rows for TSLA
+WARNING 2025-08-23 18:47:20,284 views Stale data detected for TSLA (1w)
+INFO 2025-08-23 18:47:20,305 views Computed comprehensive features for 1w timeframe
+INFO 2025-08-23 18:47:20,306 views Fetching 1mo data for TSLA (3/4)
+INFO 2025-08-23 18:47:20,306 views Sync fetch for TSLA with timeframe 1mo
+INFO 2025-08-23 18:47:20,423 views Successfully fetched 63 rows for TSLA
+WARNING 2025-08-23 18:47:20,543 views Stale data detected for TSLA (1mo)
+INFO 2025-08-23 18:47:20,561 views Computed comprehensive features for 1mo timeframe
+INFO 2025-08-23 18:47:20,562 views Fetching 1y data for TSLA (4/4)
+INFO 2025-08-23 18:47:20,562 views Sync fetch for TSLA with timeframe 1y
+INFO 2025-08-23 18:47:20,695 views Successfully fetched 502 rows for TSLA
+INFO 2025-08-23 18:47:20,833 views Computed comprehensive features for 1y timeframe
+INFO 2025-08-23 18:47:20,833 views Data fetching completed for TSLA: 4/4 successful in 1.80s
+INFO 2025-08-23 18:47:20,833 views Starting multi-timeframe prediction for TSLA across ['1d', 'market_info', '1w', '1mo', '1y']
+WARNING 2025-08-23 18:47:20,833 views Data for TSLA (1d) may be stale
+INFO 2025-08-23 18:47:20,833 views Using universal model for TSLA (1d)
+INFO 2025-08-23 18:47:20,834 views {"event": "model_usage", "model_key": "universal_1d", "ticker": "TSLA", "timeframe": "1d", "accuracy": 0.65, "timestamp": "2025-08-23T18:47:20.834072+00:00"}
+WARNING 2025-08-23 18:47:20,835 views Missing/NaN features for TSLA (1d): ['Volume_Change(NaN)']
+WARNING 2025-08-23 18:47:20,837 views Data for TSLA (1w) may be stale
+INFO 2025-08-23 18:47:20,838 views Using universal model for TSLA (1w)
+INFO 2025-08-23 18:47:20,838 views {"event": "model_usage", "model_key": "universal_1w", "ticker": "TSLA", "timeframe": "1w", "accuracy": 0.65, "timestamp": "2025-08-23T18:47:20.838216+00:00"}
+WARNING 2025-08-23 18:47:20,839 views Missing/NaN features for TSLA (1w): ['MA5(missing)', 'MA10(missing)', 'MA20(missing)', 'MA50(missing)', 'Volume_Change(NaN)']...
+WARNING 2025-08-23 18:47:20,841 views Data for TSLA (1mo) may be stale
+INFO 2025-08-23 18:47:20,841 views Using universal model for TSLA (1mo)
+INFO 2025-08-23 18:47:20,841 views {"event": "model_usage", "model_key": "universal_1mo", "ticker": "TSLA", "timeframe": "1mo", "accuracy": 0.65, "timestamp": "2025-08-23T18:47:20.841855+00:00"}
+WARNING 2025-08-23 18:47:20,842 views Missing/NaN features for TSLA (1mo): ['MA5(missing)', 'MA10(missing)', 'MA20(missing)', 'MA50(missing)', 'Trend_Bullish(missing)']...
+INFO 2025-08-23 18:47:20,843 views Using universal model for TSLA (1y)
+INFO 2025-08-23 18:47:20,843 views {"event": "model_usage", "model_key": "universal_1y", "ticker": "TSLA", "timeframe": "1y", "accuracy": 0.65, "timestamp": "2025-08-23T18:47:20.843421+00:00"}
+WARNING 2025-08-23 18:47:20,843 views Missing/NaN features for TSLA (1y): ['MA5(missing)', 'MA10(missing)', 'MA20(missing)', 'MA50(missing)', 'Trend_Bullish(missing)']...
+INFO 2025-08-23 18:47:20,845 views Prediction completed for TSLA: 4/4 successful in 0.01s
+INFO 2025-08-23 18:47:20,845 views Prediction generation completed for TSLA in 0.01s
+INFO 2025-08-23 18:47:20,847 views Result cached for TSLA with timeout 300s
+INFO 2025-08-23 18:47:20,847 views Multi-timeframe prediction completed for TSLA in 1.81s
+INFO 2025-08-23 18:47:20,848 views {"event": "prediction_completed", "ticker": "TSLA", "status_code": 200, "processing_time": 1.815529, "predictions_generated": 4, "user_id": null, "timestamp": "2025-08-23T18:47:20.848076+00:00"}
+INFO 2025-08-23 18:47:20,853 views Fetching chart data for TSLA (1mo)
+INFO 2025-08-23 18:47:20,853 views Sync fetch for TSLA with timeframe 1mo
+INFO 2025-08-23 18:47:20,919 views Successfully fetched 63 rows for TSLA
+INFO 2025-08-23 18:47:21,084 DataService Processing 63 rows for timeframe 1mo
+INFO 2025-08-23 18:47:21,084 DataService Applying display limit of 30 to 63 rows for 1mo
+INFO 2025-08-23 18:47:21,085 DataService After processing: 30 rows, Date range: 2025-05-23 00:00:00-04:00 to 2025-08-22 00:00:00-04:00
+ERROR 2025-08-23 18:47:21,086 views Error computing features for 1mo: Insufficient data: 30 rows
+ERROR 2025-08-23 18:47:21,087 views Error calculating indicators for TSLA: Insufficient data: 30 rows
+INFO 2025-08-23 18:47:23,399 views {"event": "prediction_request", "ticker": "GOOGL", "timeframes": ["1d", "1w", "1mo", "1y"], "user_id": null, "request_ip": "127.0.0.1", "timestamp": "2025-08-23T18:47:23.399644+00:00"}
+INFO 2025-08-23 18:47:23,399 views {"event": "prediction_request_detailed", "ticker": "GOOGL", "timeframes": ["1d", "1w", "1mo", "1y"], "include_analysis": true, "context": {"user_id": null, "ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.", "endpoint": "predict_multi_timeframe", "timeframes_count": 4, "analysis_requested": true, "request_size": 86}, "timestamp": "2025-08-23T18:47:23.399927+00:00"}
+INFO 2025-08-23 18:47:23,400 views Cache HIT: Returning cached multi-timeframe prediction for GOOGL
+INFO 2025-08-23 18:47:23,400 views {"event": "prediction_completed", "ticker": "GOOGL", "status_code": 200, "processing_time": 0.001259, "predictions_generated": 4, "user_id": null, "timestamp": "2025-08-23T18:47:23.400781+00:00"}
+INFO 2025-08-23 18:47:28,186 views {"event": "prediction_request", "ticker": "GOOGL", "timeframes": ["1d", "1w", "1mo", "1y"], "user_id": null, "request_ip": "127.0.0.1", "timestamp": "2025-08-23T18:47:28.186768+00:00"}
+INFO 2025-08-23 18:47:28,187 views {"event": "prediction_request_detailed", "ticker": "GOOGL", "timeframes": ["1d", "1w", "1mo", "1y"], "include_analysis": true, "context": {"user_id": null, "ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.", "endpoint": "predict_multi_timeframe", "timeframes_count": 4, "analysis_requested": true, "request_size": 86}, "timestamp": "2025-08-23T18:47:28.187246+00:00"}
+INFO 2025-08-23 18:47:28,187 views Cache HIT: Returning cached multi-timeframe prediction for GOOGL
+INFO 2025-08-23 18:47:28,187 views {"event": "prediction_completed", "ticker": "GOOGL", "status_code": 200, "processing_time": 0.001314, "predictions_generated": 4, "user_id": null, "timestamp": "2025-08-23T18:47:28.187861+00:00"}
+INFO 2025-08-23 18:49:16,946 views Shutting down thread pools...
+INFO 2025-08-23 18:49:16,947 views Thread pools shut down successfully
