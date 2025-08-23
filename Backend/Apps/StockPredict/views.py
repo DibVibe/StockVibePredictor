@@ -44,6 +44,10 @@ from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
+from .Services.DataService import StockDataProcessor
+from .Services.CacheManager import CacheManager
+from .Config.ChartConfig import TIMEFRAME_CONFIGS
+
 # Additional imports for technical indicators
 import atexit
 import signal
@@ -128,75 +132,75 @@ performance_cache = {}
 # Timeframe configurations - Balanced for chart display and data requirements
 TIMEFRAMES = {
     "1d": {
-        "period": "7d",        # Fetch 7 days to ensure we have recent 1-day data
-        "interval": "5m",      # 5-minute intervals for intraday precision
+        "period": "7d",
+        "interval": "5m",
         "model_suffix": "_1d",
-        "cache_time": 300,     # 5 minutes cache
-        "display_limit": 288,  # 24 hours * 12 (5-min intervals per hour)
+        "cache_time": 300,
+        "display_limit": 288,
         "description": "1 Day - Intraday predictions with 5-minute intervals"
     },
     "5d": {
-        "period": "1mo",       # Fetch 1 month to ensure we have 5 days
-        "interval": "15m",     # 15-minute intervals for short-term
+        "period": "1mo",
+        "interval": "15m",
         "model_suffix": "_1w",
-        "cache_time": 600,     # 10 minutes cache
-        "display_limit": 1920, # 5 days * 24 hours * 4 (15-min intervals)
+        "cache_time": 600,
+        "display_limit": 1920,
         "description": "5 Days - Short-term with 15-minute intervals"
     },
     "1w": {
-        "period": "2mo",       # Fetch 2 months to ensure we have 1 week
-        "interval": "1h",      # Hourly intervals for weekly view
+        "period": "2mo",
+        "interval": "1h",
         "model_suffix": "_1w",
-        "cache_time": 1800,    # 30 minutes cache
-        "display_limit": 168,  # 7 days * 24 hours
+        "cache_time": 1800,
+        "display_limit": 168,
         "description": "1 Week - 7 days of hourly data"
     },
     "1mo": {
-        "period": "3mo",       # Fetch 3 months to ensure we have 1 month
-        "interval": "1d",      # Daily intervals for monthly view
+        "period": "3mo",
+        "interval": "1d",
         "model_suffix": "_1mo",
-        "cache_time": 3600,    # 1 hour cache
-        "display_limit": 30,   # ~30 days
+        "cache_time": 3600,
+        "display_limit": 30,
         "description": "1 Month - 30 days of daily data"
     },
     "3mo": {
-        "period": "6mo",       # Fetch 6 months to ensure we have 3 months
-        "interval": "1d",      # Daily intervals
+        "period": "6mo",
+        "interval": "1d",
         "model_suffix": "_1mo",
-        "cache_time": 5400,    # 1.5 hours cache
-        "display_limit": 90,   # ~90 days
+        "cache_time": 5400,
+        "display_limit": 90,
         "description": "3 Months - 90 days of daily data"
     },
     "6mo": {
-        "period": "1y",        # Fetch 1 year to ensure we have 6 months
-        "interval": "1d",      # Daily intervals
+        "period": "1y",
+        "interval": "1d",
         "model_suffix": "_1mo",
-        "cache_time": 7200,    # 2 hours cache
-        "display_limit": 180,  # ~180 days
+        "cache_time": 7200,
+        "display_limit": 180,
         "description": "6 Months - 180 days of daily data"
     },
     "1y": {
-        "period": "2y",        # Fetch 2 years to ensure we have 1 year
-        "interval": "1d",      # Daily intervals for accuracy
+        "period": "2y",
+        "interval": "1d",
         "model_suffix": "_1y",
-        "cache_time": 21600,   # 6 hours cache
-        "display_limit": 365,  # 365 days (1 year)
+        "cache_time": 21600,
+        "display_limit": 365,
         "description": "1 Year - 365 days of daily data"
     },
     "2y": {
-        "period": "3y",        # Fetch 3 years to ensure we have 2 years
-        "interval": "1wk",     # Weekly intervals for longer periods
+        "period": "3y",
+        "interval": "1wk",
         "model_suffix": "_1y",
-        "cache_time": 28800,   # 8 hours cache
-        "display_limit": 104,  # 2 years * 52 weeks
+        "cache_time": 28800,
+        "display_limit": 104,
         "description": "2 Years - 104 weeks of weekly data"
     },
     "5y": {
-        "period": "max",       # Fetch maximum available data
-        "interval": "1mo",     # Monthly intervals for very long periods
+        "period": "max",
+        "interval": "1mo",
         "model_suffix": "_1y",
-        "cache_time": 43200,   # 12 hours cache
-        "display_limit": 60,   # 5 years * 12 months
+        "cache_time": 43200,
+        "display_limit": 60,
         "description": "5 Years - 60 months of monthly data"
     },
 }
@@ -3181,125 +3185,53 @@ def get_model_performance(request):
 def get_chart_data(request, ticker):
     """Get historical stock data optimized for charting with caching and enhanced data"""
     try:
+        # Store original ticker for response
+        original_ticker = ticker
+
         # Get parameters
         timeframe = request.GET.get('timeframe', '1mo')
-        chart_type = request.GET.get('chart_type', 'candlestick')  # candlestick, line, ohlc
+        chart_type = request.GET.get('chart_type', 'candlestick')
         indicators = request.GET.get('indicators', '').split(',') if request.GET.get('indicators') else []
 
-        # Validate timeframe
-        if timeframe not in TIMEFRAMES:
+        # Validate timeframe - Fix: Use TIMEFRAME_CONFIGS instead of TIMEFRAMES
+        if timeframe not in TIMEFRAME_CONFIGS:
             return Response(
-                {"error": f"Invalid timeframe. Use: {list(TIMEFRAMES.keys())}"},
+                {"error": f"Invalid timeframe. Use: {list(TIMEFRAME_CONFIGS.keys())}"},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        # Validate and normalize ticker
-        if not validate_ticker(ticker):
-            return Response(
-                {"error": "Invalid ticker format"},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-
-        original_ticker = ticker
-        ticker = normalize_ticker(ticker)
+        config = TIMEFRAME_CONFIGS[timeframe]
 
         # Check cache first
-        cache_key = f"chart_data_{ticker}_{timeframe}_{chart_type}"
-        cached_data = cache.get(cache_key)
-
+        cached_data = CacheManager.get_chart_data(ticker, timeframe, chart_type)
         if cached_data:
-            logger.info(f"Returning cached chart data for {ticker} ({timeframe})")
+            logger.info(f"Cache HIT for {ticker} ({timeframe})")
             return Response(cached_data, status=status.HTTP_200_OK)
 
         # Fetch stock data
         logger.info(f"Fetching chart data for {ticker} ({timeframe})")
         stock_data = fetch_stock_data_sync(ticker, timeframe)
-
         if not stock_data or stock_data['price_data'].empty:
             return Response(
                 {"error": f"Could not fetch data for {ticker}"},
                 status=status.HTTP_404_NOT_FOUND,
             )
 
-        price_data = stock_data['price_data']
+        # Process data with service
+        processor = StockDataProcessor()
+        price_data = processor.apply_timeframe_filter(
+            stock_data['price_data'],
+            timeframe,
+            config
+        )
 
-        # ✅ UPDATED: Apply display limit with improved logic
-        config = TIMEFRAMES[timeframe]
-        if 'display_limit' in config:
-            display_limit = config['display_limit']
-
-            # Get the latest data timestamp to understand the data timezone
-            if not price_data.empty:
-                latest_data_time = price_data.index[-1]
-                logger.info(f"Latest data timestamp for {ticker} ({timeframe}): {latest_data_time}, Total rows: {len(price_data)}")
-
-                # For timeframes that need current data, try to fetch more recent data if needed
-                if timeframe in ["1d", "5d", "1w"] and latest_data_time.date() < timezone.now().date():
-                    logger.info(f"Data seems outdated for {timeframe}, trying to fetch current data")
-                    # Try to fetch current day data if we're missing recent data
-                    try:
-                        ticker_obj = yf.Ticker(ticker)
-                        current_data = ticker_obj.history(period="5d", interval="1d")
-                        if not current_data.empty and current_data.index[-1].date() >= latest_data_time.date():
-                            logger.info(f"Found more recent data, using current data for {timeframe}")
-                            # Use the more recent data
-                            price_data = current_data
-                    except Exception as e:
-                        logger.warning(f"Could not fetch current data: {str(e)}")
-
-                # ✅ UPDATED: Apply display limits based on timeframe with business day logic
-                if timeframe == "1d":
-                    # For 1 day: show only the most recent trading day data
-                    # Get the latest trading day (not weekend)
-                    business_days = price_data[price_data.index.weekday < 5]
-                    if not business_days.empty:
-                        latest_date = business_days.index[-1].date()
-                        price_data = price_data[price_data.index.date == latest_date]
-                    else:
-                        price_data = price_data.tail(288)  # Fallback: last 288 points (24h * 12 intervals)
-
-                elif timeframe == "5d":
-                    # For 5 days: show last 5 business days only
-                    business_days = price_data[price_data.index.weekday < 5]  # Monday=0, Friday=4
-                    if not business_days.empty:
-                        # Get unique business days and take last 5
-                        unique_days = business_days.index.normalize().unique()[-5:]
-                        price_data = price_data[price_data.index.normalize().isin(unique_days)]
-                    else:
-                        price_data = price_data.tail(display_limit)
-
-                elif timeframe == "1w":
-                    # For 1 week: show last 7 calendar days of data
-                    price_data = price_data.tail(display_limit)
-
-                elif timeframe == "1mo":
-                    # For 1 month: show last 30 days of daily data
-                    price_data = price_data.tail(display_limit)
-
-                elif timeframe == "3mo":
-                    # For 3 months: show last 90 days of daily data
-                    price_data = price_data.tail(display_limit)
-
-                elif timeframe == "6mo":
-                    # For 6 months: show last 180 days of daily data
-                    price_data = price_data.tail(display_limit)
-
-                elif timeframe == "1y":
-                    # For 1 year: show last 365 days of daily data
-                    price_data = price_data.tail(display_limit)
-
-                elif timeframe == "2y":
-                    # For 2 years: show last 104 weeks of weekly data
-                    price_data = price_data.tail(display_limit)
-
-                elif timeframe == "5y":
-                    # For 5 years: show last 60 months of monthly data
-                    price_data = price_data.tail(display_limit)
-                else:
-                    # Fallback to display_limit if timeframe not specifically handled
-                    price_data = price_data.tail(display_limit)
-
-                logger.info(f"After applying display limit for {timeframe}: {len(price_data)} rows, Date range: {price_data.index[0]} to {price_data.index[-1]}")
+        # Validate minimum data points
+        if len(price_data) < config.min_data_points:
+            logger.warning(f"Insufficient data for {ticker} ({timeframe}): {len(price_data)} < {config.min_data_points}")
+            return Response(
+                {"error": f"Insufficient data points for {ticker}. Got {len(price_data)}, need at least {config.min_data_points}"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
         # Format data based on chart type
         chart_data = []
@@ -3371,63 +3303,89 @@ def get_chart_data(request, ticker):
                             'Middle': [float(val) if pd.notna(val) else None for val in enhanced_data['MA20'].values] if 'MA20' in enhanced_data.columns else None,
                         }
 
-                    elif indicator_lower == 'volume' and 'Volume' in price_data.columns:
-                        # Volume is already included in main data
-                        pass
-
             except Exception as e:
                 logger.error(f"Error calculating indicators for {ticker}: {str(e)}")
                 # Continue without indicators rather than failing the request
 
-        # Calculate summary statistics
-        latest_close = float(price_data['Close'].iloc[-1])
-        prev_close = float(price_data['Close'].iloc[-2]) if len(price_data) > 1 else latest_close
-        change = latest_close - prev_close
-        change_percent = (change / prev_close * 100) if prev_close != 0 else 0
+        # Ensure we have data before calculating statistics
+        if chart_data:
+            # Calculate summary statistics
+            latest_close = float(price_data['Close'].iloc[-1])
+            prev_close = float(price_data['Close'].iloc[-2]) if len(price_data) > 1 else latest_close
+            change = latest_close - prev_close
+            change_percent = (change / prev_close * 100) if prev_close != 0 else 0
 
-        # Calculate price range statistics
-        period_high = float(price_data['High'].max())
-        period_low = float(price_data['Low'].min())
-        average_volume = int(price_data['Volume'].mean()) if 'Volume' in price_data.columns else 0
+            # Calculate price range statistics
+            period_high = float(price_data['High'].max())
+            period_low = float(price_data['Low'].min())
+            average_volume = int(price_data['Volume'].mean()) if 'Volume' in price_data.columns else 0
 
-        # Build response
-        response_data = {
-            'ticker': original_ticker,
-            'normalized_ticker': ticker,
-            'timeframe': timeframe,
-            'chart_type': chart_type,
-            'data': chart_data,
-            'indicators': indicator_data,
-            'summary': {
-                'latest_price': latest_close,
-                'change': round(change, 2),
-                'change_percent': round(change_percent, 2),
-                'period_high': period_high,
-                'period_low': period_low,
-                'average_volume': average_volume,
-                'data_points': len(chart_data),
-            },
-            'market_info': stock_data.get('market_info', {}),
-            'metadata': {
-                'start_date': chart_data[0]['Date'] if chart_data else None,
-                'end_date': chart_data[-1]['Date'] if chart_data else None,
-                'total_records': len(chart_data),
-                'timezone': 'UTC',
-                'exchange': stock_data.get('market_info', {}).get('exchange', 'Unknown'),
+            # Build response
+            response_data = {
+                'ticker': original_ticker,
+                'normalized_ticker': ticker,
+                'timeframe': timeframe,
+                'chart_type': chart_type,
+                'data': chart_data,
+                'indicators': indicator_data,
+                'summary': {
+                    'latest_price': latest_close,
+                    'change': round(change, 2),
+                    'change_percent': round(change_percent, 2),
+                    'period_high': period_high,
+                    'period_low': period_low,
+                    'average_volume': average_volume,
+                    'data_points': len(chart_data),
+                },
+                'market_info': stock_data.get('market_info', {}),
+                'metadata': {
+                    'start_date': chart_data[0]['Date'] if chart_data else None,
+                    'end_date': chart_data[-1]['Date'] if chart_data else None,
+                    'total_records': len(chart_data),
+                    'timezone': 'UTC',
+                    'exchange': stock_data.get('market_info', {}).get('exchange', 'Unknown'),
+                }
             }
-        }
+        else:
+            # Handle empty chart_data case
+            response_data = {
+                'ticker': original_ticker,
+                'normalized_ticker': ticker,
+                'timeframe': timeframe,
+                'chart_type': chart_type,
+                'data': [],
+                'indicators': indicator_data,
+                'summary': {
+                    'latest_price': 0,
+                    'change': 0,
+                    'change_percent': 0,
+                    'period_high': 0,
+                    'period_low': 0,
+                    'average_volume': 0,
+                    'data_points': 0,
+                },
+                'market_info': stock_data.get('market_info', {}),
+                'metadata': {
+                    'start_date': None,
+                    'end_date': None,
+                    'total_records': 0,
+                    'timezone': 'UTC',
+                    'exchange': stock_data.get('market_info', {}).get('exchange', 'Unknown'),
+                }
+            }
 
         # Cache the response
-        cache_timeout = TIMEFRAMES[timeframe]['cache_time']
-        cache.set(cache_key, response_data, timeout=cache_timeout)
+        CacheManager.set_chart_data(
+            ticker, timeframe, chart_type,
+            response_data, config.cache_time
+        )
 
-        logger.info(f"Chart data successfully prepared for {ticker} ({len(chart_data)} data points)")
         return Response(response_data, status=status.HTTP_200_OK)
 
     except Exception as e:
-        logger.error(f"Error fetching chart data for {ticker}: {str(e)}")
+        logger.error(f"Error in get_chart_data for {ticker}: {str(e)}")
         return Response(
-            {"error": f"Failed to fetch chart data: {str(e)}"},
+            {"error": f"Internal server error: {str(e)}"},
             status=status.HTTP_500_INTERNAL_SERVER_ERROR,
         )
 

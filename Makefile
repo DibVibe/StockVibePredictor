@@ -35,7 +35,7 @@ help:
 	@echo "  make install-frontend - Install Node dependencies only"
 	@echo ""
 	@echo "$(YELLOW)Development:$(NC)"
-	@echo "  make dev             - Run both backend and frontend servers"
+	@echo "  make dev             - Run both backend and frontend servers [ Note : Don't forget to refresh ]"
 	@echo "  make dev-backend     - Run Django server only"
 	@echo "  make dev-frontend    - Run React development server only"
 	@echo ""

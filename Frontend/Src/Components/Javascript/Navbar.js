@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../CSS/Navbar.css";
 
-const Navbar = ({
-  currentTicker,
-  currentCompanyName,
-  systemHealth,
-  onQuickSearch,
-}) => {
+const Navbar = ({ systemHealth, onQuickSearch }) => {
   // ==================== STATE MANAGEMENT ====================
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -85,17 +80,6 @@ const Navbar = ({
     }
   };
 
-  // Format company display name
-  const getDisplayName = () => {
-    if (!currentTicker) return "";
-
-    if (currentCompanyName && currentCompanyName !== currentTicker) {
-      return `${currentCompanyName} (${currentTicker})`;
-    }
-
-    return currentTicker;
-  };
-
   // ==================== RENDER ====================
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
@@ -107,23 +91,9 @@ const Navbar = ({
           </div>
         </div>
 
-        {/* ==================== CENTER SECTION - COMPANY INFO ==================== */}
+        {/* ==================== CENTER SECTION - REMOVED COMPANY INFO ==================== */}
         <div className="navbar-center">
-          {currentTicker && (
-            <div className="current-ticker">
-              <div className="ticker-info">
-                <div className="ticker-display">
-                  <span
-                    className="company-display-name"
-                    title={getDisplayName()}
-                  >
-                    {getDisplayName()}
-                  </span>
-                  <div className="ticker-pulse"></div>
-                </div>
-              </div>
-            </div>
-          )}
+          {/* Empty center section for spacing - can add other elements here if needed */}
         </div>
 
         {/* ==================== RIGHT SECTION - SEARCH & ACTIONS ==================== */}
@@ -233,20 +203,6 @@ const Navbar = ({
               </div>
             </form>
           </div>
-
-          {/* Mobile Current Stock */}
-          {currentTicker && (
-            <div className="mobile-current-stock">
-              <div className="mobile-ticker-info">
-                <div className="mobile-ticker-display">
-                  <span className="mobile-company-display-name">
-                    {getDisplayName()}
-                  </span>
-                  <div className="mobile-ticker-pulse"></div>
-                </div>
-              </div>
-            </div>
-          )}
 
           {/* Mobile Action Buttons */}
           <div className="mobile-actions">
