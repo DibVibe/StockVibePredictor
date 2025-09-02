@@ -1,0 +1,56 @@
+{
+  "1d": {
+    "valid": true,
+    "samples": 161,
+    "min_required": 100,
+    "status": "\u2705 PASS"
+  },
+  "5d": {
+    "valid": true,
+    "samples": 130,
+    "min_required": 80,
+    "status": "\u2705 PASS"
+  },
+  "1w": {
+    "valid": true,
+    "samples": 64,
+    "min_required": 40,
+    "status": "\u2705 PASS"
+  },
+  "1mo": {
+    "valid": true,
+    "samples": 127,
+    "min_required": 90,
+    "status": "\u2705 PASS"
+  },
+  "3mo": {
+    "valid": true,
+    "samples": 250,
+    "min_required": 180,
+    "status": "\u2705 PASS"
+  },
+  "6mo": {
+    "valid": true,
+    "samples": 105,
+    "min_required": 70,
+    "status": "\u2705 PASS"
+  },
+  "1y": {
+    "valid": true,
+    "samples": 157,
+    "min_required": 100,
+    "status": "\u2705 PASS"
+  },
+  "2y": {
+    "valid": true,
+    "samples": 60,
+    "min_required": 40,
+    "status": "\u2705 PASS"
+  },
+  "5y": {
+    "valid": true,
+    "samples": 488,
+    "min_required": 60,
+    "status": "\u2705 PASS"
+  }
+}

@@ -1,0 +1,42 @@
+
+MODEL CARD: SUPPORT VECTOR MACHINE
+==================================================
+
+PERFORMANCE METRICS:
+- Accuracy: 50.00%
+- Precision: 45.83%
+- Recall: 26.19%
+- F1-Score: 33.33%
+- Specificity: 71.74%
+- Sensitivity: 26.19%
+
+ADVANCED METRICS:
+- AUC Score: 53.11%
+- Matthews Correlation Coefficient: -0.0232
+- False Positive Rate: 28.26%
+- False Negative Rate: 73.81%
+
+TRAINING DETAILS:
+- Models Trained: 1
+- Model Type: support_vector_machine
+- Cross-Validation Mean: 0.5000
+- Cross-Validation Std: 0.0200
+
+PREDICTIVE POWER:
+- Positive Predictive Value: 45.83%
+- Negative Predictive Value: 26.19%
+
+MODEL INTERPRETATION:
+- This model correctly predicts stock price direction 50.0% of the time
+- When it predicts "UP", it's correct 45.8% of the time
+- It captures 26.2% of all actual "UP" movements
+- Overall balanced performance score (F1): 33.3%
+
+TRAINMODEL.PY INTEGRATION:
+- Uses TrainModel.py training pipeline
+- Includes CSV integration enhancements
+- Dynamic random state for varied training
+- Extended historical data periods
+
+==================================================
+        

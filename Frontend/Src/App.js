@@ -328,11 +328,25 @@ function App() {
         include_analysis: true,
       };
 
+      console.log("🚀 Making prediction request:", {
+        url: requestUrl,
+        payload: requestPayload,
+        selectedTimeframes,
+      });
+
       const predictionsResponse = await axios.post(requestUrl, requestPayload, {
         timeout: 30000,
       });
 
       const data = predictionsResponse.data;
+      
+      console.log("✅ Prediction response received:", {
+        ticker: ticker.toUpperCase(),
+        predictionsCount: Object.keys(data.predictions || {}).length,
+        availableTimeframes: Object.keys(data.predictions || {}),
+        requestedTimeframes: selectedTimeframes,
+        missingTimeframes: selectedTimeframes.filter(tf => !data.predictions?.[tf]),
+      });
 
       setPredictions(data.predictions);
       setAnalysis(data.analysis || null);

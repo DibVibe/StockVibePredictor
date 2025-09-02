@@ -1,0 +1,43 @@
+
+STOCK PREDICTION MODEL EVALUATION SUMMARY (TrainModel.py)
+=========================================================
+
+EVALUATION OVERVIEW:
+- Total Model Configurations: 5
+- Best Performing Model: Gradient Boosting
+- Best Model Accuracy: 0.5114 (51.14%)
+- Average Accuracy: 50.36%
+
+PERFORMANCE METRICS FOR BEST MODEL (Gradient Boosting):
+- Accuracy: 51.14%
+- Precision: 48.65%
+- Recall: 42.86%
+- F1-Score: 45.57%
+- Specificity: 58.70%
+- Sensitivity: 42.86%
+- AUC Score: 52.64%
+
+TRAINING DETAILS:
+- Models Trained per Configuration: 1
+- Cross-Validation Mean: 0.5114
+- Cross-Validation Std: 0.0200
+- Model Type: gradient_boosting
+
+OVERALL ANALYSIS:
+- Models with >55% Accuracy: 0/5
+- Best Model Type: gradient_boosting
+- Matthews Correlation Coefficient: 0.0157
+
+TRAINMODEL.PY FEATURES UTILIZED:
+- Dynamic random state for training variation
+- Extended historical data periods
+- CSV integration for accuracy enhancement
+- Multi-timeframe training (1d, 1w)
+- Ensemble voting classifier methodology
+
+STOCKS EVALUATED: AAPL, GOOGL, MSFT, AMZN, META, JPM, JNJ, V, WMT, BAC, WFC, GS, SPY, QQQ, ARKK, ^NSEI, ^BSESN
+TIMEFRAMES EVALUATED: 1d, 1w
+
+Evaluation completed on: 2025-09-02 19:09:52
+Generated using TrainModel.py accuracy generator
+        

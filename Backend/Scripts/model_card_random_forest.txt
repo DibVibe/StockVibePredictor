@@ -1,0 +1,42 @@
+
+MODEL CARD: RANDOM FOREST
+==================================================
+
+PERFORMANCE METRICS:
+- Accuracy: 50.06%
+- Precision: 52.80%
+- Recall: 60.22%
+- F1-Score: 56.02%
+- Specificity: 46.17%
+- Sensitivity: 60.22%
+
+ADVANCED METRICS:
+- AUC Score: 53.19%
+- Matthews Correlation Coefficient: 0.0012
+- False Positive Rate: 53.83%
+- False Negative Rate: 39.78%
+
+TRAINING DETAILS:
+- Models Trained: 34
+- Model Type: random_forest
+- Cross-Validation Mean: 0.5122
+- Cross-Validation Std: 0.0257
+
+PREDICTIVE POWER:
+- Positive Predictive Value: 52.80%
+- Negative Predictive Value: 60.22%
+
+MODEL INTERPRETATION:
+- This model correctly predicts stock price direction 50.1% of the time
+- When it predicts "UP", it's correct 52.8% of the time
+- It captures 60.2% of all actual "UP" movements
+- Overall balanced performance score (F1): 56.0%
+
+TRAINMODEL.PY INTEGRATION:
+- Uses TrainModel.py training pipeline
+- Includes CSV integration enhancements
+- Dynamic random state for varied training
+- Extended historical data periods
+
+==================================================
+        

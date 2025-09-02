@@ -1,0 +1,42 @@
+
+MODEL CARD: ENSEMBLE (RF+LR)
+==================================================
+
+PERFORMANCE METRICS:
+- Accuracy: 50.59%
+- Precision: 52.97%
+- Recall: 63.86%
+- F1-Score: 57.57%
+- Specificity: 43.29%
+- Sensitivity: 63.86%
+
+ADVANCED METRICS:
+- AUC Score: 53.58%
+- Matthews Correlation Coefficient: 0.0118
+- False Positive Rate: 56.71%
+- False Negative Rate: 36.14%
+
+TRAINING DETAILS:
+- Models Trained: 34
+- Model Type: ensemble
+- Cross-Validation Mean: 0.5194
+- Cross-Validation Std: 0.0278
+
+PREDICTIVE POWER:
+- Positive Predictive Value: 52.97%
+- Negative Predictive Value: 63.86%
+
+MODEL INTERPRETATION:
+- This model correctly predicts stock price direction 50.6% of the time
+- When it predicts "UP", it's correct 53.0% of the time
+- It captures 63.9% of all actual "UP" movements
+- Overall balanced performance score (F1): 57.6%
+
+TRAINMODEL.PY INTEGRATION:
+- Uses TrainModel.py training pipeline
+- Includes CSV integration enhancements
+- Dynamic random state for varied training
+- Extended historical data periods
+
+==================================================
+        

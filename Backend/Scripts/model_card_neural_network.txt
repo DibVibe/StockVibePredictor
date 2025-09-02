@@ -1,0 +1,42 @@
+
+MODEL CARD: NEURAL NETWORK
+==================================================
+
+PERFORMANCE METRICS:
+- Accuracy: 50.00%
+- Precision: 47.37%
+- Recall: 42.86%
+- F1-Score: 45.00%
+- Specificity: 56.52%
+- Sensitivity: 42.86%
+
+ADVANCED METRICS:
+- AUC Score: 45.55%
+- Matthews Correlation Coefficient: -0.0063
+- False Positive Rate: 43.48%
+- False Negative Rate: 57.14%
+
+TRAINING DETAILS:
+- Models Trained: 1
+- Model Type: neural_network
+- Cross-Validation Mean: 0.5000
+- Cross-Validation Std: 0.0200
+
+PREDICTIVE POWER:
+- Positive Predictive Value: 47.37%
+- Negative Predictive Value: 42.86%
+
+MODEL INTERPRETATION:
+- This model correctly predicts stock price direction 50.0% of the time
+- When it predicts "UP", it's correct 47.4% of the time
+- It captures 42.9% of all actual "UP" movements
+- Overall balanced performance score (F1): 45.0%
+
+TRAINMODEL.PY INTEGRATION:
+- Uses TrainModel.py training pipeline
+- Includes CSV integration enhancements
+- Dynamic random state for varied training
+- Extended historical data periods
+
+==================================================
+        
