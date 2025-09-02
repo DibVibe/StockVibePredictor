@@ -129,80 +129,16 @@ model_cache = {}
 prediction_cache = {}
 performance_cache = {}
 
-# Timeframe configurations - Balanced for chart display and data requirements
 TIMEFRAMES = {
-    "1d": {
-        "period": "7d",
-        "interval": "5m",
-        "model_suffix": "_1d",
-        "cache_time": 300,
-        "display_limit": 288,
-        "description": "1 Day - Intraday predictions with 5-minute intervals"
-    },
-    "5d": {
-        "period": "1mo",
-        "interval": "15m",
-        "model_suffix": "_1w",
-        "cache_time": 600,
-        "display_limit": 1920,
-        "description": "5 Days - Short-term with 15-minute intervals"
-    },
-    "1w": {
-        "period": "2mo",
-        "interval": "1h",
-        "model_suffix": "_1w",
-        "cache_time": 1800,
-        "display_limit": 168,
-        "description": "1 Week - 7 days of hourly data"
-    },
-    "1mo": {
-        "period": "3mo",
-        "interval": "1d",
-        "model_suffix": "_1mo",
-        "cache_time": 3600,
-        "display_limit": 30,
-        "description": "1 Month - 30 days of daily data"
-    },
-    "3mo": {
-        "period": "6mo",
-        "interval": "1d",
-        "model_suffix": "_1mo",
-        "cache_time": 5400,
-        "display_limit": 90,
-        "description": "3 Months - 90 days of daily data"
-    },
-    "6mo": {
-        "period": "1y",
-        "interval": "1d",
-        "model_suffix": "_1mo",
-        "cache_time": 7200,
-        "display_limit": 180,
-        "description": "6 Months - 180 days of daily data"
-    },
-    "1y": {
-        "period": "2y",
-        "interval": "1d",
-        "model_suffix": "_1y",
-        "cache_time": 21600,
-        "display_limit": 365,
-        "description": "1 Year - 365 days of daily data"
-    },
-    "2y": {
-        "period": "3y",
-        "interval": "1wk",
-        "model_suffix": "_1y",
-        "cache_time": 28800,
-        "display_limit": 104,
-        "description": "2 Years - 104 weeks of weekly data"
-    },
-    "5y": {
-        "period": "max",
-        "interval": "1mo",
-        "model_suffix": "_1y",
-        "cache_time": 43200,
-        "display_limit": 60,
-        "description": "5 Years - 60 months of monthly data"
-    },
+    key: {
+        "period": config.period,
+        "interval": config.interval,
+        "model_suffix": config.model_suffix,
+        "cache_time": config.cache_time,
+        "display_limit": config.display_limit,
+        "description": config.description,
+    }
+    for key, config in TIMEFRAME_CONFIGS.items()
 }
 
 
@@ -697,8 +633,16 @@ def compute_comprehensive_features(data, timeframe="1d"):
 
         data = data.dropna(subset=required_cols)
 
-        if len(data) < 50:
-            raise ValueError(f"Insufficient data: {len(data)} rows")
+        # Adjust minimum data points based on timeframe
+        min_data_points = {
+            "1d": 20,   # Intraday needs less data
+            "1w": 25,   # Weekly needs some days
+            "1mo": 15,  # Monthly needs at least 15 trading days
+            "1y": 100,  # Yearly needs more data for accuracy
+        }.get(timeframe, 30)  # Default to 30
+        
+        if len(data) < min_data_points:
+            raise ValueError(f"Insufficient data for {timeframe}: {len(data)} rows (minimum: {min_data_points})")
 
         # Adjust periods based on timeframe
         if timeframe == "1d":
@@ -757,10 +701,39 @@ def compute_comprehensive_features(data, timeframe="1d"):
             abs(data["Close"] - data["Open"]) <= (data["High"] - data["Low"]) * 0.1
         ).astype(int)
 
-        # Trend features
-        if "MA20" in data.columns and "MA50" in data.columns:
-            data["Trend_Bullish"] = (data["Close"] > data["MA20"]).astype(int)
-            data["Golden_Cross"] = (data["MA20"] > data["MA50"]).astype(int)
+        # Trend features - use appropriate MA periods based on timeframe
+        available_ma_columns = [col for col in data.columns if col.startswith('MA')]
+        
+        if timeframe == "1mo":
+            # For 1mo, use MA6 and MA12
+            if "MA6" in data.columns:
+                data["Trend_Bullish"] = (data["Close"] > data["MA6"]).astype(int)
+            if "MA6" in data.columns and "MA12" in data.columns:
+                data["Golden_Cross"] = (data["MA6"] > data["MA12"]).astype(int)
+        elif timeframe == "1y":
+            # For 1y, use MA3 and MA6
+            if "MA3" in data.columns:
+                data["Trend_Bullish"] = (data["Close"] > data["MA3"]).astype(int)
+            if "MA3" in data.columns and "MA6" in data.columns:
+                data["Golden_Cross"] = (data["MA3"] > data["MA6"]).astype(int)
+        elif timeframe == "1w":
+            # For 1w, use MA8 and MA13
+            if "MA8" in data.columns:
+                data["Trend_Bullish"] = (data["Close"] > data["MA8"]).astype(int)
+            if "MA8" in data.columns and "MA13" in data.columns:
+                data["Golden_Cross"] = (data["MA8"] > data["MA13"]).astype(int)
+        else:
+            # Default for 1d and others - use MA20 and MA50
+            if "MA20" in data.columns:
+                data["Trend_Bullish"] = (data["Close"] > data["MA20"]).astype(int)
+            if "MA20" in data.columns and "MA50" in data.columns:
+                data["Golden_Cross"] = (data["MA20"] > data["MA50"]).astype(int)
+                
+        # Ensure these columns exist even if not computed
+        if "Trend_Bullish" not in data.columns:
+            data["Trend_Bullish"] = 0
+        if "Golden_Cross" not in data.columns:
+            data["Golden_Cross"] = 0
 
         # Market regime features
         data["High_Volatility"] = (
