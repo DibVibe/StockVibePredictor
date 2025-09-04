@@ -190,7 +190,7 @@ class ValidationManager:
                 }
                 logger.error(f"  ❌ ERROR: {str(e)}")
 
-            time.sleep(0.5)  # Rate limiting
+            time.sleep(0.5)
 
         # Summary
         valid_count = sum(1 for r in results.values() if r.get("valid", False))
@@ -222,7 +222,7 @@ class ValidationManager:
                 availability[ticker] = False
                 logger.warning(f"  ❌ {ticker}: Not available")
 
-            time.sleep(0.2)  # Rate limiting
+            time.sleep(0.2)
 
         return availability
 
@@ -261,7 +261,7 @@ class ValidationManager:
         # Check for outliers in price movements
         if "Close" in data.columns:
             returns = data["Close"].pct_change().dropna()
-            extreme_moves = returns[abs(returns) > 0.2]  # 20% moves
+            extreme_moves = returns[abs(returns) > 0.2]
             if len(extreme_moves) > 0:
                 quality_report["issues"].append(f"Extreme price moves: {len(extreme_moves)}")
                 quality_report["quality_score"] -= 5
@@ -269,7 +269,7 @@ class ValidationManager:
         # Check volume consistency
         if "Volume" in data.columns:
             zero_volume = (data["Volume"] == 0).sum()
-            if zero_volume > len(data) * 0.1:  # More than 10% zero volume
+            if zero_volume > len(data) * 0.1:
                 quality_report["issues"].append(f"High zero volume days: {zero_volume}")
                 quality_report["quality_score"] -= 10
 
@@ -728,7 +728,7 @@ class ModelTrainer:
                     logger.warning(f"  ⚠️ Skipped {ticker}: {str(e)}")
                     continue
 
-                time.sleep(Config.API_DELAY)  # Rate limiting
+                time.sleep(Config.API_DELAY)
 
             if len(successful_stocks) < 3:
                 raise ValueError(f"Insufficient stocks for universal model: {len(successful_stocks)}")
